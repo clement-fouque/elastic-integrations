@@ -1,0 +1,36 @@
+format_version: 3.3.0
+name: github_advisory_database
+title: GitHub Advisory Database
+version: 0.1.0
+description: Collect reviewed or unreviewed GitHub security advisories with the Elastic Agent.
+type: integration
+categories:
+  - security
+  - vulnerability_management
+conditions:
+  kibana:
+    version: ^8.14.0
+screenshots:
+  - src: /img/sample-screenshot.png
+    title: Sample screenshot
+    size: 600x600
+    type: image/png
+icons:
+  - src: /img/github.svg
+    title: GitHub
+    size: 1024x1024
+    type: image/svg+xml
+policy_templates:
+  - name: github_advisory_database
+    title: GitHub Advisory Database
+    description: >-
+      Collect reviewed or unreviewed GitHub security advisories with the Elastic Agent.
+    inputs:
+      - type: cel
+        title: Collect GitHub security advisories database via API
+        description: >-
+          Collect reviewed or unreviewed GitHub security advisories with the
+          Elastic Agent.
+owner:
+  github: elastic/security-service-integrations
+  type: community
