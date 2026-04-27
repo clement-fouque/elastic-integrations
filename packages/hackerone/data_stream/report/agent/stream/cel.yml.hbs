@@ -41,7 +41,6 @@ state:
 redact:
   fields:
     - api_token
-{{!-- max_executions: 50 --}}
 program: |
   (size(state.?program_handles.orValue([])) == int(0) && size(state.?inbox_ids.orValue([])) == int(0)) ?
     {
