@@ -1,0 +1,172 @@
+config_version: 2
+interval: {{interval}}
+resource.tracer:
+  enabled: {{enable_request_tracer}}
+  filename: "../../logs/cel/http-request-trace-*.ndjson"
+  maxbackups: 5
+{{#if proxy_url}}
+resource.proxy_url: {{proxy_url}}
+{{/if}}
+{{#if ssl}}
+resource.ssl: {{ssl}}
+{{/if}}
+{{#if http_client_timeout}}
+resource.timeout: {{http_client_timeout}}
+{{/if}}
+resource.url: {{url}}
+resource.headers:
+  Accept:
+    - "application/json"
+state:
+  api_username: {{api_username}}
+  api_token: {{api_token}}
+{{#if program_handles}}
+  program_handles:
+{{#each program_handles as |h|}}
+    - {{h}}
+{{/each}}
+{{else}}
+  program_handles: []
+{{/if}}
+{{#if inbox_ids}}
+  inbox_ids:
+{{#each inbox_ids as |id|}}
+    - {{id}}
+{{/each}}
+{{else}}
+  inbox_ids: []
+{{/if}}
+  initial_interval: {{initial_interval}}
+  page_size: {{page_size}}
+redact:
+  fields:
+    - api_token
+{{!-- max_executions: 50 --}}
+program: |
+  (size(state.?program_handles.orValue([])) == int(0) && size(state.?inbox_ids.orValue([])) == int(0)) ?
+    {
+      "events": {
+        "error": {
+          "code": "400",
+          "id": "bad_config",
+          "message": "GET /v1/reports: program_handles and inbox_ids are both empty (HackerOne requires at least one filter)",
+        },
+      },
+      "want_more": false,
+    }
+  :
+  state.?cursor.last_activity_at.orValue("").as(curRaw,
+    (curRaw != "" ?
+      (string(curRaw).parse_time([time_layout.RFC3339Nano, time_layout.RFC3339]) + duration("1ms")).format(time_layout.RFC3339Nano)
+    :
+      string(now - duration(state.initial_interval))
+    ).as(filter_gt,
+      (state.?next_url.orValue("") != "" ?
+        state.next_url
+      :
+        state.url.trim_right("/") + "/v1/reports?" + {
+          ?"filter[program][]": size(state.?program_handles.orValue([])) > int(0) ?
+            optional.of(state.program_handles)
+          :
+            optional.none(),
+          ?"filter[inbox_ids][]": size(state.?inbox_ids.orValue([])) > int(0) ?
+            optional.of(state.inbox_ids.map(inbox_id, string(inbox_id)))
+          :
+            optional.none(),
+          "filter[last_activity_at__gt]": [filter_gt],
+          "sort": ["reports.last_activity_at"],
+          "page[size]": [string(int(state.?page_size.orValue(int(100))))],
+        }.format_query()
+      ).as(req_url,
+        state.with(
+          request("GET", req_url).with({
+            "Header": {
+              "Authorization": ["Basic " + bytes(state.api_username + ":" + state.api_token).base64()],
+              "Accept": ["application/json"],
+            },
+          }).do_request().as(resp,
+            (resp.StatusCode == int(429) || resp.StatusCode == int(401) || resp.StatusCode == int(403) || resp.StatusCode > int(499)) ?
+              {
+                "events": {
+                  "error": {
+                    "code": string(resp.StatusCode),
+                    "id": string(resp.Status),
+                    "message": "GET /v1/reports: " + (
+                      size(resp.Body) != int(0) ?
+                        string(resp.Body)
+                      :
+                        string(resp.Status)
+                    ),
+                  },
+                },
+                "want_more": false,
+              }
+            :
+              resp.StatusCode == int(200) ?
+                resp.Body.decode_json().as(body,
+                  body.?data.orValue([]).map(r, r.attributes.?last_activity_at.orValue("")).filter(t, t != "").as(ts,
+                    (size(ts) > int(0) ?
+                      ts.max()
+                    :
+                      ""
+                    ).as(page_max,
+                      state.?cycle_max.orValue("").as(prev_max,
+                        (page_max != "" && (prev_max == "" || page_max > prev_max)) ?
+                          page_max
+                        :
+                          prev_max
+                      ).as(new_cycle_max,
+                        string(body.?links.next.orValue("")).as(next_link,
+                          {
+                            "events": body.?data.orValue([]).map(r, {"message": r.encode_json()}),
+                            "want_more": next_link != "",
+                            "next_url": next_link,
+                            "cycle_max": next_link != "" ?
+                              new_cycle_max
+                            :
+                              "",
+                            "cursor": next_link == "" && new_cycle_max != "" ?
+                              {"last_activity_at": new_cycle_max}
+                            :
+                              state.?cursor.orValue({}),
+                          }
+                        )
+                      )
+                    )
+                  )
+                )
+              :
+              {
+                "events": {
+                  "error": {
+                    "code": string(resp.StatusCode),
+                    "id": string(resp.Status),
+                    "message": "GET /v1/reports: " + (
+                      size(resp.Body) != int(0) ?
+                        string(resp.Body)
+                      :
+                        string(resp.Status)
+                    ),
+                  },
+                },
+                "want_more": false,
+              }
+          )
+        )
+      )
+    )
+  )
+tags:
+{{#if preserve_original_event}}
+  - preserve_original_event
+{{/if}}
+{{#each tags as |tag|}}
+  - {{tag}}
+{{/each}}
+{{#contains "forwarded" tags}}
+publisher_pipeline.disable_host: true
+{{/contains}}
+{{#if processors}}
+processors:
+{{processors}}
+{{/if}}

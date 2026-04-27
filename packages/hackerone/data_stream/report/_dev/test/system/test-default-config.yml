@@ -1,0 +1,18 @@
+wait_for_data_timeout: 1m
+input: cel
+service: hackerone-report
+data_stream:
+  vars:
+    url: http://{{Hostname}}:{{Port}}
+    api_username: test-user
+    api_token: test-token
+    interval: 2s
+    initial_interval: 24h
+    page_size: 100
+    program_handles:
+      - example-program
+    tags:
+      - forwarded
+      - hackerone-report
+assert:
+  hit_count: 3

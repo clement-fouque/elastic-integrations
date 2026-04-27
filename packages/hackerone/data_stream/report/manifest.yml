@@ -1,0 +1,112 @@
+title: HackerOne reports
+type: logs
+streams:
+  - input: cel
+    title: HackerOne vulnerability reports
+    description: Collect vulnerability reports from the HackerOne Customer API (GET /v1/reports).
+    template_path: cel.yml.hbs
+    vars:
+      - name: url
+        type: text
+        title: API base URL
+        description: HackerOne Customer API base URL (override for proxies or mocks).
+        required: true
+        show_user: true
+        default: https://api.hackerone.com
+      - name: api_username
+        type: text
+        title: API token identifier
+        description: HTTP Basic auth username — the API token identifier from HackerOne.
+        required: true
+        show_user: true
+      - name: api_token
+        type: password
+        title: API token
+        description: HTTP Basic auth password — the API token secret from HackerOne.
+        required: true
+        secret: true
+        show_user: true
+      - name: program_handles
+        type: text
+        title: Program handles
+        description: HackerOne program handles to collect reports for. Configure at least one program handle and/or inbox ID (API requirement).
+        multi: true
+        required: false
+        show_user: true
+      - name: inbox_ids
+        type: text
+        title: Inbox IDs
+        description: Inbox IDs to collect reports for (alternative or complement to program handles). Configure at least one program handle and/or inbox ID (API requirement).
+        multi: true
+        required: false
+        show_user: true
+      - name: interval
+        type: text
+        title: Polling interval
+        description: How often to poll the HackerOne API.
+        required: true
+        show_user: true
+        default: 5m
+      - name: initial_interval
+        type: text
+        title: Initial lookback
+        description: Time window for the first poll when no cursor exists.
+        required: true
+        show_user: true
+        default: 24h
+      - name: page_size
+        type: integer
+        title: Page size
+        description: Reports per page (1–100).
+        required: true
+        show_user: true
+        default: 100
+      - name: http_client_timeout
+        type: text
+        title: HTTP client timeout
+        description: Per-request timeout (e.g. 60s).
+        required: false
+        show_user: false
+        default: 60s
+      - name: proxy_url
+        type: text
+        title: Proxy URL
+        description: Optional HTTP proxy URL.
+        required: false
+        show_user: false
+      - name: ssl
+        type: yaml
+        title: SSL configuration
+        description: TLS settings for the HTTP client.
+        required: false
+        show_user: false
+      - name: enable_request_tracer
+        type: bool
+        title: Enable request tracer
+        description: Log HTTP request/response traces for debugging.
+        required: false
+        show_user: false
+        default: false
+      - name: tags
+        type: text
+        title: Tags
+        description: Tags added to each collected event.
+        multi: true
+        required: true
+        show_user: true
+        default:
+          - forwarded
+          - hackerone-report
+      - name: preserve_original_event
+        type: bool
+        title: Preserve original event
+        description: Keep a copy of the original message (handled by ingest pipeline).
+        required: true
+        show_user: true
+        default: false
+      - name: processors
+        type: yaml
+        title: Processors
+        description: Optional Elastic Agent processors applied to events.
+        required: false
+        show_user: false

@@ -1,0 +1,530 @@
+# Custom HackerOne report fields (non-ECS). JSON:API resources are flattened under hackerone.report.*.
+- name: hackerone.report
+  type: group
+  fields:
+    - name: id
+      type: keyword
+      description: HackerOne report resource id.
+    - name: type
+      type: keyword
+      description: JSON:API resource type (report).
+    - name: url
+      type: keyword
+      description: Canonical HackerOne report permalink.
+    - name: title
+      type: keyword
+      description: Report title.
+    - name: state
+      type: keyword
+      description: Report workflow state.
+    - name: main_state
+      type: keyword
+      description: Coarse lifecycle state (draft, open, closed).
+    - name: vulnerability_information
+      type: text
+      description: Raw submission body from the reporter.
+    - name: created_at
+      type: date
+      description: Report creation timestamp.
+    - name: submitted_at
+      type: date
+      description: Submission timestamp when present in API responses.
+    - name: triaged_at
+      type: date
+      description: Time the report entered triage.
+    - name: closed_at
+      type: date
+      description: Time the report was closed.
+    - name: disclosed_at
+      type: date
+      description: Public disclosure timestamp.
+    - name: last_reporter_activity_at
+      type: date
+      description: Latest reporter-side activity.
+    - name: first_program_activity_at
+      type: date
+      description: First program-side activity.
+    - name: last_program_activity_at
+      type: date
+      description: Latest program-side activity.
+    - name: last_activity_at
+      type: date
+      description: Latest activity of any kind (cursor field).
+    - name: last_public_activity_at
+      type: date
+      description: Latest public activity.
+    - name: bounty_awarded_at
+      type: date
+      description: Latest bounty award time.
+    - name: swag_awarded_at
+      type: date
+      description: Latest swag award time.
+    - name: reporter_agreed_on_going_public_at
+      type: date
+      description: Reporter agreement to go public.
+    - name: cve_ids
+      type: keyword
+      description: CVE identifiers assigned to the report.
+    - name: issue_tracker_reference_id
+      type: keyword
+      description: External issue tracker reference id.
+    - name: issue_tracker_reference_url
+      type: keyword
+      description: External issue tracker URL.
+    - name: source
+      type: keyword
+      description: Provenance label for the submission.
+    - name: original_report_id
+      type: keyword
+      description: Source report id when cloned.
+    - name: severity_rating
+      type: keyword
+      description: Qualitative severity on attributes when provided by API.
+    - name: report_generated_content
+      type: flattened
+      description: Generated report content object when present.
+    - name: timer_bounty_awarded_miss_at
+      type: date
+      description: SLA deadline for bounty award.
+    - name: timer_bounty_awarded_elapsed_time
+      type: long
+      description: Elapsed seconds toward bounty SLA.
+    - name: timer_first_program_response_miss_at
+      type: date
+      description: SLA deadline for first program response.
+    - name: timer_first_program_response_elapsed_time
+      type: long
+      description: Elapsed seconds toward first response SLA.
+    - name: timer_report_resolved_miss_at
+      type: date
+      description: SLA deadline for resolution.
+    - name: timer_report_resolved_elapsed_time
+      type: long
+      description: Elapsed seconds toward resolution SLA.
+    - name: timer_report_triage_miss_at
+      type: date
+      description: SLA deadline for triage.
+    - name: timer_report_triage_elapsed_time
+      type: long
+      description: Elapsed seconds toward triage SLA.
+    - name: timer_bug_reporter_first_response_miss_at
+      type: date
+      description: SLA miss time for first reporter response when present.
+    - name: timer_bug_reporter_first_response_elapsed_time
+      type: long
+      description: Elapsed seconds for reporter first response SLA when present.
+    - name: hai_is_priority
+      type: boolean
+      description: HackerOne AI priority flag when present.
+    - name: hai_is_priority_reason
+      type: text
+      description: Explanation for AI priority classification.
+    - name: tracking_codes
+      type: keyword
+      description: Tracking codes on the report when present.
+    - name: automated_rating
+      type: keyword
+      description: Automated rating metadata when present.
+    - name: rating
+      type: keyword
+      description: Report-level rating when present on attributes.
+    - name: stage
+      type: keyword
+      description: Report stage when present on attributes.
+    - name: network
+      type: group
+      fields:
+        - name: cidr
+          type: keyword
+          description: In-scope CIDR when asset_type is CIDR.
+    - name: reporter
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Reporter user id.
+        - name: type
+          type: keyword
+          description: JSON:API type for reporter resource.
+        - name: username
+          type: keyword
+          description: Reporter handle.
+        - name: name
+          type: keyword
+          description: Reporter display name.
+        - name: disabled
+          type: boolean
+          description: Whether the account is disabled.
+        - name: created_at
+          type: date
+          description: Reporter account creation time.
+        - name: reputation
+          type: long
+          description: Reporter reputation score when present.
+        - name: signal
+          type: long
+          description: Reporter signal score when present.
+        - name: impact
+          type: long
+          description: Reporter impact score when present.
+        - name: bio
+          type: text
+          description: Reporter biography when present.
+        - name: website
+          type: keyword
+          description: Reporter website when present.
+        - name: location
+          type: keyword
+          description: Reporter location when present.
+        - name: hackerone_triager
+          type: boolean
+          description: Whether the user is a HackerOne triager.
+        - name: profile_picture
+          type: flattened
+          description: Avatar URLs keyed by size.
+    - name: assignee
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Assignee user or group id.
+        - name: type
+          type: keyword
+          description: JSON:API type (user or group).
+        - name: username
+          type: keyword
+          description: Assignee username when type is user.
+        - name: name
+          type: keyword
+          description: Assignee display name.
+        - name: disabled
+          type: boolean
+          description: Whether the assignee account is disabled when user.
+    - name: program
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Program id.
+        - name: type
+          type: keyword
+          description: JSON:API type for program.
+        - name: handle
+          type: keyword
+          description: Program slug / handle.
+        - name: name
+          type: keyword
+          description: Program display name when present.
+        - name: created_at
+          type: date
+          description: Program record creation time.
+        - name: updated_at
+          type: date
+          description: Program record update time.
+    - name: weakness
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Weakness resource id.
+        - name: type
+          type: keyword
+          description: JSON:API type for weakness.
+        - name: name
+          type: keyword
+          description: Human-readable weakness name.
+        - name: description
+          type: text
+          description: Weakness description text.
+        - name: external_id
+          type: keyword
+          description: External weakness identifier (e.g. cwe-352).
+        - name: created_at
+          type: date
+          description: Weakness record creation time.
+    - name: severity
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Severity resource id.
+        - name: type
+          type: keyword
+          description: JSON:API type for severity.
+        - name: rating
+          type: keyword
+          description: Qualitative severity rating.
+        - name: author_type
+          type: keyword
+          description: Author type for severity (User, Team).
+        - name: user_id
+          type: long
+          description: Author user id when applicable.
+        - name: created_at
+          type: date
+          description: Severity record creation time.
+        - name: score
+          type: double
+          description: CVSS numeric score when calculated.
+        - name: attack_vector
+          type: keyword
+          description: CVSS attack vector.
+        - name: attack_complexity
+          type: keyword
+          description: CVSS attack complexity.
+        - name: privileges_required
+          type: keyword
+          description: CVSS privileges required.
+        - name: user_interaction
+          type: keyword
+          description: CVSS user interaction.
+        - name: scope
+          type: keyword
+          description: CVSS scope metric.
+        - name: confidentiality
+          type: keyword
+          description: CVSS confidentiality impact.
+        - name: integrity
+          type: keyword
+          description: CVSS integrity impact.
+        - name: availability
+          type: keyword
+          description: CVSS availability impact.
+        - name: calculation_method
+          type: keyword
+          description: How the severity was calculated (manual, cvss_3_1, etc.).
+        - name: cvss_vector_string
+          type: keyword
+          description: CVSS vector string when present.
+        - name: message
+          type: text
+          description: Optional severity message or rationale.
+        - name: cvss_4_0_metric_set
+          type: flattened
+          description: CVSS 4.0 metric set when present.
+    - name: structured_scope
+      type: group
+      fields:
+        - name: id
+          type: keyword
+          description: Structured scope resource id.
+        - name: type
+          type: keyword
+          description: JSON:API type for structured scope.
+        - name: asset_identifier
+          type: keyword
+          description: Asset identifier string (URL, host, IP, etc.).
+        - name: asset_type
+          type: keyword
+          description: Asset type enum from HackerOne.
+        - name: eligible_for_bounty
+          type: boolean
+          description: Whether the asset is bounty-eligible.
+        - name: eligible_for_submission
+          type: boolean
+          description: Whether submissions are accepted for the asset.
+        - name: instruction
+          type: text
+          description: Testing instructions for the asset.
+        - name: confidentiality_requirement
+          type: keyword
+          description: Confidentiality requirement level.
+        - name: integrity_requirement
+          type: keyword
+          description: Integrity requirement level.
+        - name: availability_requirement
+          type: keyword
+          description: Availability requirement level.
+        - name: max_severity
+          type: keyword
+          description: Maximum severity for the asset.
+        - name: created_at
+          type: date
+          description: Scope record creation time.
+        - name: updated_at
+          type: date
+          description: Scope record update time.
+        - name: reference
+          type: keyword
+          description: Program reference code for the asset.
+    - name: collaborators
+      type: nested
+      description: Collaborators with weights and nested user objects.
+      fields:
+        - name: weight
+          type: double
+          description: Collaboration weight.
+        - name: user
+          type: group
+          fields:
+            - name: id
+              type: keyword
+            - name: type
+              type: keyword
+            - name: username
+              type: keyword
+            - name: name
+              type: keyword
+            - name: disabled
+              type: boolean
+            - name: created_at
+              type: date
+            - name: reputation
+              type: long
+            - name: signal
+              type: long
+            - name: impact
+              type: long
+            - name: profile_picture
+              type: flattened
+    - name: bounties
+      type: nested
+      description: Bounty payment records.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: amount
+          type: keyword
+          description: Bounty amount as returned by API (string decimal).
+        - name: bonus_amount
+          type: keyword
+        - name: currency
+          type: keyword
+        - name: created_at
+          type: date
+        - name: awarded_amount
+          type: keyword
+        - name: awarded_bonus_amount
+          type: keyword
+    - name: swag
+      type: nested
+      description: Swag award records.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+    - name: attachments
+      type: nested
+      description: Attachment metadata.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: file_name
+          type: keyword
+        - name: content_type
+          type: keyword
+        - name: file_size
+          type: long
+        - name: expiring_url
+          type: keyword
+        - name: created_at
+          type: date
+    - name: summaries
+      type: nested
+      description: Disclosure summary records when present.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+    - name: inboxes
+      type: nested
+      description: Inbox routing metadata.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: name
+          type: keyword
+        - name: inbox_type
+          type: keyword
+          description: Inbox type (default, custom) mapped from attributes.type.
+    - name: activities
+      type: nested
+      description: Activity timeline entries when embedded.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: message
+          type: text
+        - name: created_at
+          type: date
+        - name: updated_at
+          type: date
+        - name: internal
+          type: boolean
+        - name: relationships
+          type: flattened
+          description: Nested relationships (actor, attachments) as returned by the pipeline.
+    - name: campaign
+      type: group
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+    - name: triggered_pre_submission_trigger
+      type: group
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: title
+          type: keyword
+    - name: custom_field_values
+      type: nested
+      description: Enterprise custom field values.
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+    - name: automated_remediation_guidance
+      type: group
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: reference
+          type: keyword
+        - name: created_at
+          type: date
+    - name: custom_remediation_guidance
+      type: group
+      fields:
+        - name: id
+          type: keyword
+        - name: type
+          type: keyword
+        - name: message
+          type: text
+        - name: created_at
+          type: date
+        - name: author
+          type: group
+          fields:
+            - name: id
+              type: keyword
+            - name: type
+              type: keyword
+            - name: username
+              type: keyword
+            - name: name
+              type: keyword
+            - name: disabled
+              type: boolean
+            - name: created_at
+              type: date
+- name: related.cve
+  type: keyword
+  description: CVE identifiers related to the report (extension to related.*).

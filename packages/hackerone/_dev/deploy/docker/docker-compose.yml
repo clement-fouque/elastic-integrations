@@ -1,0 +1,17 @@
+version: "2.3"
+services:
+  hackerone-report:
+    image: docker.elastic.co/observability/stream:v0.20.0
+    hostname: hackerone-report
+    ports:
+      - 8090
+    volumes:
+      - ./files:/files:ro
+    environment:
+      PORT: "8090"
+      # Prefix for absolute links.next URLs; must match how the agent (or mito) calls the mock.
+      MOCK_BASE: "http://hackerone-report:8090"
+    command:
+      - http-server
+      - --addr=:8090
+      - --config=/files/config-report.yml

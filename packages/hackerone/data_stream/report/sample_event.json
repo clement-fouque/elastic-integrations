@@ -1,0 +1,69 @@
+{
+    "@timestamp": "2026-04-26T12:00:00.000Z",
+    "agent": {
+        "ephemeral_id": "45dbdacb-e14f-4c14-acd4-283d238131f6",
+        "id": "8e87dd25-6627-4b13-9d09-5dbea5430738",
+        "name": "elastic-agent-43783",
+        "type": "filebeat",
+        "version": "9.3.3"
+    },
+    "data_stream": {
+        "dataset": "hackerone.report",
+        "namespace": "43155",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "9.3.0"
+    },
+    "elastic_agent": {
+        "id": "8e87dd25-6627-4b13-9d09-5dbea5430738",
+        "snapshot": false,
+        "version": "9.3.3"
+    },
+    "event": {
+        "action": "report-state-new",
+        "agent_id_status": "verified",
+        "category": [
+            "vulnerability"
+        ],
+        "created": "2026-04-26T10:00:00.000Z",
+        "dataset": "hackerone.report",
+        "id": "1001",
+        "ingested": "2026-04-27T20:57:35Z",
+        "kind": "alert",
+        "module": "hackerone",
+        "outcome": "unknown",
+        "provider": "hackerone",
+        "start": "2026-04-26T10:00:00.000Z",
+        "type": [
+            "info"
+        ],
+        "url": "https://hackerone.com/reports/1001"
+    },
+    "hackerone": {
+        "report": {
+            "created_at": "2026-04-26T10:00:00.000Z",
+            "id": "1001",
+            "last_activity_at": "2026-04-26T12:00:00.000Z",
+            "state": "new",
+            "title": "Synthetic XSS report",
+            "type": "report",
+            "url": "https://hackerone.com/reports/1001"
+        }
+    },
+    "input": {
+        "type": "cel"
+    },
+    "tags": [
+        "forwarded",
+        "hackerone-report"
+    ],
+    "vulnerability": {
+        "description": "Synthetic XSS report",
+        "id": "1001",
+        "reference": "https://hackerone.com/reports/1001",
+        "scanner": {
+            "vendor": "HackerOne"
+        }
+    }
+}

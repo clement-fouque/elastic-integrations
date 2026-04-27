@@ -1,0 +1,803 @@
+---
+description: Ingest pipeline for HackerOne report JSON:API resources collected via CEL.
+processors:
+  - set:
+      field: ecs.version
+      tag: set_ecs_version
+      value: '9.3.0'
+  - remove:
+      field:
+        - organization
+        - division
+        - team
+      ignore_missing: true
+      if: ctx.organization instanceof String && ctx.division instanceof String && ctx.team instanceof String
+      tag: remove_agentless_tags
+      description: >-
+        Removes the fields added by Agentless as metadata,
+        as they can collide with ECS fields.
+  - terminate:
+      tag: data_collection_error
+      if: ctx.error?.message != null && ctx.message == null && ctx.event?.original == null
+      description: error message set and no data to process.
+  - rename:
+      field: message
+      tag: rename_message_to_event_original
+      target_field: event.original
+      ignore_missing: true
+      description: Renames the original `message` field to `event.original` to store a copy of the original message. The `event.original` field is not touched if the document already has one; it may happen when Logstash sends the document.
+      if: ctx.event?.original == null
+  - remove:
+      field: message
+      tag: remove_message
+      ignore_missing: true
+      description: The `message` field is no longer required if the document has an `event.original` field.
+      if: ctx.event?.original != null
+  - json:
+      field: event.original
+      target_field: json
+      tag: parse_json
+      if: ctx.event?.original != null
+      on_failure:
+        - append:
+            field: error.message
+            value: '{{{_ingest.on_failure_message}}}'
+            tag: append_json_parse_error
+  - script:
+      lang: painless
+      tag: flatten_hackerone_report
+      description: Merge report attributes and flatten JSON:API relationships into hackerone.report.*.
+      if: ctx.json != null && ctx.json instanceof Map
+      source: |-
+        def root = ctx.json;
+        def r = new HashMap();
+        if (root.containsKey('id')) {
+          r.put('id', root.get('id'));
+        }
+        if (root.containsKey('type')) {
+          r.put('type', root.get('type'));
+        }
+        def attrs = root.get('attributes');
+        if (attrs instanceof Map) {
+          for (def entry : attrs.entrySet()) {
+            r.put(entry.getKey(), entry.getValue());
+          }
+        }
+        def rels = root.get('relationships');
+        if (!(rels instanceof Map)) {
+          def ho = new HashMap();
+          ho.put('report', r);
+          ctx.hackerone = ho;
+          return;
+        }
+        def rep = rels.get('reporter');
+        if (rep instanceof Map && rep.get('data') instanceof Map) {
+          def d = rep.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('reporter', am);
+        }
+        def asg = rels.get('assignee');
+        if (asg instanceof Map && asg.get('data') instanceof Map) {
+          def d = asg.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('assignee', am);
+        }
+        def prog = rels.get('program');
+        if (prog instanceof Map && prog.get('data') instanceof Map) {
+          def d = prog.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('program', am);
+        }
+        def weak = rels.get('weakness');
+        if (weak instanceof Map && weak.get('data') instanceof Map) {
+          def d = weak.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('weakness', am);
+        }
+        def sev = rels.get('severity');
+        if (sev instanceof Map && sev.get('data') instanceof Map) {
+          def d = sev.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('severity', am);
+        }
+        def ss = rels.get('structured_scope');
+        if (ss instanceof Map && ss.get('data') instanceof Map) {
+          def d = ss.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('structured_scope', am);
+        }
+        for (def relKey : ['bounties', 'swag', 'attachments', 'summaries', 'inboxes', 'custom_field_values']) {
+          def node = rels.get(relKey);
+          if (node instanceof Map && node.get('data') instanceof List) {
+            def out = new ArrayList();
+            for (def item : node.get('data')) {
+              if (!(item instanceof Map)) {
+                continue;
+              }
+              def bm = new HashMap();
+              bm.put('id', item.get('id'));
+              bm.put('type', item.get('type'));
+              def bat = item.get('attributes');
+              if (bat instanceof Map) {
+                for (def e : bat.entrySet()) {
+                  def ak = e.getKey();
+                  def av = e.getValue();
+                  if (relKey.equals('inboxes') && ak.equals('type')) {
+                    bm.put('inbox_type', av);
+                  } else {
+                    bm.put(ak, av);
+                  }
+                }
+              }
+              out.add(bm);
+            }
+            r.put(relKey, out);
+          }
+        }
+        def col = rels.get('collaborators');
+        if (col instanceof Map && col.get('data') instanceof List) {
+          def out = new ArrayList();
+          for (def item : col.get('data')) {
+            if (!(item instanceof Map)) {
+              continue;
+            }
+            def cm = new HashMap();
+            cm.put('weight', item.get('weight'));
+            def u = item.get('user');
+            if (u instanceof Map) {
+              def um = new HashMap();
+              um.put('id', u.get('id'));
+              um.put('type', u.get('type'));
+              def ua = u.get('attributes');
+              if (ua instanceof Map) {
+                for (def e : ua.entrySet()) {
+                  um.put(e.getKey(), e.getValue());
+                }
+              }
+              cm.put('user', um);
+            }
+            out.add(cm);
+          }
+          r.put('collaborators', out);
+        }
+        def act = rels.get('activities');
+        if (act instanceof Map && act.get('data') instanceof List) {
+          def out = new ArrayList();
+          for (def item : act.get('data')) {
+            if (!(item instanceof Map)) {
+              continue;
+            }
+            def am = new HashMap();
+            am.put('id', item.get('id'));
+            am.put('type', item.get('type'));
+            def aa = item.get('attributes');
+            if (aa instanceof Map) {
+              for (def e : aa.entrySet()) {
+                am.put(e.getKey(), e.getValue());
+              }
+            }
+            def ar = item.get('relationships');
+            if (ar instanceof Map) {
+              def rm = new HashMap();
+              for (def re : ar.entrySet()) {
+                def rv = re.getValue();
+                if (!(rv instanceof Map)) {
+                  continue;
+                }
+                def rd = rv.get('data');
+                if (rd instanceof Map) {
+                  def dm = new HashMap();
+                  dm.put('id', rd.get('id'));
+                  dm.put('type', rd.get('type'));
+                  def ra = rd.get('attributes');
+                  if (ra instanceof Map) {
+                    for (def e : ra.entrySet()) {
+                      dm.put(e.getKey(), e.getValue());
+                    }
+                  }
+                  rm.put(re.getKey(), dm);
+                } else if (rd instanceof List) {
+                  def alst = new ArrayList();
+                  for (def att : rd) {
+                    if (!(att instanceof Map)) {
+                      continue;
+                    }
+                    def amd = new HashMap();
+                    amd.put('id', att.get('id'));
+                    amd.put('type', att.get('type'));
+                    def aa2 = att.get('attributes');
+                    if (aa2 instanceof Map) {
+                      for (def e : aa2.entrySet()) {
+                        amd.put(e.getKey(), e.getValue());
+                      }
+                    }
+                    alst.add(amd);
+                  }
+                  rm.put(re.getKey(), alst);
+                }
+              }
+              am.put('relationships', rm);
+            }
+            out.add(am);
+          }
+          r.put('activities', out);
+        }
+        def camp = rels.get('campaign');
+        if (camp instanceof Map) {
+          def d = camp.get('data');
+          if (d == null) {
+            r.put('campaign', null);
+          } else if (d instanceof Map) {
+            def cm = new HashMap();
+            cm.put('id', d.get('id'));
+            cm.put('type', d.get('type'));
+            def at = d.get('attributes');
+            if (at instanceof Map) {
+              for (def e : at.entrySet()) {
+                cm.put(e.getKey(), e.getValue());
+              }
+            }
+            r.put('campaign', cm);
+          }
+        }
+        def trig = rels.get('triggered_pre_submission_trigger');
+        if (trig instanceof Map && trig.get('data') instanceof Map) {
+          def d = trig.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('triggered_pre_submission_trigger', am);
+        }
+        def arg = rels.get('automated_remediation_guidance');
+        if (arg instanceof Map && arg.get('data') instanceof Map) {
+          def d = arg.get('data');
+          def am = new HashMap();
+          am.put('id', d.get('id'));
+          am.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              am.put(e.getKey(), e.getValue());
+            }
+          }
+          r.put('automated_remediation_guidance', am);
+        }
+        def crg = rels.get('custom_remediation_guidance');
+        if (crg instanceof Map && crg.get('data') instanceof Map) {
+          def d = crg.get('data');
+          def cm = new HashMap();
+          cm.put('id', d.get('id'));
+          cm.put('type', d.get('type'));
+          def at = d.get('attributes');
+          if (at instanceof Map) {
+            for (def e : at.entrySet()) {
+              cm.put(e.getKey(), e.getValue());
+            }
+          }
+          def cdrel = d.get('relationships');
+          if (cdrel instanceof Map) {
+            def auth = cdrel.get('author');
+            if (auth instanceof Map && auth.get('data') instanceof Map) {
+              def ad = auth.get('data');
+              def am = new HashMap();
+              am.put('id', ad.get('id'));
+              am.put('type', ad.get('type'));
+              def aa = ad.get('attributes');
+              if (aa instanceof Map) {
+                for (def e : aa.entrySet()) {
+                  am.put(e.getKey(), e.getValue());
+                }
+              }
+              cm.put('author', am);
+            }
+          }
+          r.put('custom_remediation_guidance', cm);
+        }
+        def ho = new HashMap();
+        ho.put('report', r);
+        ctx.hackerone = ho;
+        def report = r;
+        def dateKeys = [
+          'triaged_at','closed_at','disclosed_at','last_reporter_activity_at',
+          'first_program_activity_at','last_program_activity_at','last_activity_at',
+          'last_public_activity_at','bounty_awarded_at','swag_awarded_at',
+          'reporter_agreed_on_going_public_at','submitted_at',
+          'timer_bounty_awarded_miss_at','timer_first_program_response_miss_at',
+          'timer_report_resolved_miss_at','timer_report_triage_miss_at',
+          'timer_bug_reporter_first_response_miss_at'
+        ];
+        for (def dk : dateKeys) {
+          if (report.containsKey(dk) && report.get(dk) == null) {
+            report.remove(dk);
+          }
+        }
+  - remove:
+      field: json
+      tag: remove_json_temp
+      ignore_missing: true
+      if: ctx.hackerone?.report != null
+  - date:
+      field: hackerone.report.last_activity_at
+      target_field: '@timestamp'
+      tag: date_timestamp_last_activity
+      formats:
+        - ISO8601
+        - strict_date_optional_time
+        - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        - yyyy-MM-dd'T'HH:mm:ssXXX
+      if: ctx.hackerone?.report?.last_activity_at != null
+      ignore_failure: true
+  - date:
+      field: hackerone.report.created_at
+      target_field: '@timestamp'
+      tag: date_timestamp_fallback_created
+      formats:
+        - ISO8601
+        - strict_date_optional_time
+        - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        - yyyy-MM-dd'T'HH:mm:ssXXX
+      if: ctx.hackerone?.report != null && (!ctx.containsKey('@timestamp') || ctx['@timestamp'] == null) && ctx.hackerone.report.created_at != null
+      ignore_failure: true
+  - date:
+      field: hackerone.report.created_at
+      target_field: event.created
+      tag: date_event_created
+      formats:
+        - ISO8601
+        - strict_date_optional_time
+        - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        - yyyy-MM-dd'T'HH:mm:ssXXX
+      if: ctx.hackerone?.report?.created_at != null
+      ignore_failure: true
+  - date:
+      field: hackerone.report.created_at
+      target_field: event.start
+      tag: date_event_start
+      formats:
+        - ISO8601
+        - strict_date_optional_time
+        - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        - yyyy-MM-dd'T'HH:mm:ssXXX
+      if: ctx.hackerone?.report?.created_at != null
+      ignore_failure: true
+  - date:
+      field: hackerone.report.closed_at
+      target_field: event.end
+      tag: date_event_end
+      formats:
+        - ISO8601
+        - strict_date_optional_time
+        - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+        - yyyy-MM-dd'T'HH:mm:ssXXX
+      if: ctx.hackerone?.report?.closed_at != null
+      ignore_failure: true
+  - set:
+      field: event.kind
+      tag: set_event_kind_alert
+      value: alert
+      if: ctx.hackerone?.report != null
+  - append:
+      field: event.category
+      tag: append_event_category_vulnerability
+      value: vulnerability
+      allow_duplicates: false
+      if: ctx.hackerone?.report != null
+  - append:
+      field: event.type
+      tag: append_event_type_info
+      description: ECS allows only `info` under `event.category` vulnerability (see ecs-field-mappings categorization cheatsheet).
+      value: info
+      allow_duplicates: false
+      if: ctx.hackerone?.report != null
+  - script:
+      lang: painless
+      tag: set_event_action_from_state
+      if: ctx.hackerone?.report?.state != null
+      source: |-
+        ctx.event.action = 'report-state-' + ctx.hackerone.report.state;
+  - script:
+      lang: painless
+      tag: set_event_outcome_from_state
+      description: Map HackerOne workflow state to ECS event.outcome per integration spec.
+      if: ctx.hackerone?.report?.state != null
+      params:
+        new:
+          outcome: unknown
+        pending-program-review:
+          outcome: unknown
+        triaged:
+          outcome: unknown
+        needs-more-info:
+          outcome: unknown
+        retesting:
+          outcome: unknown
+        resolved:
+          outcome: success
+        informative:
+          outcome: success
+        not-applicable:
+          outcome: failure
+        duplicate:
+          outcome: failure
+        spam:
+          outcome: failure
+      source: |-
+        def st = ctx.hackerone.report.state;
+        def m = params[st];
+        if (m != null && m.containsKey('outcome')) {
+          ctx.event.outcome = m.outcome;
+        }
+  - script:
+      lang: painless
+      tag: set_event_and_vulnerability_severity
+      if: ctx.hackerone?.report != null
+      params:
+        none: 0
+        low: 1
+        medium: 2
+        high: 3
+        critical: 4
+      source: |-
+        String rat = null;
+        if (ctx.hackerone.report.containsKey('severity_rating') && ctx.hackerone.report.severity_rating != null) {
+          rat = ctx.hackerone.report.severity_rating;
+        } else if (ctx.hackerone.report.containsKey('severity') && ctx.hackerone.report.severity instanceof Map) {
+          def sm = ctx.hackerone.report.severity;
+          if (sm.containsKey('rating') && sm.rating != null) {
+            rat = sm.rating;
+          }
+        }
+        if (rat == null) {
+          return;
+        }
+        def sev = params[rat];
+        if (sev != null) {
+          ctx.event.severity = sev;
+        }
+        if (ctx.vulnerability == null) {
+          ctx.vulnerability = new HashMap();
+        }
+        ctx.vulnerability.severity = rat;
+  - set:
+      field: event.id
+      tag: set_event_id_from_report
+      copy_from: hackerone.report.id
+      if: ctx.hackerone?.report?.id != null
+  - set:
+      field: event.provider
+      tag: set_event_provider
+      value: hackerone
+      if: ctx.hackerone?.report != null
+  - script:
+      lang: painless
+      tag: set_event_and_vulnerability_urls
+      if: ctx.hackerone?.report?.id != null
+      source: |-
+        def u = 'https://hackerone.com/reports/' + ctx.hackerone.report.id;
+        ctx.event.url = u;
+        if (ctx.vulnerability == null) {
+          ctx.vulnerability = new HashMap();
+        }
+        ctx.vulnerability.reference = u;
+        ctx.hackerone.report.url = u;
+  - set:
+      field: user.id
+      tag: set_user_id_reporter
+      copy_from: hackerone.report.reporter.id
+      if: ctx.hackerone?.report?.reporter?.id != null
+  - set:
+      field: user.name
+      tag: set_user_name_reporter
+      copy_from: hackerone.report.reporter.username
+      if: ctx.hackerone?.report?.reporter?.username != null
+  - set:
+      field: user.full_name
+      tag: set_user_full_name_reporter
+      copy_from: hackerone.report.reporter.name
+      if: ctx.hackerone?.report?.reporter?.name != null
+  - set:
+      field: user.domain
+      tag: set_user_domain_hackerone
+      value: 'hackerone.com'
+      if: ctx.hackerone?.report?.reporter != null
+  - set:
+      field: user.target.id
+      tag: set_user_target_id_assignee
+      copy_from: hackerone.report.assignee.id
+      if: ctx.hackerone?.report?.assignee?.id != null
+  - set:
+      field: user.target.name
+      tag: set_user_target_name_assignee
+      copy_from: hackerone.report.assignee.username
+      if: ctx.hackerone?.report?.assignee?.username != null
+  - set:
+      field: user.target.full_name
+      tag: set_user_target_full_name_assignee
+      copy_from: hackerone.report.assignee.name
+      if: ctx.hackerone?.report?.assignee?.name != null
+  - set:
+      field: organization.id
+      tag: set_organization_id_program
+      copy_from: hackerone.report.program.id
+      if: ctx.hackerone?.report?.program?.id != null
+  - set:
+      field: organization.name
+      tag: set_organization_name_program_handle
+      copy_from: hackerone.report.program.handle
+      if: ctx.hackerone?.report?.program?.handle != null
+  - set:
+      field: vulnerability.id
+      tag: set_vulnerability_id_report
+      copy_from: hackerone.report.id
+      if: ctx.hackerone?.report?.id != null
+  - set:
+      field: vulnerability.description
+      tag: set_vulnerability_description_title
+      copy_from: hackerone.report.title
+      if: ctx.hackerone?.report?.title != null
+  - set:
+      field: vulnerability.classification
+      tag: set_vulnerability_classification_weakness
+      copy_from: hackerone.report.weakness.name
+      if: ctx.hackerone?.report?.weakness?.name != null
+  - script:
+      lang: painless
+      tag: set_vulnerability_cwe_fields
+      if: ctx.hackerone?.report?.weakness?.external_id != null
+      source: |-
+        def ext = ctx.hackerone.report.weakness.external_id;
+        if (ext instanceof String && ext.toLowerCase().startsWith('cwe-')) {
+          if (ctx.vulnerability == null) {
+            ctx.vulnerability = new HashMap();
+          }
+          ctx.vulnerability.enumeration = 'CWE';
+          def cats = new ArrayList();
+          cats.add('CWE');
+          ctx.vulnerability.category = cats;
+        }
+  - convert:
+      field: hackerone.report.severity.score
+      target_field: vulnerability.score.base
+      tag: convert_vulnerability_score_base
+      type: double
+      ignore_missing: true
+      if: ctx.hackerone?.report?.severity?.score != null
+  - script:
+      lang: painless
+      tag: set_vulnerability_score_version
+      if: ctx.hackerone?.report?.severity != null && ctx.hackerone.report.severity instanceof Map && ctx.hackerone.report.severity.containsKey('calculation_method') && ctx.hackerone.report.severity.calculation_method != null
+      params:
+        cvss_3_1: '3.1'
+        cvss_3_0_hackerone: '3.0'
+        cvss_4_0: '4.0'
+      source: |-
+        def method = ctx.hackerone.report.severity.calculation_method;
+        if (method == 'manual') {
+          return;
+        }
+        def ver = params[method];
+        if (ver != null) {
+          if (ctx.vulnerability == null) {
+            ctx.vulnerability = new HashMap();
+          }
+          if (ctx.vulnerability.score == null) {
+            ctx.vulnerability.score = new HashMap();
+          }
+          ctx.vulnerability.score.version = ver;
+        }
+  - set:
+      field: vulnerability.scanner.vendor
+      tag: set_vulnerability_scanner_vendor
+      value: HackerOne
+      if: ctx.hackerone?.report != null
+  - script:
+      lang: painless
+      tag: map_structured_scope_asset
+      description: Map structured scope asset to url.*, host.*, dns.*, source.ip per asset_type.
+      if: ctx.hackerone?.report?.structured_scope != null && ctx.hackerone.report.structured_scope instanceof Map
+      source: |-
+        def sc = ctx.hackerone.report.structured_scope;
+        if (!sc.containsKey('asset_type') || sc.asset_type == null || !sc.containsKey('asset_identifier') || sc.asset_identifier == null) {
+          return;
+        }
+        def at = sc.asset_type;
+        def aid = sc.asset_identifier;
+        if (at instanceof String && at.equalsIgnoreCase('URL')) {
+          def full = aid;
+          if (full.indexOf('://') < 0) {
+            full = 'https://' + full;
+          }
+          ctx.url = new HashMap();
+          ctx.url.full = full;
+        } else if (at instanceof String && (at.equalsIgnoreCase('DOMAIN') || at.equalsIgnoreCase('HOSTNAME'))) {
+          if (ctx.host == null) {
+            ctx.host = new HashMap();
+          }
+          ctx.host.name = aid;
+          if (ctx.dns == null) {
+            ctx.dns = new HashMap();
+          }
+          if (ctx.dns.question == null) {
+            ctx.dns.question = new HashMap();
+          }
+          ctx.dns.question.name = aid;
+        } else if (at instanceof String && at.equalsIgnoreCase('IP_ADDRESS')) {
+          if (ctx.host == null) {
+            ctx.host = new HashMap();
+          }
+          def ips = new ArrayList();
+          ips.add(aid);
+          ctx.host.ip = ips;
+          if (ctx.source == null) {
+            ctx.source = new HashMap();
+          }
+          ctx.source.ip = aid;
+        } else if (at instanceof String && at.equalsIgnoreCase('CIDR')) {
+          ctx.hackerone.report.network = new HashMap();
+          ctx.hackerone.report.network.cidr = aid;
+        }
+  - uri_parts:
+      field: url.full
+      target_field: url
+      tag: uri_parts_url_full
+      ignore_failure: true
+      if: ctx.url?.full != null
+  - script:
+      lang: painless
+      tag: append_related_hosts_users_cve
+      if: ctx.hackerone?.report != null
+      source: |-
+        def users = new ArrayList();
+        if (ctx.user != null && ctx.user.name != null) {
+          users.add(ctx.user.name);
+        }
+        if (ctx.user != null && ctx.user.target != null && ctx.user.target.name != null) {
+          users.add(ctx.user.target.name);
+        }
+        if (ctx.hackerone.report.containsKey('collaborators') && ctx.hackerone.report.collaborators instanceof List) {
+          for (def c : ctx.hackerone.report.collaborators) {
+            if (c instanceof Map && c.containsKey('user') && c.user instanceof Map) {
+              def u = c.user;
+              if (u.containsKey('username') && u.username != null) {
+                users.add(u.username);
+              }
+            }
+          }
+        }
+        ctx.related = new HashMap();
+        def userSet = new TreeSet();
+        for (def u : users) {
+          if (u != null) {
+            userSet.add(u);
+          }
+        }
+        ctx.related.user = new ArrayList(userSet);
+        def hosts = new ArrayList();
+        if (ctx.hackerone.report.containsKey('structured_scope') && ctx.hackerone.report.structured_scope instanceof Map) {
+          def sc = ctx.hackerone.report.structured_scope;
+          if (sc.containsKey('asset_type') && sc.containsKey('asset_identifier') && sc.asset_identifier != null) {
+            def at = sc.asset_type;
+            def aid = sc.asset_identifier;
+            if (at instanceof String && at.equalsIgnoreCase('DOMAIN')) {
+              hosts.add(aid);
+            } else if (at instanceof String && at.equalsIgnoreCase('URL')) {
+              if (ctx.url != null && ctx.url.domain != null) {
+                hosts.add(ctx.url.domain);
+              } else {
+                def h = aid;
+                def idx = h.indexOf('://');
+                if (idx > 0) {
+                  h = h.substring(idx + 3);
+                }
+                def slash = h.indexOf('/');
+                if (slash > 0) {
+                  h = h.substring(0, slash);
+                }
+                def colon = h.indexOf(':');
+                if (colon > 0) {
+                  h = h.substring(0, colon);
+                }
+                if (h.length() > 0) {
+                  hosts.add(h);
+                }
+              }
+            }
+          }
+        }
+        ctx.related.hosts = hosts;
+        def cves = new ArrayList();
+        if (ctx.hackerone.report.containsKey('cve_ids') && ctx.hackerone.report.cve_ids instanceof List) {
+          for (def c : ctx.hackerone.report.cve_ids) {
+            if (c != null) {
+              cves.add(c);
+            }
+          }
+        }
+        ctx.related.cve = cves;
+        def ipSet = new TreeSet();
+        if (ctx.source != null && ctx.source.ip != null) {
+          ipSet.add(ctx.source.ip);
+        }
+        if (ctx.host != null && ctx.host.ip instanceof List) {
+          for (def ip : ctx.host.ip) {
+            if (ip != null) {
+              ipSet.add(ip);
+            }
+          }
+        }
+        ctx.related.ip = new ArrayList(ipSet);
+  - append:
+      field: tags
+      tag: append_preserve_on_collector_error
+      value: preserve_original_event
+      allow_duplicates: false
+      if: ctx.error?.message != null
+on_failure:
+  - append:
+      field: error.message
+      value: >-
+        Processor '{{{ _ingest.on_failure_processor_type }}}'
+        {{{#_ingest.on_failure_processor_tag}}}with tag '{{{ _ingest.on_failure_processor_tag }}}'
+        {{{/_ingest.on_failure_processor_tag}}}failed with message '{{{ _ingest.on_failure_message }}}'
+  - set:
+      field: event.kind
+      tag: set_pipeline_error_to_event_kind
+      value: pipeline_error
+  - append:
+      field: tags
+      value: preserve_original_event
+      allow_duplicates: false

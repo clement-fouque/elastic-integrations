@@ -1,0 +1,22 @@
+# Mock HackerOne GET /v1/reports for system tests and local mito development.
+# Set MOCK_BASE to the base URL clients use (docker-compose sets http://hackerone-report:8090).
+# For mito on the host against a published port: docker run ... -e MOCK_BASE=http://127.0.0.1:8090
+# Request sequence: req 1 = page 1 (+ links.next), req 2 = page 2 (last page), req 3+ = empty (subsequent poll).
+rules:
+  - path: /v1/reports
+    methods: ["GET"]
+    user: test-user
+    password: test-token
+    responses:
+      - status_code: 200
+        headers:
+          Content-Type:
+            - "application/json"
+        body: |-
+          {{ if eq .req_num 1 }}
+          {"data":[{"id":"1001","type":"report","attributes":{"title":"Synthetic XSS report","state":"new","created_at":"2026-04-26T10:00:00.000Z","last_activity_at":"2026-04-26T12:00:00.000Z"},"relationships":{}},{"id":"1002","type":"report","attributes":{"title":"Synthetic CSRF report","state":"triaged","created_at":"2026-04-26T11:00:00.000Z","last_activity_at":"2026-04-26T13:00:00.000Z"},"relationships":{}}],"links":{"self":"{{ env "MOCK_BASE" }}/v1/reports?page%5Bnumber%5D=1","next":"{{ env "MOCK_BASE" }}/v1/reports?page%5Bnumber%5D=2&filter%5Bprogram%5D%5B%5D=example-program"}}
+          {{ else if eq .req_num 2 }}
+          {"data":[{"id":"1003","type":"report","attributes":{"title":"Synthetic IDOR report","state":"resolved","created_at":"2026-04-26T12:30:00.000Z","last_activity_at":"2026-04-26T14:00:00.000Z"},"relationships":{}}],"links":{"self":"{{ env "MOCK_BASE" }}/v1/reports?page%5Bnumber%5D=2"}}
+          {{ else }}
+          {"data":[],"links":{}}
+          {{ end }}

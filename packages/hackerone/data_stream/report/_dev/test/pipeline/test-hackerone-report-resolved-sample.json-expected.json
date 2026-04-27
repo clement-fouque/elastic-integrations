@@ -1,0 +1,150 @@
+{
+    "expected": [
+        {
+            "@timestamp": "2016-02-10T15:30:00.000Z",
+            "ecs": {
+                "version": "9.3.0"
+            },
+            "event": {
+                "action": "report-state-resolved",
+                "category": [
+                    "vulnerability"
+                ],
+                "created": "2016-02-01T10:00:00.000Z",
+                "end": "2016-02-10T15:30:00.000Z",
+                "id": "2000",
+                "kind": "alert",
+                "original": "{\"id\":\"2000\",\"type\":\"report\",\"attributes\":{\"title\":\"SQL injection in reporting API\",\"state\":\"resolved\",\"created_at\":\"2016-02-01T10:00:00.000Z\",\"submitted_at\":\"2016-02-01T10:05:00.000Z\",\"vulnerability_information\":\"Parameterized query bypass in export endpoint.\",\"triaged_at\":\"2016-02-02T12:00:00.000Z\",\"closed_at\":\"2016-02-10T15:30:00.000Z\",\"last_activity_at\":\"2016-02-10T15:30:00.000Z\",\"cve_ids\":[\"CVE-2026-99999\"]},\"relationships\":{\"reporter\":{\"data\":{\"id\":\"9001\",\"type\":\"user\",\"attributes\":{\"username\":\"reporter01\",\"name\":\"Example Researcher\",\"disabled\":false,\"created_at\":\"2015-01-01T00:00:00.000Z\"}}},\"assignee\":{\"data\":{\"id\":\"9002\",\"type\":\"user\",\"attributes\":{\"username\":\"triage-engineer\",\"name\":\"Triage Engineer\"}}},\"program\":{\"data\":{\"id\":\"111\",\"type\":\"program\",\"attributes\":{\"handle\":\"acme\",\"created_at\":\"2014-06-01T00:00:00.000Z\",\"updated_at\":\"2016-01-01T00:00:00.000Z\"}}},\"weakness\":{\"data\":{\"id\":\"333\",\"type\":\"weakness\",\"attributes\":{\"name\":\"SQL Injection\",\"external_id\":\"cwe-89\",\"created_at\":\"2015-01-01T00:00:00.000Z\"}}},\"severity\":{\"data\":{\"id\":\"444\",\"type\":\"severity\",\"attributes\":{\"rating\":\"critical\",\"score\":9.1,\"author_type\":\"User\",\"user_id\":9001,\"created_at\":\"2016-02-02T12:00:00.000Z\",\"calculation_method\":\"cvss_3_1\"}}},\"structured_scope\":{\"data\":{\"id\":\"222\",\"type\":\"structured-scope\",\"attributes\":{\"asset_identifier\":\"198.51.100.10\",\"asset_type\":\"IP_ADDRESS\",\"max_severity\":\"critical\"}}},\"bounties\":{\"data\":[]}}}",
+                "outcome": "success",
+                "provider": "hackerone",
+                "severity": 4,
+                "start": "2016-02-01T10:00:00.000Z",
+                "type": [
+                    "info"
+                ],
+                "url": "https://hackerone.com/reports/2000"
+            },
+            "hackerone": {
+                "report": {
+                    "assignee": {
+                        "id": "9002",
+                        "name": "Triage Engineer",
+                        "type": "user",
+                        "username": "triage-engineer"
+                    },
+                    "bounties": [],
+                    "closed_at": "2016-02-10T15:30:00.000Z",
+                    "created_at": "2016-02-01T10:00:00.000Z",
+                    "cve_ids": [
+                        "CVE-2026-99999"
+                    ],
+                    "id": "2000",
+                    "last_activity_at": "2016-02-10T15:30:00.000Z",
+                    "program": {
+                        "created_at": "2014-06-01T00:00:00.000Z",
+                        "handle": "acme",
+                        "id": "111",
+                        "type": "program",
+                        "updated_at": "2016-01-01T00:00:00.000Z"
+                    },
+                    "reporter": {
+                        "created_at": "2015-01-01T00:00:00.000Z",
+                        "disabled": false,
+                        "id": "9001",
+                        "name": "Example Researcher",
+                        "type": "user",
+                        "username": "reporter01"
+                    },
+                    "severity": {
+                        "author_type": "User",
+                        "calculation_method": "cvss_3_1",
+                        "created_at": "2016-02-02T12:00:00.000Z",
+                        "id": "444",
+                        "rating": "critical",
+                        "score": 9.1,
+                        "type": "severity",
+                        "user_id": 9001
+                    },
+                    "state": "resolved",
+                    "structured_scope": {
+                        "asset_identifier": "198.51.100.10",
+                        "asset_type": "IP_ADDRESS",
+                        "id": "222",
+                        "max_severity": "critical",
+                        "type": "structured-scope"
+                    },
+                    "submitted_at": "2016-02-01T10:05:00.000Z",
+                    "title": "SQL injection in reporting API",
+                    "triaged_at": "2016-02-02T12:00:00.000Z",
+                    "type": "report",
+                    "url": "https://hackerone.com/reports/2000",
+                    "vulnerability_information": "Parameterized query bypass in export endpoint.",
+                    "weakness": {
+                        "created_at": "2015-01-01T00:00:00.000Z",
+                        "external_id": "cwe-89",
+                        "id": "333",
+                        "name": "SQL Injection",
+                        "type": "weakness"
+                    }
+                }
+            },
+            "host": {
+                "ip": [
+                    "198.51.100.10"
+                ]
+            },
+            "organization": {
+                "id": "111",
+                "name": "acme"
+            },
+            "related": {
+                "cve": [
+                    "CVE-2026-99999"
+                ],
+                "hosts": [],
+                "ip": [
+                    "198.51.100.10"
+                ],
+                "user": [
+                    "reporter01",
+                    "triage-engineer"
+                ]
+            },
+            "source": {
+                "ip": "198.51.100.10"
+            },
+            "tags": [
+                "preserve_original_event"
+            ],
+            "user": {
+                "domain": "hackerone.com",
+                "full_name": "Example Researcher",
+                "id": "9001",
+                "name": "reporter01",
+                "target": {
+                    "full_name": "Triage Engineer",
+                    "id": "9002",
+                    "name": "triage-engineer"
+                }
+            },
+            "vulnerability": {
+                "category": [
+                    "CWE"
+                ],
+                "classification": "SQL Injection",
+                "description": "SQL injection in reporting API",
+                "enumeration": "CWE",
+                "id": "2000",
+                "reference": "https://hackerone.com/reports/2000",
+                "scanner": {
+                    "vendor": "HackerOne"
+                },
+                "score": {
+                    "base": 9.1,
+                    "version": "3.1"
+                },
+                "severity": "critical"
+            }
+        }
+    ]
+}
