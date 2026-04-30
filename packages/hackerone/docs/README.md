@@ -333,10 +333,10 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 
 ### Transforms used
 
-#### latest_reports
+#### latest_report
 * Description: Latest Reports from HackerOne. As reports get updated, this transform stores only the latest state of each report inside the destination index. Thus the transform's destination index contains only the latest state of the report.
 * Source Index: logs-hackerone.report-\*
-* Destination Index: logs-hackerone.reports-latest-v1
+* Destination Index: logs-hackerone_latest.dest_report-v1
 
 **Exported fields**
 
