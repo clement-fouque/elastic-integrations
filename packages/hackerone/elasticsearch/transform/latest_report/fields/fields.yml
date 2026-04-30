@@ -1,4 +1,4 @@
-# Custom HackerOne report fields (non-ECS).
+# Custom HackerOne report fields (non-ECS). JSON:API resources are flattened under hackerone.report.*.
 - name: hackerone.report
   type: group
   fields:

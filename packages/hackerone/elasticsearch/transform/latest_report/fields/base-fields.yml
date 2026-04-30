@@ -1,4 +1,3 @@
-# Data stream metadata (managed by Elasticsearch on the destination data stream).
 - name: data_stream.type
   type: constant_keyword
   description: Data stream type.
@@ -8,6 +7,14 @@
 - name: data_stream.namespace
   type: constant_keyword
   description: Data stream namespace.
+- name: event.module
+  type: constant_keyword
+  description: Event module.
+  value: hackerone
+- name: event.dataset
+  type: constant_keyword
+  description: Event dataset.
+  value: hackerone.report
 - name: '@timestamp'
   type: date
-  description: Event timestamp carried from the source report document.
+  description: Event timestamp.

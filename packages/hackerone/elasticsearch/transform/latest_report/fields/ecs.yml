@@ -1,4 +1,4 @@
-# ECS fields populated by the source ingest pipeline (carried into the dest doc as-is).
+# ECS fields populated by the report ingest pipeline (alphabetical).
 - name: dns.question.name
   external: ecs
 - name: ecs.version
@@ -11,17 +11,11 @@
   external: ecs
 - name: event.created
   external: ecs
-- name: event.dataset
-  external: ecs
 - name: event.end
   external: ecs
 - name: event.id
   external: ecs
-- name: event.ingested
-  external: ecs
 - name: event.kind
-  external: ecs
-- name: event.module
   external: ecs
 - name: event.original
   external: ecs
