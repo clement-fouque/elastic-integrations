@@ -2,6 +2,11 @@
 source:
   index:
     - "logs-qualys_gav.asset-*"
+  query:
+    bool:
+      must_not:
+        - exists:
+            field: error.message
 dest:
   index: "logs-qualys_gav_latest.dest_asset-2"
   aliases:

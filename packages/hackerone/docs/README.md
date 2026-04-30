@@ -331,6 +331,255 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 
 
 
+### Transforms used
+
+#### latest_reports
+* Description: Latest Reports from HackerOne. As reports get updated, this transform stores only the latest state of each report inside the destination index. Thus the transform's destination index contains only the latest state of the report.
+* Source Index: logs-hackerone.report-\*
+* Destination Index: logs-hackerone.reports-latest-v1
+
+**Exported fields**
+
+| Field | Description | Type |
+|---|---|---|
+| @timestamp | Event timestamp carried from the source report document. | date |
+| data_stream.dataset | Data stream dataset. | constant_keyword |
+| data_stream.namespace | Data stream namespace. | constant_keyword |
+| data_stream.type | Data stream type. | constant_keyword |
+| dns.question.name | The name being queried. If the name field contains non-printable characters (below 32 or above 126), those characters should be represented as escaped base 10 integers (\DDD). Back slashes and quotes should be escaped. Tabs, carriage returns, and line feeds should be converted to \t, \r, and \n respectively. | keyword |
+| ecs.version | ECS version this event conforms to. `ecs.version` is a required field and must exist in all events. When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events. | keyword |
+| error.message | Error message. | match_only_text |
+| event.action | The action captured by the event. This describes the information in the event. It is more specific than `event.category`. Examples are `group-add`, `process-started`, `file-created`. The value is normally defined by the implementer. | keyword |
+| event.category | This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy. `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory. This field is an array. This will allow proper categorization of some events that fall in multiple categories. | keyword |
+| event.created | `event.created` contains the date/time when the event was first read by an agent, or by your pipeline. This field is distinct from `@timestamp` in that `@timestamp` typically contain the time extracted from the original event. In most situations, these two timestamps will be slightly different. The difference can be used to calculate the delay between your source generating an event, and the time when your agent first processed it. This can be used to monitor your agent's or pipeline's ability to keep up with your event source. In case the two timestamps are identical, `@timestamp` should be used. | date |
+| event.dataset | Name of the dataset. If an event source publishes more than one type of log or events (e.g. access log, error log), the dataset is used to specify which one the event comes from. It's recommended but not required to start the dataset name with the module name, followed by a dot, then the dataset name. | keyword |
+| event.end | `event.end` contains the date when the event ended or when the activity was last observed. | date |
+| event.id | Unique ID to describe the event. | keyword |
+| event.ingested | Timestamp when an event arrived in the central data store. This is different from `@timestamp`, which is when the event originally occurred.  It's also different from `event.created`, which is meant to capture the first time an agent saw the event. In normal conditions, assuming no tampering, the timestamps should chronologically look like this: `@timestamp` \< `event.created` \< `event.ingested`. | date |
+| event.kind | This is one of four ECS Categorization Fields, and indicates the highest level in the ECS category hierarchy. `event.kind` gives high-level information about what type of information the event contains, without being specific to the contents of the event. For example, values of this field distinguish alert events from metric events. The value of this field can be used to inform how these kinds of events should be handled. They may warrant different retention, different access control, it may also help understand whether the data is coming in at a regular interval or not. | keyword |
+| event.module | Name of the module this data is coming from. If your monitoring agent supports the concept of modules or plugins to process events of a given source (e.g. Apache logs), `event.module` should contain the name of this module. | keyword |
+| event.original | Raw text message of entire event. Used to demonstrate log integrity or where the full log message (before splitting it up in multiple parts) may be required, e.g. for reindex. This field is not indexed and doc_values are disabled. It cannot be searched, but it can be retrieved from `_source`. If users wish to override this and index this field, please see `Field data types` in the `Elasticsearch Reference`. | keyword |
+| event.outcome | This is one of four ECS Categorization Fields, and indicates the lowest level in the ECS category hierarchy. `event.outcome` simply denotes whether the event represents a success or a failure from the perspective of the entity that produced the event. Note that when a single transaction is described in multiple events, each event may populate different values of `event.outcome`, according to their perspective. Also note that in the case of a compound event (a single event that contains multiple logical events), this field should be populated with the value that best captures the overall success or failure from the perspective of the event producer. Further note that not all events will have an associated outcome. For example, this field is generally not populated for metric events, events with `event.type:info`, or any events for which an outcome does not make logical sense. | keyword |
+| event.provider | Source of the event. Event transports such as Syslog or the Windows Event Log typically mention the source of an event. It can be the name of the software that generated the event (e.g. Sysmon, httpd), or of a subsystem of the operating system (kernel, Microsoft-Windows-Security-Auditing). | keyword |
+| event.severity | The numeric severity of the event according to your event source. What the different severity values mean can be different between sources and use cases. It's up to the implementer to make sure severities are consistent across events from the same source. The Syslog severity belongs in `log.syslog.severity.code`. `event.severity` is meant to represent the severity according to the event source (e.g. firewall, IDS). If the event source does not publish its own severity, you may optionally copy the `log.syslog.severity.code` to `event.severity`. | long |
+| event.start | `event.start` contains the date when the event started or when the activity was first observed. | date |
+| event.type | This is one of four ECS Categorization Fields, and indicates the third level in the ECS category hierarchy. `event.type` represents a categorization "sub-bucket" that, when used along with the `event.category` field values, enables filtering events down to a level appropriate for single visualization. This field is an array. This will allow proper categorization of some events that fall in multiple event types. | keyword |
+| event.url | URL linking to an external system to continue investigation of this event. This URL links to another system where in-depth investigation of the specific occurrence of this event can take place. Alert events, indicated by `event.kind:alert`, are a common use case for this field. | keyword |
+| hackerone.report.activities.created_at |  | date |
+| hackerone.report.activities.id |  | keyword |
+| hackerone.report.activities.internal |  | boolean |
+| hackerone.report.activities.message |  | text |
+| hackerone.report.activities.relationships | Nested relationships (actor, attachments) as returned by the pipeline. | flattened |
+| hackerone.report.activities.type |  | keyword |
+| hackerone.report.activities.updated_at |  | date |
+| hackerone.report.assignee.disabled | Whether the assignee account is disabled when user. | boolean |
+| hackerone.report.assignee.id | Assignee user or group id. | keyword |
+| hackerone.report.assignee.name | Assignee display name. | keyword |
+| hackerone.report.assignee.type | JSON:API type (user or group). | keyword |
+| hackerone.report.assignee.username | Assignee username when type is user. | keyword |
+| hackerone.report.attachments.content_type |  | keyword |
+| hackerone.report.attachments.created_at |  | date |
+| hackerone.report.attachments.expiring_url |  | keyword |
+| hackerone.report.attachments.file_name |  | keyword |
+| hackerone.report.attachments.file_size |  | long |
+| hackerone.report.attachments.id |  | keyword |
+| hackerone.report.attachments.type |  | keyword |
+| hackerone.report.automated_rating | Automated rating metadata when present. | keyword |
+| hackerone.report.automated_remediation_guidance.created_at |  | date |
+| hackerone.report.automated_remediation_guidance.id |  | keyword |
+| hackerone.report.automated_remediation_guidance.reference |  | keyword |
+| hackerone.report.automated_remediation_guidance.type |  | keyword |
+| hackerone.report.bounties.amount | Bounty amount as returned by API (string decimal). | keyword |
+| hackerone.report.bounties.awarded_amount |  | keyword |
+| hackerone.report.bounties.awarded_bonus_amount |  | keyword |
+| hackerone.report.bounties.bonus_amount |  | keyword |
+| hackerone.report.bounties.created_at |  | date |
+| hackerone.report.bounties.currency |  | keyword |
+| hackerone.report.bounties.id |  | keyword |
+| hackerone.report.bounties.type |  | keyword |
+| hackerone.report.bounty_awarded_at | Latest bounty award time. | date |
+| hackerone.report.campaign.id |  | keyword |
+| hackerone.report.campaign.type |  | keyword |
+| hackerone.report.closed_at | Time the report was closed. | date |
+| hackerone.report.collaborators.user.created_at |  | date |
+| hackerone.report.collaborators.user.disabled |  | boolean |
+| hackerone.report.collaborators.user.id |  | keyword |
+| hackerone.report.collaborators.user.impact |  | long |
+| hackerone.report.collaborators.user.name |  | keyword |
+| hackerone.report.collaborators.user.profile_picture |  | flattened |
+| hackerone.report.collaborators.user.reputation |  | long |
+| hackerone.report.collaborators.user.signal |  | long |
+| hackerone.report.collaborators.user.type |  | keyword |
+| hackerone.report.collaborators.user.username |  | keyword |
+| hackerone.report.collaborators.weight | Collaboration weight. | double |
+| hackerone.report.created_at | Report creation timestamp. | date |
+| hackerone.report.custom_field_values.id |  | keyword |
+| hackerone.report.custom_field_values.type |  | keyword |
+| hackerone.report.custom_remediation_guidance.author.created_at |  | date |
+| hackerone.report.custom_remediation_guidance.author.disabled |  | boolean |
+| hackerone.report.custom_remediation_guidance.author.id |  | keyword |
+| hackerone.report.custom_remediation_guidance.author.name |  | keyword |
+| hackerone.report.custom_remediation_guidance.author.type |  | keyword |
+| hackerone.report.custom_remediation_guidance.author.username |  | keyword |
+| hackerone.report.custom_remediation_guidance.created_at |  | date |
+| hackerone.report.custom_remediation_guidance.id |  | keyword |
+| hackerone.report.custom_remediation_guidance.message |  | text |
+| hackerone.report.custom_remediation_guidance.type |  | keyword |
+| hackerone.report.cve_ids | CVE identifiers assigned to the report. | keyword |
+| hackerone.report.disclosed_at | Public disclosure timestamp. | date |
+| hackerone.report.first_program_activity_at | First program-side activity. | date |
+| hackerone.report.hai_is_priority | HackerOne AI priority flag when present. | boolean |
+| hackerone.report.hai_is_priority_reason | Explanation for AI priority classification. | text |
+| hackerone.report.id | HackerOne report resource id. | keyword |
+| hackerone.report.inboxes.id |  | keyword |
+| hackerone.report.inboxes.inbox_type | Inbox type (default, custom) mapped from attributes.type. | keyword |
+| hackerone.report.inboxes.name |  | keyword |
+| hackerone.report.inboxes.type |  | keyword |
+| hackerone.report.issue_tracker_reference_id | External issue tracker reference id. | keyword |
+| hackerone.report.issue_tracker_reference_url | External issue tracker URL. | keyword |
+| hackerone.report.last_activity_at | Latest activity of any kind (cursor field). | date |
+| hackerone.report.last_program_activity_at | Latest program-side activity. | date |
+| hackerone.report.last_public_activity_at | Latest public activity. | date |
+| hackerone.report.last_reporter_activity_at | Latest reporter-side activity. | date |
+| hackerone.report.main_state | Coarse lifecycle state (draft, open, closed). | keyword |
+| hackerone.report.network.cidr | In-scope CIDR when asset_type is CIDR. | keyword |
+| hackerone.report.original_report_id | Source report id when cloned. | keyword |
+| hackerone.report.program.created_at | Program record creation time. | date |
+| hackerone.report.program.handle | Program slug / handle. | keyword |
+| hackerone.report.program.id | Program id. | keyword |
+| hackerone.report.program.name | Program display name when present. | keyword |
+| hackerone.report.program.type | JSON:API type for program. | keyword |
+| hackerone.report.program.updated_at | Program record update time. | date |
+| hackerone.report.rating | Report-level rating when present on attributes. | keyword |
+| hackerone.report.report_generated_content | Generated report content object when present. | flattened |
+| hackerone.report.reporter.bio | Reporter biography when present. | text |
+| hackerone.report.reporter.created_at | Reporter account creation time. | date |
+| hackerone.report.reporter.disabled | Whether the account is disabled. | boolean |
+| hackerone.report.reporter.hackerone_triager | Whether the user is a HackerOne triager. | boolean |
+| hackerone.report.reporter.id | Reporter user id. | keyword |
+| hackerone.report.reporter.impact | Reporter impact score when present. | long |
+| hackerone.report.reporter.location | Reporter location when present. | keyword |
+| hackerone.report.reporter.name | Reporter display name. | keyword |
+| hackerone.report.reporter.profile_picture | Avatar URLs keyed by size. | flattened |
+| hackerone.report.reporter.reputation | Reporter reputation score when present. | long |
+| hackerone.report.reporter.signal | Reporter signal score when present. | long |
+| hackerone.report.reporter.type | JSON:API type for reporter resource. | keyword |
+| hackerone.report.reporter.username | Reporter handle. | keyword |
+| hackerone.report.reporter.website | Reporter website when present. | keyword |
+| hackerone.report.reporter_agreed_on_going_public_at | Reporter agreement to go public. | date |
+| hackerone.report.severity.attack_complexity | CVSS attack complexity. | keyword |
+| hackerone.report.severity.attack_vector | CVSS attack vector. | keyword |
+| hackerone.report.severity.author_type | Author type for severity (User, Team). | keyword |
+| hackerone.report.severity.availability | CVSS availability impact. | keyword |
+| hackerone.report.severity.calculation_method | How the severity was calculated (manual, cvss_3_1, etc.). | keyword |
+| hackerone.report.severity.confidentiality | CVSS confidentiality impact. | keyword |
+| hackerone.report.severity.created_at | Severity record creation time. | date |
+| hackerone.report.severity.cvss_4_0_metric_set | CVSS 4.0 metric set when present. | flattened |
+| hackerone.report.severity.cvss_vector_string | CVSS vector string when present. | keyword |
+| hackerone.report.severity.id | Severity resource id. | keyword |
+| hackerone.report.severity.integrity | CVSS integrity impact. | keyword |
+| hackerone.report.severity.message | Optional severity message or rationale. | text |
+| hackerone.report.severity.privileges_required | CVSS privileges required. | keyword |
+| hackerone.report.severity.rating | Qualitative severity rating. | keyword |
+| hackerone.report.severity.scope | CVSS scope metric. | keyword |
+| hackerone.report.severity.score | CVSS numeric score when calculated. | double |
+| hackerone.report.severity.type | JSON:API type for severity. | keyword |
+| hackerone.report.severity.user_id | Author user id when applicable. | long |
+| hackerone.report.severity.user_interaction | CVSS user interaction. | keyword |
+| hackerone.report.severity_rating | Qualitative severity on attributes when provided by API. | keyword |
+| hackerone.report.source | Provenance label for the submission. | keyword |
+| hackerone.report.stage | Report stage when present on attributes. | keyword |
+| hackerone.report.state | Report workflow state. | keyword |
+| hackerone.report.structured_scope.asset_identifier | Asset identifier string (URL, host, IP, etc.). | keyword |
+| hackerone.report.structured_scope.asset_type | Asset type enum from HackerOne. | keyword |
+| hackerone.report.structured_scope.availability_requirement | Availability requirement level. | keyword |
+| hackerone.report.structured_scope.confidentiality_requirement | Confidentiality requirement level. | keyword |
+| hackerone.report.structured_scope.created_at | Scope record creation time. | date |
+| hackerone.report.structured_scope.eligible_for_bounty | Whether the asset is bounty-eligible. | boolean |
+| hackerone.report.structured_scope.eligible_for_submission | Whether submissions are accepted for the asset. | boolean |
+| hackerone.report.structured_scope.id | Structured scope resource id. | keyword |
+| hackerone.report.structured_scope.instruction | Testing instructions for the asset. | text |
+| hackerone.report.structured_scope.integrity_requirement | Integrity requirement level. | keyword |
+| hackerone.report.structured_scope.max_severity | Maximum severity for the asset. | keyword |
+| hackerone.report.structured_scope.reference | Program reference code for the asset. | keyword |
+| hackerone.report.structured_scope.type | JSON:API type for structured scope. | keyword |
+| hackerone.report.structured_scope.updated_at | Scope record update time. | date |
+| hackerone.report.submitted_at | Submission timestamp when present in API responses. | date |
+| hackerone.report.summaries.id |  | keyword |
+| hackerone.report.summaries.type |  | keyword |
+| hackerone.report.swag.id |  | keyword |
+| hackerone.report.swag.type |  | keyword |
+| hackerone.report.swag_awarded_at | Latest swag award time. | date |
+| hackerone.report.timer_bounty_awarded_elapsed_time | Elapsed seconds toward bounty SLA. | long |
+| hackerone.report.timer_bounty_awarded_miss_at | SLA deadline for bounty award. | date |
+| hackerone.report.timer_bug_reporter_first_response_elapsed_time | Elapsed seconds for reporter first response SLA when present. | long |
+| hackerone.report.timer_bug_reporter_first_response_miss_at | SLA miss time for first reporter response when present. | date |
+| hackerone.report.timer_first_program_response_elapsed_time | Elapsed seconds toward first response SLA. | long |
+| hackerone.report.timer_first_program_response_miss_at | SLA deadline for first program response. | date |
+| hackerone.report.timer_report_resolved_elapsed_time | Elapsed seconds toward resolution SLA. | long |
+| hackerone.report.timer_report_resolved_miss_at | SLA deadline for resolution. | date |
+| hackerone.report.timer_report_triage_elapsed_time | Elapsed seconds toward triage SLA. | long |
+| hackerone.report.timer_report_triage_miss_at | SLA deadline for triage. | date |
+| hackerone.report.title | Report title. | keyword |
+| hackerone.report.tracking_codes | Tracking codes on the report when present. | keyword |
+| hackerone.report.triaged_at | Time the report entered triage. | date |
+| hackerone.report.triggered_pre_submission_trigger.id |  | keyword |
+| hackerone.report.triggered_pre_submission_trigger.title |  | keyword |
+| hackerone.report.triggered_pre_submission_trigger.type |  | keyword |
+| hackerone.report.type | JSON:API resource type (report). | keyword |
+| hackerone.report.url | Canonical HackerOne report permalink. | keyword |
+| hackerone.report.vulnerability_information | Raw submission body from the reporter. | text |
+| hackerone.report.weakness.created_at | Weakness record creation time. | date |
+| hackerone.report.weakness.description | Weakness description text. | text |
+| hackerone.report.weakness.external_id | External weakness identifier (e.g. cwe-352). | keyword |
+| hackerone.report.weakness.id | Weakness resource id. | keyword |
+| hackerone.report.weakness.name | Human-readable weakness name. | keyword |
+| hackerone.report.weakness.type | JSON:API type for weakness. | keyword |
+| host.ip | Host ip addresses. | ip |
+| host.name | Name of the host. It can contain what hostname returns on Unix systems, the fully qualified domain name (FQDN), or a name specified by the user. The recommended value is the lowercase FQDN of the host. | keyword |
+| labels.is_transform_source | Distinguishes between documents that are a source for a transform and documents that are an output of a transform, to facilitate easier filtering. | constant_keyword |
+| organization.id | Unique identifier for the organization. | keyword |
+| organization.name | Organization name. | keyword |
+| organization.name.text | Multi-field of `organization.name`. | match_only_text |
+| related.cve | CVE identifiers related to the report (extension to related.\*). | keyword |
+| related.hosts | All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases. | keyword |
+| related.ip | All of the IPs seen on your event. | ip |
+| related.user | All the user names or other user identifiers seen on the event. | keyword |
+| source.ip | IP address of the source (IPv4 or IPv6). | ip |
+| tags | List of keywords used to tag each event. | keyword |
+| url.domain | Domain of the url, such as "www.elastic.co". In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field. If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field. | keyword |
+| url.extension | The field contains the file extension from the original request url, excluding the leading dot. The file extension is only set if it exists, as not every url has a file extension. The leading period must not be included. For example, the value must be "png", not ".png". Note that when the file name has multiple extensions (example.tar.gz), only the last one should be captured ("gz", not "tar.gz"). | keyword |
+| url.fragment | Portion of the url after the `#`, such as "top". The `#` is not part of the fragment. | keyword |
+| url.full | If full URLs are important to your use case, they should be stored in `url.full`, whether this field is reconstructed or present in the event source. | wildcard |
+| url.full.text | Multi-field of `url.full`. | match_only_text |
+| url.path | Path of the request, such as "/search". | wildcard |
+| url.port | Port of the request, such as 443. | long |
+| url.query | The field contains the entire query string, excluding the leading `?` character, such as "q=elasticsearch". If a URL contains no `?`, there is no query field. If there is a `?` but no query, the query field exists with an empty string. The `exists` query can be used to differentiate between the two cases. | keyword |
+| url.registered_domain | The highest registered url domain, stripped of the subdomain. For example, the registered domain for "foo.example.com" is "example.com". This value can be determined precisely with a list like the public suffix list (https://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk". | keyword |
+| url.scheme | Scheme of the request, such as "https". Note: The `:` is not part of the scheme. | keyword |
+| user.domain | Name of the directory the user is a member of. For example, an LDAP or Active Directory domain name. | keyword |
+| user.full_name | User's full name, if available. | keyword |
+| user.full_name.text | Multi-field of `user.full_name`. | match_only_text |
+| user.id | Unique identifier of the user. | keyword |
+| user.name | Short name or login of the user. | keyword |
+| user.name.text | Multi-field of `user.name`. | match_only_text |
+| user.target.full_name | User's full name, if available. | keyword |
+| user.target.full_name.text | Multi-field of `user.target.full_name`. | match_only_text |
+| user.target.id | Unique identifier of the user. | keyword |
+| user.target.name | Short name or login of the user. | keyword |
+| user.target.name.text | Multi-field of `user.target.name`. | match_only_text |
+| vulnerability.category | The type of system or architecture that the vulnerability affects. These may be platform-specific (for example, Debian or SUSE) or general (for example, Database or Firewall). For example (https://qualysguard.qualys.com/qwebhelp/fo_portal/knowledgebase/vulnerability_categories.htm) This field must be an array. | keyword |
+| vulnerability.classification | The classification of the vulnerability scoring system. For example (https://www.first.org/cvss/) | keyword |
+| vulnerability.description | The description of the vulnerability that provides additional context of the vulnerability. For example (https://cve.mitre.org/about/faqs.html#cve_entry_descriptions_created) | keyword |
+| vulnerability.description.text | Multi-field of `vulnerability.description`. | match_only_text |
+| vulnerability.enumeration | The type of identifier used for this vulnerability. For example (https://cve.mitre.org/about/) | keyword |
+| vulnerability.id | The identification (ID) is the number portion of a vulnerability entry. It includes a unique identification number for the vulnerability. For example (https://cve.mitre.org/about/faqs.html#what_is_cve_id) | keyword |
+| vulnerability.reference | A resource that provides additional information, context, and mitigations for the identified vulnerability. | keyword |
+| vulnerability.scanner.vendor | The name of the vulnerability scanner vendor. | keyword |
+| vulnerability.score.base | Scores can range from 0.0 to 10.0, with 10.0 being the most severe. Base scores cover an assessment for exploitability metrics (attack vector, complexity, privileges, and user interaction), impact metrics (confidentiality, integrity, and availability), and scope. For example (https://www.first.org/cvss/specification-document) | float |
+| vulnerability.score.version | The National Vulnerability Database (NVD) provides qualitative severity rankings of "Low", "Medium", and "High" for CVSS v2.0 base score ranges in addition to the severity ratings for CVSS v3.0 as they are defined in the CVSS v3.0 specification. CVSS is owned and managed by FIRST.Org, Inc. (FIRST), a US-based non-profit organization, whose mission is to help computer security incident response teams across the world. For example (https://nvd.nist.gov/vuln-metrics/cvss) | keyword |
+| vulnerability.severity | The severity of the vulnerability can help with metrics and internal prioritization regarding remediation. For example (https://nvd.nist.gov/vuln-metrics/cvss) | keyword |
+
 
 ### Inputs used
 These inputs can be used with this integration:
