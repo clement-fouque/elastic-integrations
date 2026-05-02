@@ -348,7 +348,7 @@
           type: keyword
           description: Program reference code for the asset.
     - name: collaborators
-      type: nested
+      type: group
       description: Collaborators with weights and nested user objects.
       fields:
         - name: weight
@@ -399,7 +399,7 @@
         - name: awarded_bonus_amount
           type: float
     - name: swag
-      type: nested
+      type: group
       description: Swag award records.
       fields:
         - name: id
@@ -407,7 +407,7 @@
         - name: type
           type: keyword
     - name: attachments
-      type: nested
+      type: group
       description: Attachment metadata.
       fields:
         - name: id
@@ -425,7 +425,7 @@
         - name: created_at
           type: date
     - name: summaries
-      type: nested
+      type: group
       description: Disclosure summary records when present.
       fields:
         - name: id
@@ -433,7 +433,7 @@
         - name: type
           type: keyword
     - name: inboxes
-      type: nested
+      type: group
       description: Inbox routing metadata.
       fields:
         - name: id
@@ -446,7 +446,7 @@
           type: keyword
           description: Inbox type (default, custom) mapped from attributes.type.
     - name: activities
-      type: nested
+      type: group
       description: Activity timeline entries when embedded.
       fields:
         - name: id
@@ -481,7 +481,7 @@
         - name: title
           type: keyword
     - name: custom_field_values
-      type: nested
+      type: group
       description: Enterprise custom field values.
       fields:
         - name: id

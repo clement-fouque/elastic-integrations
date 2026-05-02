@@ -1,24 +1,24 @@
 {
     "@timestamp": "2026-04-26T12:00:00.000Z",
     "agent": {
-        "ephemeral_id": "0a2662cc-63f5-4e4e-8300-b926155955f0",
-        "id": "a7212b8f-4e3d-4fb1-99ad-51643ff16d38",
-        "name": "elastic-agent-61447",
+        "ephemeral_id": "fe62144e-f25e-46e9-8d7f-e164c1fe1aa8",
+        "id": "c9326a8c-b0f2-4e17-a93f-4d51280574a4",
+        "name": "elastic-agent-63797",
         "type": "filebeat",
-        "version": "9.3.3"
+        "version": "9.3.4"
     },
     "data_stream": {
         "dataset": "hackerone.report",
-        "namespace": "95423",
+        "namespace": "22592",
         "type": "logs"
     },
     "ecs": {
         "version": "9.3.0"
     },
     "elastic_agent": {
-        "id": "a7212b8f-4e3d-4fb1-99ad-51643ff16d38",
+        "id": "c9326a8c-b0f2-4e17-a93f-4d51280574a4",
         "snapshot": false,
-        "version": "9.3.3"
+        "version": "9.3.4"
     },
     "event": {
         "action": "report-state-new",
@@ -29,7 +29,7 @@
         "created": "2026-04-26T10:00:00.000Z",
         "dataset": "hackerone.report",
         "id": "1001",
-        "ingested": "2026-04-30T23:41:24Z",
+        "ingested": "2026-05-02T22:37:10Z",
         "kind": "alert",
         "module": "hackerone",
         "outcome": "unknown",

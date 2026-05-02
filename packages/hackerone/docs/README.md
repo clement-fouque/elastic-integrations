@@ -282,7 +282,6 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 | host.ip | Host ip addresses. | ip |
 | host.name | Name of the host. It can contain what hostname returns on Unix systems, the fully qualified domain name (FQDN), or a name specified by the user. The recommended value is the lowercase FQDN of the host. | keyword |
 | input.type | Type of filebeat input. | keyword |
-| log.offset | Log offset. | long |
 | organization.id | Unique identifier for the organization. | keyword |
 | organization.name | Organization name. | keyword |
 | organization.name.text | Multi-field of `organization.name`. | match_only_text |
@@ -538,7 +537,6 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 | host.name | Name of the host. It can contain what hostname returns on Unix systems, the fully qualified domain name (FQDN), or a name specified by the user. The recommended value is the lowercase FQDN of the host. | keyword |
 | input.type | Type of filebeat input. | keyword |
 | labels.is_transform_source | Distinguishes between documents that are a source for a transform and documents that are an output of a transform, to facilitate easier filtering. | constant_keyword |
-| log.offset | Log offset. | long |
 | organization.id | Unique identifier for the organization. | keyword |
 | organization.name | Organization name. | keyword |
 | organization.name.text | Multi-field of `organization.name`. | match_only_text |
