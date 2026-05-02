@@ -172,7 +172,7 @@
                 - name: name
                   type: keyword
             - name: vulnerable_functions
-              type: group
+              type: keyword
             - name: vulnerable_version_range
               type: keyword
         - name: withdrawn_at

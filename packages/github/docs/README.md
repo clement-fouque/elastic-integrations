@@ -1106,6 +1106,7 @@ To use this integration, you may [create a fine-grained personal access token](h
 | github.security_advisory.vulnerabilities.first_patched_version |  | keyword |
 | github.security_advisory.vulnerabilities.package.ecosystem |  | keyword |
 | github.security_advisory.vulnerabilities.package.name |  | keyword |
+| github.security_advisory.vulnerabilities.vulnerable_functions |  | keyword |
 | github.security_advisory.vulnerabilities.vulnerable_version_range |  | keyword |
 | github.security_advisory.withdrawn_at |  | date |
 | input.type | Type of filebeat input. | keyword |
@@ -1117,22 +1118,22 @@ An example event for `security_advisories` looks as following:
 {
     "@timestamp": "2025-06-04T15:30:46.000Z",
     "agent": {
-        "ephemeral_id": "8cc8bd60-d8ad-41df-bb74-b62281149ef2",
-        "id": "4b7b7449-efce-471f-b348-f746abd44403",
-        "name": "elastic-agent-40653",
+        "ephemeral_id": "9d391ead-21e7-4273-b347-85e6c004129d",
+        "id": "12f8a3bf-280f-4813-a24f-f9bc6217f92c",
+        "name": "elastic-agent-99644",
         "type": "filebeat",
         "version": "9.3.4"
     },
     "data_stream": {
         "dataset": "github.security_advisories",
-        "namespace": "40513",
+        "namespace": "73320",
         "type": "logs"
     },
     "ecs": {
         "version": "8.11.0"
     },
     "elastic_agent": {
-        "id": "4b7b7449-efce-471f-b348-f746abd44403",
+        "id": "12f8a3bf-280f-4813-a24f-f9bc6217f92c",
         "snapshot": false,
         "version": "9.3.4"
     },
@@ -1142,7 +1143,7 @@ An example event for `security_advisories` looks as following:
             "vulnerability"
         ],
         "dataset": "github.security_advisories",
-        "ingested": "2026-05-02T21:46:43Z",
+        "ingested": "2026-05-02T23:12:17Z",
         "kind": "enrichment",
         "module": "github",
         "type": [
