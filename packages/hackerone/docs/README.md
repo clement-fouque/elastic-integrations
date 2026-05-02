@@ -133,10 +133,10 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 | hackerone.report.automated_remediation_guidance.id |  | keyword |
 | hackerone.report.automated_remediation_guidance.reference |  | keyword |
 | hackerone.report.automated_remediation_guidance.type |  | keyword |
-| hackerone.report.bounties.amount | Bounty amount as returned by API (string decimal). | keyword |
-| hackerone.report.bounties.awarded_amount |  | keyword |
-| hackerone.report.bounties.awarded_bonus_amount |  | keyword |
-| hackerone.report.bounties.bonus_amount |  | keyword |
+| hackerone.report.bounties.amount | Bounty amount as returned by API. | float |
+| hackerone.report.bounties.awarded_amount |  | float |
+| hackerone.report.bounties.awarded_bonus_amount |  | float |
+| hackerone.report.bounties.bonus_amount |  | float |
 | hackerone.report.bounties.created_at |  | date |
 | hackerone.report.bounties.currency |  | keyword |
 | hackerone.report.bounties.id |  | keyword |
@@ -388,10 +388,10 @@ The `report` data stream provides bug bounty and vulnerability disclosure report
 | hackerone.report.automated_remediation_guidance.id |  | keyword |
 | hackerone.report.automated_remediation_guidance.reference |  | keyword |
 | hackerone.report.automated_remediation_guidance.type |  | keyword |
-| hackerone.report.bounties.amount | Bounty amount as returned by API (string decimal). | keyword |
-| hackerone.report.bounties.awarded_amount |  | keyword |
-| hackerone.report.bounties.awarded_bonus_amount |  | keyword |
-| hackerone.report.bounties.bonus_amount |  | keyword |
+| hackerone.report.bounties.amount | Bounty amount as returned by API. | float |
+| hackerone.report.bounties.awarded_amount |  | float |
+| hackerone.report.bounties.awarded_bonus_amount |  | float |
+| hackerone.report.bounties.bonus_amount |  | float |
 | hackerone.report.bounties.created_at |  | date |
 | hackerone.report.bounties.currency |  | keyword |
 | hackerone.report.bounties.id |  | keyword |

@@ -370,6 +370,50 @@ processors:
       tag: remove_json_temp
       ignore_missing: true
       if: ctx.hackerone?.report != null
+  - foreach:
+      field: hackerone.report.bounties
+      tag: convert_bounty_amount
+      if: ctx.hackerone?.report?.bounties instanceof List
+      ignore_missing: true
+      processor:
+        convert:
+          field: _ingest._value.amount
+          type: float
+          tag: convert_bounty_amount_float
+          ignore_missing: true
+  - foreach:
+      field: hackerone.report.bounties
+      tag: convert_bounty_bonus_amount
+      if: ctx.hackerone?.report?.bounties instanceof List
+      ignore_missing: true
+      processor:
+        convert:
+          field: _ingest._value.bonus_amount
+          type: float
+          tag: convert_bounty_bonus_amount_float
+          ignore_missing: true
+  - foreach:
+      field: hackerone.report.bounties
+      tag: convert_bounty_awarded_amount
+      if: ctx.hackerone?.report?.bounties instanceof List
+      ignore_missing: true
+      processor:
+        convert:
+          field: _ingest._value.awarded_amount
+          type: float
+          tag: convert_bounty_awarded_amount_float
+          ignore_missing: true
+  - foreach:
+      field: hackerone.report.bounties
+      tag: convert_bounty_awarded_bonus_amount
+      if: ctx.hackerone?.report?.bounties instanceof List
+      ignore_missing: true
+      processor:
+        convert:
+          field: _ingest._value.awarded_bonus_amount
+          type: float
+          tag: convert_bounty_awarded_bonus_amount_float
+          ignore_missing: true
   - date:
       field: hackerone.report.last_activity_at
       target_field: '@timestamp'

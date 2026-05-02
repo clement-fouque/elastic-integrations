@@ -378,7 +378,7 @@
             - name: profile_picture
               type: flattened
     - name: bounties
-      type: nested
+      type: group
       description: Bounty payment records.
       fields:
         - name: id
@@ -386,18 +386,18 @@
         - name: type
           type: keyword
         - name: amount
-          type: keyword
-          description: Bounty amount as returned by API (string decimal).
+          type: float
+          description: Bounty amount as returned by API.
         - name: bonus_amount
-          type: keyword
+          type: float
         - name: currency
           type: keyword
         - name: created_at
           type: date
         - name: awarded_amount
-          type: keyword
+          type: float
         - name: awarded_bonus_amount
-          type: keyword
+          type: float
     - name: swag
       type: nested
       description: Swag award records.
