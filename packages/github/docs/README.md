@@ -1037,6 +1037,8 @@ To use this integration, you may [create a fine-grained personal access token](h
 | data_stream.dataset | Data stream dataset. | constant_keyword |
 | data_stream.namespace | Data stream namespace. | constant_keyword |
 | data_stream.type | Data stream type. | constant_keyword |
+| event.dataset | Event dataset. | constant_keyword |
+| event.module | Event module. | constant_keyword |
 | github.security_advisory.credits.avatar_url |  | keyword |
 | github.security_advisory.credits.events_url |  | keyword |
 | github.security_advisory.credits.followers_url |  | keyword |
@@ -1113,26 +1115,26 @@ An example event for `security_advisories` looks as following:
 
 ```json
 {
-    "@timestamp": "2026-04-24T05:57:27.225Z",
+    "@timestamp": "2025-06-04T15:30:46.000Z",
     "agent": {
-        "ephemeral_id": "31ed0e78-957c-462b-b201-4068ee3c76a8",
-        "id": "015adde9-572c-425b-b861-e378d104de20",
-        "name": "elastic-agent-17838",
+        "ephemeral_id": "8cc8bd60-d8ad-41df-bb74-b62281149ef2",
+        "id": "4b7b7449-efce-471f-b348-f746abd44403",
+        "name": "elastic-agent-40653",
         "type": "filebeat",
-        "version": "8.19.10"
+        "version": "9.3.4"
     },
     "data_stream": {
         "dataset": "github.security_advisories",
-        "namespace": "70395",
+        "namespace": "40513",
         "type": "logs"
     },
     "ecs": {
         "version": "8.11.0"
     },
     "elastic_agent": {
-        "id": "015adde9-572c-425b-b861-e378d104de20",
+        "id": "4b7b7449-efce-471f-b348-f746abd44403",
         "snapshot": false,
-        "version": "8.19.10"
+        "version": "9.3.4"
     },
     "event": {
         "agent_id_status": "verified",
@@ -1140,8 +1142,9 @@ An example event for `security_advisories` looks as following:
             "vulnerability"
         ],
         "dataset": "github.security_advisories",
-        "ingested": "2026-04-24T05:57:30Z",
+        "ingested": "2026-05-02T21:46:43Z",
         "kind": "enrichment",
+        "module": "github",
         "type": [
             "info"
         ]
@@ -1160,16 +1163,16 @@ An example event for `security_advisories` looks as following:
             "description": "An issue was discovered in Samsung Mobile Processor Exynos 1280, 2200, 1380, 1480, 2400. A Double Free in the mobile processor leads to privilege escalation.",
             "ghsa_id": "GHSA-vpq6-j9hp-2h3w",
             "html_url": "https://github.com/advisories/GHSA-vpq6-j9hp-2h3w",
-            "identifiers": [
-                {
-                    "type": "GHSA",
-                    "value": "GHSA-vpq6-j9hp-2h3w"
-                },
-                {
-                    "type": "CVE",
-                    "value": "CVE-2025-23096"
-                }
-            ],
+            "identifiers": {
+                "type": [
+                    "GHSA",
+                    "CVE"
+                ],
+                "value": [
+                    "GHSA-vpq6-j9hp-2h3w",
+                    "CVE-2025-23096"
+                ]
+            },
             "nvd_published_at": "2025-06-04T15:15:23.000Z",
             "published_at": "2025-06-04T15:30:41.000Z",
             "references": [
