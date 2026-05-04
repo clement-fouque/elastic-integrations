@@ -386,18 +386,18 @@
         - name: type
           type: keyword
         - name: amount
-          type: float
+          type: double
           description: Bounty amount as returned by API.
         - name: bonus_amount
-          type: float
+          type: double
         - name: currency
           type: keyword
         - name: created_at
           type: date
         - name: awarded_amount
-          type: float
+          type: double
         - name: awarded_bonus_amount
-          type: float
+          type: double
     - name: swag
       type: group
       description: Swag award records.
