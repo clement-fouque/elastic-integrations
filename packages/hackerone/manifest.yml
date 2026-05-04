@@ -10,6 +10,11 @@ categories:
 conditions:
   kibana:
     version: "^8.19.0 || ^9.1.0"
+screenshots:
+  - src: /img/hackerone-report-dashboard.png
+    title: HackerOne Report Dashboard
+    size: 1148x937
+    type: image/png
 icons:
   - src: /img/hackerone-logo.svg
     title: HackerOne logo
