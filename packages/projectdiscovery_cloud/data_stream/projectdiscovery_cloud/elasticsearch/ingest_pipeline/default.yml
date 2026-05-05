@@ -1,0 +1,711 @@
+---
+description: |-
+  Parses ProjectDiscovery Cloud Platform (PDCP) VulnerabilityResults JSON from CEL (message/event.original).
+
+  IMPORTANT — multi-match semantics: Elasticsearch ingest pipelines cannot fork one input document into
+  multiple stored documents without an upstream splitter (CEL/Logstash). When `event` contains multiple
+  detections, ECS fields sourced from detection evidence reflect the FIRST element (`event[0]`) after
+  key normalization while the normalized `projectdiscovery_cloud.event` array retains every detection.
+processors:
+  - set:
+      field: ecs.version
+      tag: set_ecs_version
+      value: '9.3.0'
+  # --- CEL / Agentless only ---
+  - remove:
+      description: >-
+        Removes the fields added by Agentless as metadata,
+        as they can collide with ECS fields.
+      field:
+        - organization
+        - division
+        - team
+      ignore_missing: true
+      if: ctx.organization instanceof String && ctx.division instanceof String && ctx.team instanceof String
+      tag: remove_agentless_tags
+  - terminate:
+      tag: data_collection_error
+      description: error message set and no data to process.
+      if: ctx.error?.message != null && ctx.message == null && ctx.event?.original == null
+
+  # JSE00001 — message hygiene
+  - rename:
+      field: message
+      tag: rename_message_to_event_original
+      target_field: event.original
+      ignore_missing: true
+      description: >-
+        Renames the original `message` field to `event.original` to store a copy of the original message.
+        The `event.original` field is not touched if the document already has one; it may happen when Logstash
+        sends the document.
+      if: ctx.event?.original == null
+  - remove:
+      field: message
+      tag: remove_message
+      ignore_missing: true
+      description: The `message` field is no longer required if the document has an `event.original` field.
+      if: ctx.event?.original != null
+
+  # Parse JSON from event.original — do not mutate event.original
+  - json:
+      field: event.original
+      target_field: projectdiscovery_cloud._pd
+      tag: pd_parse_json_payload
+      if: ctx.projectdiscovery_cloud?._pd == null && ctx.event?.original != null
+      on_failure:
+        - append:
+            field: error.message
+            tag: pd_parse_json_on_failure_append
+            value: '{{{_ingest.on_failure_message}}}'
+            allow_duplicates: false
+
+  # Normalize hyphenated JSON keys to underscores (recursive) and pin primary detection slice
+  - script:
+      lang: painless
+      tag: pd_normalize_hyphen_keys_and_pick_primary_detection
+      description: Rename hyphen keys to ECS-friendly underscores; ECS fields derive from primary detection row.
+      if: ctx.projectdiscovery_cloud?._pd != null
+      source: |-
+        Object normalizeHyphenDeep(Object o) {
+          if (o == null) {
+            return null;
+          }
+          if (o instanceof Map) {
+            Map src = (Map) o;
+            Map dst = new HashMap();
+            for (def k : src.keySet()) {
+              String key = k.toString();
+              String newKey = key.replace("-", "_");
+              dst.put(newKey, normalizeHyphenDeep(src.get(k)));
+            }
+            return dst;
+          }
+          if (o instanceof List) {
+            List src = (List) o;
+            List dst = new ArrayList();
+            for (def item : src) {
+              dst.add(normalizeHyphenDeep(item));
+            }
+            return dst;
+          }
+          return o;
+        }
+        Object deepCopy(Object o) {
+          if (o == null) {
+            return null;
+          }
+          if (o instanceof Map) {
+            Map src = (Map) o;
+            Map dst = new HashMap();
+            for (def k : src.keySet()) {
+              dst.put(k, deepCopy(src.get(k)));
+            }
+            return dst;
+          }
+          if (o instanceof List) {
+            List src = (List) o;
+            List dst = new ArrayList();
+            for (def item : src) {
+              dst.add(deepCopy(item));
+            }
+            return dst;
+          }
+          return o;
+        }
+        ctx.projectdiscovery_cloud._pd = (Map) normalizeHyphenDeep(ctx.projectdiscovery_cloud._pd);
+        def ev = ctx.projectdiscovery_cloud._pd.get("event");
+        if (ev != null && ev instanceof List && ((List) ev).size() > 0) {
+          ctx.projectdiscovery_cloud._pd.put("_match", deepCopy(((List) ev).get(0)));
+        }
+
+  # ECS categorization constants
+  - set:
+      field: event.kind
+      tag: pd_set_event_kind
+      value: event
+      if: ctx.error?.message == null
+  - append:
+      field: event.category
+      tag: pd_append_category_vulnerability
+      value: vulnerability
+      allow_duplicates: false
+      if: ctx.event?.kind != null && ctx.event?.kind == 'event'
+  - append:
+      field: event.type
+      tag: pd_append_type_info
+      value: info
+      allow_duplicates: false
+      if: ctx.event?.kind != null && ctx.event?.kind == 'event'
+
+  # Timestamps — primary row timestamps
+  - date:
+      field: projectdiscovery_cloud._pd._match.timestamp
+      target_field: '@timestamp'
+      formats:
+        - ISO8601
+      tag: pd_parse_timestamp_detection
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?._match?.timestamp != null
+  - date:
+      field: projectdiscovery_cloud._pd.created_at
+      target_field: '@timestamp'
+      formats:
+        - ISO8601
+      tag: pd_fallback_timestamp_created_at
+      if: ctx.projectdiscovery_cloud?._pd?.created_at != null && ctx['@timestamp'] == null
+  - date:
+      field: projectdiscovery_cloud._pd.created_at
+      target_field: event.created
+      formats:
+        - ISO8601
+      tag: pd_parse_created_at_to_event_created
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?.created_at != null
+  - remove:
+      field: projectdiscovery_cloud._pd.created_at
+      tag: pd_remove_created_at_string
+      ignore_missing: true
+      if: ctx.event?.created != null && ctx.projectdiscovery_cloud?._pd != null && ctx.projectdiscovery_cloud._pd.containsKey("created_at")
+
+  ## Row-level ECS from _pd top-level attributes
+  - rename:
+      field: projectdiscovery_cloud._pd.vuln_id
+      target_field: vulnerability.id
+      ignore_missing: true
+      tag: pd_rename_vuln_id
+  - rename:
+      field: projectdiscovery_cloud._pd.template_id
+      target_field: rule.id
+      ignore_missing: true
+      tag: pd_rename_template_to_rule_id
+  # vulnerability.scanner
+  - set:
+      field: vulnerability.scanner.vendor
+      tag: pd_set_scanner_vendor
+      value: ProjectDiscovery
+
+  ## Classification helpers (enumeration + flattened custom copy before branch fields move)
+  - script:
+      lang: painless
+      tag: pd_map_classification_and_cvss_version
+      description: Copies classification from primary detection into ECS + vendor namespace + extracts CVSS version string.
+      if: ctx.projectdiscovery_cloud?._pd?._match != null
+      source: |-
+        def pd = ctx.projectdiscovery_cloud._pd;
+        Map mch = pd._match;
+        if (mch.info == null || !(mch.info instanceof Map)) {
+          return;
+        }
+        Map info = (Map) mch.info;
+        if (info.classification != null && info.classification instanceof Map) {
+          Map c = (Map) info.classification;
+          if (c.cve_id instanceof List && !((List)c.cve_id).isEmpty()) {
+            ctx.vulnerability = ctx.vulnerability ?: new HashMap();
+            ctx.vulnerability.enumeration = "CVE";
+          }
+          ctx.projectdiscovery_cloud.classification = ctx.projectdiscovery_cloud.classification ?: new HashMap();
+          if (c.cve_id != null) {
+            ctx.projectdiscovery_cloud.classification.cve_id = c.cve_id;
+          }
+          if (c.cwe_id != null) {
+            ctx.projectdiscovery_cloud.classification.cwe_id = c.cwe_id;
+          }
+          if (c.cvss_metrics != null && c.cvss_metrics instanceof String) {
+            ctx.projectdiscovery_cloud.classification.cvss_metrics = (String)c.cvss_metrics;
+            ctx.vulnerability = ctx.vulnerability ?: new HashMap();
+            ctx.vulnerability.score = ctx.vulnerability.score ?: new HashMap();
+            String mv = (String)c.cvss_metrics;
+            if (mv.startsWith("CVSS:3.2")) {
+              ctx.vulnerability.score.version = "3.2";
+            } else if (mv.startsWith("CVSS:3.1")) {
+              ctx.vulnerability.score.version = "3.1";
+            } else if (mv.startsWith("CVSS:3.0")) {
+              ctx.vulnerability.score.version = "3.0";
+            } else if (mv.startsWith("CVSS:2.") || mv.startsWith("CVSS:2")) {
+              ctx.vulnerability.score.version = "2";
+            } else if (mv.startsWith("3.1/")) {
+              ctx.vulnerability.score.version = "3.1";
+            } else if (mv.startsWith("3.0/")) {
+              ctx.vulnerability.score.version = "3.0";
+            } else if (mv.length() > 0 && Character.isDigit(mv.charAt(0))) {
+              int dotIdx = mv.indexOf(".");
+              if (dotIdx > 0 && dotIdx + 1 < mv.length() && Character.isDigit(mv.charAt(dotIdx + 1))) {
+                ctx.vulnerability.score.version = mv.substring(0, dotIdx + 2);
+              }
+            }
+          }
+          if (c.cvss_score != null && c.cvss_score instanceof Number) {
+            ctx.vulnerability = ctx.vulnerability ?: new HashMap();
+            ctx.vulnerability.score = ctx.vulnerability.score ?: new HashMap();
+            ctx.vulnerability.score.base = ((Number)c.cvss_score).doubleValue();
+          }
+          if (c.epss_score != null) {
+            ctx.projectdiscovery_cloud.classification.epss_score = c.epss_score;
+          }
+          if (c.epss_percentile != null) {
+            ctx.projectdiscovery_cloud.classification.epss_percentile = c.epss_percentile;
+          }
+          if (c.cpe != null) {
+            ctx.projectdiscovery_cloud.classification.cpe = c.cpe;
+          }
+          if (info.metadata instanceof Map && !((Map)info.metadata).isEmpty()) {
+            ctx.projectdiscovery_cloud.classification.metadata = info.metadata;
+          }
+        }
+
+  ## Primary detection ECS fields (_match subtree)
+  - lowercase:
+      field: projectdiscovery_cloud._pd._match.info.severity
+      ignore_missing: true
+      tag: pd_lowercase_severity
+      if: ctx.projectdiscovery_cloud?._pd?._match?.info?.severity != null
+  - rename:
+      field: projectdiscovery_cloud._pd._match.info.severity
+      target_field: vulnerability.severity
+      ignore_missing: true
+      tag: pd_rename_primary_severity
+  - rename:
+      field: projectdiscovery_cloud._pd._match.info.name
+      target_field: rule.name
+      ignore_missing: true
+      tag: pd_rename_rule_name_from_match_info
+  - rename:
+      field: projectdiscovery_cloud._pd._match.info.author
+      target_field: rule.author
+      ignore_missing: true
+      tag: pd_rename_rule_author
+  - rename:
+      field: projectdiscovery_cloud._pd._match.info.tags
+      target_field: projectdiscovery_cloud.template.tags
+      ignore_missing: true
+      tag: pd_copy_match_template_tags_under_vendor
+  ## Description + references fallback (event[].info precedence)
+  - set:
+      field: vulnerability.description
+      tag: pd_set_description_from_match_info
+      copy_from: projectdiscovery_cloud._pd._match.info.description
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?._match?.info?.description != null
+  - set:
+      field: vulnerability.description
+      tag: pd_set_description_from_row_fallback
+      copy_from: projectdiscovery_cloud._pd.description
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.vulnerability?.description == null && ctx.projectdiscovery_cloud?._pd?.description != null
+  ## Reference array handling (scalar ECS + retained array copy)
+  - script:
+      lang: painless
+      tag: pd_set_vulnerability_scalar_reference_and_pdcp_references
+      if: ctx.projectdiscovery_cloud?._pd?.reference != null || ctx.projectdiscovery_cloud?._pd?._match != null
+      source: |-
+        List refs = null;
+        if (ctx.projectdiscovery_cloud._pd._match != null && ctx.projectdiscovery_cloud._pd._match.info instanceof Map) {
+          Map mi = ctx.projectdiscovery_cloud._pd._match.info;
+          if (mi.reference instanceof List && !((List)mi.reference).isEmpty()) {
+            refs = (List) mi.reference;
+          }
+        }
+        if (refs == null && ctx.projectdiscovery_cloud._pd.reference instanceof List) {
+          refs = (List) ctx.projectdiscovery_cloud._pd.reference;
+        }
+        if (refs != null) {
+          ctx.projectdiscovery_cloud.references = new ArrayList(refs);
+          Object first = refs.get(0);
+          if (first != null) {
+            ctx.vulnerability = ctx.vulnerability ?: new HashMap();
+            ctx.vulnerability.reference = first.toString();
+          }
+        }
+
+  - rename:
+      field: projectdiscovery_cloud._pd.target
+      target_field: url.full
+      ignore_missing: true
+      tag: pd_rename_row_target_to_url_full
+      if: 'ctx.projectdiscovery_cloud?._pd?.target instanceof String && (ctx.projectdiscovery_cloud._pd.target.startsWith("http:") || ctx.projectdiscovery_cloud._pd.target.startsWith("https:"))'
+  - uri_parts:
+      field: url.full
+      ignore_failure: true
+      keep_original: false
+      tag: pd_uri_parts_on_url_full
+      if: ctx.url?.full != null
+  ## Evidence URL (stored raw; decomposition uses target URL uri_parts outcome)
+  - rename:
+      field: projectdiscovery_cloud._pd._match.matched_at
+      target_field: url.original
+      ignore_missing: true
+      tag: pd_rename_match_matched_at
+
+  ## Host / destination domain — prefer matched host column, else inventory
+  - set:
+      field: destination.domain
+      tag: pd_set_destination_domain_from_match_host
+      copy_from: projectdiscovery_cloud._pd._match.host
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?._match?.host != null
+  - set:
+      field: destination.domain
+      tag: pd_set_destination_domain_asset_host
+      copy_from: projectdiscovery_cloud._pd.asset_metadata.host
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.destination?.domain == null && ctx.projectdiscovery_cloud?._pd?.asset_metadata?.host != null
+  - set:
+      field: url.domain
+      tag: pd_set_url_domain_from_destination
+      copy_from: destination.domain
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.destination?.domain != null && ctx.url?.domain == null
+  - rename:
+      field: projectdiscovery_cloud._pd._match.path
+      target_field: url.path
+      ignore_missing: true
+      tag: pd_rename_primary_path_url
+      if: ctx.url?.path == null
+
+  ## IP selection (primary detection wins)
+  - set:
+      field: destination.ip
+      tag: pd_set_destination_ip_from_match_ip
+      copy_from: projectdiscovery_cloud._pd._match.ip
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?._match?.ip != null
+  - script:
+      lang: painless
+      tag: pd_set_destination_ip_from_asset_ips
+      description: Fallback to asset_metadata.ip[0] only when matched IP absent.
+      if: ctx.destination?.ip == null && ctx.projectdiscovery_cloud?._pd?.asset_metadata?.ip instanceof List
+      source: |-
+        List ips = ctx.projectdiscovery_cloud._pd.asset_metadata.ip;
+        if (!ips.isEmpty() && ips.get(0) != null) {
+          ctx.destination.ip = ips.get(0).toString();
+        }
+
+  ## Ports — coerce + prefer primary detection vs row-level
+  - set:
+      field: destination.port
+      tag: pd_set_destination_port_primary_match_first
+      copy_from: projectdiscovery_cloud._pd._match.port
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?._match?.port != null && ctx.destination?.port == null
+  - set:
+      field: destination.port
+      tag: pd_set_destination_port_row_level
+      copy_from: projectdiscovery_cloud._pd.port
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.destination?.port == null && ctx.projectdiscovery_cloud?._pd?.port != null
+  - convert:
+      field: destination.port
+      type: long
+      ignore_missing: true
+      tag: pd_convert_destination_port_long
+  - set:
+      field: url.port
+      tag: pd_set_url_port_from_destination
+      copy_from: destination.port
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.destination?.port != null && (ctx.url?.port == null || ctx.url?.port instanceof String || ctx.url?.port == '')
+  ## HTTP evidence from primary detection row
+  - rename:
+      field: projectdiscovery_cloud._pd._match.request
+      target_field: http.request.body.content
+      ignore_missing: true
+      tag: pd_rename_primary_request_payload
+  - rename:
+      field: projectdiscovery_cloud._pd._match.response
+      target_field: http.response.body.content
+      ignore_missing: true
+      tag: pd_rename_primary_response_payload
+  ## Asset HTTP / TLS fingerprints
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.method
+      target_field: http.request.method
+      ignore_missing: true
+      tag: pd_rename_asset_method
+  - uppercase:
+      field: http.request.method
+      ignore_missing: true
+      tag: pd_upper_http_method
+      if: ctx.http?.request?.method != null
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.status_code
+      target_field: http.response.status_code
+      ignore_missing: true
+      tag: pd_rename_asset_status_code
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.content_length
+      target_field: http.response.body.bytes
+      ignore_missing: true
+      tag: pd_rename_asset_content_length
+  - convert:
+      field: http.response.status_code
+      type: long
+      ignore_missing: true
+      tag: pd_convert_http_status_long
+  - convert:
+      field: http.response.body.bytes
+      type: long
+      ignore_missing: true
+      tag: pd_convert_http_body_bytes_long
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_subject_cn
+      target_field: tls.server.x509.subject.common_name
+      ignore_missing: true
+      tag: pd_rename_tls_subject_cn
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_subject_org
+      target_field: tls.server.x509.subject.organization
+      ignore_missing: true
+      tag: pd_rename_tls_subject_org
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_subject_an
+      target_field: tls.server.x509.alternative_names
+      ignore_missing: true
+      tag: pd_rename_tls_subject_an
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_issuer_org
+      target_field: tls.server.x509.issuer.organization
+      ignore_missing: true
+      tag: pd_rename_tls_issuer_org
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_serial_number
+      target_field: tls.server.x509.serial_number
+      ignore_missing: true
+      tag: pd_rename_tls_serial
+  - date:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_not_before
+      target_field: tls.server.x509.not_before
+      formats:
+        - ISO8601
+      ignore_failure: true
+      tag: pd_date_tls_not_before
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.tls_not_before != null
+  - date:
+      field: projectdiscovery_cloud._pd.asset_metadata.tls_not_after
+      target_field: tls.server.x509.not_after
+      formats:
+        - ISO8601
+      ignore_failure: true
+      tag: pd_date_tls_not_after
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.tls_not_after != null
+  - script:
+      lang: painless
+      tag: pd_remove_asset_tls_dates_after_normalize
+      if: ctx.tls?.server?.x509?.not_before != null || ctx.tls?.server?.x509?.not_after != null
+      source: |-
+        if (ctx.projectdiscovery_cloud._pd.asset_metadata != null) {
+          Map am = ctx.projectdiscovery_cloud._pd.asset_metadata;
+          if (am.containsKey("tls_not_before")) {
+            am.remove("tls_not_before");
+          }
+          if (am.containsKey("tls_not_after")) {
+            am.remove("tls_not_after");
+          }
+        }
+
+  ## PDCP ASN enrichment when present — prefer telemetry over inferred GeoIP ASN
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.asn.as_number
+      target_field: destination.as.number
+      ignore_missing: true
+      tag: pd_rename_destination_as_number
+      if: 'ctx.destination?.as?.number == null && ctx.projectdiscovery_cloud?._pd?.asset_metadata?.asn?.as_number != null'
+  - convert:
+      field: destination.as.number
+      type: long
+      ignore_missing: true
+      tag: pd_convert_destination_as_long
+      if: ctx.destination?.as?.number != null
+  - rename:
+      field: projectdiscovery_cloud._pd.asset_metadata.asn.as_name
+      target_field: destination.as.organization.name
+      ignore_missing: true
+      tag: pd_rename_destination_as_org_name_vendor
+      if: 'ctx.destination?.as?.organization?.name == null && ctx.projectdiscovery_cloud?._pd?.asset_metadata?.asn?.as_name != null'
+
+  - rename:
+      field: projectdiscovery_cloud._pd._match.type
+      target_field: network.protocol
+      ignore_missing: true
+      tag: pd_rename_match_type_network_protocol
+
+  ## is_internal duplicated into vendor namespace + ECS network.direction cue
+  - set:
+      field: projectdiscovery_cloud.is_internal
+      tag: pd_copy_vendor_is_internal_flag
+      copy_from: projectdiscovery_cloud._pd.is_internal
+      ignore_empty_value: true
+      ignore_failure: true
+      if: ctx.projectdiscovery_cloud?._pd?.is_internal != null
+  - set:
+      field: network.direction
+      tag: pd_set_direction_internal_when_flagged
+      value: internal
+      if: 'ctx.network?.direction == null && ctx.projectdiscovery_cloud?._pd?.is_internal instanceof Boolean && ctx.projectdiscovery_cloud._pd.is_internal.booleanValue() == true'
+  - set:
+      field: network.direction
+      tag: pd_set_direction_external_when_flag_cleared
+      value: external
+      if: 'ctx.network?.direction == null && ctx.projectdiscovery_cloud?._pd?.is_internal instanceof Boolean && ctx.projectdiscovery_cloud._pd.is_internal.booleanValue() == false'
+
+  # GeoIP lookups (deterministic GeoLite fixtures in elastic-package CI)
+  - geoip:
+      field: destination.ip
+      target_field: destination.geo
+      ignore_missing: true
+      ignore_failure: true
+      tag: pd_geo_destination_ip_city_db
+      if: ctx.destination?.ip != null
+  - geoip:
+      database_file: GeoLite2-ASN.mmdb
+      field: destination.ip
+      ignore_failure: true
+      ignore_missing: true
+      properties:
+        - asn
+        - organization_name
+      tag: pd_geo_destination_ip_asn_inferred_only
+      target_field: destination.as
+      if: 'ctx.destination?.ip != null && ctx.destination?.as?.number == null'
+  - rename:
+      field: destination.as.asn
+      ignore_missing: true
+      tag: pd_rename_geo_inferred_asn_number
+      target_field: destination.as.number
+      if: 'ctx.destination?.as?.asn != null && ctx.destination?.as?.number == null'
+  - rename:
+      field: destination.as.organization_name
+      ignore_missing: true
+      tag: pd_rename_geo_inferred_as_org
+      target_field: destination.as.organization.name
+      if: 'ctx.destination?.as?.organization_name != null && ctx.destination?.as?.organization?.name == null'
+
+  # Promote match tags onto ECS tags (after enrichment)
+  - foreach:
+      field: projectdiscovery_cloud.template.tags
+      ignore_missing: true
+      tag: pd_foreach_promote_vendor_tags_into_ecs_tags
+      processor:
+        append:
+          tag: pd_foreach_promote_vendor_tags_into_ecs_tags_inner
+          allow_duplicates: false
+          field: tags
+          value: '{{{_ingest._value}}}'
+
+  ## related.* intersections
+  - append:
+      field: related.ip
+      tag: pd_append_related_ip_destination
+      value: '{{{destination.ip}}}'
+      allow_duplicates: false
+      if: ctx.destination?.ip != null
+  - foreach:
+      field: projectdiscovery_cloud._pd.asset_metadata.ip
+      ignore_missing: true
+      tag: pd_foreach_append_related_ips_asset_inventory
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.ip instanceof List
+      processor:
+        append:
+          tag: pd_foreach_related_ip_asset_inner
+          field: related.ip
+          value: '{{{_ingest._value}}}'
+          allow_duplicates: false
+  - foreach:
+      field: projectdiscovery_cloud._pd.event
+      ignore_missing: true
+      tag: pd_foreach_append_related_ips_each_detection_row
+      if: ctx.projectdiscovery_cloud?._pd?.event instanceof List
+      processor:
+        append:
+          tag: pd_foreach_related_ip_detection_inner
+          field: related.ip
+          value: '{{{_ingest._value.ip}}}'
+          allow_duplicates: false
+
+  - append:
+      field: related.hosts
+      tag: pd_append_related_host_destination_domain
+      value: '{{{destination.domain}}}'
+      allow_duplicates: false
+      if: ctx.destination?.domain != null
+  - append:
+      field: related.hosts
+      tag: pd_append_related_host_asset_host
+      value: '{{{projectdiscovery_cloud._pd.asset_metadata.host}}}'
+      allow_duplicates: false
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.host != null
+  - append:
+      field: related.hosts
+      tag: pd_append_related_host_asset_domain_name
+      value: '{{{projectdiscovery_cloud._pd.asset_metadata.domain_name}}}'
+      allow_duplicates: false
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.domain_name != null
+  - append:
+      field: related.hosts
+      tag: pd_append_related_host_url_domain
+      value: '{{{url.domain}}}'
+      allow_duplicates: false
+      if: ctx.url?.domain != null
+
+  - append:
+      field: related.hash
+      tag: pd_append_related_hash_vuln
+      value: '{{{projectdiscovery_cloud._pd.vuln_hash}}}'
+      allow_duplicates: false
+      if: ctx.projectdiscovery_cloud?._pd?.vuln_hash != null
+  - append:
+      field: related.hash
+      tag: pd_append_related_hash_asset
+      value: '{{{projectdiscovery_cloud._pd.asset_metadata.asset_hash}}}'
+      allow_duplicates: false
+      if: ctx.projectdiscovery_cloud?._pd?.asset_metadata?.asset_hash != null
+
+  # Hoist remaining PDCP payload under projectdiscovery_cloud (retain full event[] array)
+  - script:
+      lang: painless
+      tag: pd_hoist_vendor_fields_from_working_buffer
+      description: Move parsed record (minus working keys) into the vendor namespace for drill-down.
+      if: ctx.projectdiscovery_cloud?._pd != null
+      source: |-
+        Map pd = ctx.projectdiscovery_cloud._pd;
+        pd.remove("_match");
+        for (String k : new ArrayList(pd.keySet())) {
+          if (k.equals("_pd")) {
+            continue;
+          }
+          ctx.projectdiscovery_cloud[k] = pd[k];
+        }
+        ctx.projectdiscovery_cloud.remove("_pd");
+
+  - append:
+      field: tags
+      tag: append_preserve_on_collector_error
+      value: preserve_original_event
+      allow_duplicates: false
+      if: ctx.error?.message != null
+
+on_failure:
+  - append:
+      field: error.message
+      tag: on_failure_append_error_message
+      value: >-
+        Processor '{{{ _ingest.on_failure_processor_type }}}'
+        {{{#_ingest.on_failure_processor_tag}}}with tag '{{{ _ingest.on_failure_processor_tag }}}'
+        {{{/_ingest.on_failure_processor_tag}}}failed with message '{{{ _ingest.on_failure_message }}}'
+  - set:
+      field: event.kind
+      tag: set_pipeline_error_to_event_kind
+      value: pipeline_error
+  - append:
+      field: tags
+      tag: on_failure_append_preserve_original_tag
+      value: preserve_original_event
+      allow_duplicates: false

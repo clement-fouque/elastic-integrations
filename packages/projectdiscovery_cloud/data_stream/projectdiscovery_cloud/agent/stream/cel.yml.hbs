@@ -1,0 +1,252 @@
+config_version: 2
+interval: {{interval}}
+resource.tracer:
+  enabled: {{enable_request_tracer}}
+  filename: "../../logs/cel/http-request-trace-*.ndjson"
+  maxbackups: 5
+{{#if proxy_url}}
+resource.proxy_url: {{proxy_url}}
+{{/if}}
+{{#if ssl}}
+resource.ssl:
+  {{ssl}}
+{{/if}}
+{{#if http_client_timeout}}
+resource.timeout: {{http_client_timeout}}
+{{/if}}
+resource.url: {{url}}
+resource.headers:
+  Content-Type:
+    - application/json
+  Accept:
+    - application/json
+state:
+  api_key: {{api_key}}
+  team_id: {{team_id}}
+  initial_interval: "{{initial_interval}}"
+  preserve_original_event: {{preserve_original_event}}
+{{#if severity}}
+  severity: "{{severity}}"
+{{/if}}
+{{#if vuln_status}}
+  vuln_status: "{{vuln_status}}"
+{{/if}}
+{{#if is_internal}}
+  is_internal: "{{is_internal}}"
+{{/if}}
+{{#if categories}}
+  categories: "{{categories}}"
+{{/if}}
+{{#if templates}}
+  templates: "{{templates}}"
+{{/if}}
+{{#if scan_ids}}
+  scan_ids: "{{scan_ids}}"
+{{/if}}
+{{#if hosts}}
+  hosts: "{{hosts}}"
+{{/if}}
+{{#if domains}}
+  domains: "{{domains}}"
+{{/if}}
+{{#if ports}}
+  ports: "{{ports}}"
+{{/if}}
+{{#if search_query}}
+  search_query: "{{search_query}}"
+{{/if}}
+redact:
+  fields:
+    - api_key
+program: |-
+  state.?cursor.first_poll.orValue(true).as(first_poll,
+    (first_poll ? state.initial_interval : "last_day").as(time_val,
+      {
+        "time": time_val,
+      }.with(
+        (state.?severity.orValue("") != "") ?
+          {
+            "severity": state.severity.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?vuln_status.orValue("") != "") ?
+          {
+            "vuln_status": string(state.vuln_status),
+          }
+        :
+          {}
+      ).with(
+        (state.?is_internal.orValue("") != "") ?
+          {
+            "is_internal": string(state.is_internal).to_lower() == "true",
+          }
+        :
+          {}
+      ).with(
+        (state.?categories.orValue("") != "") ?
+          {
+            "category": state.categories.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?templates.orValue("") != "") ?
+          {
+            "template": state.templates.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?scan_ids.orValue("") != "") ?
+          {
+            "scan_ids": state.scan_ids.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?hosts.orValue("") != "") ?
+          {
+            "host": state.hosts.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?domains.orValue("") != "") ?
+          {
+            "domain": state.domains.split(",").map(s, string(s)),
+          }
+        :
+          {}
+      ).with(
+        (state.?ports.orValue("") != "") ?
+          {
+            "port": state.ports.split(",").map(s, string(s)).map(p, int(p)),
+          }
+        :
+          {}
+      ).with(
+        (state.?search_query.orValue("") != "") ?
+          {
+            "search": string(state.search_query),
+          }
+        :
+          {}
+      ).as(body_map,
+        state.with(
+          request(
+            "POST",
+            state.url.trim_right("/") + "/v1/scans/results/export?type=json"
+          ).with(
+            {
+              "Header": {
+                "Content-Type": ["application/json"],
+                "Accept": ["application/json"],
+                "X-API-Key": [state.api_key],
+                ?"X-Team-Id": (state.?team_id.orValue("") != "") ?
+                  optional.of([state.team_id])
+                :
+                  optional.none(),
+              },
+              "Body": body_map.encode_json(),
+            }
+          ).do_request().as(resp,
+            (resp.StatusCode >= 200 && resp.StatusCode < 300) ?
+              (
+                (size(resp.Body) == 0) ?
+                  {
+                    "events": [{"retry": true}],
+                    "want_more": false,
+                    "cursor": {
+                      "first_poll": false,
+                    },
+                  }
+                :
+                  try(resp.Body.decode_json()).as(parsed,
+                    is_error(parsed) ?
+                      {
+                        "events": {
+                          "error": {
+                            "code": string(resp.StatusCode),
+                            "id": string(resp.Status),
+                            "message": "POST /v1/scans/results/export: failed to decode response JSON: " + string(parsed),
+                          },
+                        },
+                        "want_more": false,
+                      }
+                    :
+                      "[]".decode_json().as(empty_list_shape,
+                        (
+                          (type(parsed) == type(empty_list_shape)) ?
+                            parsed
+                          :
+                            parsed.?data.orValue([])
+                        ).as(items,
+                          (
+                            (size(items) > 0) ?
+                              dyn(
+                                items.map(e,
+                                  {
+                                    "message": e.encode_json(),
+                                    ?"event.original": state.?preserve_original_event.orValue(false) ?
+                                      optional.of(e.encode_json())
+                                    :
+                                      optional.none(),
+                                  }
+                                )
+                              )
+                            :
+                              dyn([{"retry": true}])
+                          ).as(events_out,
+                            {
+                              "events": events_out,
+                              "want_more": false,
+                              "cursor": {
+                                "first_poll": false,
+                              },
+                            }
+                          )
+                        )
+                      )
+                  )
+              )
+            :
+              {
+                "events": {
+                  "error": {
+                    "code": string(resp.StatusCode),
+                    "id": string(resp.Status),
+                    "message": "POST /v1/scans/results/export: " + (
+                      (size(resp.Body) != 0) ?
+                        string(resp.Body)
+                      :
+                        string(resp.Status) + " (" + string(resp.StatusCode) + ")"
+                    ),
+                  },
+                },
+                "want_more": false,
+              }
+          )
+        )
+      )
+    )
+  )
+tags:
+{{#if preserve_original_event}}
+  - preserve_original_event
+{{/if}}
+{{#if preserve_duplicate_custom_fields}}
+  - preserve_duplicate_custom_fields
+{{/if}}
+{{#each tags as |tag|}}
+  - {{tag}}
+{{/each}}
+{{#contains "forwarded" tags}}
+publisher_pipeline.disable_host: true
+{{/contains}}
+processors:
+  - drop_event.when.equals.retry: true
+{{#if processors}}
+{{processors}}
+{{/if}}

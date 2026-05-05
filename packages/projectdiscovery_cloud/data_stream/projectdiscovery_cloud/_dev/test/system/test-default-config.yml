@@ -1,0 +1,16 @@
+wait_for_data_timeout: 1m
+input: cel
+service: projectdiscovery_cloud-projectdiscovery_cloud-mock
+vars:
+  url: http://{{Hostname}}:{{Port}}
+  api_key: pdcp-test-api-key
+data_stream:
+  vars:
+    interval: 1h
+    initial_interval: last_week
+    http_client_timeout: 300s
+    enable_request_tracer: false
+    preserve_original_event: false
+    preserve_duplicate_custom_fields: false
+assert:
+  hit_count: 1

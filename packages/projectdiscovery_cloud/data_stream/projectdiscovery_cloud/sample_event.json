@@ -1,0 +1,218 @@
+{
+    "@timestamp": "2026-05-05T10:15:22.000Z",
+    "agent": {
+        "ephemeral_id": "6f05d88d-86fe-47dd-9906-5089c7839d53",
+        "id": "ea6be6f1-7947-455f-b35c-0a80f4bd8fd2",
+        "name": "elastic-agent-98442",
+        "type": "filebeat",
+        "version": "9.3.3"
+    },
+    "data_stream": {
+        "dataset": "projectdiscovery_cloud.projectdiscovery_cloud",
+        "namespace": "67885",
+        "type": "logs"
+    },
+    "destination": {
+        "as": {
+            "number": 64500,
+            "organization": {
+                "name": "Documentation ASN"
+            }
+        },
+        "domain": "example.com",
+        "geo": {
+            "city_name": "Las Vegas",
+            "continent_name": "North America",
+            "country_iso_code": "US",
+            "country_name": "United States",
+            "location": {
+                "coordinates": [
+                    -115.13722007162869,
+                    36.17496999911964
+                ],
+                "type": "Point"
+            },
+            "region_iso_code": "US-NV",
+            "region_name": "Nevada"
+        },
+        "ip": "192.0.2.10",
+        "port": 443
+    },
+    "ecs": {
+        "version": "9.3.0"
+    },
+    "elastic_agent": {
+        "id": "ea6be6f1-7947-455f-b35c-0a80f4bd8fd2",
+        "snapshot": false,
+        "version": "9.3.3"
+    },
+    "event": {
+        "agent_id_status": "verified",
+        "category": [
+            "vulnerability"
+        ],
+        "created": "2026-05-05T10:15:22.000Z",
+        "dataset": "projectdiscovery_cloud.projectdiscovery_cloud",
+        "ingested": "2026-05-05T19:52:45Z",
+        "kind": "event",
+        "module": "projectdiscovery_cloud",
+        "type": [
+            "info"
+        ]
+    },
+    "http": {
+        "request": {
+            "body": {
+                "content": "GET /login?q=test HTTP/1.1\r\nHost: example.com\r\n\r\n"
+            }
+        },
+        "response": {
+            "body": {
+                "content": "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html>...</html>"
+            }
+        }
+    },
+    "input": {
+        "type": "cel"
+    },
+    "network": {
+        "direction": "external",
+        "protocol": "http"
+    },
+    "projectdiscovery_cloud": {
+        "asset_metadata": {
+            "created_at": "2026-05-04T09:00:00.000Z",
+            "domain_name": "example.com",
+            "enumeration_id": "01JBCDEXAMPLEENUMID01",
+            "host": "example.com",
+            "id": 424242,
+            "is_internal": false,
+            "is_new": false,
+            "name": "example-root-scan",
+            "technologies": "ExampleCDN",
+            "updated_at": "2026-05-05T09:30:00.000Z"
+        },
+        "classification": {
+            "cpe": "cpe:2.3:a:example:examplecms:2.1:*:*:*:*:*:*:*",
+            "cve_id": "CVE-2026-0001",
+            "cvss_metrics": "3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+            "cwe_id": "cwe-79",
+            "epss_percentile": 0.45,
+            "epss_score": 0.12,
+            "metadata": {
+                "vendor_version": "ExampleCMS 2.1"
+            }
+        },
+        "description": "Detects a known vulnerable ExampleCMS configuration.",
+        "event": {
+            "curl_command": "curl -s -X GET 'https://example.com/login?q=test'",
+            "extracted_results": "ExampleCMS/2.1",
+            "extractor_name": "",
+            "host": "example.com",
+            "info": {
+                "author": "example-author",
+                "classification": {
+                    "cpe": "cpe:2.3:a:example:examplecms:2.1:*:*:*:*:*:*:*",
+                    "cve_id": "CVE-2026-0001",
+                    "cvss_metrics": "3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+                    "cvss_score": 7.1,
+                    "cwe_id": "cwe-79",
+                    "epss_percentile": 0.45,
+                    "epss_score": 0.12
+                },
+                "description": "Detects a known vulnerable ExampleCMS configuration.",
+                "impact": "May allow unauthorized modification of content.",
+                "metadata": {
+                    "vendor_version": "ExampleCMS 2.1"
+                },
+                "name": "Example CVE Detection Template",
+                "reference": "https://www.example.com/security/example",
+                "remediation": "Upgrade ExampleCMS to 2.2 or later.",
+                "severity": "high",
+                "tags": "cve"
+            },
+            "ip": "192.0.2.10",
+            "issue_trackers": {
+                "jira": {
+                    "id": "EXAMPLE-123",
+                    "url": "https://example.atlassian.net/browse/EXAMPLE-123"
+                }
+            },
+            "matched_at": "https://example.com/login?q=test",
+            "matcher_name": "status-code",
+            "matcher_status": true,
+            "path": "/login",
+            "port": "443",
+            "request": "GET /login?q=test HTTP/1.1\r\nHost: example.com\r\n\r\n",
+            "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<html>...</html>",
+            "template_id": "example-cve",
+            "template_path": "http/cves/example-cve.yaml",
+            "timestamp": "2026-05-05T10:15:22.000Z",
+            "type": "http"
+        },
+        "impact": "May allow unauthorized modification of content.",
+        "is_internal": false,
+        "is_regression": false,
+        "labels": "p2",
+        "matcher_status": true,
+        "port": 443,
+        "reference": "https://www.example.com/security/example",
+        "references": "https://www.example.com/security/example",
+        "remediation": "Upgrade ExampleCMS to 2.2 or later.",
+        "result_type": "http",
+        "scan_id": "01JBCDEXAMPLEPDSCANID01",
+        "template": {
+            "tags": "cve"
+        },
+        "template_encoded": "",
+        "template_path": "http/cves/example-cve.yaml",
+        "template_url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/cves/example-cve.yaml",
+        "updated_at": "2026-05-05T11:02:44.000Z",
+        "vuln_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+        "vuln_status": "open"
+    },
+    "related": {
+        "hash": [
+            "sha256:0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "hosts": [
+            "example.com"
+        ],
+        "ip": [
+            "192.0.2.10"
+        ]
+    },
+    "rule": {
+        "author": [
+            "example-author"
+        ],
+        "id": "example-cve",
+        "name": "Example CVE Detection Template"
+    },
+    "tags": [
+        "forwarded",
+        "projectdiscovery_cloud-vulnerability",
+        "cve"
+    ],
+    "url": {
+        "domain": "example.com",
+        "original": "https://example.com/login?q=test",
+        "path": "/login",
+        "port": 443,
+        "scheme": "https"
+    },
+    "vulnerability": {
+        "description": "Detects a known vulnerable ExampleCMS configuration.",
+        "enumeration": "CVE",
+        "id": "01JBCDEXAMPLEPDCPVULN01",
+        "reference": "https://www.example.com/security/example",
+        "scanner": {
+            "vendor": "ProjectDiscovery"
+        },
+        "score": {
+            "base": 7.1,
+            "version": "3.1"
+        },
+        "severity": "high"
+    }
+}

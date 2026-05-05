@@ -1,0 +1,241 @@
+- name: projectdiscovery_cloud
+  type: group
+  description: >-
+    Fields collected from ProjectDiscovery Cloud Platform vulnerability export rows. ECS-normalized equivalents are surfaced at the document root whenever semantics match ECS.
+  fields:
+    - name: is_internal
+      type: boolean
+      description: PDCP-internal asset flag echoed from the exporter row.
+    # Primary detection ECS projection uses event[0] only; retained rows stay here.
+    - name: event
+      type: nested
+      description: Normalized nuclei detection objects (underscore keys) emitted by PDCP.
+      fields:
+        - name: curl_command
+          type: keyword
+        - name: extracted_results
+          type: keyword
+        - name: extractor_name
+          type: keyword
+        - name: host
+          type: keyword
+        - name: ip
+          type: ip
+        - name: matched_at
+          type: keyword
+          description: Exact URL or string that the detection matched.
+        - name: matched_line
+          type: long
+        - name: matcher_name
+          type: keyword
+        - name: matcher_status
+          type: boolean
+        - name: path
+          type: keyword
+        - name: port
+          type: keyword
+        - name: request
+          type: match_only_text
+        - name: response
+          type: match_only_text
+        - name: template_id
+          type: keyword
+        - name: template_path
+          type: keyword
+        - name: timestamp
+          type: date
+        - name: type
+          type: keyword
+        - name: info
+          type: group
+          fields:
+            - name: name
+              type: keyword
+            - name: severity
+              type: keyword
+            - name: tags
+              type: keyword
+            - name: author
+              type: keyword
+            - name: description
+              type: match_only_text
+            - name: impact
+              type: match_only_text
+            - name: remediation
+              type: match_only_text
+            - name: reference
+              type: keyword
+            - name: metadata
+              type: flattened
+            - name: classification
+              type: group
+              fields:
+                - name: cpe
+                  type: keyword
+                - name: cvss_metrics
+                  type: keyword
+                - name: cvss_score
+                  type: double
+                - name: epss_score
+                  type: double
+                - name: epss_percentile
+                  type: double
+                - name: cve_id
+                  type: keyword
+                - name: cwe_id
+                  type: keyword
+        - name: issue_trackers
+          type: group
+          fields:
+            - name: jira
+              type: group
+              fields:
+                - name: id
+                  type: keyword
+                - name: url
+                  type: keyword
+            - name: github
+              type: group
+              fields:
+                - name: id
+                  type: keyword
+                - name: url
+                  type: keyword
+            - name: gitlab
+              type: group
+              fields:
+                - name: id
+                  type: keyword
+                - name: url
+                  type: keyword
+            - name: linear
+              type: group
+              fields:
+                - name: id
+                  type: keyword
+                - name: url
+                  type: keyword
+            - name: custom
+              type: group
+              fields:
+                - name: id
+                  type: keyword
+                - name: url
+                  type: keyword
+    - name: template
+      type: group
+      fields:
+        - name: tags
+          type: keyword
+          description: Template tag vocabulary copied from PDCP detection metadata.
+    - name: classification
+      type: group
+      description: Enumeration metadata copied from the primary detection's info.classification block.
+      fields:
+        - name: cve_id
+          type: keyword
+        - name: cwe_id
+          type: keyword
+        - name: cvss_metrics
+          type: keyword
+          description: Raw CVSS vector string from PDCP.
+        - name: epss_score
+          type: double
+        - name: epss_percentile
+          type: double
+        - name: cpe
+          type: keyword
+        - name: metadata
+          type: flattened
+    - name: references
+      type: keyword
+      description: Full reference URLs retained from PDCP alongside ECS vulnerability.reference scalar.
+    - name: reference
+      type: keyword
+      description: Top-level reference URLs from the exporter payload when present separately from ECS fields.
+    - name: matcher_status
+      type: boolean
+    - name: is_regression
+      type: boolean
+    - name: vuln_hash
+      type: keyword
+    - name: vuln_status
+      type: keyword
+    - name: vuln_id
+      type: keyword
+      description: Raw exporter identifier when duplication analysis needs the original casing.
+    - name: scan_id
+      type: keyword
+    - name: template_id
+      type: keyword
+      description: Top-level exporter template identifier after ingest hoisting.
+    - name: template_path
+      type: keyword
+    - name: template_url
+      type: keyword
+    - name: template_encoded
+      type: keyword
+    - name: target
+      type: keyword
+      description: Target URL string echoed from PDCP.
+    - name: updated_at
+      type: date
+    - name: remediation
+      type: match_only_text
+    - name: impact
+      type: match_only_text
+    - name: description
+      type: match_only_text
+    - name: result_type
+      type: keyword
+    - name: labels
+      type: keyword
+      description: Row-level labels emitted by PDCP (distinct from ECS labels metadata object).
+    - name: port
+      type: long
+    - name: asset_metadata
+      type: group
+      fields:
+        - name: enumeration_id
+          type: keyword
+        - name: id
+          type: long
+        - name: name
+          type: keyword
+        - name: host
+          type: keyword
+        - name: domain_name
+          type: keyword
+        - name: created_at
+          type: date
+        - name: updated_at
+          type: date
+        - name: technologies
+          type: keyword
+        - name: is_new
+          type: boolean
+        - name: is_internal
+          type: boolean
+        - name: labels
+          type: keyword
+        - name: asn
+          type: group
+          fields:
+            - name: as_number
+              type: keyword
+            - name: as_name
+              type: keyword
+            - name: as_country
+              type: keyword
+            - name: as_range
+              type: keyword
+        - name: ip
+          type: ip
+        - name: asset_hash
+          type: keyword
+        - name: technology_details
+          type: flattened
+        - name: extended_metadata
+          type: flattened
+        - name: source
+          type: flattened

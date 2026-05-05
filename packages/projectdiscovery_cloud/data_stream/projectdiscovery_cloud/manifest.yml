@@ -1,0 +1,157 @@
+title: "projectdiscovery_cloud"
+type: logs
+streams:
+  - input: cel
+    title: Vulnerability findings
+    description: Collect vulnerability findings from ProjectDiscovery Cloud via the export API.
+    template_path: cel.yml.hbs
+    vars:
+      - name: interval
+        type: text
+        title: Polling interval
+        description: How often the export API is queried.
+        multi: false
+        required: true
+        show_user: true
+        default: 1h
+      - name: initial_interval
+        type: text
+        title: First poll time window
+        description: >
+          PDCP `time` enum value used only on the first successful poll (`last_day`, `last_week`, `last_month`, `last_3_months`, `last_6_months`, `last_12_months`, `all_time`). Subsequent polls use `last_day`.
+
+        multi: false
+        required: true
+        show_user: true
+        default: last_week
+      - name: severity
+        type: text
+        title: Severities filter
+        description: >-
+          Optional comma-separated severities (for example, critical, high, medium). Mapped to the export request `severity` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: vuln_status
+        type: text
+        title: Vulnerability status
+        description: >-
+          Optional PDCP vuln_status value (single), for example, open, fixed, false_positive, triaged, duplicate, fix_in_progress, or accepted_risk.
+        multi: false
+        required: false
+        show_user: true
+      - name: is_internal
+        type: text
+        title: Internal assets filter
+        description: >-
+          Optional. Leave empty to omit the filter. Set to true or false (case-insensitive) to constrain the export body field `is_internal`. Implemented as text so "unset" stays distinct from filtering to false.
+        multi: false
+        required: false
+        show_user: true
+      - name: categories
+        type: text
+        title: Template categories
+        description: >-
+          Optional comma-separated template categories. Sent as export `category` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: templates
+        type: text
+        title: Template IDs
+        description: >-
+          Optional comma-separated Nuclei template IDs. Sent as export `template` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: scan_ids
+        type: text
+        title: Scan IDs
+        description: Optional comma-separated scan IDs limiting the export (`scan_ids` array body field).
+        multi: false
+        required: false
+        show_user: true
+      - name: hosts
+        type: text
+        title: Host constraint
+        description: >-
+          Optional comma-separated hosts. Exported as PDCP body `host` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: domains
+        type: text
+        title: Domain constraint
+        description: >-
+          Optional comma-separated domains. Sent as export `domain` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: ports
+        type: text
+        title: Port constraint
+        description: Optional comma-separated integers. Exported as PDCP export `port` array.
+        multi: false
+        required: false
+        show_user: true
+      - name: search_query
+        type: text
+        title: Text search constraint
+        description: >-
+          Optional free-text search. Mapped to the export field `search` (API parameter name differs from this var).
+        multi: false
+        required: false
+        show_user: true
+      - name: enable_request_tracer
+        type: bool
+        title: Enable request tracer
+        description: Logs HTTP traces to disk for troubleshooting.
+        multi: false
+        required: false
+        default: false
+        show_user: false
+      - name: http_client_timeout
+        type: text
+        title: HTTP client timeout
+        description: >-
+          Timeout for POST export (`300s` or similar). Large tenants may produce large payloads.
+        multi: false
+        required: false
+        default: 300s
+        show_user: false
+      - name: tags
+        type: text
+        title: Tags
+        description: Processor tags forwarded to Fleet.
+        multi: true
+        required: true
+        show_user: true
+        default:
+          - forwarded
+          - projectdiscovery_cloud-vulnerability
+      - name: processors
+        type: yaml
+        title: Processors
+        description: YAML block with additional Fleet processors appended after mandatory drop-events.
+        required: false
+        show_user: false
+      - name: preserve_original_event
+        type: bool
+        title: Preserve original event JSON
+        description: Copies the raw JSON blob into event.original alongside `message`.
+        multi: false
+        required: true
+        show_user: true
+        default: false
+      - name: preserve_duplicate_custom_fields
+        type: bool
+        title: Preserve duplicate ECS mappings
+        description: Adds the preserve_duplicate_custom_fields agent tag when enabled.
+        multi: false
+        required: true
+        default: false
+        show_user: true
+elasticsearch:
+  index_template:
+    mappings:
+      subobjects: false
