@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "fixture_notes": [
+      "Synthesized GET /reports/{id}-style envelope from customer-resources examples (2026-04-14 revision). See https://api.hackerone.com/customer-resources/#reports-get-report",
+      "CONSTRUCTED: `main_state` is required per https://api.hackerone.com/customer-reference#report but omitted in some official examples — set to `open` as a plausible value for an active vulnerability report alongside `state: \"new\"`",
+      "`included` added as empty array for strict JSON:API-style fixtures."
+    ]
+  },
+  "data": {
+    "id": "1337",
+    "type": "report",
+    "attributes": {
+      "title": "XSS in login form",
+      "main_state": "open",
+      "state": "new",
+      "created_at": "2016-02-02T04:05:06.000Z",
+      "vulnerability_information": "...",
+      "triaged_at": null,
+      "closed_at": null,
+      "last_reporter_activity_at": null,
+      "first_program_activity_at": null,
+      "last_program_activity_at": null,
+      "last_activity_at": null,
+      "last_public_activity_at": null,
+      "bounty_awarded_at": null,
+      "swag_awarded_at": null,
+      "disclosed_at": null,
+      "reporter_agreed_on_going_public_at": null,
+      "issue_tracker_reference_id": null,
+      "issue_tracker_reference_url": null,
+      "cve_ids": [],
+      "source": null
+    },
+    "relationships": {
+      "reporter": {
+        "data": {
+          "id": "1337",
+          "type": "user",
+          "attributes": {
+            "username": "api-example",
+            "name": "API Example",
+            "disabled": false,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "profile_picture": {
+              "62x62": "/assets/avatars/default.png",
+              "82x82": "/assets/avatars/default.png",
+              "110x110": "/assets/avatars/default.png",
+              "260x260": "/assets/avatars/default.png"
+            },
+            "reputation": null,
+            "signal": null,
+            "impact": null
+          }
+        }
+      },
+      "program": {
+        "data": {
+          "id": "1337",
+          "type": "program",
+          "attributes": {
+            "handle": "security",
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "updated_at": "2016-02-02T04:05:06.000Z"
+          }
+        }
+      },
+      "collaborators": { "data": [] },
+      "assignee": { "data": null },
+      "weakness": { "data": null },
+      "structured_scope": { "data": null },
+      "severity": { "data": null },
+      "campaign": null,
+      "attachments": { "data": [] },
+      "activities": { "data": [] },
+      "bounties": { "data": [] },
+      "summaries": { "data": [] },
+      "swag": { "data": [] },
+      "custom_field_values": { "data": [] },
+      "automated_remediation_guidance": { "data": null },
+      "custom_remediation_guidance": { "data": null },
+      "inboxes": { "data": [] }
+    }
+  },
+  "included": []
+}

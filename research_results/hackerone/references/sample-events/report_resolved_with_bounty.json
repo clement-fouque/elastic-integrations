@@ -1,0 +1,652 @@
+{
+  "meta": {
+    "fixture_notes": [
+      "Merged examples from GET /reports/{id} customer-resources (2026-04-14), `#bounty` object, `#activity-bounty-awarded`, `#activity-bug-resolved`, `#activity-swag-awarded` / `#swag` / `#address`, and abbreviated `#campaign`.",
+      "CONSTRUCTED: report-level timestamps (`closed_at`, `last_*`) sequence after resolution and bountyAward; Hai SLA timer fields omitted (null-heavy) for fixture brevity unless needed by tests.",
+      "CONSTRUCTED: `campaign` object IDs use `<id>` placeholders from `#campaign` section — replaced by synthetic opaque IDs for valid JSON parity."
+    ]
+  },
+  "data": {
+    "id": "1337",
+    "type": "report",
+    "attributes": {
+      "title": "XSS in login form",
+      "main_state": "closed",
+      "state": "resolved",
+      "created_at": "2016-02-02T04:05:06.000Z",
+      "vulnerability_information": "Steps to reproduce: ...",
+      "triaged_at": "2016-02-03T09:15:06.000Z",
+      "closed_at": "2016-02-10T16:00:00.000Z",
+      "last_reporter_activity_at": "2016-02-09T14:05:06.000Z",
+      "first_program_activity_at": "2016-02-02T06:05:06.000Z",
+      "last_program_activity_at": "2016-02-10T16:00:00.000Z",
+      "last_activity_at": "2016-02-10T16:00:00.000Z",
+      "last_public_activity_at": "2016-02-09T17:05:56.627Z",
+      "bounty_awarded_at": "2016-02-10T12:05:06.000Z",
+      "swag_awarded_at": "2016-02-10T12:10:06.000Z",
+      "disclosed_at": null,
+      "reporter_agreed_on_going_public_at": null,
+      "issue_tracker_reference_id": "T7413",
+      "issue_tracker_reference_url": "https://example.com/T7413",
+      "cve_ids": ["CVE-2016-0001"],
+      "source": null
+    },
+    "relationships": {
+      "reporter": {
+        "data": {
+          "id": "1337",
+          "type": "user",
+          "attributes": {
+            "username": "api-example",
+            "name": "API Example",
+            "disabled": false,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "profile_picture": {
+              "62x62": "/assets/avatars/default.png",
+              "82x82": "/assets/avatars/default.png",
+              "110x110": "/assets/avatars/default.png",
+              "260x260": "/assets/avatars/default.png"
+            },
+            "reputation": 7,
+            "signal": 7,
+            "impact": 30
+          }
+        }
+      },
+      "collaborators": {
+        "data": [
+          {
+            "weight": 1,
+            "user": {
+              "id": "1337",
+              "type": "user",
+              "attributes": {
+                "username": "api-example",
+                "name": "API Example",
+                "disabled": false,
+                "created_at": "2016-02-02T04:05:06.000Z",
+                "profile_picture": {
+                  "62x62": "/assets/avatars/default.png",
+                  "82x82": "/assets/avatars/default.png",
+                  "110x110": "/assets/avatars/default.png",
+                  "260x260": "/assets/avatars/default.png"
+                },
+                "reputation": 7,
+                "signal": 7,
+                "impact": 30
+              }
+            }
+          },
+          {
+            "weight": 1,
+            "user": {
+              "id": "1338",
+              "type": "user",
+              "attributes": {
+                "username": "api-example 2",
+                "name": "API Example 2",
+                "disabled": false,
+                "created_at": "2016-02-02T04:05:06.000Z",
+                "profile_picture": {
+                  "62x62": "/assets/avatars/default.png",
+                  "82x82": "/assets/avatars/default.png",
+                  "110x110": "/assets/avatars/default.png",
+                  "260x260": "/assets/avatars/default.png"
+                },
+                "reputation": 7,
+                "signal": 7,
+                "impact": 30
+              }
+            }
+          }
+        ]
+      },
+      "assignee": {
+        "data": {
+          "id": "2557",
+          "type": "group",
+          "attributes": {
+            "name": "Standard",
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "permissions": ["report_management", "reward_management"]
+          }
+        }
+      },
+      "program": {
+        "data": {
+          "id": "1337",
+          "type": "program",
+          "attributes": {
+            "handle": "security",
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "updated_at": "2016-02-02T04:05:06.000Z"
+          }
+        }
+      },
+      "severity": {
+        "data": {
+          "id": "57",
+          "type": "severity",
+          "attributes": {
+            "rating": "high",
+            "author_type": "User",
+            "user_id": 1337,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "score": 8.7,
+            "attack_complexity": "low",
+            "attack_vector": "adjacent",
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high",
+            "privileges_required": "low",
+            "user_interaction": "required",
+            "scope": "changed",
+            "calculation_method": "cvss_3_1",
+            "cvss_vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L"
+          }
+        }
+      },
+      "weakness": {
+        "data": {
+          "id": "1337",
+          "type": "weakness",
+          "attributes": {
+            "name": "Cross-Site Request Forgery (CSRF)",
+            "description": "The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.",
+            "external_id": "cwe-352",
+            "created_at": "2016-02-02T04:05:06.000Z"
+          }
+        }
+      },
+      "structured_scope": {
+        "data": {
+          "id": "287",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "URL",
+            "asset_identifier": "www.hackerone.com",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "This asset does not contain any highly confidential information.",
+            "max_severity": "critical",
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "updated_at": "2016-02-02T04:05:06.000Z",
+            "reference": "T12345",
+            "confidentiality_requirement": "medium",
+            "integrity_requirement": "high",
+            "availability_requirement": "medium"
+          }
+        }
+      },
+      "campaign": {
+        "data": {
+          "id": "9001",
+          "type": "campaign",
+          "attributes": {
+            "campaign_type": "multiplier",
+            "researchers_information": "Focus on authentication bypass vulnerabilities",
+            "critical": 2,
+            "high": 1.5,
+            "medium": 1.5,
+            "low": 1,
+            "bounty_pool_limit": null,
+            "start_date": "2026-04-01T01:00:00.000Z",
+            "end_date": "2026-04-10T23:00:00.000Z",
+            "status": "inactive",
+            "target_audience": false,
+            "extended_at": null,
+            "total_reports": 0,
+            "valid_reports": 0,
+            "total_critical_reports": 0,
+            "total_high_reports": 0,
+            "bounty_spent": 0
+          }
+        }
+      },
+      "attachments": {
+        "data": []
+      },
+      "activities": {
+        "data": [
+          {
+            "id": "1337",
+            "type": "activity-bounty-awarded",
+            "attributes": {
+              "report_id": "string",
+              "message": "Bounty Awarded!",
+              "internal": false,
+              "created_at": "2016-02-10T12:05:06.000Z",
+              "updated_at": "2016-02-10T12:05:06.000Z",
+              "bounty_amount": "500",
+              "bonus_amount": "50"
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "program",
+                  "attributes": {
+                    "handle": "security",
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "updated_at": "2016-02-02T04:05:06.000Z"
+                  }
+                }
+              },
+              "attachments": {
+                "data": [
+                  {
+                    "id": "1337",
+                    "type": "attachment",
+                    "attributes": {
+                      "expiring_url": "/system/attachments/files/000/001/337/original/root.rb?1454385906",
+                      "created_at": "2016-02-02T04:05:06.000Z",
+                      "file_name": "root.rb",
+                      "content_type": "text/x-ruby",
+                      "file_size": 2871
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "1338",
+            "type": "activity-swag-awarded",
+            "attributes": {
+              "report_id": "string",
+              "message": "Swag Awarded!",
+              "internal": false,
+              "created_at": "2016-02-10T12:10:06.000Z",
+              "updated_at": "2016-02-10T12:10:06.000Z"
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "attachments": {
+                "data": [
+                  {
+                    "id": "1338",
+                    "type": "attachment",
+                    "attributes": {
+                      "expiring_url": "/system/attachments/files/000/001/337/original/root.rb?1454385906",
+                      "created_at": "2016-02-02T04:05:06.000Z",
+                      "file_name": "root.rb",
+                      "content_type": "text/x-ruby",
+                      "file_size": 2871
+                    }
+                  }
+                ]
+              },
+              "swag": {
+                "data": {
+                  "id": "1337",
+                  "type": "swag",
+                  "attributes": {
+                    "sent": false,
+                    "created_at": "2016-02-02T04:05:06.000Z"
+                  },
+                  "relationships": {
+                    "address": {
+                      "data": {
+                        "id": "1337",
+                        "type": "address",
+                        "attributes": {
+                          "name": "Jane Doe",
+                          "street": "535 Mission Street",
+                          "city": "San Francisco",
+                          "postal_code": "94105",
+                          "state": "CA",
+                          "country": "United States of America",
+                          "created_at": "2016-02-02T04:05:06.000Z",
+                          "tshirt_size": "M_Large",
+                          "phone_number": "+1-510-000-0000"
+                        }
+                      }
+                    },
+                    "user": {
+                      "data": {
+                        "id": "1337",
+                        "type": "user",
+                        "attributes": {
+                          "username": "api-example",
+                          "name": "API Example",
+                          "disabled": false,
+                          "created_at": "2016-02-02T04:05:06.000Z",
+                          "profile_picture": {
+                            "62x62": "/assets/avatars/default.png",
+                            "82x82": "/assets/avatars/default.png",
+                            "110x110": "/assets/avatars/default.png",
+                            "260x260": "/assets/avatars/default.png"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "1339",
+            "type": "activity-bug-new",
+            "attributes": {
+              "report_id": "string",
+              "message": "Bug New!",
+              "internal": false,
+              "created_at": "2016-02-02T04:05:06.000Z",
+              "updated_at": "2016-02-02T04:05:06.000Z"
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "attachments": {
+                "data": []
+              }
+            }
+          },
+          {
+            "id": "1340",
+            "type": "activity-bug-triaged",
+            "attributes": {
+              "report_id": "string",
+              "message": "Bug Triaged!",
+              "internal": false,
+              "created_at": "2016-02-03T09:15:06.000Z",
+              "updated_at": "2016-02-03T09:15:06.000Z"
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1338",
+                  "type": "user",
+                  "attributes": {
+                    "username": "member",
+                    "name": "Member",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "attachments": { "data": [] }
+            }
+          },
+          {
+            "id": "1341",
+            "type": "activity-bug-resolved",
+            "attributes": {
+              "message": "Bug Resolved!",
+              "created_at": "2016-02-10T16:00:00.000Z",
+              "updated_at": "2016-02-10T16:00:00.000Z",
+              "internal": false
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "attachments": { "data": [] }
+            }
+          },
+          {
+            "type": "activity-reference-id-added",
+            "id": "445",
+            "attributes": {
+              "message": "Reference Id Added!",
+              "created_at": "2016-02-02T04:05:06.000Z",
+              "updated_at": "2016-02-02T04:05:06.000Z",
+              "internal": true,
+              "reference": "T7413",
+              "reference_url": "https://example.com/T7413"
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "member",
+                    "name": "Member",
+                    "disabled": false,
+                    "created_at": "2019-08-24T08:41:53.068Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "attachments": { "data": [] }
+            }
+          }
+        ]
+      },
+      "bounties": {
+        "data": [
+          {
+            "id": "1337",
+            "type": "bounty",
+            "attributes": {
+              "amount": "500.00",
+              "bonus_amount": "50.00",
+              "awarded_amount": "415.96",
+              "awarded_bonus_amount": "41.60",
+              "awarded_currency": "EUR",
+              "created_at": "2016-02-02T04:05:06.000Z"
+            }
+          }
+        ]
+      },
+      "summaries": {
+        "data": [
+          {
+            "id": "1337",
+            "type": "report-summary",
+            "attributes": {
+              "content": "There was a cross-site scripting vulnerability in our login form.",
+              "category": "team",
+              "created_at": "2016-02-02T04:05:06.000Z",
+              "updated_at": "2016-02-02T04:05:06.000Z"
+            },
+            "relationships": {
+              "attachments": { "data": [] },
+              "user": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "swag": {
+        "data": [
+          {
+            "id": "1337",
+            "type": "swag",
+            "attributes": {
+              "sent": false,
+              "created_at": "2016-02-02T04:05:06.000Z"
+            },
+            "relationships": {
+              "user": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              },
+              "address": {
+                "data": {
+                  "id": "1337",
+                  "type": "address",
+                  "attributes": {
+                    "name": "Jane Doe",
+                    "street": "535 Mission Street",
+                    "city": "San Francisco",
+                    "postal_code": "94105",
+                    "state": "CA",
+                    "country": "United States of America",
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "tshirt_size": "W_Large",
+                    "phone_number": "+1-510-000-0000"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "custom_field_values": {
+        "data": []
+      },
+      "automated_remediation_guidance": {
+        "data": {
+          "id": "1",
+          "type": "automated-remediation-guidance",
+          "attributes": {
+            "reference": "https://cwe.mitre.org/data/definitions/120.html",
+            "created_at": "2020-10-23T12:09:37.859Z"
+          }
+        }
+      },
+      "custom_remediation_guidance": {
+        "data": {
+          "id": "84",
+          "type": "custom-remediation-guidance",
+          "attributes": {
+            "message": "Check buffer boundaries if accessing the buffer in a loop and make sure you are not in danger of writing past the allocated space.",
+            "created_at": "2020-10-26T08:47:23.296Z"
+          },
+          "relationships": {
+            "author": {
+              "data": {
+                "id": "1338",
+                "type": "user",
+                "attributes": {
+                  "username": "api-example-2",
+                  "name": "API Example 2",
+                  "disabled": false,
+                  "created_at": "2020-10-22T01:22:05.402Z",
+                  "profile_picture": {
+                    "62x62": "/assets/avatars/default.png",
+                    "82x82": "/assets/avatars/default.png",
+                    "110x110": "/assets/avatars/default.png",
+                    "260x260": "/assets/avatars/default.png"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inboxes": {
+        "data": [
+          {
+            "id": "13",
+            "type": "inbox",
+            "attributes": {
+              "name": "HackerOne",
+              "type": "default"
+            }
+          },
+          {
+            "id": "65",
+            "type": "inbox",
+            "attributes": {
+              "name": "Custom Inbox number one",
+              "type": "custom"
+            }
+          }
+        ]
+      },
+      "triggered_pre_submission_trigger": {
+        "data": {
+          "id": "1337",
+          "type": "trigger",
+          "attributes": {
+            "title": "Example Trigger"
+          }
+        }
+      }
+    }
+  },
+  "included": []
+}

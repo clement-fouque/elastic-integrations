@@ -1,0 +1,880 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none';
+      block-all-mixed-content; connect-src 'self' www.google-analytics.com
+      cdn.jsdelivr.net *.algolia.net *.algolianet.com; font-src 'self';
+      img-src 'self' data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'
+      www.google-analytics.com cdn.jsdelivr.net *.algolia.net *.algolianet.com;
+      style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; form-action 'self';">
+    <link rel='shortcut icon' type='image/x-icon' href='../assets/images/favicon.ico' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    <link rel="preconnect" href="https://8NAIIMTFB5-dsn.algolia.net" crossorigin />
+    <link rel="alternate" href="/changelog.rss" title="Changelog RSS" type="application/rss+xml" />
+    <title>HackerOne API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../assets/stylesheets/screen-3e3f5655.css" rel="stylesheet" media="screen" />
+    <link href="../assets/stylesheets/print-058b6ba1.css" rel="stylesheet" media="print" />
+
+  <script src="../assets/javascripts/lib/jquery-6ee8aaa3.js"></script>
+  <script src="../assets/javascripts/lib/energize-c9ca2008.js"></script>
+  <script src="../assets/javascripts/app/toc-8871687e.js"></script>
+  <script src="../assets/javascripts/app/lang-88b01eee.js"></script>
+  <script src="../assets/javascripts/app/breadcrumbs-cdf04b49.js"></script>
+  <script src="../assets/javascripts/all-6f28b40b.js"></script>
+  </head>
+
+  <body class="getting-started getting-started_index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../assets/images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <div class="logo">
+        <a href="/">
+          <img src="../assets/images/logo-bbd4b66d.svg" alt="" />
+        </a>
+      </div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+      <div id="docsearch"></div>
+      <ul id="toc" class="toc-list-h1">
+        <li>
+          <a href="/" class="toc-h1 toc-link toc-link-home " data-title="Home">Home</a>
+        </li>
+
+        <p class="toc-list-api-divider">CUSTOMERS</p>
+
+          <li>
+            <a href="#getting-started" target="_self" class="toc-h1 toc-link toc-link-getting-started" data-title="Getting Started">
+              Getting Started
+            </a>
+                  <ul class="toc-list-h2">
+                      <li>
+                        <a href="#api-sandbox" class="toc-h2 toc-link" data-title="API sandbox">API sandbox</a>
+                      </li>
+                      <li>
+                        <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                      </li>
+                      <li>
+                        <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
+                      </li>
+                      <li>
+                        <a href="#error-responses" class="toc-h2 toc-link" data-title="Error Responses">Error Responses</a>
+                      </li>
+                      <li>
+                        <a href="#versioning" class="toc-h2 toc-link" data-title="Versioning">Versioning</a>
+                      </li>
+                      <li>
+                        <a href="#clients" class="toc-h2 toc-link" data-title="Clients">Clients</a>
+                      </li>
+                      <li>
+                        <a href="#changelog" class="toc-h2 toc-link" data-title="Changelog">Changelog</a>
+                      </li>
+                      <li>
+                        <a href="#feedback" class="toc-h2 toc-link" data-title="Feedback">Feedback</a>
+                      </li>
+                  </ul>
+          </li>
+          <li>
+            <a href="/use-cases" target="_self" class="toc-h1 toc-link toc-link-use-cases" data-title="Use Cases">
+              Use Cases
+            </a>
+          </li>
+          <li>
+            <a href="/customer-resources" target="_self" class="toc-h1 toc-link toc-link-customer-resources" data-title="Resources">
+              Resources
+            </a>
+          </li>
+          <li>
+            <a href="/customer-reference" target="_self" class="toc-h1 toc-link toc-link-customer-reference" data-title="Reference">
+              Reference
+            </a>
+          </li>
+          <li>
+            <a href="/webhooks" target="_self" class="toc-h1 toc-link toc-link-webhooks" data-title="Webhooks">
+              Webhooks
+            </a>
+          </li>
+          <li>
+            <a href="/changelog.rss" target="_blank" class="toc-h1 toc-link toc-link-stay-updated" data-title="Stay Updated">
+              Stay Updated
+            </a>
+          </li>
+
+        <p class="toc-list-api-divider">HACKERS</p>
+
+          <li>
+            <a href="/getting-started-hacker-api" class="toc-h1 toc-link toc-link-getting-started-hacker-api" data-title="Getting Started">
+              Getting Started
+            </a>
+          </li>
+          <li>
+            <a href="/hacker-resources" class="toc-h1 toc-link toc-link-hacker-resources" data-title="Resources">
+              Resources
+            </a>
+          </li>
+          <li>
+            <a href="/hacker-reference" class="toc-h1 toc-link toc-link-hacker-reference" data-title="Reference">
+              Reference
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='getting-started'>Getting Started</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>https://api.hackerone.com/
+</code></pre></div>
+<p>The HackerOne API can be used to query or update information about reports and your HackerOne program.</p>
+
+<p>The API always returns a JSON response and implements <a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>REST</a> to access resources. The API can only be accessed over HTTPS and is compliant with the <a href='https://jsonapi.org/'>JSON API specification</a>.</p>
+
+<p>API tokens can be generated from your Program Settings if you’re already using the HackerOne Professional, Community, or Enterprise edition. If you can’t generate an API token, you can <a href='mailto:sales@hackerone.com'>contact sales</a> to upgrade your program or <a href='https://hackerone.com/teams/new/sandbox'>create a test program</a> to experiment with the API.</p>
+
+<p>To get started with the HackerOne API:</p>
+
+<ol>
+<li><a href='https://docs.hackerone.com/organizations/api-tokens.html'>Generate an API Token</a>.</li>
+<li>Go to <a href='https://api.hackerone.com/customer-resources'>Core Resources</a> and choose the endpoint you want to pull information from.</li>
+<li>Copy the curl command for the endpoint.</li>
+<li>Paste the curl command in an editor.</li>
+<li>Edit the curl code with your own information.</li>
+<li>Paste the code into your terminal or the program you normally use to run the API call.</li>
+</ol>
+<h2 id='api-sandbox'>API sandbox</h2>
+<p>HackerOne offers a sandbox for customers to help test API functionality. To
+create a sandbox program, go <a href='https://hackerone.com/teams/new/sandbox'>here</a>
+(make sure you&#39;re logged in to your HackerOne account. If you don&#39;t have an account
+yet, you can create one <a href='https://hackerone.com/users/sign_up'>here</a>). You can
+select any product edition, giving you access to almost all features HackerOne offers.</p>
+<h2 id='authentication'>Authentication</h2>
+<blockquote>
+<p>cURL example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.hackerone.com/v1/reports/129329"</span> <span class="se">\</span>
+    <span class="nt">-u</span> <span class="s2">"&lt;YOUR_API_USERNAME&gt;:&lt;YOUR_API_TOKEN&gt;"</span>
+</code></pre></div>
+<blockquote>
+<p>Replace the example credentials in the example above with your own.</p>
+</blockquote>
+
+<p>HTTP Basic authentication is used to authenticate to the API. As an Admin User you can generate
+and manage API Tokens from your organization&#39;s settings page. The API Token identifier and value
+are used as the username and password for basic authentication and must be sent in the
+Authorization header for every request.</p>
+
+<p>If you set up an IP whitelist for your account and provide valid credentials, the server
+will respond with a 403 Forbidden response. If an invalid token is provided, the server
+will respond with a 401 Unauthorized response. See the <a href='#error-codes'>error codes</a> section
+for more information how these errors are returned.</p>
+<h2 id='rate-limits'>Rate Limits</h2>
+<p>To ensure a pleasant platform experience for all our users, we have implemented several rate limits in our API. Customers who send too many requests may see an error show up with the status code: 429. We have the following rate limits in place:</p>
+
+<ul>
+<li>Read operations: 600 requests per minute (except for report pages: 300 requests/minute).</li>
+<li>Write operations: 25 requests per 20 seconds.</li>
+</ul>
+<h2 id='error-responses'>Error Responses</h2>
+<table><thead>
+<tr>
+<th style="text-align: center">Error Code</th>
+<th style="text-align: center">Meaning</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">400</td>
+<td style="text-align: center">Bad Request</td>
+<td style="text-align: left">Request does not conform with the specification. Please see the endpoint&#39;s documentation for further instructions.</td>
+</tr>
+<tr>
+<td style="text-align: center">401</td>
+<td style="text-align: center">Unauthorized</td>
+<td style="text-align: left">The client sent a request without proper identification, or the username provided is incorrect. Please note that your username is not an email address. More information about this error can be found in the Authentication section.</td>
+</tr>
+<tr>
+<td style="text-align: center">403</td>
+<td style="text-align: center">Forbidden</td>
+<td style="text-align: left">The API token does not grant the client access to perform this action. This can happen in case where the client requests a resource that belongs to another program or account.</td>
+</tr>
+<tr>
+<td style="text-align: center">404</td>
+<td style="text-align: center">Not Found</td>
+<td style="text-align: left">The requested resource is not found. The client might be using outdated information to identify the resource.</td>
+</tr>
+<tr>
+<td style="text-align: center">406</td>
+<td style="text-align: center">Not Acceptable</td>
+<td style="text-align: left">This error is returned when the client requests our API to respond in a format that we haven&#39;t implemented yet. The current version of the API only supports responses to be returned when the client requests <strong>application/javascript</strong>. The good news is that most clients do this by default, so you shouldn&#39;t see this error very often.</td>
+</tr>
+<tr>
+<td style="text-align: center">422</td>
+<td style="text-align: center">Unprocessable Entity</td>
+<td style="text-align: left">The server understands the content type of the request entity, and the syntax of the request entity is correct, but it was unable to process the contained instructions.</td>
+</tr>
+<tr>
+<td style="text-align: center">429</td>
+<td style="text-align: center">Too Many Requests</td>
+<td style="text-align: left">The client sent too many requests, please review our <a href='/getting-started/#rate-limits'>rate limits</a> to make sure you&#39;re not sending more requests than the limit indicates.</td>
+</tr>
+<tr>
+<td style="text-align: center">500</td>
+<td style="text-align: center">Internal Server Error</td>
+<td style="text-align: left">This means that there&#39;s an error on our side. Our engineering team is notified of these errors, so we try to come up with a solution as soon as possible. If the error persists, please contact <a href="https://support.hackerone.com/">https://support.hackerone.com/</a></td>
+</tr>
+<tr>
+<td style="text-align: center">503</td>
+<td style="text-align: center">Service Unavailable</td>
+<td style="text-align: left">Seems like our servers are offline. You can check our server status at <a href="https://www.hackeronestatus.com" target="_blank">www.hackeronestatus.com</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='versioning'>Versioning</h2>
+<blockquote>
+<p>URL structure</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>https://api.hackerone.com/{version}/{resource}
+</code></pre></div>
+<p>The entire API uses a global version. For every backwards-incompatible change, the
+version is bumped. There is no default version, so the requested version must be
+specified in the resource URL.</p>
+
+<p>Introducing new attributes or resources are <strong>not</strong> considered backwards-incompatible
+and can be added to the latest stable version at any time.</p>
+<h2 id='clients'>Clients</h2>
+<p>There are open source API clients that are maintained by our customers and hackers.
+These libraries are welcoming contributions and can be found on GitHub.</p>
+
+<p><strong>Ruby</strong>: <a href='https://github.com/oreoshake/hackerone-client'>hackerone-client</a></p>
+
+<p><strong>Python</strong>: <a href='https://github.com/eliuha/h1-python'>h1-python</a></p>
+
+<p><strong>Go</strong>: <a href='https://github.com/uber-go/hackeroni'>hackeroni</a></p>
+
+<p><strong>Erlang</strong>: <a href='https://github.com/wrren/h1.erl'>h1.erl</a></p>
+
+<p><strong>Node.js</strong>: <a href='https://github.com/securitybites/hackerone-client'>hackerone-client</a></p>
+<h2 id='changelog'>Changelog</h2>
+<p><strong>April 30th, 2026</strong>: Added <a href='/customer-reference#activity-activity-triage-intake-exited'><code>activity-triage-intake-exited</code></a> object. This activity fires when the triage intake process for a report ends without proceeding to validation (e.g. closed, needs more info, or aborted).</p>
+
+<p><strong>April 30th, 2026</strong>: Added documentation for <code>activity-recommendation-created</code>, <code>activity-bug-priority-changed</code>, <code>activity-validation-recommendation-accepted</code>, <code>activity-validation-recommendation-rejected</code>, <code>activity-report-remediation-guidance-updated</code>, <code>activity-report-collaborator-joined</code>, <code>activity-report-collaborator-invited</code>, <code>activity-reassigned-to-team</code>, and <code>activity-draft-started</code> activity types. Added <code>recommended_action</code> field to <code>activity-recommendation-created</code> and <code>priority</code> field to <code>activity-bug-priority-changed</code>.</p>
+
+<p><strong>April 24th, 2026</strong>: Added <a href='/customer-resources#findings-get-view-reports'>view reports</a> endpoint to retrieve findings matching a view&#39;s query configuration. This completes the findings API with support for executing saved view queries with pagination and sort order.</p>
+
+<p><strong>April 21st, 2026</strong>: Fixed multi-field sorting support for <a href='/customer-resources/#reports-get-all-reports'>Reports</a> and <a href='/customer-resources/#activities-query-activities'>Activities</a> endpoints. Both endpoints now accept comma-separated sort fields as documented. Reports endpoint supports per-field direction control with <code>-</code> prefix (e.g., <code>sort=reports.swag_awarded_at,-reports.bounty_awarded_at</code>). Activities endpoint accepts multiple sort fields with a single direction applied to all fields.</p>
+
+<p><strong>April 17th, 2026</strong>: Added REST API endpoints for managing findings workboard views. This includes endpoints to <a href='/customer-resources#findings-get-all-views'>list views</a>, <a href='/customer-resources#findings-create-view'>create view</a>, <a href='/customer-resources#findings-get-view'>get view</a>, <a href='/customer-resources#findings-update-view'>update view</a>, and <a href='/customer-resources#findings-delete-view'>delete view</a>. Views provide filtered perspectives of findings with custom query strings, sort orders, and column configurations.</p>
+
+<p><strong>April 17th, 2026</strong>: Added REST API endpoints for managing findings workboards. This includes endpoints to <a href='/customer-resources#findings-get-all-workboards'>list workboards</a>, <a href='/customer-resources#findings-create-workboard'>create workboard</a>, <a href='/customer-resources#findings-get-workboard'>get workboard</a>, <a href='/customer-resources#findings-update-workboard'>update workboard</a>, and <a href='/customer-resources#findings-delete-workboard'>delete workboard</a>. Workboards organize vulnerability findings into manageable boards.</p>
+
+<p><strong>April 16th, 2026</strong>: Added REST API endpoints for managing scope exclusions on programs. This includes endpoints to <a href='/customer-resources/#programs-get-scope-exclusions'>list scope exclusions</a>, <a href='/customer-resources/#programs-create-scope-exclusion'>create a scope exclusion</a>, <a href='/customer-resources/#programs-update-scope-exclusion'>update a scope exclusion</a>, and <a href='/customer-resources/#programs-delete-scope-exclusion'>delete a scope exclusion</a>. These endpoints allow program managers to programmatically manage report categories excluded from rewards.</p>
+
+<p><strong>April 15th, 2026</strong>: Implemented <a href='/getting-started/#rate-limits'>rate limiting</a> of 10 requests per minute for the <a href='/customer-resources/#programs-get-payment-transactions'>billing transactions</a> endpoint.</p>
+
+<p><strong>April 14th, 2026</strong>: Added campaign relationship to the report object. When a report is associated with a campaign, the campaign details are now included in the report&#39;s relationships.</p>
+
+<p><strong>April 13th, 2026</strong>: Added <code>severity_calculation_methods</code> attribute to the <a href='/customer-resources/#programs-get-program'>Get Program</a> endpoint. This field returns which severity calculation methods are currently accepted by the program (e.g. <code>cvss_4_0</code>, <code>manual</code>).</p>
+
+<p><strong>April 11th, 2026</strong>: Fixed the <a href='/customer-resources/#analytics-get-analytics-data'>analytics</a> endpoint returning empty results for SQL-driven dashboard keys (e.g. <code>submission-signal</code>) despite data being available. The <code>organization_id</code> parameter is now required and the endpoint returns a 400 error when it is missing or when the user does not have access to the specified organization.</p>
+
+<p><strong>April 11th, 2026</strong>: Added REST API endpoints for campaign management. This includes endpoints to <a href='/customer-resources/#programs-get-all-campaigns'>list all campaigns</a>, <a href='/customer-resources/#programs-get-campaign'>get campaign details</a>, <a href='/customer-resources/#programs-create-campaign'>create a campaign</a>, <a href='/customer-resources/#programs-update-campaign'>update a campaign</a>, <a href='/customer-resources/#programs-launch-campaign'>launch a campaign</a>, and <a href='/customer-resources/#programs-end-campaign-prematurely'>end a campaign prematurely</a>. These endpoints allow program managers to programmatically manage bounty multiplier campaigns.</p>
+
+<p><strong>April 10th, 2026</strong>: Added REST API endpoint to <a href='/customer-resources/#programs-get-bounty-table'>get the bounty table</a> for a program. This endpoint returns the active bounty table with severity-based reward amounts per row.</p>
+
+<p><strong>April 7th, 2026</strong>: Removed documentation of the obsolete endpoints to create, update and archive structured scopes on the program level. Assets are managed via <a href='/customer-resources/#assets'>the organization asset management</a> endpoints.</p>
+
+<p><strong>March 13th, 2026</strong>: Added <a href='/customer-reference#activity-activity-report-triage-summary-updated'><code>activity-report-triage-summary-updated</code></a> object.</p>
+
+<p><strong>March 10th, 2026</strong>: The <a href='/customer-resources/#reports-create-report'>create report</a> endpoint now returns a descriptive 400 error when required custom fields are missing, instead of a generic 500 error.</p>
+
+<p><strong>March 9th, 2026</strong>: Added REST API endpoints to <a href='/customer-resources/#reports-approve-retest'>approve a retest</a> and <a href='/customer-resources/#reports-reject-retest'>reject a retest</a> for a report.</p>
+
+<p><strong>March 9th, 2026</strong>: Added REST API endpoints to <a href='/customer-resources#automations-create-automation'>create an automation</a> and <a href='/customer-resources#automations-update-automation'>update an automation</a> for organizations. These endpoints enable programmatic automation lifecycle management — including code, configuration, events, and enabled state — making it possible to manage automation definitions as code via CI/CD pipelines.</p>
+
+<p><strong>February 16th, 2026</strong>: Added <code>include_internal</code> parameter to <a href='/customer-resources/#reports-redact-report'>redact report</a> endpoint. When set to true, internal comments will also be redacted along with public content.</p>
+
+<p><strong>February 14th, 2026</strong>: Added REST API endpoints for automations management. This includes endpoints to <a href='/customer-resources#automations-get-all-automations'>list all automations</a>, <a href='/customer-resources#automations-get-automation'>get automation details</a>, <a href='/customer-resources#automations-get-all-automation-runs'>list automation runs</a>, <a href='/customer-resources#automations-trigger-automation'>trigger an automation</a>, <a href='/customer-resources#automations-get-automation-run'>get run details</a>, and <a href='/customer-resources#automations-get-automation-run-logs'>retrieve run logs</a>. These endpoints allow organization admins to programmatically manage and monitor automation executions.</p>
+
+<p><strong>February 3rd, 2026</strong>: Added endpoints for <a href='/customer-resources#assets-check-asset-reachability'>checking</a> and <a href='/customer-resources#assets-get-asset-reachability-status'>retrieving</a> asset reachability information.</p>
+
+<p><strong>January 30th, 2026</strong>: Added <code>high_priority</code> and <code>high_priority_reason</code> fields to the <a href='/customer-reference#activity-activity-report-prioritised'><code>activity-report-prioritised</code></a> object.</p>
+
+<p><strong>January 29th, 2026</strong>: Added &quot;asset_ports&quot; and &quot;reachability&quot; fields to the <a href='/customer-resources/#assets-get-asset'>Get Asset</a> endpoint. Added metadata fields &quot;source&quot;, &quot;processed_updated_ids&quot;, &quot;processed_unchanged_ids&quot;, and &quot;archived_ids&quot; to <a href='/customer-resources/#assets-retrieve-an-assets-import'>asset import</a> response.</p>
+
+<p><strong>January 27th, 2026</strong>: Added endpoints to <a href='/customer-resources/#assets-get-asset-scanner-configuration'>get asset scanner configuration</a> and <a href='/customer-resources/#assets-update-asset-scanner-configuration'>update asset scanner configuration</a> for managing automated scanning of assets.</p>
+
+<p><strong>January 5th, 2026</strong>: Added endpoint to <a href='/customer-resources/#programs-invite-hackers-to-program'>Invite Hackers to Program</a>, allowing many Hackers to be invited at once.</p>
+
+<p><strong>December 16th, 2025</strong>: Added endpoint to <a href='/customer-resources/#assets-create-asset-tag'>create asset tags</a> for organizations.</p>
+
+<p><strong>December 15th, 2025</strong>: Added GET <a href='/customer-resources#assets-get-all-asset-tag-categories'>All Asset Tag Categories</a> endpoint.</p>
+
+<p><strong>December 5th, 2025</strong>: Added pagination limit validation to the <a href='/hacker-reference/#programs-get-structured-scopes'>Get Structured Scopes</a> endpoint.</p>
+
+<p><strong>November 25th, 2025</strong>: Added &quot;system&quot; and &quot;username&quot; fields to <a href='/customer-reference/#organization-member'>organization member</a> object.</p>
+
+<p><strong>October 31st, 2025</strong>: Added endpoint to <a href='/customer-reference#programs-get-program-members'>program members</a>. This endpoint allows you to retrieve a list of organization members who have access to a specific program.</p>
+
+<p><strong>October 16th, 2025</strong>: Added &quot;user_type&quot; attribute to the <a href='/customer-reference#user'>user</a> object.</p>
+
+<p><strong>October 14th, 2025</strong>: Added endpoint to <a href='/customer-resources#programs-notify-external-platform'>notify external platforms</a>. This generic endpoint allows program managers to send a message on a messaging platform (e.g. Slack) via their integration.</p>
+
+<p><strong>October 10th, 2025</strong>: Added endpoint to <a href='/customer-resources/#assets-update-asset-scope'>update asset scope</a>. Added &quot;instruction&quot; parameter to <a href='/customer-resources/#assets-add-asset-to-scope'>add asset to scope</a> endpoint to provide additional context when adding assets to scope.</p>
+
+<p><strong>October 1st, 2025</strong>: Added &quot;asset_ids&quot; filter field to the  <a href='/customer-resources#reports-get-all-reports'>Get All Reports</a> endpoint.</p>
+
+<p><strong>September 29th, 2025</strong>: Added Report Intents API endpoints for hackers. This includes endpoints to <a href='/hacker-reference/#report-intents-list-report-intents'>list report intents</a>, <a href='/hacker-reference/#report-intents-create-report-intent'>create report intents</a>, <a href='/hacker-reference/#report-intents-get-report-intent'>get report intent details</a>, <a href='/hacker-reference/#report-intents-update-report-intent'>update report intents</a>, <a href='/hacker-reference/#report-intents-delete-report-intent'>delete report intents</a>, <a href='/hacker-reference/#report-intents-submit-report-intent'>submit report intents</a>, and manage <a href='/hacker-reference/#report-intent-attachments'>report intent attachments</a>. Report intents are draft reports that can be developed using AI assistance before being submitted as full reports.</p>
+
+<p><strong>September 26th, 2025</strong>: Added two filter options (<code>created_at__gt</code> and <code>created_at__lt</code>) to <a href='/customer-resources/#assets-get-all-assets'>Get All Assets</a>. This allows asset managers to filter the assets by creation date.</p>
+
+<p><strong>September 15th, 2025</strong>: Added endpoint to <a href='/customer-resources/#reports-update-report-tags'>update tags</a>. This endpoint allows program managers to update tags on a report.</p>
+
+<p><strong>August 28th, 2025</strong>: Added endpoint to <a href='/customer-resources/#reports-cancel-retest'>cancel a retest</a> for a report.</p>
+
+<p><strong>July 18th, 2025</strong>: Added endpoint to <a href='/customer-resources/#programs-send-messages-to-hackers'>message hackers</a>. This endpoint allows program managers to send messages to hackers.</p>
+
+<p><strong>July 2nd, 2025</strong>: Fixed empty Return on Mitigation section appearing under <a href='/customer-resources/#analytics-get-analytics-data'>get analytics data</a>.</p>
+
+<p><strong>June 11th, 2025</strong>: Added additional Response Efficiency keys to <a href='/customer-resources/#analytics-get-analytics-data'>get analytics data</a>. The keys allow the retrieval of the individual values returned by the existing response_efficiency_top_metrics key. This allows the platform to retrieve single-stat metrics in a uniform way for analytics data card objects. The old top metrics endpoint is retained for backwards compatibility.</p>
+
+<p><strong>May 27th, 2025</strong>: Added <a href='/customer-reference#activity-activity-triage-intake-completed'><code>activity-triage-intake-completed</code></a> object.</p>
+
+<p><strong>March 25, 2025</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-audit-log'>get audit log items from organization</a>.</p>
+
+<p><strong>March 25, 2025</strong>: Added endpoint to <a href='/customer-resources/#programs-get-allowed-reporters-history'>retrieve allowed reporter history</a>.</p>
+
+<p><strong>March 25, 2025</strong>: Added endpoint to <a href='/customer-resources#programs-get-hacker-invitations'>get hacker invitations</a> for <a href='/customer-resources/#programs'>programs</a></p>
+
+<p><strong>February 3, 2025</strong>: Added endpoint to <a href='/customer-resources/#reports-generate-pdf'>generate a PDF of a report</a>.</p>
+
+<p><strong>January 27, 2025</strong>: Added <a href='/customer-resources/#email'>email</a> endpoint for sending markdown messages to organization members.</p>
+
+<p><strong>January 20, 2025</strong>: Added CVSS 4.0 support to the API. The CVSS 4.0 score is now available in the <a href='/customer-reference#severity'>severity</a> object. Reports &quot;Update severity&quot; supports CVSS 4.0 metrics.</p>
+
+<p><strong>January 14, 2025</strong>: Added &quot;hai_play_id&quot; parameter to denote what Hai Play should handle the <a href='/customer-resources/#hai-create-completion-preview'>Hai completion</a>.</p>
+
+<p><strong>January 7, 2025</strong>: Enabled filtering <a href='/customer-resources/#activities-query-activities'>incremental activities</a> by the <code>report_id</code> field.</p>
+
+<p><strong>December 2, 2024</strong>: Removed documentation related to deprecated program-level data values returned by <a href='/customer-resources/#analytics-get-analytics-data'>get analytics data</a>.</p>
+
+<p><strong>November 20, 2024</strong>: Added endpoint to <a href='/customer-resources/#programs-get-triage-reviews'>triage reviews</a> for <a href='/customer-resources/#programs'>programs</a>.</p>
+
+<p><strong>October 25, 2024</strong>: Added <a href='/customer-resources/#assets'>azureCloudConfig</a> asset type.</p>
+
+<p><strong>October 8, 2024</strong>: Removed all references to the <code>pre-submission</code> report state from the documentation. This state was only used internally by HackerOne and has been deprecated.</p>
+
+<p><strong>September 11, 2024</strong>: Added <a href='/customer-resources/#assets'>awsCloudConfig</a> asset type.</p>
+
+<p><strong>September 10, 2024</strong>: Added constraint when <a href='/customer-resources/#organizations-create-group'>creating a group</a> with a default inbox</p>
+
+<p><strong>September 10, 2024</strong>: Added constraint when <a href='/customer-resources/#organizations-update-group'>updating a group</a> with a default inbox</p>
+
+<p><strong>September 10, 2024</strong>: Added option to add inboxes when a <a href='/customer-resources/#organizations-create-group'>group is created</a></p>
+
+<p><strong>September 10, 2024</strong>: Added option to add inboxes when a <a href='/customer-resources/#organizations-update-group'>group is updated</a></p>
+
+<p><strong>August 07, 2024</strong>: Nullified the fields <em>username</em> and <em>recipient_id</em> in the responses for <a href='/customer-resources/#organizations-get-pending-invitations'>get pending invitations
+</a> and <a href='/customer-resources/#organizations-create-an-invitation'>create an invitation</a> endpoints.</p>
+
+<p><strong>July 25, 2024</strong>: Added the ability to permanently <a href='/customer-resources/#reports-delete-attachments'>delete all attachments</a> for a report.</p>
+
+<p><strong>July 24, 2024</strong>: Deprecated the fields <em>username</em> and <em>recipient_id</em> in the responses for <a href='/customer-resources/#organizations-get-pending-invitations'>get pending invitations
+</a> and <a href='/customer-resources/#organizations-create-an-invitation'>create an invitation</a> endpoints.</p>
+
+<p><strong>May 17, 2024</strong>: Added endpoint to <a href='/customer-resources/#hai-create-completion-preview'>Hai completion</a>.</p>
+
+<p><strong>May 15, 2024</strong>: Added <a href='/customer-reference#activity-activity-report-vulnerability-information-updated'>activity-report-vulnerability-information-updated</a> object.</p>
+
+<p><strong>April 24, 2024</strong>: Added &quot;organization&quot; relationship to the <a href='/customer-reference/#program'>program</a> object.</p>
+
+<p><strong>March 1, 2024</strong>: Added &quot;citizenship_verified&quot; and &quot;residency_verified&quot; boolean fields to the <a href='/customer-reference/#allowed_reporter'>allowed reporter</a> object.</p>
+
+<p><strong>February 27, 2024</strong>: Added endpoint to <a href='/customer-resources/#programs-get-all-cve-requests'>get all CVE requests</a> for <a href='/customer-resources/#programs'>programs</a>.
+Added endpoint to <a href='/customer-resources/#programs-create-a-cve-request'>create a CVE request</a> for <a href='/customer-resources/#programs'>programs</a>.
+Added endpoint to <a href='/customer-resources/#reports-update-cves'>update CVEs</a> for a <a href='/customer-resources#reports'>report</a>.</p>
+
+<p><strong>February 26, 2024</strong>: Added &quot;rules_of_engagement_signed&quot;, &quot;identity_verified&quot; and &quot;background_checked&quot; boolean fields to the <a href='/customer-reference/#allowed_reporter'>allowed reporter</a> object.</p>
+
+<p><strong>February 8, 2024</strong>: Added &quot;state&quot; and &quot;archived_at&quot; fields to the <a href='/customer-reference#asset'>asset</a> object and enabled <a href='/customer-resources#assets-get-all-assets'>filtering assets</a> by &quot;state&quot; and &quot;archived&quot; parameters.</p>
+
+<p><strong>February 2, 2024</strong>: Added &quot;inbox_ids&quot; filter field to the  <a href='/customer-resources#reports-get-all-reports'>Get All Reports</a> endpoint.</p>
+
+<p><strong>February 1, 2024</strong>: Added &quot;submitted_at&quot; field to the  <a href='/customer-resources#reports'>reports</a> endpoint and enabled filtering by &quot;submitted_at_<em>gt&quot; and &quot;submitted_at</em>_lt&quot; parameters.</p>
+
+<p><strong>January 25, 2024</strong>: Added &quot;cvss_vector_string&quot; field to the  <a href='/customer-reference/#severity'>severity</a> object.</p>
+
+<p><strong>January 9, 2024</strong>: Enabled <a href='/customer-resources/#assets-get-all-assets'>filtering assets</a> by ID greater than the specified ID.</p>
+
+<p><strong>January 4, 2024</strong>: Added &quot;old_severity&quot; and &quot;new_severity&quot; relationships to the <a href='/customer-reference#activity-activity-report-severity-updated'>activity-report-severity-updated</a> object.</p>
+
+<p><strong>December 6, 2023</strong>: Added <a href='/customer-resources/#assets'>aiModel</a> asset type.</p>
+
+<p><strong>December 4, 2023</strong>: Adjusted <a href='/getting-started/#rate-limits'>rate limiting</a> for <a href='/customer-resources#reports'>reports</a> to be more lenient.</p>
+
+<p><strong>November 28, 2023</strong>: Added &quot;last_sign_in_at&quot; attribute to the <a href='/customer-reference/#organization-member'>organization member</a> object.</p>
+
+<p><strong>October 17, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-all-inboxes'>get all inboxes</a> for <a href='/customer-resources/#organizations'>organizations</a>.
+Added inboxes relationship to <a href='/customer-resources#reports'>report</a>.
+Added endpoint to <a href='/customer-resources/#reports-update-inboxes'>update inboxes</a> for a <a href='/customer-resources#reports'>report</a>.</p>
+
+<p><strong>October 12, 2023</strong>: Implemented more strict <a href='/getting-started/#rate-limits'>rate limiting</a> for <a href='/customer-resources#reports'>reports</a></p>
+
+<p><strong>October 5, 2023</strong>: Added <a href='/customer-resources#collaborator'>collaborators</a> relationship to <a href='/customer-resources#reports'>report</a>.</p>
+
+<p><strong>July 19, 2023</strong>: Added endpoint to <a href='/customer-resources#programs-get-allowed-reporters'>get allowed reporters of a private program</a>.</p>
+
+<p><strong>July 19, 2023</strong>: Added endpoint to <a href='/customer-resources#programs-get-allowed-reporter-activities'>get activities of allowed reporter of a private program</a>.</p>
+
+<p><strong>July 19, 2023</strong>: Deprecated &quot;Get whitelisted reporters of a private program&quot; endpoint and  get activities of whitelisted reporter of a private program
+endpoints. Use <a href='/customer-resources#programs-get-allowed-reporters'>get allowed reporters of a private program</a> and
+<a href='/customer-resources#programs-get-allowed-reporter-activities'>get activities of allowed reporter of a private program</a>
+instead.</p>
+
+<p><strong>July 11, 2023</strong>: Added sorting by report_id, created_at, updated_at fields on <a href='/customer-resources#activities-query-activities'>query activities</a> endpoint.</p>
+
+<p><strong>July 5, 2023</strong>: Added endpoint to <a href='/customer-resources#programs-get-whitelisted-reporters'>get whitelisted reporters of a private program</a>.</p>
+
+<p><strong>July 5, 2023</strong>: Added endpoint to <a href='/customer-resources#programs-get-whitelisted-reporter-activities'>get activities of whitelisted reporter of a private program</a>.</p>
+
+<p><strong>May 2, 2023</strong>: Added the attribute email to <a href='/customer-reference#organization-member'>organization-member</a> object.</p>
+
+<p><strong>February 13, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-all-programs'>get all programs</a> for <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>February 9, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-all-eligibility-settings'>get all eligibility settings</a> in an <a href='/customer-resources/#organizations'>organization</a>.</p>
+
+<p><strong>February 9, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-eligibility-setting'>get eligibility settings</a> in an <a href='/customer-resources/#organizations'>organization</a>.</p>
+
+<p><strong>February 7, 2023</strong>: Added endpoint to <a href='/customer-resources#organizations-create-member-group'>create a group</a> for an <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>February 6, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-member'>get a member</a> in an <a href='/customer-resources/#organizations'>organization</a>.</p>
+
+<p><strong>February 6, 2023</strong>: Added endpoint to <a href='/customer-resources#organizations-update-member-group'>update a group</a> from an <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>February 3, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-group'>get a group</a> in an <a href='/customer-resources/#organizations'>organization</a>.</p>
+
+<p><strong>February 1, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-pending-invitations'>list pending invitations</a> in an <a href='/customer-resources/#organizations'>organization</a>.</p>
+
+<p><strong>January 31, 2023</strong>: Added endpoint to <a href='/customer-resources#organizations-update-member'>update a member</a> for an <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>January 31, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-remove-a-member'>delete a member</a> for an <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>January 25, 2023</strong>: Added error 422 to <a href='/getting-started/#error-responses'>error responses</a>.</p>
+
+<p><strong>January 25, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-create-an-invitation'>create an invitation</a> to an <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>January 25, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-all-groups'>get all groups</a> for <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>January 24, 2023</strong>: Added endpoint to <a href='/customer-resources/#organizations-get-all-members'>get all members</a> for <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>January 6, 2023</strong>: Added endpoint to <a href='/customer-resources/#assets-add-asset-to-scope'>add an asset to scope</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>January 6, 2023</strong>: Added endpoint to <a href='/customer-resources/#assets-archive-asset-scopes'>archive asset scopes</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>January 6, 2023</strong>: Added endpoint to <a href='/customer-resources/#assets-update-asset'>update an asset</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>January 6, 2023</strong>: Added endpoint to <a href='/customer-resources/#assets-archive-assets'>archive assets</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>December 12, 2022</strong>: Updated valid <code>key</code> parameter values for <a href='/customer-resources/#analytics'>analytics</a>.</p>
+
+<p><strong>November 9, 2022</strong>: Added endpoint to <a href='/customer-resources#analytics-get-analytics-data-preview'>get analytics data</a> for <a href='/customer-resources/#analytics'>analytics</a>.</p>
+
+<p><strong>September 6, 2022</strong>: Added endpoint to <a href='/customer-resources#organizations-get-your-organizations'>get your organizations</a> for <a href='/customer-resources/#organizations'>organizations</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-create-asset'>create an asset</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-get-all-assets'>get all assets</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-get-an-asset'>get an asset</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-get-all-asset-tags'>get all asset tags</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-retrieve-an-assets-import'>retrieve an assets import</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>July 20, 2022</strong>: Added endpoint to <a href='/customer-resources/#assets-import-assets-with-csv-file'>import assets with CSV file</a> for <a href='/customer-resources/#assets'>assets</a>.</p>
+
+<p><strong>October 12, 2021</strong>: Added endpoint to <a href='/customer-resources/#reports-upload-attachments'>upload attachments</a> for <a href='/customer-resources/#reports-change-state'>state changes</a>.</p>
+
+<p><strong>September 30, 2021</strong>: Added endpoint to <a href='/customer-resources/#reports-upload-attachments'>upload attachments</a> for <a href='/customer-resources/#reports-create-comment'>comments</a>.</p>
+
+<p><strong>November 9, 2020</strong>: Added <a href='/customer-reference#automated-remediation-guidance'>automated</a> and <a href='/customer-reference#custom-remediation-guidance'>custom</a> remediation guidance attributes to the <a href='/customer-reference#report'>report</a> object.</p>
+
+<p><strong>November 3, 2020</strong>: Added <a href='/getting-started/#rate-limits'>rate limits</a> for read and write operations to ensure platform stability.</p>
+
+<p><strong>October 26, 2020</strong>: Added endpoint to <a href='/customer-resources/#reports-request-retest'>request a retest for a report</a>.</p>
+
+<p><strong>October 9, 2020</strong>: Added endpoint to <a href='/customer-resources/#activities-get-activity'>get an activity by ID</a>.</p>
+
+<p><strong>August 17, 2020</strong>: Added <a href='/reference/#report'>report attributes</a> that track how long it took to respond, triage, reward, and resolve a report. Additionally, the report object now also contains when it expects any of those actions to happen.</p>
+
+<p><strong>February 7, 2020</strong>: Added endpoint to <a href='/customer-resources/#reports-add-participant'>add report participants</a>.</p>
+
+<p><strong>January 9, 2020</strong>: Added endpoint to <a href='/customer-resources/#reports-transfer-report'>transfer reports</a> between related programs</p>
+
+<p><strong>November 20, 2019</strong>: Added program management permission requirement to the
+<a href='/customer-resources#get-awarded-swag'>get awarded swag</a> endpoint.</p>
+
+<p><strong>October 31, 2019</strong>: Added endpoint to upload attachments to program policy.</p>
+
+<p><strong>October 30, 2019</strong>: Enabled filtering reports by hacker disclosure request. Added attribute to report for timestamp when the reporter agreed for disclosure.</p>
+
+<p><strong>October 28, 2019</strong>: Added groups attribute to <a href='/customer-reference#member'>member</a> object.</p>
+
+<p><strong>October 25, 2019</strong>: Added endpoint for redacting reports.</p>
+
+<p><strong>October 24, 2019</strong>: Added endpoint for cancelling the report disclosure request.</p>
+
+<p><strong>October 18, 2019</strong>: Added attribute for requesting report disclosure to show the disclosure timestamp.</p>
+
+<p><strong>October 15, 2019</strong>: Added endpoint for requesting report disclosure.</p>
+
+<p><strong>October 11, 2019</strong>: Added endpoint for showing program policy and its attachments.</p>
+
+<p><strong>October 10, 2019</strong>: Added endpoint for fetching bounty suggestions.</p>
+
+<p><strong>October 10, 2019</strong>: Added endpoint to fetch all program swag.</p>
+
+<p><strong>October 9, 2019</strong>: Added endpoint for filtering reports by keywords.</p>
+
+<p><strong>October 9, 2019</strong>: Enabled filtering reports by severities.</p>
+
+<p><strong>October 8, 2019</strong>: Added endpoint for updating report structured scope.</p>
+
+<p><strong>October 7, 2019</strong>: Added endpoint for getting program&#39;s balance.</p>
+
+<p><strong>October 7, 2019</strong>: Added endpoint for fetching program payment transactions.</p>
+
+<p><strong>October 7, 2019</strong>: Added endpoint for fetching program thanks items.</p>
+
+<p><strong>October 3, 2019</strong>: Enabled filtering reports by weaknesses.</p>
+
+<p><strong>September 26, 2019</strong>: Added endpoint for marking swag as sent.</p>
+
+<p><strong>September 25, 2019</strong>: Made title, vulnerability information, impact, and source parameters required for the report create endpoint.</p>
+
+<p><strong>September 5, 2019</strong>: Added endpoint to mark a report as ineligible for bounty.</p>
+
+<p><strong>August 29, 2019</strong>: Added endpoint for updating program policy.</p>
+
+<p><strong>August 23, 2019</strong>: Added endpoint for updating report weakness.</p>
+
+<p><strong>Aug 22, 2019</strong>: Added endpoint to create reports.</p>
+
+<p><strong>August 21, 2019</strong>: Added endpoint for fetching program weaknesses.</p>
+
+<p><strong>June 26, 2019</strong>: Added a severity parameter to create a program bounty, it will set the severity for the created report.</p>
+
+<p><strong>June 25, 2019</strong>: Made the recipient parameter optional to create a program bounty and added the claim link to the response.</p>
+
+<p><strong>May 23, 2019</strong>: Added filter attribute to include/exclude hacker published reports.</p>
+
+<p><strong>May 15, 2019</strong>: Added endpoint to read Audit Log for a Program.</p>
+
+<p><strong>April 24, 2019</strong>: Expose Custom Field Attributes on a Program and added endpoint
+for updating Custom Field Values on a Report.</p>
+
+<p><strong>February 19, 2019</strong>: Added endpoint for creating/updating severities on reports.</p>
+
+<p><strong>February 4, 2019</strong>: Enabled filtering reports by assignee emails.</p>
+
+<p><strong>December 4, 2018</strong>: Added endpoints for fetching, creating, updating, and archiving structured scopes.</p>
+
+<p><strong>November 26, 2018</strong>: Added activities endpoint.</p>
+
+<p><strong>November 8, 2018</strong>: Enabled filtering reports by assignees.</p>
+
+<p><strong>August 20, 2018</strong>: Added attribute to report to show CVE IDs.</p>
+
+<p><strong>July 6, 2018</strong>: Added endpoint for fetching specific data of a user.</p>
+
+<p><strong>August 29, 2017</strong>: added endpoint for fetching common responses of a program.</p>
+
+<p><strong>August 28, 2017</strong>: added endpoints for awarding bounties, suggesting bounties, and for awarding swag.</p>
+
+<p><strong>May 10, 2017</strong>: added <strong>last_public_activity_at</strong> in favor of
+<strong>last_activity_at</strong>. The new attribute can be used in filtering
+and exposes the date of the last public activity. The <strong>last_activity_at</strong>
+attribute will now return the date of the last activity, both public and
+internal.</p>
+
+<p><strong>March 29, 2017</strong>: added endpoint to disable commenting / locking a report.</p>
+
+<p><strong>March 28, 2017</strong>: added the <a href='/customer-resources#reports-update-title'>reports</a> resource that enables the user to update
+the title of reports that are received by teams the API user is part of.</p>
+
+<p><strong>February 20, 2017</strong>: added the <a href='/customer-resources#programs-get-your-programs'>me</a> resource that enables the user to query
+the programs the API user is part of.</p>
+
+<p><strong>January 26, 2017</strong>: added ability to filter <a href='/customer-resources#reports-query-reports'>reports</a> based on
+<a href='/customer-reference#user'>user</a> usernames. Added endpoint to <a href='/customer-resources#programs-get-reporters'>retrieve a list of users</a>
+that participated in a program.</p>
+
+<p><strong>November 23, 2016</strong>: added ability to set a page size when querying reports.</p>
+
+<p><strong>November 2, 2016</strong>: added ability to change the state of a <a href='/customer-reference#report'>report</a>
+object and added ability to post internal and public comments.</p>
+
+<p><strong>October 5, 2016</strong>: added <strong><a href='/customer-reference#severity'>severity</a></strong> relationship to
+<a href='/customer-reference#report'>report</a> object.</p>
+
+<p><strong>September 23, 2016</strong>: added endpoint to query more information about a program.</p>
+
+<p><strong>September 21, 2016</strong>: added ability to assign users and groups to a report.</p>
+
+<p><strong>August 24, 2016</strong>: added reputation, signal, and impact metrics of a report&#39;s
+reporter.</p>
+
+<p><strong>July 19, 2016</strong>: removed inlining if a report in the bug cloned activity to
+avoid a denial of service vulnerability when the original report references the
+cloned report.</p>
+
+<p><strong>July 19, 2016</strong>: fixed a bug where the time in a date filter was erroneously
+truncated.</p>
+
+<p><strong>July 18, 2016</strong>: added activity objects for hacker mediation requests and
+vulnerability types updates.</p>
+
+<p><strong>June 1, 2016</strong>: the endpoint for <a href='/customer-resources#reports-get-all-reports'>querying reports</a> now returns
+descriptive errors in case an invalid filter value is given.</p>
+
+<p><strong>May 23, 2016</strong>: added <strong>last_activity_at</strong> attribute to the <a href='/customer-reference#report'>report</a>
+object and as a filter for <a href='/customer-resources#reports-get-all-reports'>querying reports</a>.</p>
+
+<p><strong>May 23, 2016</strong>: removed inlined duplicate <a href='/customer-reference#report'>report</a> object from
+activities relationship when a single report is fetched.</p>
+
+<p><strong>May 6, 2016</strong>: introduced endpoint to query multiple reports.</p>
+
+<p><strong>April 14, 2016</strong>: introduced endpoint to query a single report.</p>
+<h2 id='feedback'>Feedback</h2>
+<p>We strive to build the best API possible to help you fulfill your API use cases. If you have any questions or feedback, feel free to reach out to us at <a href='mailto:feedback@hackerone.com'>feedback@hackerone.com</a>.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+    <script type="text/javascript">
+      docsearch({
+        container: '#docsearch',
+        appId: '8NAIIMTFB5',
+        apiKey: '24f206a5ddce3f977613c86f005076a5',
+        indexName: 'hackerone_api',
+        debug: false // Set debug to true if you want to inspect the dropdown
+      });
+    </script>
+  </body>
+</html>

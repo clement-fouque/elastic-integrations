@@ -1,0 +1,6 @@
+2026-05-07T12:34:28+0200 [INFO] Resolved configuration: url=https://api.hackerone.com programs=['elastic'] inbox_ids=[] initial_interval=24h page_size=100 max_pages=5 states=[] severities=[] mock=False
+2026-05-07T12:34:28+0200 [INFO] Initial cursor (filter[last_activity_at__gt]) = 2026-05-06T10:34:28.056Z
+2026-05-07T12:34:28+0200 [INFO] [1/5] Requesting page 1
+2026-05-07T12:34:31+0200 [INFO] Page 1 returned 32 events in 3.761s (status=200, links.next present=False)
+2026-05-07T12:34:31+0200 [INFO] Wrote trace to /Users/clementfouque/project/github/clement-fouque/elastic-integrations/test-api-output/trace.json
+2026-05-07T12:34:31+0200 [INFO] Created archive /Users/clementfouque/project/github/clement-fouque/elastic-integrations/test-api-output.tar.gz

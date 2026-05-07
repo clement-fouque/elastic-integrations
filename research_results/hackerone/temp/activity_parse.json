@@ -1,0 +1,675 @@
+[
+  {
+    "type": "activity-agreed-on-going-public",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb disclosed_at",
+        "string(date-time)\u00a6null",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb allow_singular_disclosure_at",
+        "string(date-time)\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bounty-awarded",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb bounty_amount",
+        "string",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb bonus_amount",
+        "string",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bounty-suggested",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb bounty_amount",
+        "string",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb bonus_amount",
+        "string",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bug-cloned",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb original_report_id",
+        "integer",
+        "true",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bug-duplicate",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb original_report_id",
+        "integer",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bug-filed",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-inactive",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-informative",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-needs-more-info",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-new",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-not-applicable",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-priority-changed",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb priority",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-bug-reopened",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-resolved",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-retesting",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-spam",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-bug-triaged",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-cancelled-disclosure-request",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-changed-scope",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb old_scope",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[structured-scope](https://api.hackerone.com/customer-reference#structured-scope)",
+        "false",
+        "A StructuredScope object represents an asset defined by the program. The scope on areport was initially provided by the hacker, but may be reviewed and corrected bythe program."
+      ],
+      [
+        "\u00bb\u00bb new_scope",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[structured-scope](https://api.hackerone.com/customer-reference#structured-scope)",
+        "false",
+        "A StructuredScope object represents an asset defined by the program. The scope on areport was initially provided by the hacker, but may be reviewed and corrected bythe program."
+      ]
+    ]
+  },
+  {
+    "type": "activity-comment",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-draft-started",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-external-user-invitation-cancelled",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb email",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-external-user-invited",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb email",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-external-user-joined",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb duplicate_report_id",
+        "integer",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-external-user-removed",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb removed_user",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[user](https://api.hackerone.com/customer-reference#user)",
+        "false",
+        "User objects represent accounts on HackerOne. These objects are mostly referencedwhen someone performed an action using that account. All different actors on theplatform, hackers, API users, and program users, have a user account."
+      ]
+    ]
+  },
+  {
+    "type": "activity-group-assigned-to-bug",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb group",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[group](https://api.hackerone.com/customer-reference#group)",
+        "false",
+        "A group represents a set of users. A group is used to delegate permissions forthe users in it. It can also be assigned to one or multiple reports."
+      ]
+    ]
+  },
+  {
+    "type": "activity-hacker-requested-mediation",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-invitation-received",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-manually-disclosed",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-mediation-requested",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-nobody-assigned-to-bug",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-not-eligible-for-bounty",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-program-hacker-joined",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-program-hacker-left",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-program-inactive",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-reassigned-to-team",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-recommendation-created",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb recommended_action",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-reference-id-added",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb reference",
+        "string",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb reference_url",
+        "string",
+        "true",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-report-became-public",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-collaborator-invited",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb email",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-report-collaborator-joined",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-custom-field-value-updated",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-prioritised",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb high_priority",
+        "boolean",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb high_priority_reason",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-report-remediation-guidance-updated",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-retest-approved",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-retest-rejected",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-severity-updated",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-title-updated",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb old_title",
+        "string",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb new_title",
+        "string",
+        "true",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-report-triage-summary-created",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-triage-summary-updated",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-vulnerability-information-updated",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-report-vulnerability-types-updated",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb old_weakness",
+        "object",
+        "false",
+        "The weakness that was set before the change"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[weakness](https://api.hackerone.com/customer-reference#weakness)",
+        "false",
+        "A Weakness object represents the type of weakness the hacker submitted to a program.The weakness was initially provided by the hacker, but may be reviewed and correctedby the program."
+      ],
+      [
+        "\u00bb\u00bb new_weakness",
+        "object",
+        "false",
+        "The weakness that was set after the change"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[weakness](https://api.hackerone.com/customer-reference#weakness)",
+        "false",
+        "A Weakness object represents the type of weakness the hacker submitted to a program.The weakness was initially provided by the hacker, but may be reviewed and correctedby the program."
+      ]
+    ]
+  },
+  {
+    "type": "activity-retest-user-expired",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-swag-awarded",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb swag",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[swag](https://api.hackerone.com/customer-reference#swag)",
+        "false",
+        "Besides a financial reward, which is called [a bounty](https://api.hackerone.com/customer-reference#bounty), programs canaward swag. Report objects may contain multiple swag objects, one for each timeswag was awarded."
+      ]
+    ]
+  },
+  {
+    "type": "activity-triage-intake-completed",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb reference",
+        "string",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb reference_url",
+        "string",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-triage-intake-exited",
+    "extra_table_rows": [
+      [
+        "\u00bb attributes",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb intake_outcome",
+        "string\u00a6null",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb abort_reason",
+        "string\u00a6null",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb va_suggestion",
+        "string\u00a6null",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb report_state_change",
+        "string\u00a6null",
+        "false",
+        "none"
+      ]
+    ]
+  },
+  {
+    "type": "activity-user-assigned-to-bug",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb assigned_user",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[user](https://api.hackerone.com/customer-reference#user)",
+        "false",
+        "User objects represent accounts on HackerOne. These objects are mostly referencedwhen someone performed an action using that account. All different actors on theplatform, hackers, API users, and program users, have a user account."
+      ]
+    ]
+  },
+  {
+    "type": "activity-user-banned-from-program",
+    "extra_table_rows": [
+      [
+        "\u00bb relationships",
+        "object",
+        "false",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb removed_user",
+        "object",
+        "true",
+        "none"
+      ],
+      [
+        "\u00bb\u00bb\u00bb data",
+        "[user](https://api.hackerone.com/customer-reference#user)",
+        "false",
+        "User objects represent accounts on HackerOne. These objects are mostly referencedwhen someone performed an action using that account. All different actors on theplatform, hackers, API users, and program users, have a user account."
+      ]
+    ]
+  },
+  {
+    "type": "activity-user-completed-retest",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-user-left-retest",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-validation-recommendation-accepted",
+    "extra_table_rows": []
+  },
+  {
+    "type": "activity-validation-recommendation-rejected",
+    "extra_table_rows": []
+  }
+]

@@ -1,0 +1,232 @@
+{
+    "@timestamp": "2026-05-07T00:35:54.435Z",
+    "agent": {
+        "ephemeral_id": "ed02e0f4-3a67-4068-9c0f-4d40b7397bcd",
+        "id": "9d2ac9ae-6d3f-4492-8846-3018ec049b19",
+        "name": "elastic-agent-35157",
+        "type": "filebeat",
+        "version": "9.3.3"
+    },
+    "data_stream": {
+        "dataset": "hackerone.report",
+        "namespace": "38822",
+        "type": "logs"
+    },
+    "ecs": {
+        "version": "9.3.0"
+    },
+    "elastic_agent": {
+        "id": "9d2ac9ae-6d3f-4492-8846-3018ec049b19",
+        "snapshot": false,
+        "version": "9.3.3"
+    },
+    "event": {
+        "action": "report-triaged",
+        "agent_id_status": "verified",
+        "category": [
+            "vulnerability"
+        ],
+        "created": "2026-03-22T15:29:19.876Z",
+        "dataset": "hackerone.report",
+        "end": "2026-05-07T00:35:54.435Z",
+        "id": "91002",
+        "ingested": "2026-05-07T12:26:27Z",
+        "kind": "event",
+        "module": "hackerone",
+        "original": "{\"id\":\"91002\",\"type\":\"report\",\"attributes\":{\"title\":\"Synthetic DoS via oversized budget alert array\",\"main_state\":\"open\",\"state\":\"triaged\",\"created_at\":\"2026-03-22T15:29:19.876Z\",\"submitted_at\":\"2026-03-22T15:29:20.352Z\",\"vulnerability_information\":\"## Summary\\nTruncated narrative: repeated large `alerts` arrays degrade the Budget UI (synthetic repro only).\\n\",\"triaged_at\":\"2026-04-23T13:51:21.083Z\",\"last_reporter_activity_at\":\"2026-05-07T00:35:54.435Z\",\"first_program_activity_at\":\"2026-03-23T07:21:22.752Z\",\"last_program_activity_at\":\"2026-04-23T13:51:21.083Z\",\"last_activity_at\":\"2026-05-07T00:35:54.435Z\",\"last_public_activity_at\":\"2026-05-07T00:35:54.435Z\",\"cve_ids\":[],\"hai_is_priority\":false,\"timer_first_program_response_miss_at\":\"2026-03-24T00:00:00.000Z\",\"timer_first_program_response_elapsed_time\":26482,\"timer_report_triage_miss_at\":\"2026-03-25T05:42:07.651Z\",\"timer_report_triage_elapsed_time\":2013558},\"relationships\":{\"reporter\":{\"data\":{\"id\":\"4455002\",\"type\":\"user\",\"attributes\":{\"username\":\"researcher_beta\",\"name\":\"Aryo Example\",\"disabled\":false,\"created_at\":\"2023-04-10T14:12:03.187Z\",\"reputation\":332,\"signal\":4.4,\"impact\":17.0}}},\"assignee\":{\"data\":{\"id\":\"33623\",\"type\":\"group\",\"attributes\":{\"name\":\"Acme AppSec\",\"created_at\":\"2017-10-04T20:06:45.867Z\",\"permissions\":[\"report_management\"]}}},\"program\":{\"data\":{\"id\":\"23607\",\"type\":\"program\",\"attributes\":{\"handle\":\"acme\",\"created_at\":\"2017-09-28T13:08:32.058Z\",\"updated_at\":\"2026-05-07T08:41:04.851Z\"}}},\"severity\":{\"data\":{\"id\":\"3916126\",\"type\":\"severity\",\"attributes\":{\"rating\":\"medium\",\"author_type\":\"Team\",\"user_id\":3177160,\"created_at\":\"2026-04-23T13:51:16.861Z\",\"score\":5.3,\"max_severity\":\"critical\",\"calculation_method\":\"cvss_4_0\",\"cvss_vector_string\":\"CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:L\",\"cvss_4_point_0_metrics\":{\"attack_vector\":\"network\",\"attack_complexity\":\"low\",\"attack_requirements\":\"none\",\"privileges_required\":\"low\",\"user_interaction\":\"none\",\"vulnerable_confidentiality\":\"none\",\"vulnerable_integrity\":\"none\",\"vulnerable_availability\":\"none\",\"subsequent_confidentiality\":\"none\",\"subsequent_integrity\":\"none\",\"subsequent_availability\":\"low\"}}}},\"weakness\":{\"data\":{\"id\":\"48\",\"type\":\"weakness\",\"attributes\":{\"name\":\"Uncontrolled Resource Consumption\",\"description\":\"Synthetic weakness description truncated.\",\"external_id\":\"cwe-400\",\"created_at\":\"2017-01-05T01:51:19.000Z\"}}},\"structured_scope\":{\"data\":{\"id\":\"4424\",\"type\":\"structured-scope\",\"attributes\":{\"asset_type\":\"URL\",\"asset_identifier\":\"https://cloud.example.com/billing/budgets\",\"eligible_for_bounty\":true,\"eligible_for_submission\":true,\"instruction\":\"Synthetic scope instructions truncated.\",\"max_severity\":\"critical\",\"created_at\":\"2017-12-23T14:36:29.950Z\",\"updated_at\":\"2025-11-06T12:42:57.716Z\",\"reference\":\"Acme Cloud\",\"confidentiality_requirement\":\"medium\",\"integrity_requirement\":\"medium\",\"availability_requirement\":\"medium\"}}},\"inboxes\":{\"data\":[{\"id\":\"20349\",\"type\":\"inbox\",\"attributes\":{\"name\":\"Acme\",\"type\":\"default\"}}]}}}",
+        "outcome": "unknown",
+        "start": "2026-03-22T15:29:19.876Z",
+        "type": [
+            "info"
+        ],
+        "url": "https://hackerone.com/reports/91002"
+    },
+    "hackerone": {
+        "report": {
+            "attributes": {
+                "created_at": "2026-03-22T15:29:19.876Z",
+                "cve_ids": [],
+                "first_program_activity_at": "2026-03-23T07:21:22.752Z",
+                "hai_is_priority": false,
+                "last_activity_at": "2026-05-07T00:35:54.435Z",
+                "last_program_activity_at": "2026-04-23T13:51:21.083Z",
+                "last_public_activity_at": "2026-05-07T00:35:54.435Z",
+                "last_reporter_activity_at": "2026-05-07T00:35:54.435Z",
+                "main_state": "open",
+                "state": "triaged",
+                "submitted_at": "2026-03-22T15:29:20.352Z",
+                "timer_first_program_response_elapsed_time": 26482,
+                "timer_first_program_response_miss_at": "2026-03-24T00:00:00.000Z",
+                "timer_report_triage_elapsed_time": 2013558,
+                "timer_report_triage_miss_at": "2026-03-25T05:42:07.651Z",
+                "title": "Synthetic DoS via oversized budget alert array",
+                "triaged_at": "2026-04-23T13:51:21.083Z",
+                "vulnerability_information": "## Summary\nTruncated narrative: repeated large `alerts` arrays degrade the Budget UI (synthetic repro only).\n"
+            },
+            "id": "91002",
+            "relationships": {
+                "assignee": {
+                    "data": {
+                        "attributes": {
+                            "created_at": "2017-10-04T20:06:45.867Z",
+                            "name": "Acme AppSec",
+                            "permissions": [
+                                "report_management"
+                            ]
+                        },
+                        "id": "33623",
+                        "type": "group"
+                    }
+                },
+                "inboxes": {
+                    "data": [
+                        {
+                            "attributes": {
+                                "name": "Acme",
+                                "type": "default"
+                            },
+                            "id": "20349",
+                            "type": "inbox"
+                        }
+                    ]
+                },
+                "program": {
+                    "data": {
+                        "attributes": {
+                            "created_at": "2017-09-28T13:08:32.058Z",
+                            "handle": "acme",
+                            "updated_at": "2026-05-07T08:41:04.851Z"
+                        },
+                        "id": "23607",
+                        "type": "program"
+                    }
+                },
+                "reporter": {
+                    "data": {
+                        "attributes": {
+                            "created_at": "2023-04-10T14:12:03.187Z",
+                            "disabled": false,
+                            "impact": 17.0,
+                            "name": "Aryo Example",
+                            "reputation": 332,
+                            "signal": 4.4,
+                            "username": "researcher_beta"
+                        },
+                        "id": "4455002",
+                        "type": "user"
+                    }
+                },
+                "severity": {
+                    "data": {
+                        "attributes": {
+                            "author_type": "Team",
+                            "calculation_method": "cvss_4_0",
+                            "created_at": "2026-04-23T13:51:16.861Z",
+                            "cvss_4_point_0_metrics": {
+                                "attack_complexity": "low",
+                                "attack_requirements": "none",
+                                "attack_vector": "network",
+                                "privileges_required": "low",
+                                "subsequent_availability": "low",
+                                "subsequent_confidentiality": "none",
+                                "subsequent_integrity": "none",
+                                "user_interaction": "none",
+                                "vulnerable_availability": "none",
+                                "vulnerable_confidentiality": "none",
+                                "vulnerable_integrity": "none"
+                            },
+                            "cvss_vector_string": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:L",
+                            "max_severity": "critical",
+                            "rating": "medium",
+                            "score": 5.3,
+                            "user_id": 3177160
+                        },
+                        "id": "3916126",
+                        "type": "severity"
+                    }
+                },
+                "structured_scope": {
+                    "data": {
+                        "attributes": {
+                            "asset_identifier": "https://cloud.example.com/billing/budgets",
+                            "asset_type": "URL",
+                            "availability_requirement": "medium",
+                            "confidentiality_requirement": "medium",
+                            "created_at": "2017-12-23T14:36:29.950Z",
+                            "eligible_for_bounty": true,
+                            "eligible_for_submission": true,
+                            "instruction": "Synthetic scope instructions truncated.",
+                            "integrity_requirement": "medium",
+                            "max_severity": "critical",
+                            "reference": "Acme Cloud",
+                            "updated_at": "2025-11-06T12:42:57.716Z"
+                        },
+                        "id": "4424",
+                        "type": "structured-scope"
+                    }
+                },
+                "weakness": {
+                    "data": {
+                        "attributes": {
+                            "created_at": "2017-01-05T01:51:19.000Z",
+                            "description": "Synthetic weakness description truncated.",
+                            "external_id": "cwe-400",
+                            "name": "Uncontrolled Resource Consumption"
+                        },
+                        "id": "48",
+                        "type": "weakness"
+                    }
+                }
+            },
+            "type": "report"
+        }
+    },
+    "input": {
+        "type": "cel"
+    },
+    "message": "Synthetic DoS via oversized budget alert array",
+    "observer": {
+        "product": "HackerOne",
+        "vendor": "HackerOne"
+    },
+    "organization": {
+        "id": "23607",
+        "name": "acme"
+    },
+    "related": {
+        "hosts": [
+            "cloud.example.com"
+        ],
+        "user": [
+            "researcher_beta"
+        ]
+    },
+    "tags": [
+        "preserve_original_event",
+        "forwarded",
+        "hackerone-report"
+    ],
+    "url": {
+        "original": "https://cloud.example.com/billing/budgets"
+    },
+    "user": {
+        "full_name": "Aryo Example",
+        "id": "4455002",
+        "name": "researcher_beta"
+    },
+    "vulnerability": {
+        "classification": "Uncontrolled Resource Consumption",
+        "description": "## Summary\nTruncated narrative: repeated large `alerts` arrays degrade the Budget UI (synthetic repro only).\n",
+        "enumeration": "CWE",
+        "reference": "https://hackerone.com/reports/91002",
+        "report_id": "91002",
+        "scanner": {
+            "vendor": "HackerOne"
+        },
+        "score": {
+            "base": 5.3,
+            "version": "4.0"
+        },
+        "severity": "medium"
+    }
+}

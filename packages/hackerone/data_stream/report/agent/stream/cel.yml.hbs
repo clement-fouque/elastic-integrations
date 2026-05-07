@@ -1,0 +1,245 @@
+config_version: 2
+interval: {{interval}}
+
+resource.tracer:
+  enabled: {{enable_request_tracer}}
+  filename: "../../logs/cel/http-request-trace-*.ndjson"
+  maxbackups: 5
+{{#if proxy_url}}
+resource.proxy_url: {{proxy_url}}
+{{/if}}
+{{#if ssl}}
+resource.ssl: {{ssl}}
+{{/if}}
+{{#if http_client_timeout}}
+resource.timeout: {{http_client_timeout}}
+{{/if}}
+resource.url: {{url}}
+
+resource.rate_limit.limit: 5
+resource.rate_limit.burst: 20
+
+state:
+  initial_interval: {{initial_interval}}
+  page_size: {{page_size}}
+{{#if program_handles}}
+  program_handles:
+{{#each program_handles as |h|}}
+    - "{{h}}"
+{{/each}}
+{{/if}}
+{{#if inbox_ids}}
+  inbox_ids:
+{{#each inbox_ids as |id|}}
+    - "{{id}}"
+{{/each}}
+{{/if}}
+{{#if state_filter}}
+  state_filter:
+{{#each state_filter as |s|}}
+    - "{{s}}"
+{{/each}}
+{{/if}}
+{{#if severity_filter}}
+  severity_filter:
+{{#each severity_filter as |sev|}}
+    - "{{sev}}"
+{{/each}}
+{{/if}}
+  api_token_identifier: "{{api_token_identifier}}"
+  api_token_value: "{{api_token_value}}"
+
+redact:
+  fields:
+    - api_token_identifier
+    - api_token_value
+
+max_executions: 20
+
+program: |-
+  string(state.?next.orValue("")).as(
+    nextTrimmed,
+    (size(state.?program_handles.orValue([])) == 0 && size(state.?inbox_ids.orValue([])) == 0) ?
+      state.with(
+        {
+          "events": {
+            "error": {
+              "code": "configuration",
+              "message": "At least one program handle or inbox id is required.",
+            },
+          },
+          "want_more": false,
+        }
+      )
+    :
+      (
+        (nextTrimmed.size() != 0) ?
+          nextTrimmed
+        :
+          state.url.trim_right("/") + "/v1/reports?" + {
+            "sort": ["reports.last_activity_at"],
+            "page[size]": [string(int(state.page_size))],
+            "filter[last_activity_at__gt]": [
+              state.?cursor.last_activity_at.optMap(t,
+                (timestamp(t) + duration("1ms")).format("2006-01-02T15:04:05.000Z07:00")
+              ).orValue(
+                (now - duration(state.initial_interval)).format("2006-01-02T15:04:05.000Z07:00")
+              ),
+            ],
+          }.with(
+            (size(state.?program_handles.orValue([])) > 0) ?
+              {"filter[program][]": state.program_handles}
+            :
+              dyn({})
+          ).with(
+            (size(state.?inbox_ids.orValue([])) > 0) ?
+              {"filter[inbox_ids][]": state.inbox_ids}
+            :
+              dyn({})
+          ).with(
+            (size(state.?state_filter.orValue([])) > 0) ?
+              {"filter[state][]": state.state_filter}
+            :
+              dyn({})
+          ).with(
+            (size(state.?severity_filter.orValue([])) > 0) ?
+              {"filter[severity][]": state.severity_filter}
+            :
+              dyn({})
+          ).format_query()
+      ).as(reqUrl,
+        state.with(
+          request("GET", reqUrl).with(
+            {
+              "Header": {
+                "Authorization": ["Basic " + bytes(state.api_token_identifier + ":" + state.api_token_value).base64()],
+                "Accept": ["application/json"],
+              },
+            }
+          ).do_request().as(resp,
+            (resp.StatusCode == 200) ?
+              resp.Body.decode_json().as(body,
+                {
+                  "nextResolved": (
+                    (
+                      (body.?links.hasValue() && body.?links.?next.orValue(null) != null) ?
+                        string(body.links.next)
+                      :
+                        ""
+                    ).size() != 0 && !(
+                      (body.?links.hasValue() && body.?links.?next.orValue(null) != null) ?
+                        string(body.links.next)
+                      :
+                        ""
+                    ).contains("://")
+                  ) ?
+                    (
+                      state.url.trim_right("/") + (
+                        (body.?links.hasValue() && body.?links.?next.orValue(null) != null) ?
+                          string(body.links.next)
+                        :
+                          ""
+                      )
+                    )
+                  : (body.?links.hasValue() && body.?links.?next.orValue(null) != null) ?
+                    string(body.links.next)
+                  :
+                    "",
+                  "pageMax": (body.?data.orValue([]).map(r,
+                    r.attributes.?last_activity_at.orValue(r.attributes.?created_at.orValue(""))
+                  ).filter(t, t != "").size() > 0) ?
+                    body.?data.orValue([]).map(r,
+                      r.attributes.?last_activity_at.orValue(r.attributes.?created_at.orValue(""))
+                    ).filter(t, t != "").max()
+                  :
+                    "",
+                  "events": body.?data.orValue([]).map(item, {"message": item.encode_json()}),
+                }.as(d,
+                  {
+                    "events": d.events,
+                    "want_more": d.nextResolved.size() != 0 && d.nextResolved != reqUrl,
+                    "cycle_max": (d.nextResolved.size() != 0 && d.nextResolved != reqUrl) ?
+                      (
+                        (d.pageMax.size() != 0 && state.?cycle_max.orValue("").size() != 0) ?
+                          ((d.pageMax > state.?cycle_max.orValue("")) ? d.pageMax : state.?cycle_max.orValue(""))
+                        : (d.pageMax.size() != 0) ?
+                          d.pageMax
+                        :
+                          state.?cycle_max.orValue("")
+                      )
+                    :
+                      "",
+                    "next": (d.nextResolved.size() != 0 && d.nextResolved != reqUrl) ? d.nextResolved : "",
+                  }.with(
+                    (d.nextResolved.size() != 0 && d.nextResolved != reqUrl) ?
+                      dyn({})
+                    :
+                      {
+                        "cursor": ((
+                          (d.pageMax.size() != 0 && state.?cycle_max.orValue("").size() != 0) ?
+                            ((d.pageMax > state.?cycle_max.orValue("")) ? d.pageMax : state.?cycle_max.orValue(""))
+                          : (d.pageMax.size() != 0) ?
+                            d.pageMax
+                          :
+                            state.?cycle_max.orValue("")
+                        ).size() != 0) ?
+                          state.?cursor.orValue({}).with(
+                            {
+                              "last_activity_at": (d.pageMax.size() != 0 && state.?cycle_max.orValue("").size() != 0) ?
+                                ((d.pageMax > state.?cycle_max.orValue("")) ? d.pageMax : state.?cycle_max.orValue(""))
+                              : (d.pageMax.size() != 0) ?
+                                d.pageMax
+                              :
+                                state.?cycle_max.orValue(""),
+                            }
+                          )
+                        :
+                          dyn(state.?cursor),
+                      }
+                  )
+                )
+              )
+            :
+              {
+                "events": {
+                  "error": {
+                    "code": string(resp.StatusCode),
+                    "id": string(resp.Status),
+                    "message": (resp.StatusCode == 401) ?
+                      "GET /v1/reports: invalid API token (401)"
+                    : (resp.StatusCode == 403) ?
+                      "GET /v1/reports: access denied - check program handle or IP allowlist (403)"
+                    : (resp.StatusCode == 429) ?
+                      "GET /v1/reports: rate limited (429)"
+                    :
+                      "GET /v1/reports: " + (
+                        (size(resp.Body) != 0) ?
+                          string(resp.Body)
+                        :
+                          string(resp.Status) + " (" + string(resp.StatusCode) + ")"
+                      ),
+                  },
+                },
+                "want_more": false,
+                "cycle_max": "",
+                "next": "",
+              }
+          )
+        )
+      )
+  )
+tags:
+{{#if preserve_original_event}}
+  - preserve_original_event
+{{/if}}
+{{#each tags as |tag|}}
+  - {{tag}}
+{{/each}}
+{{#contains "forwarded" tags}}
+publisher_pipeline.disable_host: true
+{{/contains}}
+
+{{#if processors}}
+processors:
+{{processors}}
+{{/if}}

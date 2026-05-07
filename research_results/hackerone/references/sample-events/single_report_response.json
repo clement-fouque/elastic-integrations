@@ -1,0 +1,342 @@
+{
+  "data": {
+    "id": "1337",
+    "type": "report",
+    "attributes": {
+      "title": "XSS in login form",
+      "state": "new",
+      "created_at": "2016-02-02T04:05:06.000Z",
+      "vulnerability_information": "...",
+      "triaged_at": null,
+      "closed_at": null,
+      "last_reporter_activity_at": null,
+      "first_program_activity_at": null,
+      "last_program_activity_at": null,
+      "bounty_awarded_at": null,
+      "swag_awarded_at": null,
+      "disclosed_at": null,
+      "source": null
+    },
+    "relationships": {
+      "reporter": {
+        "data": {
+          "id": "1337",
+          "type": "user",
+          "attributes": {
+            "username": "api-example",
+            "name": "API Example",
+            "disabled": false,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "profile_picture": {
+              "62x62": "/assets/avatars/default.png",
+              "82x82": "/assets/avatars/default.png",
+              "110x110": "/assets/avatars/default.png",
+              "260x260": "/assets/avatars/default.png"
+            }
+          }
+        }
+      },
+      "collaborators": {
+        "data": [
+          {
+            "weight": 1,
+            "user": {
+              "id": "1337",
+              "type": "user",
+              "attributes": {
+                "username": "api-example",
+                "name": "API Example",
+                "disabled": false,
+                "created_at": "2016-02-02T04:05:06.000Z",
+                "profile_picture": {
+                  "62x62": "/assets/avatars/default.png",
+                  "82x82": "/assets/avatars/default.png",
+                  "110x110": "/assets/avatars/default.png",
+                  "260x260": "/assets/avatars/default.png"
+                },
+                "reputation": 7,
+                "signal": 7,
+                "impact": 30
+              }
+            }
+          },
+          {
+            "weight": 1,
+            "user": {
+              "id": "1338",
+              "type": "user",
+              "attributes": {
+                "username": "api-example 2",
+                "name": "API Example 2",
+                "disabled": false,
+                "created_at": "2016-02-02T04:05:06.000Z",
+                "profile_picture": {
+                  "62x62": "/assets/avatars/default.png",
+                  "82x82": "/assets/avatars/default.png",
+                  "110x110": "/assets/avatars/default.png",
+                  "260x260": "/assets/avatars/default.png"
+                },
+                "reputation": 7,
+                "signal": 7,
+                "impact": 30
+              }
+            }
+          }
+        ]
+      },
+      "assignee": {
+        "data": {
+          "id": "1337",
+          "type": "user",
+          "attributes": {
+            "username": "member",
+            "name": "Member",
+            "disabled": false,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "profile_picture": {
+              "62x62": "/assets/avatars/default.png",
+              "82x82": "/assets/avatars/default.png",
+              "110x110": "/assets/avatars/default.png",
+              "260x260": "/assets/avatars/default.png"
+            }
+          }
+        }
+      },
+      "program": {
+        "data": {
+          "id": "1337",
+          "type": "program",
+          "attributes": {
+            "handle": "security",
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "updated_at": "2016-02-02T04:05:06.000Z"
+          }
+        }
+      },
+      "severity": {
+        "data": {
+          "id": "57",
+          "type": "severity",
+          "attributes": {
+            "rating": "high",
+            "author_type": "User",
+            "user_id": 1337,
+            "created_at": "2016-02-02T04:05:06.000Z",
+            "score": 8.7,
+            "attack_complexity": "low",
+            "attack_vector": "adjacent",
+            "availability": "high",
+            "confidentiality": "low",
+            "integrity": "high",
+            "privileges_required": "low",
+            "user_interaction": "required",
+            "scope": "changed"
+          }
+        }
+      },
+      "swag": {
+        "data": []
+      },
+      "attachments": {
+        "data": []
+      },
+      "weakness": {
+        "data": {
+          "id": "1337",
+          "type": "weakness",
+          "attributes": {
+            "name": "Cross-Site Request Forgery (CSRF)",
+            "description": "The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.",
+            "external_id": "cwe-352",
+            "created_at": "2016-02-02T04:05:06.000Z"
+          }
+        }
+      },
+      "structured_scope": {
+        "data": {
+          "id": "57",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_identifier": "api.example.com",
+            "asset_type": "url",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high",
+            "max_severity": "critical",
+            "created_at": "2015-02-02T04:05:06.000Z",
+            "updated_at": "2016-05-02T04:05:06.000Z",
+            "instruction": null,
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "reference": "H001001"
+          }
+        }
+      },
+      "campaign": null,
+      "activities": {
+        "data": [
+          {
+            "type": "activity-comment",
+            "id": "445",
+            "attributes": {
+              "message": "Comment!",
+              "created_at": "2016-02-02T04:05:06.000Z",
+              "updated_at": "2016-02-02T04:05:06.000Z",
+              "internal": false
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    },
+                    "signal": null,
+                    "impact": null,
+                    "reputation": null,
+                    "bio": null,
+                    "website": null,
+                    "location": null,
+                    "hackerone_triager": false
+                  }
+                }
+              },
+              "attachments": {
+                "data": [
+                  {
+                    "id": "1337",
+                    "type": "attachment",
+                    "attributes": {
+                      "expiring_url": "/system/attachments/files/000/001/337/original/root.rb?1454385906",
+                      "created_at": "2016-02-02T04:05:06.000Z",
+                      "file_name": "root.rb",
+                      "content_type": "text/x-ruby",
+                      "file_size": 2871
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "1337",
+            "type": "activity-bug-resolved",
+            "attributes": {
+              "message": "Bug Resolved!",
+              "created_at": "2016-02-02T04:05:06.000Z",
+              "updated_at": "2016-02-02T04:05:06.000Z",
+              "internal": false
+            },
+            "relationships": {
+              "actor": {
+                "data": {
+                  "id": "1337",
+                  "type": "user",
+                  "attributes": {
+                    "username": "api-example",
+                    "name": "API Example",
+                    "disabled": false,
+                    "created_at": "2016-02-02T04:05:06.000Z",
+                    "profile_picture": {
+                      "62x62": "/assets/avatars/default.png",
+                      "82x82": "/assets/avatars/default.png",
+                      "110x110": "/assets/avatars/default.png",
+                      "260x260": "/assets/avatars/default.png"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "bounties": {
+        "data": []
+      },
+      "summaries": {
+        "data": []
+      },
+      "inboxes": {
+        "data": [
+          {
+            "id": "13",
+            "type": "inbox",
+            "attributes": {
+              "name": "HackerOne",
+              "type": "default"
+            }
+          },
+          {
+            "id": "65",
+            "type": "inbox",
+            "attributes": {
+              "name": "Custom Inbox number one",
+              "type": "custom"
+            }
+          }
+        ]
+      },
+      "triggered_pre_submission_trigger": {
+        "data": {
+          "id": "1337",
+          "type": "trigger",
+          "attributes": {
+            "title": "Example Trigger"
+          }
+        }
+      },
+      "custom_field_values": {
+        "data": []
+      },
+      "automated_remediation_guidance": {
+        "data": {
+          "id": "1",
+          "type": "automated-remediation-guidance",
+          "attributes": {
+            "reference": "https://cwe.mitre.org/data/definitions/120.html",
+            "created_at": "2020-10-23T12:09:37.859Z"
+          }
+        }
+      },
+      "custom_remediation_guidance": {
+        "data": {
+          "id": "84",
+          "type": "custom-remediation-guidance",
+          "attributes": {
+            "message": "Check buffer boundaries if accessing the buffer in a loop and make sure you are not in danger of writing past the allocated space.",
+            "created_at": "2020-10-26T08:47:23.296Z"
+          },
+          "relationships": {
+            "author": {
+              "data": {
+                "id": "1338",
+                "type": "user",
+                "attributes": {
+                  "username": "api-example-2",
+                  "name": "API Example 2",
+                  "disabled": false,
+                  "created_at": "2020-10-22T011:22:05.402Z",
+                  "profile_picture": {
+                    "62x62": "/assets/avatars/default.png",
+                    "82x82": "/assets/avatars/default.png",
+                    "110x110": "/assets/avatars/default.png",
+                    "260x260": "/assets/avatars/default.png"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
