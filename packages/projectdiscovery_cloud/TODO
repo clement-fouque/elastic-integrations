@@ -1,0 +1,7 @@
+- [ ] event.original is always present, miss the parameter
+- [x] Time range parameter should be a drop down
+- [x] Status should be similar to tags or Severity (prior modification). Status filter should contain all enum values (fixed, ...)
+- [ ] url.full, url.domain are never set
+- [ ] vulnerability.reference should point at the template. 
+- [x] projectdiscovery_cloud.vulnerability.report_id
+- [ ] Remove the enable_request_response part

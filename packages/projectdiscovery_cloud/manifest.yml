@@ -1,0 +1,27 @@
+format_version: "3.4.2"
+name: projectdiscovery_cloud
+title: "ProjectDiscovery Cloud"
+version: "0.1.0"
+source:
+  license: "Elastic-2.0"
+description: Collect vulnerability scan results from the ProjectDiscovery Cloud Platform (PDCP).
+type: integration
+categories:
+  - security
+  - vulnerability_management
+conditions:
+  kibana:
+    version: "^8.19.0 || ^9.1.0"
+  elastic:
+    subscription: "basic"
+policy_templates:
+  - name: projectdiscovery_cloud
+    title: ProjectDiscovery Cloud
+    description: Collect vulnerability scan results from the ProjectDiscovery Cloud Platform.
+    inputs:
+      - type: cel
+        title: Collect ProjectDiscovery Cloud vulnerability scan results via the REST API
+        description: Collect vulnerability scan results from the ProjectDiscovery Cloud Platform export API.
+owner:
+  github: elastic/security-service-integrations
+  type: elastic
