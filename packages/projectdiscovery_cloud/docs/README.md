@@ -106,6 +106,7 @@ The `vulnerability_scan` data stream collects vulnerability findings from PDCP. 
 | destination.as.number | Unique number allocated to the autonomous system. The autonomous system number (ASN) uniquely identifies each network on the Internet. | long |
 | destination.as.organization.name | Organization name. | keyword |
 | destination.as.organization.name.text | Multi-field of `destination.as.organization.name`. | match_only_text |
+| destination.domain | The domain name of the destination system. This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment. | keyword |
 | destination.geo.city_name | City name. | keyword |
 | destination.geo.continent_name | Name of the continent. | keyword |
 | destination.geo.country_iso_code | Country ISO code. | keyword |
@@ -115,6 +116,9 @@ The `vulnerability_scan` data stream collects vulnerability findings from PDCP. 
 | destination.geo.region_name | Region name. | keyword |
 | destination.ip | IP address of the destination (IPv4 or IPv6). | ip |
 | destination.port | Port of the destination. | long |
+| destination.registered_domain | The highest registered destination domain, stripped of the subdomain. For example, the registered domain for "foo.example.com" is "example.com". This value can be determined precisely with a list like the public suffix list (https://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk". | keyword |
+| destination.subdomain | The subdomain portion of a fully qualified domain name includes all of the names except the host name under the registered_domain.  In a partially qualified domain, or if the the qualification level of the full name cannot be determined, subdomain contains all of the names below the registered domain. For example the subdomain portion of "www.east.mydomain.co.uk" is "east". If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period. | keyword |
+| destination.top_level_domain | The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com". This value can be determined precisely with a list like the public suffix list (https://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk". | keyword |
 | ecs.version | ECS version this event conforms to. `ecs.version` is a required field and must exist in all events. When querying across multiple indices -- which may conform to slightly different ECS versions -- this field lets integrations adjust to the schema version of the events. | keyword |
 | event.category | This is one of four ECS Categorization Fields, and indicates the second level in the ECS category hierarchy. `event.category` represents the "big buckets" of ECS categories. For example, filtering on `event.category:process` yields all events relating to process activity. This field is closely related to `event.type`, which is used as a subcategory. This field is an array. This will allow proper categorization of some events that fall in multiple categories. | keyword |
 | event.dataset | Name of the dataset. If an event source publishes more than one type of log or events (e.g. access log, error log), the dataset is used to specify which one the event comes from. It's recommended but not required to start the dataset name with the module name, followed by a dot, then the dataset name. | constant_keyword |
@@ -131,7 +135,6 @@ The `vulnerability_scan` data stream collects vulnerability findings from PDCP. 
 | http.response.body.content | The full HTTP response body. | wildcard |
 | http.response.body.content.text | Multi-field of `http.response.body.content`. | match_only_text |
 | input.type | Type of filebeat input. | keyword |
-| log.offset | Log offset. | long |
 | projectdiscovery_cloud.category | PDCP vulnerability category enum. | keyword |
 | projectdiscovery_cloud.extracted_results | Extracted indicators from the template match. | keyword |
 | projectdiscovery_cloud.host | Target host from the scan result. | keyword |
@@ -144,17 +147,38 @@ The `vulnerability_scan` data stream collects vulnerability findings from PDCP. 
 | projectdiscovery_cloud.template.id | Nuclei template identifier. | keyword |
 | projectdiscovery_cloud.template.name | Human-readable template name. | keyword |
 | projectdiscovery_cloud.template.url | PDCP catalog URL for the template. | keyword |
-| projectdiscovery_cloud.vulnerability.created_at | PDCP created_at timestamp (raw, timezone-naive ISO 8601). | keyword |
-| projectdiscovery_cloud.vulnerability.hash | PDCP vulnerability hash (32 hex characters). | keyword |
-| projectdiscovery_cloud.vulnerability.id | PDCP vulnerability record identifier. | keyword |
-| projectdiscovery_cloud.vulnerability.is_regression | Whether the finding is flagged as a regression. | boolean |
-| projectdiscovery_cloud.vulnerability.reference | Full array of reference URLs from PDCP. | keyword |
-| projectdiscovery_cloud.vulnerability.remediation | Remediation guidance from the matched template. | text |
-| projectdiscovery_cloud.vulnerability.status | Vulnerability lifecycle status from PDCP. | keyword |
-| projectdiscovery_cloud.vulnerability.updated_at | PDCP updated_at timestamp (raw, timezone-naive ISO 8601). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.category |  | keyword |
+| projectdiscovery_cloud.vulnerability_scan.created_at | PDCP created_at timestamp (raw, timezone-naive ISO 8601). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.extracted_results | Extracted indicators from the template match. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.hash | PDCP vulnerability hash (32 hex characters). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.host | Target host from the scan result. May include a port suffix (`host:port`). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.id | PDCP vulnerability record identifier. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.is_regression | Whether the finding is flagged as a regression. | boolean |
+| projectdiscovery_cloud.vulnerability_scan.matched_at | Matched URL, host, or host:port from the finding. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.matcher_name | Name of the matcher that fired. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.matcher_status | Matcher status when present in the API response. | boolean |
+| projectdiscovery_cloud.vulnerability_scan.reference | Full array of reference URLs from PDCP. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.remediation | Remediation guidance from the matched template. | text |
+| projectdiscovery_cloud.vulnerability_scan.request | Raw double-encoded request transcript when retained by the collector. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.response | Raw double-encoded response transcript when retained by the collector. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.scan_id | Scan identifier associated with the vulnerability finding. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.status | Vulnerability lifecycle status from PDCP. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.tags | Free-form Nuclei template tags. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.template_id | Nuclei template identifier. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.template_name | Human-readable template name. | keyword |
+| projectdiscovery_cloud.vulnerability_scan.updated_at | PDCP updated_at timestamp (raw, timezone-naive ISO 8601). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.vuln_hash | PDCP vulnerability hash (32 hex characters). | keyword |
+| projectdiscovery_cloud.vulnerability_scan.vuln_status | Vulnerability lifecycle status from PDCP. | keyword |
 | related.hash | All the hashes seen on your event. Populating this field, then using it to search for hashes can help in situations where you're unsure what the hash algorithm is (and therefore which key name to search). | keyword |
 | related.hosts | All hostnames or other host identifiers seen on your event. Example identifiers include FQDNs, domain names, workstation names, or aliases. | keyword |
 | related.ip | All of the IPs seen on your event. | ip |
+| source.address | Some event source addresses are defined ambiguously. The event will sometimes list an IP, a domain or a unix socket.  You should always store the raw address in the `.address` field. Then it should be duplicated to `.ip` or `.domain`, depending on which one it is. | keyword |
+| source.domain | The domain name of the source system. This value may be a host name, a fully qualified domain name, or another host naming format. The value may derive from the original event or be added from enrichment. | keyword |
+| source.ip | IP address of the source (IPv4 or IPv6). | ip |
+| source.port | Port of the source. | long |
+| source.registered_domain | The highest registered source domain, stripped of the subdomain. For example, the registered domain for "foo.example.com" is "example.com". This value can be determined precisely with a list like the public suffix list (https://publicsuffix.org). Trying to approximate this by simply taking the last two labels will not work well for TLDs such as "co.uk". | keyword |
+| source.subdomain | The subdomain portion of a fully qualified domain name includes all of the names except the host name under the registered_domain.  In a partially qualified domain, or if the the qualification level of the full name cannot be determined, subdomain contains all of the names below the registered domain. For example the subdomain portion of "www.east.mydomain.co.uk" is "east". If the domain has multiple levels of subdomain, such as "sub2.sub1.example.com", the subdomain field should contain "sub2.sub1", with no trailing period. | keyword |
+| source.top_level_domain | The effective top level domain (eTLD), also known as the domain suffix, is the last part of the domain name. For example, the top level domain for example.com is "com". This value can be determined precisely with a list like the public suffix list (https://publicsuffix.org). Trying to approximate this by simply taking the last label will not work well for effective TLDs such as "co.uk". | keyword |
 | tags | List of keywords used to tag each event. | keyword |
 | url.domain | Domain of the url, such as "www.elastic.co". In some cases a URL may refer to an IP and/or port directly, without a domain name. In this case, the IP address would go to the `domain` field. If the URL contains a literal IPv6 address enclosed by `[` and `]` (IETF RFC 2732), the `[` and `]` characters should also be captured in the `domain` field. | keyword |
 | url.original | Unmodified original url as seen in the event source. Note that in network monitoring, the observed URL may be a full URL, whereas in access logs, the URL is often just represented as a path. This field is meant to represent the URL as it was observed, complete or not. | wildcard |
@@ -174,28 +198,24 @@ An example event for `vulnerability_scan` looks as following:
 
 ```json
 {
-    "@timestamp": "2026-05-27T22:01:42.672Z",
+    "@timestamp": "2026-05-29T22:27:57.746Z",
     "agent": {
-        "ephemeral_id": "adcddc43-4acc-49d6-aa8d-56cd133dbd51",
-        "id": "3b8aeb06-9d89-4d23-8390-680e09a6083c",
-        "name": "elastic-agent-10453",
+        "ephemeral_id": "1c4c5232-bf0f-43ad-82d3-ba7b34fe1b96",
+        "id": "e434100e-6841-45a1-b361-400c654573e3",
+        "name": "elastic-agent-64053",
         "type": "filebeat",
         "version": "9.4.1"
     },
     "data_stream": {
         "dataset": "projectdiscovery_cloud.vulnerability_scan",
-        "namespace": "24833",
+        "namespace": "45081",
         "type": "logs"
-    },
-    "destination": {
-        "address": "host-01.example.com",
-        "port": 443
     },
     "ecs": {
         "version": "9.3.0"
     },
     "elastic_agent": {
-        "id": "3b8aeb06-9d89-4d23-8390-680e09a6083c",
+        "id": "e434100e-6841-45a1-b361-400c654573e3",
         "snapshot": false,
         "version": "9.4.1"
     },
@@ -205,65 +225,61 @@ An example event for `vulnerability_scan` looks as following:
             "vulnerability"
         ],
         "dataset": "projectdiscovery_cloud.vulnerability_scan",
-        "ingested": "2026-05-27T22:01:45Z",
+        "ingested": "2026-05-29T22:28:00Z",
         "kind": "alert",
         "modified": "2026-05-27T05:31:34.585Z",
         "module": "projectdiscovery_cloud",
-        "original": "{\"category\":\"misconfiguration\",\"created_at\":\"2026-05-25T16:14:05.303818\",\"description\":\"Self-signed SSL certificates are not issued by a trusted certificate authority, providing no trust value and enabling man-in-the-middle attacks.\",\"host\":\"host-01.example.com:443\",\"id\":\"000000000000000000000001\",\"matched_at\":null,\"matcher_name\":null,\"reference\":[\"https://www.rapid7.com/db/vulnerabilities/ssl-self-signed-certificate/\"],\"remediation\":\"Purchase or generate a proper SSL certificate for this service.\\n\",\"request\":null,\"response\":null,\"scan_id\":\"00000000000000scan0001\",\"severity\":\"low\",\"tags\":[\"ssl\",\"tls\",\"self-signed\",\"vuln\"],\"template_id\":\"self-signed-ssl\",\"template_name\":\"Self Signed SSL Certificate\",\"template_url\":\"https://cloud.projectdiscovery.io/public/self-signed-ssl\",\"updated_at\":\"2026-05-27T05:31:34.585002\",\"vuln_hash\":\"0253195ea083ffb7fce697ca9df8f059\",\"vuln_status\":\"fixed\"}",
         "outcome": "success",
         "start": "2026-05-25T16:14:05.303Z",
         "type": [
             "info"
         ]
     },
-    "host": {
-        "name": "host-01.example.com"
-    },
     "input": {
         "type": "cel"
     },
     "projectdiscovery_cloud": {
-        "category": "misconfiguration",
-        "host": "host-01.example.com:443",
-        "scan": {
-            "id": "00000000000000scan0001"
-        },
-        "template": {
-            "id": "self-signed-ssl",
-            "name": "Self Signed SSL Certificate",
-            "url": "https://cloud.projectdiscovery.io/public/self-signed-ssl"
-        },
-        "vulnerability": {
+        "vulnerability_scan": {
+            "category": "misconfiguration",
             "created_at": "2026-05-25T16:14:05.303818",
-            "hash": "0253195ea083ffb7fce697ca9df8f059",
+            "host": "host-01.example.com:443",
             "id": "000000000000000000000001",
-            "is_regression": false,
             "reference": "https://www.rapid7.com/db/vulnerabilities/ssl-self-signed-certificate/",
             "remediation": "Purchase or generate a proper SSL certificate for this service.\n",
-            "status": "fixed",
-            "updated_at": "2026-05-27T05:31:34.585002"
+            "scan_id": "00000000000000scan0001",
+            "tags": [
+                "ssl",
+                "tls",
+                "self-signed",
+                "vuln"
+            ],
+            "template_id": "self-signed-ssl",
+            "template_name": "Self Signed SSL Certificate",
+            "updated_at": "2026-05-27T05:31:34.585002",
+            "vuln_hash": "0253195ea083ffb7fce697ca9df8f059",
+            "vuln_status": "fixed"
         }
     },
     "related": {
         "hash": [
             "0253195ea083ffb7fce697ca9df8f059"
-        ],
-        "hosts": [
-            "host-01.example.com"
         ]
+    },
+    "source": {
+        "address": "host-01.example.com",
+        "domain": "host-01.example.com",
+        "port": 443,
+        "registered_domain": "example.com",
+        "subdomain": "host-01",
+        "top_level_domain": "com"
     },
     "tags": [
         "forwarded",
-        "projectdiscovery_cloud",
-        "ssl",
-        "tls",
-        "self-signed",
-        "vuln",
-        "preserve_original_event"
+        "projectdiscovery_cloud"
     ],
     "vulnerability": {
         "description": "Self-signed SSL certificates are not issued by a trusted certificate authority, providing no trust value and enabling man-in-the-middle attacks.",
-        "reference": "https://www.rapid7.com/db/vulnerabilities/ssl-self-signed-certificate/",
+        "reference": "https://cloud.projectdiscovery.io/public/self-signed-ssl",
         "scanner": {
             "vendor": "ProjectDiscovery"
         },
