@@ -12,34 +12,47 @@
     "  returns HTTP 404 from this environment, so the real file path, branch, blob SHA, commit",
     "  SHA and file size are unknown. Values are format-valid placeholders only.",
     "[UNVERIFIED] The advisory-record field names this document is derived from are the",
-    "  reconstruction in esa-publication-landscape.md section 5.3, not observed field names.",
-    "Companion analysis: research_results/elastic_security_advisories/ecs-mapping-analysis.md"
+    "Companion analysis: research_results/elastic_security_advisories/ecs-mapping-analysis.md",
+    "REVISED 2026-08-28 (review pass 2). The advisory files are known to be JSON, from a",
+    "  reported real filename ESA-2026-0081.json supplied by a person with repo access.",
+    "  file.* and git.* below now use the four-digit repository form ESA-2026-0024.json.",
+    "[SYNTHETIC] Still synthetic and format-valid placeholders only: git.blob_sha, git.commit_sha,",
+    "  git.last_commit_date, file.size, and the flat-vs-year-nested directory shape. The repo",
+    "  remains private and returns HTTP 404 from this environment.",
+    "[UNVERIFIED] The JSON field names inside the advisory record are still unknown. Every value",
+    "  below was mapped from the PUBLIC Discourse rendering (ESA-2026-24.md) and the CVE record,",
+    "  not from an observed repository file. Field TARGETS are verified ECS; field SOURCES are not.",
+    "NOTE the two ESA ID renderings: the repository pads the sequence to four digits",
+    "  (ESA-2026-0024) while every public rendering pads to a minimum of two (ESA-2026-24).",
+    "  advisory.esa_id below holds the NORMALIZED public form; advisory.esa_sequence holds the",
+    "  integer, which is the only safe join key."
   ],
-
   "@timestamp": "2026-04-08T16:18:41.426Z",
-
   "ecs": {
     "version": "9.3.0"
   },
-
   "event": {
     "kind": "enrichment",
-    "category": ["vulnerability"],
-    "type": ["info"],
+    "category": [
+      "vulnerability"
+    ],
+    "type": [
+      "info"
+    ],
     "dataset": "elastic_security_advisories.advisory",
     "module": "elastic_security_advisories",
     "id": "ESA-2026-24",
     "reference": "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812",
     "url": "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812"
   },
-
-  "tags": ["forwarded", "elastic-security-advisories"],
-
+  "tags": [
+    "forwarded",
+    "elastic-security-advisories"
+  ],
   "observer": {
     "vendor": "Elastic",
     "product": "Elastic Security Advisories"
   },
-
   "vulnerability": {
     "id": "CVE-2026-33461",
     "report_id": "ESA-2026-24",
@@ -56,11 +69,9 @@
       "version": "3.1"
     }
   },
-
   "package": {
     "name": "Kibana"
   },
-
   "url": {
     "original": "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812",
     "full": "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812",
@@ -68,15 +79,13 @@
     "domain": "discuss.elastic.co",
     "path": "/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812"
   },
-
   "file": {
-    "path": "advisories/2026/ESA-2026-24.md",
+    "path": "advisories/2026/ESA-2026-0024.json",
     "directory": "advisories/2026",
-    "name": "ESA-2026-24.md",
-    "extension": "md",
+    "name": "ESA-2026-0024.json",
+    "extension": "json",
     "size": 3412
   },
-
   "elastic_security_advisories": {
     "advisory": {
       "esa_id": "ESA-2026-24",
@@ -87,12 +96,10 @@
       "subject": "Kibana 8.19.14, 9.2.8, 9.3.3 Security Update (ESA-2026-24)",
       "component": "Kibana Fleet",
       "body": "**Incorrect Authorization in Kibana Fleet Leading to Information Disclosure**\n\nIncorrect Authorization (CWE-863) in Kibana can lead to information disclosure via Privilege Abuse (CAPEC-122). A user with limited Fleet privileges can exploit an internal API endpoint to retrieve sensitive configuration data, including private keys and authentication tokens, that should only be accessible to users with higher-level settings privileges. The endpoint composes its response by fetching full configuration objects and returning them directly, bypassing the authorization checks enforced by the dedicated settings APIs.\n\n**Affected Versions:**\n\n* 8.x: All versions from 8.0.0 up to and including 8.19.13\n* 9.x:\n  * All versions from 9.0.0 up to and including 9.2.7\n  * All versions from 9.3.0 up to and including 9.3.2\n\n**Affected Configurations:**\n\nDeployments with Fleet enabled where users have been granted the Fleet Agents privilege without the Fleet Settings. Fleet is available by default in Kibana, but exploitation requires that a user has been explicitly assigned Fleet agent management privileges.\n\n**Solutions and Mitigations:**\n\nThe issue is resolved in versions 8.19.14, 9.2.8, and 9.3.3.\n\n**For Users that Cannot Upgrade:**\n\n* Review Fleet role assignments and ensure users with Fleet agent privileges are trusted with access to Fleet configuration data, or remove Fleet agent privileges from untrusted users until the upgrade can be applied.\n* Rotate any proxy credentials (private keys, authentication tokens) that may have been exposed through the affected endpoint.\n\n**Indicators of Compromise (IOC)**\n\nReview Kibana audit logs for access to Fleet enrollment settings endpoints by users who do not have Fleet settings privileges. Unexpected access patterns from users with only Fleet agent privileges may indicate exploitation.\n\n**Elastic Cloud Serverless**\n\nDue to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.\n\n**Severity:** CVSSv3.1: High ( 7.7 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N\n**CVE ID:** CVE-2026-33461\n**Problem Type:** CWE-863 - Incorrect Authorization\n**Impact:** CAPEC-122 - Privilege Abuse",
-
       "published_date": "2026-04-08T16:18:41.426Z",
       "updated_date": "2026-04-09T14:27:16.151Z",
       "reserved_date": "2026-03-20T10:53:23.099Z",
       "cve_published_date": "2026-04-08T16:41:27.335Z",
-
       "cvss": {
         "version": "3.1",
         "base_score": 7.7,
@@ -107,7 +114,6 @@
         "integrity_impact": "NONE",
         "availability_impact": "NONE"
       },
-
       "cwe": {
         "id": "CWE-863",
         "title": "Incorrect Authorization"
@@ -116,11 +122,11 @@
         "id": "CAPEC-122",
         "title": "Privilege Abuse"
       },
-
       "vendor": "Elastic",
-      "products": ["Kibana"],
+      "products": [
+        "Kibana"
+      ],
       "default_status": "unaffected",
-
       "affected_versions": [
         {
           "vendor": "Elastic",
@@ -150,46 +156,40 @@
           "range": ">=9.3.0 <=9.3.2"
         }
       ],
-
-      "fixed_versions": ["8.19.14", "9.2.8", "9.3.3"],
-
+      "fixed_versions": [
+        "8.19.14",
+        "9.2.8",
+        "9.3.3"
+      ],
       "affected_configurations": "Deployments with Fleet enabled where users have been granted the Fleet Agents privilege without the Fleet Settings. Fleet is available by default in Kibana, but exploitation requires that a user has been explicitly assigned Fleet agent management privileges.",
-
       "solution": "The issue is resolved in versions 8.19.14, 9.2.8, and 9.3.3.",
-
       "workarounds": "* Review Fleet role assignments and ensure users with Fleet agent privileges are trusted with access to Fleet configuration data, or remove Fleet agent privileges from untrusted users until the upgrade can be applied.\n* Rotate any proxy credentials (private keys, authentication tokens) that may have been exposed through the affected endpoint.",
       "has_workarounds": true,
-
       "indicators_of_compromise": "Review Kibana audit logs for access to Fleet enrollment settings endpoints by users who do not have Fleet settings privileges. Unexpected access patterns from users with only Fleet agent privileges may indicate exploitation.",
       "has_indicators_of_compromise": true,
-
       "serverless_statement": "Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.",
       "serverless_affected": true,
-
       "discovery": "Elastic",
       "is_third_party_dependency": false,
       "generator": "Elastic CVE Publisher 0.0.1",
-
       "references": [
         "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812"
       ],
       "discuss_url": "https://discuss.elastic.co/t/kibana-8-19-14-9-2-8-9-3-3-security-update-esa-2026-24/385812",
       "discuss_topic_id": 385812,
-
       "git": {
         "owner": "elastic",
         "repository": "security-advisories",
         "ref": "main",
-        "path": "advisories/2026/ESA-2026-24.md",
+        "path": "advisories/2026/ESA-2026-0024.json",
         "blob_sha": "3f1b8c0a7d92e64c5ab0f31d8e77a2c9b4d60e18",
         "commit_sha": "b7e42a9c15d380fe6c2ab41978d5e03f6ca9182d",
         "size": 3412,
         "last_commit_date": "2026-04-08T15:02:11.000Z",
-        "html_url": "https://github.com/elastic/security-advisories/blob/main/advisories/2026/ESA-2026-24.md"
+        "html_url": "https://github.com/elastic/security-advisories/blob/main/advisories/2026/ESA-2026-0024.json"
       }
     }
   },
-
   "_comment_deliberately_absent": [
     "related.ip / related.hosts / related.user / related.hash — an advisory contains no IPs,",
     "  hostnames, usernames or artifact hashes. Left unset rather than invented.",

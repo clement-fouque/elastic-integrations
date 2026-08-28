@@ -8,12 +8,32 @@ CEL integration: enumerate every advisory file under a directory in a (private) 
 repository with the Git Trees API, revalidate that listing with a conditional request to
 prove the zero-cost polling property, then fetch file contents with the Git Blobs API.
 
-Because the source repository `elastic/security-advisories` is private and its on-disk
-advisory format could not be observed during research, this script also reports what it
-finds: file extensions, detected content format (JSON / YAML / YAML front matter +
-Markdown / Markdown / other), and a decoded preview of each file. That output is the
-single most valuable thing to send back, because it closes the largest open question in
-the research brief.
+The source repository `elastic/security-advisories` is private and was never readable
+during research, so this script also reports what it finds: file extensions, detected
+content format (JSON / YAML / YAML front matter + Markdown / Markdown / other), and a
+decoded preview of each file. That output is the single most valuable thing to send back.
+
+What is now known, and what this script is for
+----------------------------------------------
+A person with repository access has reported one real filename, `ESA-2026-0081.json`, and
+that the directory may hold more than 1000 files. So the *format* is known to be JSON and
+the filename convention is `ESA-YYYY-NNNN.json` with the sequence zero-padded to four
+digits. What remains unknown, and what this script exists to capture, is:
+
+  * the JSON field names inside an advisory record, which drive the entire field mapping;
+  * whether the directory is flat or year-nested, and whether non-advisory JSON sits
+    alongside the advisories;
+  * the true file count, and therefore what the ~600-file gap between the >1000 reported
+    files and the ~386 publicly-known ESA IDs consists of.
+
+Two notes on scale, since the corpus is larger than first assumed:
+
+  * `--max-pages` defaults to a small number. Raise it deliberately. Fetching every file
+    in a 3,000-file directory costs ~3,000 requests, about 60% of a 5,000/hour budget, and
+    takes roughly 10 minutes serially.
+  * The trace keeps full 4,000-character previews only for the first 25 files and a
+    200-entry sample of the tree listing, so a large run stays shareable. The format
+    question is answered by the first few files; the rest are corroboration.
 
 Vendor-side setup
 -----------------
@@ -134,6 +154,15 @@ import urllib.parse
 import urllib.request
 
 GITHUB_API_VERSION = "2022-11-28"
+
+# Number of blobs to record a full 4,000-character preview for. Beyond this the
+# format question the previews exist to answer is settled, so later blobs keep a
+# short preview and drop their raw base64 body to keep trace.json shareable.
+PREVIEW_FULL_COUNT = 25
+
+# Number of tree entries to keep verbatim in the trace. Enough to reveal the directory
+# layout and filename convention without storing one record per file.
+TREE_SAMPLE_COUNT = 200
 
 LOG = logging.getLogger("test-api")
 TRACE = []
@@ -391,7 +420,35 @@ def decode_blob(body):
 # Core collection - mirrors the proposed CEL program
 # --------------------------------------------------------------------------------------
 
-def run_collection(args, opener):
+def new_summary():
+    """Build an empty summary dict.
+
+    Created by the caller rather than inside run_collection so that partial
+    progress survives an interrupt or an unhandled exception: run_collection
+    mutates this dict in place, so whatever it managed to accumulate is still
+    readable by the caller after the stack unwinds.
+    """
+    return {
+        "status": "FAILED",
+        "repository_accessible": False,
+        "default_branch": None,
+        "private": None,
+        "tree_entries": 0,
+        "files_matched": 0,
+        "truncated": False,
+        "etag": None,
+        "revalidation": None,
+        "blobs_fetched": 0,
+        "bytes_fetched": 0,
+        "formats": {},
+        "extensions": {},
+        "rate_limit_before": None,
+        "rate_limit_after": None,
+        "errors": [],
+    }
+
+
+def run_collection(args, opener, summary=None):
     """Execute the full proposed collection flow and return a summary dict.
 
     Flow, matching the CEL program design in the research brief:
@@ -413,24 +470,8 @@ def run_collection(args, opener):
     if args.api_key:
         headers["Authorization"] = "Bearer %s" % args.api_key
 
-    summary = {
-        "status": "FAILED",
-        "repository_accessible": False,
-        "default_branch": None,
-        "private": None,
-        "tree_entries": 0,
-        "files_matched": 0,
-        "truncated": False,
-        "etag": None,
-        "revalidation": None,
-        "blobs_fetched": 0,
-        "bytes_fetched": 0,
-        "formats": {},
-        "extensions": {},
-        "rate_limit_before": None,
-        "rate_limit_after": None,
-        "errors": [],
-    }
+    if summary is None:
+        summary = new_summary()
 
     # --- Step 1: preflight repository probe -------------------------------------------
     # Not part of the CEL program. It exists because every failure on this data source is
@@ -526,6 +567,26 @@ def run_collection(args, opener):
         "want_more": False,
     }
     entry["event_count"] = len(matched)
+
+    # The full tree listing is by far the largest single item in the trace: one entry
+    # per file, so a 5,733-file directory costs ~1.5 MB on its own. Keep a sample large
+    # enough to show the path shape (flat vs year-nested, naming convention, casing)
+    # and replace the rest with counts.
+    if isinstance(entry.get("response"), dict) and len(entries) > TREE_SAMPLE_COUNT:
+        entry["response"]["body"] = {
+            "sha": tree_body.get("sha"),
+            "url": tree_body.get("url"),
+            "truncated": summary["truncated"],
+            "tree": entries[:TREE_SAMPLE_COUNT],
+            "_tree_sampled": {
+                "shown": TREE_SAMPLE_COUNT,
+                "total_entries": len(entries),
+                "blobs": len(blobs),
+                "trees": sum(1 for e in entries if e.get("type") == "tree"),
+                "note": "Full listing omitted to keep trace.json shareable. "
+                        "Path shape is visible in the sample above.",
+            },
+        }
 
     print("    OK (%.2fs) - %d tree entries, %d blobs, %d matched the file pattern"
           % (result["elapsed_s"], len(entries), len(blobs), len(matched)))
@@ -639,17 +700,29 @@ def run_collection(args, opener):
         summary["extensions"][ext] = summary["extensions"].get(ext, 0) + 1
 
         # The decoded preview is the payload that answers the open question about the
-        # repository's on-disk advisory format. It is deliberately generous.
+        # repository's on-disk advisory format, so it is deliberately generous for the
+        # first few files. Past that the format question is already answered and a full
+        # preview per file would dominate the trace: at ~30 KB per blob a 3,000-file run
+        # would produce a ~90 MB trace.json that is impractical to share.
+        generous = summary["blobs_fetched"] <= PREVIEW_FULL_COUNT
+        preview_limit = 4000 if generous else 400
         entry3["decoded"] = {
             "path": path,
             "blob_sha": sha,
             "bytes": len(text),
             "detected_format": fmt,
             "first_line": text.split("\n", 1)[0][:300],
-            "preview": text[:4000],
-            "truncated_preview": len(text) > 4000,
+            "preview": text[:preview_limit],
+            "truncated_preview": len(text) > preview_limit,
+            "preview_limit": preview_limit,
         }
         entry3["event_count"] = 1
+
+        # Drop the raw (base64) response body from the trace once it has been decoded.
+        # It is the single largest contributor to trace size and carries nothing that
+        # "decoded" above does not already express in readable form.
+        if not generous and isinstance(entry3.get("response"), dict):
+            entry3["response"]["body"] = "<omitted: see 'decoded' for this blob>"
 
         print("    [%d/%d] %s -> OK (%.2fs, %d bytes, format=%s)"
               % (index, len(to_fetch), path, result3["elapsed_s"], len(text), fmt))
@@ -826,23 +899,23 @@ def main(argv=None):
 
     opener = build_opener(args.proxy, args.timeout)
 
-    summary = None
+    summary = new_summary()
     exit_code = 1
     try:
-        summary = run_collection(args, opener)
+        run_collection(args, opener, summary)
         exit_code = 0 if summary["status"] == "SUCCESS" else 1
     except KeyboardInterrupt:
-        LOG.warning("Interrupted by user")
+        LOG.warning("Interrupted by user after %d blob(s)", summary["blobs_fetched"])
         print("\n  Interrupted. Writing partial output.")
-        summary = summary or {"status": "INTERRUPTED", "errors": ["interrupted by user"]}
+        summary["status"] = "INTERRUPTED"
+        summary["errors"].append("interrupted by user")
     except Exception as exc:  # noqa: BLE001 - the script must never crash
         LOG.error("Unhandled exception: %s", redact(str(exc)))
         LOG.error("%s", redact(traceback.format_exc()))
         print("\n  Unexpected error: %s" % redact(str(exc)))
         print("  Full traceback is in %s" % log_path)
-        summary = summary or {"status": "FAILED", "errors": [redact(str(exc))]}
-
-    summary = summary or {"status": "FAILED", "errors": ["no summary produced"]}
+        summary["status"] = "FAILED"
+        summary["errors"].append(redact(str(exc)))
     summary.setdefault("errors", [])
     for key, default in (("repository_accessible", False), ("private", None),
                          ("default_branch", None), ("tree_entries", 0),

@@ -1,0 +1,906 @@
+[
+  {
+    "sha": "b85f7573f0b48c03fddf90dad06fc743876f1b33",
+    "node_id": "C_kwDOCAccltoAKGI4NWY3NTczZjBiNDhjMDNmZGRmOTBkYWQwNmZjNzQzODc2ZjFiMzM",
+    "commit": {
+      "author": {
+        "name": "Krishna Chaitanya Reddy Burri",
+        "email": "krish.reddy91@gmail.com",
+        "date": "2026-05-29T14:56:33Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-05-29T14:56:33Z"
+      },
+      "message": "Add vulnerability.status field as per RFC 0055 (#2662)\n\n* Add vulnerability.status field as per RFC 0055",
+      "tree": {
+        "sha": "6ec036cf5d90086b82e4c0f5c971252382e7628b",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/6ec036cf5d90086b82e4c0f5c971252382e7628b"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/b85f7573f0b48c03fddf90dad06fc743876f1b33",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqGakhCRC1aQ7uu5UhlAAAzmMQACNI1ha4z4pghxtBx7lkkkq8\nF7VqNWewnJojeOsJcKasfArGdzoVCELdsD4TwRyuAI/EkUJJa+jkJEJ9o16hxpVP\n85HfzydPEwTjl1indMcLlfA38iNYhqdct9ESPL35Ti/pJpZc/ppjuZPeftA1knam\nOyVrdO+TZ0ZEzA31r2P/B5QajDfyKAKlQQhHV3bPGRoEOAsmlCdFFVGyejOuPSKm\nWWU2wmbOw04MFRT35b5MfGuEmqL5v0lrLQy1iAI5X+OXzO0Cpg+REdVL5GUCeNQV\nSHGP6BwKfFEabgH4c+L7jVBFF6KizR1z10xm60jsRZ8Ff35yhY1DaCXPvzHWLh3q\nwxGGE/p1pcTVLYCpZP6qkcHZdTUS5lbvtDVjB4CoWWGnXRO0LEEBZQAjaolOngBQ\nSYLFVrbPr1NIXF11nci5Q8oQKVlPHChMsQk2AJ+dM7yZK6YrMOzW+WoWupGNqNwl\nhPbO8PaDvjESDSjUcZPW+udCVc2Mgd8fZ86yF0gFstBze47pJxtkn9eo28Rz8Fzg\n5iZRY0NDDW50Zk8X9Q2qlqHAVP9j9tj1vwrkXXATKGDgKgvn6S+sDv2URYN2GaMo\nRTsSRBfapmA9GqRoItLZYtg+N4ageasFWQQlSP3ayZx+xLAUFryeaMfwGgNlGOlI\nkTJGyRSvz26QhCVsPqQo\n=QryX\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 6ec036cf5d90086b82e4c0f5c971252382e7628b\nparent 4d1d8fe3aa36d32d92405cec123642006bfeb9bd\nauthor Krishna Chaitanya Reddy Burri <krish.reddy91@gmail.com> 1780066593 +0530\ncommitter GitHub <noreply@github.com> 1780066593 -0500\n\nAdd vulnerability.status field as per RFC 0055 (#2662)\n\n* Add vulnerability.status field as per RFC 0055",
+        "verified_at": "2026-05-29T14:56:34Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/b85f7573f0b48c03fddf90dad06fc743876f1b33",
+    "html_url": "https://github.com/elastic/ecs/commit/b85f7573f0b48c03fddf90dad06fc743876f1b33",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/b85f7573f0b48c03fddf90dad06fc743876f1b33/comments",
+    "author": {
+      "login": "kcreddy",
+      "id": 11301409,
+      "node_id": "MDQ6VXNlcjExMzAxNDA5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11301409?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kcreddy",
+      "html_url": "https://github.com/kcreddy",
+      "followers_url": "https://api.github.com/users/kcreddy/followers",
+      "following_url": "https://api.github.com/users/kcreddy/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kcreddy/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kcreddy/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kcreddy/subscriptions",
+      "organizations_url": "https://api.github.com/users/kcreddy/orgs",
+      "repos_url": "https://api.github.com/users/kcreddy/repos",
+      "events_url": "https://api.github.com/users/kcreddy/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kcreddy/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4d1d8fe3aa36d32d92405cec123642006bfeb9bd",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/4d1d8fe3aa36d32d92405cec123642006bfeb9bd",
+        "html_url": "https://github.com/elastic/ecs/commit/4d1d8fe3aa36d32d92405cec123642006bfeb9bd"
+      }
+    ]
+  },
+  {
+    "sha": "442a1c6949b6d484733856e4ec64e94836e63815",
+    "node_id": "C_kwDOCAccltoAKDQ0MmExYzY5NDliNmQ0ODQ3MzM4NTZlNGVjNjRlOTQ4MzZlNjM4MTU",
+    "commit": {
+      "author": {
+        "name": "Michael Wolf",
+        "email": "michael.wolf@elastic.co",
+        "date": "2025-01-17T18:38:54Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2025-01-17T18:38:54Z"
+      },
+      "message": "Add support for synthetic_source_keep = none (#2422)\n\nAdd support for synthetic_source_keep mapping in generated elasticsearch component files, and add this mapping field to all ECS fields that represent sets.\r\n\r\nsynthetic_source_keep = none indicates that field is an unordered set, and helps improve storage efficiency with Elasticsearch logsdb index mode.",
+      "tree": {
+        "sha": "152a7fae2fa20023e98b3e08d3bf918458831e2f",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/152a7fae2fa20023e98b3e08d3bf918458831e2f"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/442a1c6949b6d484733856e4ec64e94836e63815",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJniqO+CRC1aQ7uu5UhlAAAMNIQAKmTou0xnH31lmNrfqUI1Em+\noy6TFJhlcjLOciV90if6S4tQIo0hsQo6zWPVYXULANUoxPviDSo9q3Lznb5MKx3o\nwo5mHCx6OY3TGKRdaPmmnpiXETjb9oh8ynw/sZJz+BnZZw4THmly3ToO8sS/jMBZ\nUqvyn1OhIgiXa83dR7j6X37ENPs8axyMr1Qn4wAPucrtIaoGBPFT7gqjrjam8CFg\n7jPQhft1KP6540o6mVW9Wl8islM+YhTubek+hSSHWqI5PeFqcdJ8WGc4qrvE5zEo\nHfv9TxYjj4LzJqHZTRSa5V4Cxr54u0G+x9LerNpPjqRuJAoEAv4ok6lRPFVZgqTf\nvoAH3vZVDK/KOe5i5GMThCmHT5KuSunvxuOMgT39ArBniD1unJIlr3kOs8EzPdxs\nQUFT0a05WW/8Wk9F9LHxQNsUHnUtgu1fvgGv7hptxXyoj6ICYmsbz6YHbi499iI/\n200l2LTPGXeP0dtqYjo1rAebLvRHw4+jB91RMvfU70sPDsHU1mqYjoYtDCT8QORo\nL5E3tbD9Ze8FGnQURvSBHEA886ep1Y5CahklrKgBP+fXsm1M4XFQkSY69EkOJjTH\nyRu6Q3Eal+B/nN5qt+KXVoQFca2e0Kyz8UCn/DYM7i4VvAgWwa7aUKxhH7+iEKIX\nHuUwKH8DScoUocVw8Pcd\n=6aC/\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 152a7fae2fa20023e98b3e08d3bf918458831e2f\nparent 66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1\nauthor Michael Wolf <michael.wolf@elastic.co> 1737139134 -0800\ncommitter GitHub <noreply@github.com> 1737139134 -0800\n\nAdd support for synthetic_source_keep = none (#2422)\n\nAdd support for synthetic_source_keep mapping in generated elasticsearch component files, and add this mapping field to all ECS fields that represent sets.\r\n\r\nsynthetic_source_keep = none indicates that field is an unordered set, and helps improve storage efficiency with Elasticsearch logsdb index mode.",
+        "verified_at": "2025-01-17T18:38:56Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/442a1c6949b6d484733856e4ec64e94836e63815",
+    "html_url": "https://github.com/elastic/ecs/commit/442a1c6949b6d484733856e4ec64e94836e63815",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/442a1c6949b6d484733856e4ec64e94836e63815/comments",
+    "author": {
+      "login": "mjwolf",
+      "id": 2590169,
+      "node_id": "MDQ6VXNlcjI1OTAxNjk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2590169?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mjwolf",
+      "html_url": "https://github.com/mjwolf",
+      "followers_url": "https://api.github.com/users/mjwolf/followers",
+      "following_url": "https://api.github.com/users/mjwolf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mjwolf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mjwolf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mjwolf/subscriptions",
+      "organizations_url": "https://api.github.com/users/mjwolf/orgs",
+      "repos_url": "https://api.github.com/users/mjwolf/repos",
+      "events_url": "https://api.github.com/users/mjwolf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mjwolf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+        "html_url": "https://github.com/elastic/ecs/commit/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1"
+      }
+    ]
+  },
+  {
+    "sha": "66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+    "node_id": "C_kwDOCAccltoAKDY2YmQ2ZGQzNGExMGJjYzBiN2JmYmI4MTA2ZjIwM2ZhZGEwYTMzYjE",
+    "commit": {
+      "author": {
+        "name": "Taylor Swanson",
+        "email": "90622908+taylor-swanson@users.noreply.github.com",
+        "date": "2025-01-17T15:05:15Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2025-01-17T15:05:15Z"
+      },
+      "message": "Fix link rendering issues and usage of http in links (#2423)\n\n- Removed link text markup, causes issues since final rendering of docs can be in either markdown or asciidoc\r\n- Replace http with https in links",
+      "tree": {
+        "sha": "cf3fa539c4d59ff28d5741131310e4142bae4e75",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/cf3fa539c4d59ff28d5741131310e4142bae4e75"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJninGrCRC1aQ7uu5UhlAAAfZQQAC5RIKdhzxhrvlf69ibV43yU\nj+M3zyZnP0pIWW/5wRqmYQDch8B1YJ6gyXyubTp3PfwmbqnebkmwNKdQwhzqhOqQ\nsytgY3BH8PQaFDbGyLcm+mxPZMPE71P5tGlikPu0t2ZLplCt2mvIzcFDhKPeMDiF\nUzjFVHlcM3x7CdbrtbCOxI4L6YOqCIpObUI8eCG8YmRj2kmmUFf6OlDPSl9znwt0\nbyJpvIT38lHquzzS5FI0jk2ObXY3gjH57kM4KdlVJnLrz/HuypoJbUGPtjPj06gx\nSXJG8NMa4q09JUwW1No5xP3Ge/H0jvrZBaJhHoe+IeAOR6u6fODKlki8MTLx9Yp8\ngYDOI8plfugB2K3vXlp5C8trE3dmgAeVjT/9hxqtyMC6FyGCXTO3wZvtXJn5nRMb\no6UoeBiucrUq51utUXQj2LwP9xy2vj1sUaAxZH465NJSiZ8thI38v6GFeQinxHif\nfQyFabKWmIpLrI7K+Vf7ySbPcVsod0gsh2l4YiDO9xtjf6WYJkETrjU9GlGd6dV2\nvtjEfKIV6LZz/9I2up9iWAk2Lu5EDef85774j/mKEYRk75SKOcHX9ZRw44nL3PPG\n/+CI8V+xNHO9Y/yVar1E+lWCJub54OZkkERt5bsafAiDyDbZRkB0EP8j9WBhXsQn\nz98+wsS59HpDgel2bt4D\n=hHl2\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree cf3fa539c4d59ff28d5741131310e4142bae4e75\nparent 5f48affd25669c06a042d6485e894a55d2987428\nauthor Taylor Swanson <90622908+taylor-swanson@users.noreply.github.com> 1737126315 -0600\ncommitter GitHub <noreply@github.com> 1737126315 -0600\n\nFix link rendering issues and usage of http in links (#2423)\n\n- Removed link text markup, causes issues since final rendering of docs can be in either markdown or asciidoc\r\n- Replace http with https in links\r\n",
+        "verified_at": "2025-01-17T15:05:18Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+    "html_url": "https://github.com/elastic/ecs/commit/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/66bd6dd34a10bcc0b7bfbb8106f203fada0a33b1/comments",
+    "author": {
+      "login": "taylor-swanson",
+      "id": 90622908,
+      "node_id": "MDQ6VXNlcjkwNjIyOTA4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/90622908?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/taylor-swanson",
+      "html_url": "https://github.com/taylor-swanson",
+      "followers_url": "https://api.github.com/users/taylor-swanson/followers",
+      "following_url": "https://api.github.com/users/taylor-swanson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/taylor-swanson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/taylor-swanson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/taylor-swanson/subscriptions",
+      "organizations_url": "https://api.github.com/users/taylor-swanson/orgs",
+      "repos_url": "https://api.github.com/users/taylor-swanson/repos",
+      "events_url": "https://api.github.com/users/taylor-swanson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/taylor-swanson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5f48affd25669c06a042d6485e894a55d2987428",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/5f48affd25669c06a042d6485e894a55d2987428",
+        "html_url": "https://github.com/elastic/ecs/commit/5f48affd25669c06a042d6485e894a55d2987428"
+      }
+    ]
+  },
+  {
+    "sha": "64f715c6720083d1a41507cc625a50c1b954b9b9",
+    "node_id": "C_kwDOCAccltoAKDY0ZjcxNWM2NzIwMDgzZDFhNDE1MDdjYzYyNWE1MGMxYjk1NGI5Yjk",
+    "commit": {
+      "author": {
+        "name": "Nic",
+        "email": "nicpenning@gmail.com",
+        "date": "2024-04-03T19:19:29Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2024-04-03T19:19:29Z"
+      },
+      "message": "Fix broken link for vulnerabilty.id (#2328)\n\nFix vulnerability.id broken link",
+      "tree": {
+        "sha": "3d4c89af92da33448321f779108a87fbb517fd08",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/3d4c89af92da33448321f779108a87fbb517fd08"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/64f715c6720083d1a41507cc625a50c1b954b9b9",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJmDavBCRC1aQ7uu5UhlAAAZXAQAFsr3RQKd2c56KMvxxPNB7FS\nk6oigfmZKL/03OG5nsB/zZhp0lLk5VjX1A90iJECYYb56BSFCYbR3NypGWIIFJP5\n//IyydDMj6dLQHZFYlIqbPSfV5w0+3scIafUZCcPdS8mFsZ/LchWYmk4kiNeqxyf\n+rYu1SpHeJ/bikqMRCFC/4QZhptS22zcbP+c6S/zGEsI5CENPLyJwEdiKzULv0dz\n0fxzvAebm0DtZktgcuuCyYISuowYNs4MKJgGOjYIrXRCrvmCql1Wd89+m8R1E97I\ncIRJzz6Wj1HPVqGyIfFRYIjBc7laXM+6soJMqsqXCbmH1/h6fvUrq/QdTxDSLXfj\nkVYq7YKaC/WkZ0fH4icgzWBpy/rS3RZgU4OQhEKj94SV/qavQLHmdjFT3nUaVYrV\nPnAvC6mVpPAEK6GtPN7rUgsYxK/zi/2hNb6xREObn8ro1pzxft93YxPZDnhCTi9K\nA85yl+rFg0IQrlVGtpApWq3fWxK14VNCZTBAUZYFkYiLkHFMDkzyQQxHgzKTJ//6\nfJwKv+aRzL3QUV5hLm4pLtrB2PW/c4Y+v2FakqgbuviKkDayxrykL62N2yK8/siC\nNlfc5W3izjpLpkWuG99De0Hd0LOG7rdbm2xhqrtIzqMS2DC9NrcmbwRCNSTNrIwe\naMfuYYsMy94iSHI76CW5\n=TMqF\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 3d4c89af92da33448321f779108a87fbb517fd08\nparent 2a066283143a7daed84284e965165ae3c0a4e1c8\nauthor Nic <nicpenning@gmail.com> 1712171969 -0500\ncommitter GitHub <noreply@github.com> 1712171969 -0700\n\nFix broken link for vulnerabilty.id (#2328)\n\nFix vulnerability.id broken link\r\n",
+        "verified_at": "2024-11-08T03:26:48Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/64f715c6720083d1a41507cc625a50c1b954b9b9",
+    "html_url": "https://github.com/elastic/ecs/commit/64f715c6720083d1a41507cc625a50c1b954b9b9",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/64f715c6720083d1a41507cc625a50c1b954b9b9/comments",
+    "author": {
+      "login": "nicpenning",
+      "id": 5582679,
+      "node_id": "MDQ6VXNlcjU1ODI2Nzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5582679?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nicpenning",
+      "html_url": "https://github.com/nicpenning",
+      "followers_url": "https://api.github.com/users/nicpenning/followers",
+      "following_url": "https://api.github.com/users/nicpenning/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nicpenning/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nicpenning/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nicpenning/subscriptions",
+      "organizations_url": "https://api.github.com/users/nicpenning/orgs",
+      "repos_url": "https://api.github.com/users/nicpenning/repos",
+      "events_url": "https://api.github.com/users/nicpenning/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nicpenning/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2a066283143a7daed84284e965165ae3c0a4e1c8",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/2a066283143a7daed84284e965165ae3c0a4e1c8",
+        "html_url": "https://github.com/elastic/ecs/commit/2a066283143a7daed84284e965165ae3c0a4e1c8"
+      }
+    ]
+  },
+  {
+    "sha": "e510ecf69f6036ee50620c1641d6dd616b76f10d",
+    "node_id": "C_kwDOCAccltoAKGU1MTBlY2Y2OWY2MDM2ZWU1MDYyMGMxNjQxZDZkZDYxNmI3NmYxMGQ",
+    "commit": {
+      "author": {
+        "name": "Dominic Page",
+        "email": "11043991+djptek@users.noreply.github.com",
+        "date": "2021-11-18T10:26:26Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2021-11-18T10:26:26Z"
+      },
+      "message": "Tidy trailing spaces and newlines (#1667)\n\n* Tidy training spaces and newlines\r\nCo-authored-by: Eric Beahan <ebeahan@gmail.com>",
+      "tree": {
+        "sha": "34aba407acd070348e4d268d0a834886c784d3c3",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/34aba407acd070348e4d268d0a834886c784d3c3"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/e510ecf69f6036ee50620c1641d6dd616b76f10d",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJhlipSCRBK7hj4Ov3rIwAAZaYIACHjhhn/8efVmKRvxp2UX0b3\nbFsKoZncBYI2LkXlREhfrGbS7t7GOBcZOR00dreTX72M9ZBSlUr8Qem7ETpFyOKV\nkkc0Kqd9JF68nyFEYWANOea/lejKP2LuNQgZXccLaDHEVLUt110vEqPrJeUkLL+P\nPVlFdcV+QMMYwEEmDaQJvROoOHL3pU6mQO3hxidAjyOWDIlGVtJp1vg3JJu+1oEA\nOqmT0ISYl63XGZbT17tKMHGaduV/lPgWTfB7PxotwzNVlWtDtvYkObmsbYEy1TX0\nxR09U0Z7dUPw7mCCrzM6qF2dxGSR3zEsBX3XtVVi4G74iDYMCzHr8wTX2/JHk40=\n=phAb\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 34aba407acd070348e4d268d0a834886c784d3c3\nparent a859768a3d0693c2ffdf59c74a646bd1a974c5e8\nauthor Dominic Page <11043991+djptek@users.noreply.github.com> 1637231186 +0100\ncommitter GitHub <noreply@github.com> 1637231186 +0100\n\nTidy trailing spaces and newlines (#1667)\n\n* Tidy training spaces and newlines\r\nCo-authored-by: Eric Beahan <ebeahan@gmail.com>",
+        "verified_at": "2024-11-15T10:53:34Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/e510ecf69f6036ee50620c1641d6dd616b76f10d",
+    "html_url": "https://github.com/elastic/ecs/commit/e510ecf69f6036ee50620c1641d6dd616b76f10d",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/e510ecf69f6036ee50620c1641d6dd616b76f10d/comments",
+    "author": {
+      "login": "djptek",
+      "id": 11043991,
+      "node_id": "MDQ6VXNlcjExMDQzOTkx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11043991?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/djptek",
+      "html_url": "https://github.com/djptek",
+      "followers_url": "https://api.github.com/users/djptek/followers",
+      "following_url": "https://api.github.com/users/djptek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/djptek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/djptek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/djptek/subscriptions",
+      "organizations_url": "https://api.github.com/users/djptek/orgs",
+      "repos_url": "https://api.github.com/users/djptek/repos",
+      "events_url": "https://api.github.com/users/djptek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/djptek/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a859768a3d0693c2ffdf59c74a646bd1a974c5e8",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/a859768a3d0693c2ffdf59c74a646bd1a974c5e8",
+        "html_url": "https://github.com/elastic/ecs/commit/a859768a3d0693c2ffdf59c74a646bd1a974c5e8"
+      }
+    ]
+  },
+  {
+    "sha": "828beb8e066ea876abee9c72ddc6b422fa14dee3",
+    "node_id": "C_kwDOCAccltoAKDgyOGJlYjhlMDY2ZWE4NzZhYmVlOWM3MmRkYzZiNDIyZmExNGRlZTM",
+    "commit": {
+      "author": {
+        "name": "Eric Beahan",
+        "email": "eric.beahan@elastic.co",
+        "date": "2021-11-09T15:35:17Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2021-11-09T15:35:17Z"
+      },
+      "message": "Add Apache 2.0 license header (#1652)\n\n* Adding license header check\r\n\r\n* adding license headers to source and schema files\r\n\r\n* fix  directive\r\n\r\n* Be consistent with ---\r\n\r\n* add additional whitespace",
+      "tree": {
+        "sha": "2a68ffbe6e6bcbc38045eecadfbd621f1872dee0",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/2a68ffbe6e6bcbc38045eecadfbd621f1872dee0"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/828beb8e066ea876abee9c72ddc6b422fa14dee3",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJhipU1CRBK7hj4Ov3rIwAAEhoIAJchYQN0IdXt/AhnFJr3Ht8q\nCwW2Hut/7TIHYEDvbdiQOQYGzMUi9PxVGFsv+NVxen3QEQF1CjyCAOEnB7xWgZzX\nmElooBg1vjB3g2JrkWjMLJ1asu5Q/63T9wUTjoj73UtD2wNR5VhYFlm+4vcz9YR1\nOJt+aCV+CvfNxXMZS/g9GUQTai9t1geZe3qYVfQNY8ZFWGHiuN0w+BqcOPuth7qT\nHLwZCMT3NSaVlhN89QlaoV06L+5mZZvWgpKiTetQncRr98sV00NKVFpeKPcV0sN4\n27lEyHY90nLo8Kvs/IqA0EhcyClYaqP99sjtdhuYiT4GyZt24qyueyrhu1sqpEI=\n=kKiK\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 2a68ffbe6e6bcbc38045eecadfbd621f1872dee0\nparent 059479ea2ec4dc95c20285a8701008b09194950f\nauthor Eric Beahan <eric.beahan@elastic.co> 1636472117 -0600\ncommitter GitHub <noreply@github.com> 1636472117 -0600\n\nAdd Apache 2.0 license header (#1652)\n\n* Adding license header check\r\n\r\n* adding license headers to source and schema files\r\n\r\n* fix  directive\r\n\r\n* Be consistent with ---\r\n\r\n* add additional whitespace",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/828beb8e066ea876abee9c72ddc6b422fa14dee3",
+    "html_url": "https://github.com/elastic/ecs/commit/828beb8e066ea876abee9c72ddc6b422fa14dee3",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/828beb8e066ea876abee9c72ddc6b422fa14dee3/comments",
+    "author": {
+      "login": "ebeahan",
+      "id": 7226265,
+      "node_id": "MDQ6VXNlcjcyMjYyNjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7226265?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ebeahan",
+      "html_url": "https://github.com/ebeahan",
+      "followers_url": "https://api.github.com/users/ebeahan/followers",
+      "following_url": "https://api.github.com/users/ebeahan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ebeahan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ebeahan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ebeahan/subscriptions",
+      "organizations_url": "https://api.github.com/users/ebeahan/orgs",
+      "repos_url": "https://api.github.com/users/ebeahan/repos",
+      "events_url": "https://api.github.com/users/ebeahan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ebeahan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "059479ea2ec4dc95c20285a8701008b09194950f",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/059479ea2ec4dc95c20285a8701008b09194950f",
+        "html_url": "https://github.com/elastic/ecs/commit/059479ea2ec4dc95c20285a8701008b09194950f"
+      }
+    ]
+  },
+  {
+    "sha": "015381ae539e987fa6b2011d210bc131d5d47b1f",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OjAxNTM4MWFlNTM5ZTk4N2ZhNmIyMDExZDIxMGJjMTMxZDVkNDdiMWY=",
+    "commit": {
+      "author": {
+        "name": "Eric Beahan",
+        "email": "eric.beahan@elastic.co",
+        "date": "2021-08-20T15:44:36Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2021-08-20T15:44:36Z"
+      },
+      "message": "RFC 0023 `match_only_text` type field migration - stage 3 changes (#1584)\n\n* remove beta attributes for match_only_text fields\r\n\r\n* artifacts\r\n\r\n* changelog entry",
+      "tree": {
+        "sha": "f259fcfabe09a5fe31358189c3ce78bbd5de3498",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/f259fcfabe09a5fe31358189c3ce78bbd5de3498"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/015381ae539e987fa6b2011d210bc131d5d47b1f",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJhH83kCRBK7hj4Ov3rIwAAW8AIACdzOLRYgcoo/9bqaJB1jum7\nkbonZPY8f1jYhegRuYLRKWaGvaNjImRZRlCSmX7zSAcRbqAnCnKVvNIGn0dPCO+x\nlkQBv2gU2V1AdSXypVtnz/Ps0vE85OHYpdM+yg6/B1rMjLLJAKDzL4txb/ikkRzo\nBWKAfzEFvgj5mgbRbLs5aR4DARjbLm1DJCAXIZEAwHC64cASPbvCvY1+g1QymgzY\n83oBK8G2egqpdMEvsCunwxNnnhnGDgiv9dhuFY1gBXsk2v9CnJbCf6WVWeVHiiBp\nik/KKs+zriCdjGnQiK7f22iOAfJaU1SrXK7GwHtMpJ8I4YL0ChTGDu3JXl5IiV0=\n=weHm\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree f259fcfabe09a5fe31358189c3ce78bbd5de3498\nparent 548ff74eff614c8b27d8c5fd81a1bd61393ec5b3\nauthor Eric Beahan <eric.beahan@elastic.co> 1629474276 -0500\ncommitter GitHub <noreply@github.com> 1629474276 -0500\n\nRFC 0023 `match_only_text` type field migration - stage 3 changes (#1584)\n\n* remove beta attributes for match_only_text fields\r\n\r\n* artifacts\r\n\r\n* changelog entry",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/015381ae539e987fa6b2011d210bc131d5d47b1f",
+    "html_url": "https://github.com/elastic/ecs/commit/015381ae539e987fa6b2011d210bc131d5d47b1f",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/015381ae539e987fa6b2011d210bc131d5d47b1f/comments",
+    "author": {
+      "login": "ebeahan",
+      "id": 7226265,
+      "node_id": "MDQ6VXNlcjcyMjYyNjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7226265?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ebeahan",
+      "html_url": "https://github.com/ebeahan",
+      "followers_url": "https://api.github.com/users/ebeahan/followers",
+      "following_url": "https://api.github.com/users/ebeahan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ebeahan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ebeahan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ebeahan/subscriptions",
+      "organizations_url": "https://api.github.com/users/ebeahan/orgs",
+      "repos_url": "https://api.github.com/users/ebeahan/repos",
+      "events_url": "https://api.github.com/users/ebeahan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ebeahan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "548ff74eff614c8b27d8c5fd81a1bd61393ec5b3",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/548ff74eff614c8b27d8c5fd81a1bd61393ec5b3",
+        "html_url": "https://github.com/elastic/ecs/commit/548ff74eff614c8b27d8c5fd81a1bd61393ec5b3"
+      }
+    ]
+  },
+  {
+    "sha": "443a21e029778a0fd4019ab011144482dddc749c",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OjQ0M2EyMWUwMjk3NzhhMGZkNDAxOWFiMDExMTQ0NDgyZGRkYzc0OWM=",
+    "commit": {
+      "author": {
+        "name": "Eric Beahan",
+        "email": "eric.beahan@elastic.co",
+        "date": "2021-07-28T17:55:29Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2021-07-28T17:55:29Z"
+      },
+      "message": "[RFC] `match_only_text` - stage 2 beta changes (#1532)\n\n* text => match_only_text\r\n\r\n* add beta attributes\r\n\r\n* artifacts\r\n\r\n* changelog entry",
+      "tree": {
+        "sha": "ae9d81c27df635237110b1aecc04a0e1459586b5",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/ae9d81c27df635237110b1aecc04a0e1459586b5"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/443a21e029778a0fd4019ab011144482dddc749c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJhAZoSCRBK7hj4Ov3rIwAAmksIAEZQ8OqG5WZn7rpG38iV1ngZ\nBwYG5sx/OZBQDCyvidO8q5RXvAyHk7ijtcGmVrK6cZyQWJwOWYc4z/eps6Av9qh8\nqmbUwY9AfEvIdWOjXk7zIj7jsfoqPCSeUIR8VdO3tQ+p8JPbCYtfvr1AtoOwJaGU\nIcJ06afrP7PyIinEBxm8jbgaXqcrMNDasmbygSrlUPP1jy9jBdNWRYhwBEqlIYFq\nP7PlxUPIpj+f7luKCmgj4v8p4U3SYLgnFR4pKcqogQJbjJkeJZFY/kQfduaz/k+f\nKep3t2rXbmzHqi85GBaZqJwYsFDzUfbgDvS1yH95xSJtawu2+oQKZNZiV4dLrEA=\n=6qgA\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree ae9d81c27df635237110b1aecc04a0e1459586b5\nparent f91dda155398c47a5f2e583c4ed2ab987da2096c\nauthor Eric Beahan <eric.beahan@elastic.co> 1627494929 -0500\ncommitter GitHub <noreply@github.com> 1627494929 -0500\n\n[RFC] `match_only_text` - stage 2 beta changes (#1532)\n\n* text => match_only_text\r\n\r\n* add beta attributes\r\n\r\n* artifacts\r\n\r\n* changelog entry",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/443a21e029778a0fd4019ab011144482dddc749c",
+    "html_url": "https://github.com/elastic/ecs/commit/443a21e029778a0fd4019ab011144482dddc749c",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/443a21e029778a0fd4019ab011144482dddc749c/comments",
+    "author": {
+      "login": "ebeahan",
+      "id": 7226265,
+      "node_id": "MDQ6VXNlcjcyMjYyNjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7226265?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ebeahan",
+      "html_url": "https://github.com/ebeahan",
+      "followers_url": "https://api.github.com/users/ebeahan/followers",
+      "following_url": "https://api.github.com/users/ebeahan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ebeahan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ebeahan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ebeahan/subscriptions",
+      "organizations_url": "https://api.github.com/users/ebeahan/orgs",
+      "repos_url": "https://api.github.com/users/ebeahan/repos",
+      "events_url": "https://api.github.com/users/ebeahan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ebeahan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f91dda155398c47a5f2e583c4ed2ab987da2096c",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/f91dda155398c47a5f2e583c4ed2ab987da2096c",
+        "html_url": "https://github.com/elastic/ecs/commit/f91dda155398c47a5f2e583c4ed2ab987da2096c"
+      }
+    ]
+  },
+  {
+    "sha": "8cddc23c89fdc7f2e8471ab89579299b9c97979c",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OjhjZGRjMjNjODlmZGM3ZjJlODQ3MWFiODk1NzkyOTliOWM5Nzk3OWM=",
+    "commit": {
+      "author": {
+        "name": "Mathieu Martin",
+        "email": "mathieu.martin@elastic.co",
+        "date": "2020-02-06T16:05:45Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2020-02-06T16:05:45Z"
+      },
+      "message": "Mark which fields should be arrays. (#727)",
+      "tree": {
+        "sha": "63f60fb84ea4aae29f8d0e1be62e583f2b69bf84",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/63f60fb84ea4aae29f8d0e1be62e583f2b69bf84"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/8cddc23c89fdc7f2e8471ab89579299b9c97979c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJePDlZCRBK7hj4Ov3rIwAAdHIIAKRQxiVSk8/8p2vOpMP4f9tR\nnrgFWHnFD88pRYYBFbkPwBGBxD5KqxG0pKQWb82u5SIHp7c6APE9sGEa47PjO64H\n4cb2JPwsTlhXlNtHYK10tEMvHyrFeLpnxllZIKMpWlUDdaSX/fr0UPK2yHJUuWsB\nWbSCLhWBW1nd5dV3s3ID7Icl4v1Gw+/0o7AktnT8f9o2is3DGWOu+xla4lD160UG\nolotYV9CKTMpgzdd27pwKwejOsX9GPOdYeNXPWrqRozIVxzzWUOux5eJsAMkg4db\nXNm4yUBBKMpCk3jAvkYiKjSIbj7ICbd+gex5LDeO2ZWJTaRGmr6fzcI3m3mCuAo=\n=yfqb\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 63f60fb84ea4aae29f8d0e1be62e583f2b69bf84\nparent 4ff90b31b119281139b53e5216b450ba17d554bd\nauthor Mathieu Martin <mathieu.martin@elastic.co> 1581005145 -0500\ncommitter GitHub <noreply@github.com> 1581005145 -0500\n\nMark which fields should be arrays. (#727)\n\n",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/8cddc23c89fdc7f2e8471ab89579299b9c97979c",
+    "html_url": "https://github.com/elastic/ecs/commit/8cddc23c89fdc7f2e8471ab89579299b9c97979c",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/8cddc23c89fdc7f2e8471ab89579299b9c97979c/comments",
+    "author": null,
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "4ff90b31b119281139b53e5216b450ba17d554bd",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/4ff90b31b119281139b53e5216b450ba17d554bd",
+        "html_url": "https://github.com/elastic/ecs/commit/4ff90b31b119281139b53e5216b450ba17d554bd"
+      }
+    ]
+  },
+  {
+    "sha": "1e2924af7a3c79c8b7b43b1adfad726bcc96668b",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OjFlMjkyNGFmN2EzYzc5YzhiN2I0M2IxYWRmYWQ3MjZiY2M5NjY2OGI=",
+    "commit": {
+      "author": {
+        "name": "Mathieu Martin",
+        "email": "mathieu.martin@elastic.co",
+        "date": "2019-12-12T17:43:18Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2019-12-12T17:43:18Z"
+      },
+      "message": "Add the default text analyzer as a multi-fields to 25 fields (#680)\n\nNote: fields that are reused elsewhere are getting the `text` multi-fields in all locations where they're reused as well.\r\n\r\n`text` introduced on these fields:\r\n\r\n- as.organization.name\r\n- error.stack_trace\r\n- file.path\r\n- file.target_path\r\n- http.request.body\r\n- http.response.body\r\n- organization.name\r\n- os.name\r\n- os.full\r\n- process.executable\r\n- process.name\r\n- process.title\r\n- process.command_line\r\n- process.working_directory\r\n- threat.technique.name\r\n- url.original\r\n- url.full\r\n- user.name\r\n- user.full\r\n- vulnerability.description",
+      "tree": {
+        "sha": "11091b63b9ae80458ad44daf18f1d105fd16c3a8",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/11091b63b9ae80458ad44daf18f1d105fd16c3a8"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/1e2924af7a3c79c8b7b43b1adfad726bcc96668b",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJd8nw2CRBK7hj4Ov3rIwAAdHIIAB8yoJd93QmYz2dFXyiVZHlb\ntGiG2TWQ/ypLJzpFj3Cppwhv8ido8BxgB/yWkCkL3r0AyiakRKQ8vuuRv64xDCE8\n1lB52ZYNXukv1n2UMQHViB3SZYUCdXnpGK/u1+Y/jiDwDawFjhBXCzyA7wL6kiSA\nSMXeUTPhNqHuELpoQN4u7rA8SGd/PT/xDqzaNnCojB8KJeJ6VLggNET9JQqRuEe+\ndziDuPsJgw+lU4qFLVE/1Nh2bE4kXh+24LCUzdi8FrZxDIAgicOP18FzcnuBENLx\nlQCy7eHwjF9GHam7hTGiWN45SyFOucUS6UZNRqPU87ykM1tTx6rjtVgVeLgqqTU=\n=PTRO\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 11091b63b9ae80458ad44daf18f1d105fd16c3a8\nparent 838f50ccaed03db6e272f8146e116bbd68e54628\nauthor Mathieu Martin <mathieu.martin@elastic.co> 1576172598 -0500\ncommitter GitHub <noreply@github.com> 1576172598 -0500\n\nAdd the default text analyzer as a multi-fields to 25 fields (#680)\n\nNote: fields that are reused elsewhere are getting the `text` multi-fields in all locations where they're reused as well.\r\n\r\n`text` introduced on these fields:\r\n\r\n- as.organization.name\r\n- error.stack_trace\r\n- file.path\r\n- file.target_path\r\n- http.request.body\r\n- http.response.body\r\n- organization.name\r\n- os.name\r\n- os.full\r\n- process.executable\r\n- process.name\r\n- process.title\r\n- process.command_line\r\n- process.working_directory\r\n- threat.technique.name\r\n- url.original\r\n- url.full\r\n- user.name\r\n- user.full\r\n- vulnerability.description",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/1e2924af7a3c79c8b7b43b1adfad726bcc96668b",
+    "html_url": "https://github.com/elastic/ecs/commit/1e2924af7a3c79c8b7b43b1adfad726bcc96668b",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/1e2924af7a3c79c8b7b43b1adfad726bcc96668b/comments",
+    "author": null,
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "838f50ccaed03db6e272f8146e116bbd68e54628",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/838f50ccaed03db6e272f8146e116bbd68e54628",
+        "html_url": "https://github.com/elastic/ecs/commit/838f50ccaed03db6e272f8146e116bbd68e54628"
+      }
+    ]
+  },
+  {
+    "sha": "ac77d32467f67bf9774536cc9d923c723e014568",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OmFjNzdkMzI0NjdmNjdiZjk3NzQ1MzZjYzlkOTIzYzcyM2UwMTQ1Njg=",
+    "commit": {
+      "author": {
+        "name": "Ben Skelker",
+        "email": "54019610+benskelker@users.noreply.github.com",
+        "date": "2019-12-02T15:55:09Z"
+      },
+      "committer": {
+        "name": "Mathieu Martin",
+        "email": "mathieu.martin@elastic.co",
+        "date": "2019-12-02T15:55:09Z"
+      },
+      "message": "Format URLs in vulnerability, to fix table formatting (#660)",
+      "tree": {
+        "sha": "99c5d08037980c7765542131493e1c83af8396f9",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/99c5d08037980c7765542131493e1c83af8396f9"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/ac77d32467f67bf9774536cc9d923c723e014568",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/ac77d32467f67bf9774536cc9d923c723e014568",
+    "html_url": "https://github.com/elastic/ecs/commit/ac77d32467f67bf9774536cc9d923c723e014568",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/ac77d32467f67bf9774536cc9d923c723e014568/comments",
+    "author": {
+      "login": "benskelker",
+      "id": 54019610,
+      "node_id": "MDQ6VXNlcjU0MDE5NjEw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54019610?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/benskelker",
+      "html_url": "https://github.com/benskelker",
+      "followers_url": "https://api.github.com/users/benskelker/followers",
+      "following_url": "https://api.github.com/users/benskelker/following{/other_user}",
+      "gists_url": "https://api.github.com/users/benskelker/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/benskelker/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/benskelker/subscriptions",
+      "organizations_url": "https://api.github.com/users/benskelker/orgs",
+      "repos_url": "https://api.github.com/users/benskelker/repos",
+      "events_url": "https://api.github.com/users/benskelker/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/benskelker/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "cf90e34e6cfd8e4f336c1ba21b691eb3d8971922",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/cf90e34e6cfd8e4f336c1ba21b691eb3d8971922",
+        "html_url": "https://github.com/elastic/ecs/commit/cf90e34e6cfd8e4f336c1ba21b691eb3d8971922"
+      }
+    ]
+  },
+  {
+    "sha": "6f8649c43555dc9fdc8a366b8b0806b594cf0645",
+    "node_id": "MDY6Q29tbWl0MTM0NjgzNzk4OjZmODY0OWM0MzU1NWRjOWZkYzhhMzY2YjhiMDgwNmI1OTRjZjA2NDU=",
+    "commit": {
+      "author": {
+        "name": "Andrew Pease",
+        "email": "7442091+peasead@users.noreply.github.com",
+        "date": "2019-11-19T21:39:54Z"
+      },
+      "committer": {
+        "name": "Mathieu Martin",
+        "email": "mathieu.martin@elastic.co",
+        "date": "2019-11-19T21:39:54Z"
+      },
+      "message": "Add the `vulnerability` schema (#581)",
+      "tree": {
+        "sha": "ab347b91f631c5229f9264d0c7fa10100f8853be",
+        "url": "https://api.github.com/repos/elastic/ecs/git/trees/ab347b91f631c5229f9264d0c7fa10100f8853be"
+      },
+      "url": "https://api.github.com/repos/elastic/ecs/git/commits/6f8649c43555dc9fdc8a366b8b0806b594cf0645",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/elastic/ecs/commits/6f8649c43555dc9fdc8a366b8b0806b594cf0645",
+    "html_url": "https://github.com/elastic/ecs/commit/6f8649c43555dc9fdc8a366b8b0806b594cf0645",
+    "comments_url": "https://api.github.com/repos/elastic/ecs/commits/6f8649c43555dc9fdc8a366b8b0806b594cf0645/comments",
+    "author": {
+      "login": "peasead",
+      "id": 7442091,
+      "node_id": "MDQ6VXNlcjc0NDIwOTE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7442091?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/peasead",
+      "html_url": "https://github.com/peasead",
+      "followers_url": "https://api.github.com/users/peasead/followers",
+      "following_url": "https://api.github.com/users/peasead/following{/other_user}",
+      "gists_url": "https://api.github.com/users/peasead/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/peasead/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/peasead/subscriptions",
+      "organizations_url": "https://api.github.com/users/peasead/orgs",
+      "repos_url": "https://api.github.com/users/peasead/repos",
+      "events_url": "https://api.github.com/users/peasead/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/peasead/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "9843f32df810816e4ba85d3251b8e2661d15f0d3",
+        "url": "https://api.github.com/repos/elastic/ecs/commits/9843f32df810816e4ba85d3251b8e2661d15f0d3",
+        "html_url": "https://github.com/elastic/ecs/commit/9843f32df810816e4ba85d3251b8e2661d15f0d3"
+      }
+    ]
+  }
+]
