@@ -395,7 +395,12 @@ impossible. If you must:
 > you will receive a `404 Not Found` response. GitHub uses a `404 Not Found` response **instead of
 > a `403 Forbidden` response to avoid confirming the existence of private repositories**.
 
-**[VERIFIED-LIVE]** the responses are not merely both 404 — they are byte-identical:
+**[VERIFIED-LIVE]** the responses are not merely both 404 — they are byte-identical **for a given
+endpoint**. Re-verified on the review pass: md5 `a11f74e873af40b9e9ea935139d48c61` across five
+variants of the same endpoint. The one qualification worth stating precisely, because the original
+wording overreached: the bodies differ **between** endpoints, since `documentation_url` names the
+endpoint that was called. That is enough to tell you *which call* failed but nothing about *why*, so
+the diagnostic problem below is unchanged.
 
 ```
 $ curl -H "Authorization: Bearer <token-without-access>" \
@@ -421,9 +426,18 @@ same 404** [VERIFIED-LIVE]:
 | Repository does not exist / name typo | `404`, same body |
 | `path` (directory) does not exist in the repo | `404`, same body |
 | `branch` / ref does not exist | `404`, same body |
+| **`path` points at a file rather than a directory** | **HTTP 422**, distinct message — the one input error that *is* distinguishable |
 
-So "no data is arriving" gives the operator essentially no information. The diagnosis has to be
-done by hand, from the outside in.
+So "no data is arriving" gives the operator essentially no information, with the single exception of
+the 422 case. The diagnosis has to be done by hand, from the outside in.
+
+> **Correction (review pass 2) — the ladder below cannot do everything it claims.** Step 3a tells the
+> operator that a 404 on the repository-root tree means the `Contents: Read` permission is missing. It
+> does not: a nonexistent branch produces the identical 404 at that same step, so 3a cannot separate
+> the two faults it purports to separate. **Read 3a as "either the permission is missing or the branch
+> name is wrong"**, and disambiguate by requesting the tree by the *default* branch name returned from
+> the repository probe in step 2, or by commit SHA. Only if that also 404s is the permission genuinely
+> the problem. The rest of the ladder is sound.
 
 #### The diagnostic ladder
 

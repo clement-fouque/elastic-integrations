@@ -36,12 +36,27 @@ manifest design — that is downstream work.
 
 ### 1.1 Exact format
 
-`ESA-YYYY-NN`
+**There are two renderings.** Everything in this document describes the *public* one. The repository
+uses a different, wider padding — see the box below.
+
+Public form: `ESA-YYYY-NN`
 
 - `YYYY` — four-digit calendar year.
-- `NN` — per-year sequence, **zero-padded to two digits** for values 1–99, then three digits
-  naturally from 100 upward. There is no padding to three digits below 100: the public record
-  contains `ESA-2026-99` immediately followed by `ESA-2026-100`.
+- `NN` — per-year sequence, **zero-padded to a minimum of two digits** for values 1–99, then three
+  digits naturally from 100 upward. There is no padding to three digits below 100: the public record
+  contains `ESA-2026-99` immediately followed by `ESA-2026-100`. A bare single-digit form
+  (`ESA-2026-1`) occurs nowhere in 315 titles, 57 bodies or 340 CVE records.
+
+> **Repository form: `ESA-YYYY-NNNN` — fixed width, four digits.** `[VERIFIED]` via a filename
+> reported by a person with repo access: `ESA-2026-0081.json`. The four-digit form appears **nowhere**
+> publicly. `ESA-2026-0081` is the public `ESA-2026-81`, which exists (Elasticsearch, CVE-2026-72679,
+> posted 2026-08-13).
+>
+> So both renderings zero-pad, to different widths, and **neither string form matches the other**.
+> Normalize to the pair *(year, integer sequence)* for any join or key. Note also that the public
+> minimum-width-2 rule means naive fixed-width formatting breaks above sequence 99, and that public IDs
+> sort incorrectly as strings (`ESA-2026-137` sorts before `ESA-2026-24`). Full analysis:
+> `advisory-file-format.md` §2.
 - Uppercase `ESA` prefix in all published titles. In Discourse *slugs* it is lowercased and
   hyphen-mangled: `.../kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539`.
 
@@ -65,7 +80,7 @@ Counts of *publicly posted* advisories per ESA year, with the gaps in each year'
 |---|---|---|---|---|
 | 2021 | 1 | 31 | 31 | (older years pre-date the current title convention) |
 | 2023 | 10 | 7 | 31 | 21 gaps |
-| 2024 | 40 | 1 | 48 | 8 gaps: 28, 30, 33, 42, 43, 44, 45, 46 |
+| 2024 | 40 | 1 | 48 | **5 gaps: 42, 43, 44, 45, 46** (corrected — see note) |
 | 2025 | 36 | 1 | 39 | 3 gaps: 4, 11, 26 |
 | 2026 | 116 | 1 | 137 | 21 gaps: 23, 31, 47, 48, 61, 62, 84, 85, 103, 107, 109, 114, 115, 117, 122, 125, 130, 131, 132, 134, 135 |
 
@@ -75,6 +90,13 @@ Two important structural facts fall out of this:
    not scrape errors — I paginated the entire category (315 topics across 11 pages) and the missing
    numbers simply do not exist as public topics. This mirrors how CVE IDs are reserved then
    sometimes rejected. An integration must not assume a dense sequence.
+
+   > **Corrected 2026-08-28.** The 2024 gap list originally read "8 gaps: 28, 30, 33, 42–46". It is
+   > **5**. The gap analysis parsed only the *first* ESA ID from each topic title, so 28, 30 and 33
+   > were counted as missing when each is in fact published as the second ID on a dual-ID topic —
+   > exactly the dual-ID topics listed in point 2 immediately below. The 2026 count of 21 gaps is
+   > correct. The 2023 figure of "21 gaps" is computed inconsistently with its own `Min seq` column of
+   > 7: within [7, 31] there are **14**, and 21 only if sequences 1–6 are also counted as gaps.
 2. **Some ESA IDs share a single forum topic.** Several titles carry two IDs, e.g.
    `Kibana 8.7.1 Security Updates (ESA-2023-07, ESA-2023-08)` (topic 332330),
    `Kibana 8.15.1 Security Update (ESA-2024-27, ESA-2024-28)` (topic 366119),
@@ -329,24 +351,37 @@ Enterprise Search → Ruby (JRuby).
 ### 3.2 Exact section headings observed in production
 
 Measured across 53 real advisory bodies sampled across 2021–2026 (raw Markdown from
-`discuss.elastic.co/raw/<id>`). Frequencies of the bold-label headings:
+`discuss.elastic.co/raw/<id>`).
 
-| Heading (exact text, minus the trailing colon) | Occurrences | Required? |
-|---|---|---|
-| `**CVE ID**` / `**CVE ID:**` | 47 | Effectively always |
-| `**Severity:**` | 43 | Effectively always |
-| `**Affected Versions:**` | 42 | Effectively always |
-| `**Solutions and Mitigations:**` | 42 | Effectively always |
-| `**Affected Configurations:**` | 18 | Optional |
-| `**For Users that Cannot Upgrade:**` | 17 | Optional |
-| `**Problem Type:**` | 13 | Modern advisories only |
-| `**Impact:**` | 13 | Modern advisories only |
-| `**Indicators of Compromise (IOC)**` | 4 | Optional, 2026+ |
-| `**Elastic Cloud Serverless**` | 4 | Elasticsearch/Kibana only |
-| `**Self-hosted**` / `**Cloud**` / `**Elastic Cloud**` | 5 / 4 / 2 | Sub-headings inside the workaround block |
-| `**Description:**` | seen in RSS body of ESA-2026-128 | Rare label variant |
-| `### Acknowledgements:` | 4 | Rare — only when an external reporter is credited |
-| `## Update Log` / `## Change log` / `## Updates` | 1 / 2 / 3 | Only on long-lived "living" advisories |
+> **Corrected 2026-08-28 (review pass 2).** The original version of this table counted only the
+> **bold-label** spelling of each heading and then labelled the column "Occurrences", which readers
+> reasonably took to mean how often the *field* appears. Those are different questions, and conflating
+> them produced a table implying 11 of 53 advisories omit `Affected Versions:` — which is false; all 53
+> carry it. The original bold counts were also internally impossible: 42 bold `Affected Versions:` plus
+> the 12 ATX ones noted below is 54, against a 53-advisory sample. Both columns are now given
+> separately, and five figures are corrected. Re-derivation scripts: `../temp/landscape-review/`.
+
+| Heading (exact text, minus the trailing colon) | Bold-label form | Present in any form | Required? |
+|---|---|---|---|
+| `**CVE ID**` / `**CVE ID:**` | 47 | **53** | **Always** |
+| `**Severity:**` | 44 *(was 43)* | 50 | Near-always — genuinely absent 3 times |
+| `**Affected Versions:**` | 39 *(was 42)* | **53** (39 bold + 12 ATX + 2 unmarked) | **Always** |
+| `**Solutions and Mitigations:**` | 38 *(was 42)* | **53** (38 bold + 13 ATX + 2 unmarked) | **Always** |
+| `**Affected Configurations:**` | 18 | 20 | Optional |
+| `**For Users that Cannot Upgrade:**` | 16 *(was 17)* | 23 | Optional |
+| `**Problem Type:**` | 13 | 13 | Modern advisories only |
+| `**Impact:**` | 13 | 13 | Modern advisories only |
+| `**Indicators of Compromise (IOC)**` | 4 | 4 (8 across all 57 bodies on disk) | Optional, 2026+ |
+| `**Elastic Cloud Serverless**` | 4 | 4 (8 across all 57) | Elasticsearch/Kibana only |
+| `**Self-hosted**` / `**Cloud**` / `**Elastic Cloud**` | 5 / 4 / 2 | — | Sub-headings inside the workaround block |
+| `**Description:**` | seen in RSS body of ESA-2026-128 | — | Rare label variant |
+| `### Acknowledgements:` | **2** *(was 4)* | 3 (one credits a reporter in prose, no heading) | Rare — only when an external reporter is credited |
+| `## Update Log` / `## Change log` / `## Updates` | 1 / 2 / 3 | 6 total | Only on long-lived "living" advisories |
+
+**The useful conclusion**, which the corrected numbers make clearer than the original ones did:
+`CVE ID`, `Affected Versions` and `Solutions and Mitigations` are **universal** and a parser may treat
+them as required fields in varying syntax; `Severity` is near-universal but must tolerate absence;
+everything else is genuinely optional.
 
 Important formatting caveats an integration must survive:
 
@@ -388,7 +423,7 @@ Pulling §3.1 and §3.2 together, a published Elastic advisory contains:
 | Serverless remediation statement | `Elastic Cloud Serverless` | Elasticsearch/Kibana only |
 | Severity label, CVSS base score, CVSS vector | `Severity:` line | Yes |
 | CVE ID | `CVE ID:` line | Yes |
-| Credit / acknowledgement | `Acknowledgements:` | Rare (4 of 53 sampled) |
+| Credit / acknowledgement | `Acknowledgements:` | Rare (2 of 53 sampled carry the heading; a 3rd credits a reporter in prose) |
 | Publication date | Discourse `created_at` on the topic/post — **not in the body text** | Yes (envelope) |
 | Revision history | `Update Log` / `Change log` sections — only on living advisories like ESA-2021-31 | Rare |
 | Author | Discourse `username` (`ismisepaul`, `ikakavas`, `rodrigo_silva`, `kruskall`, `Levine`) | Yes (envelope) |
@@ -682,12 +717,39 @@ format ... allow the JSON to be downloaded" (§4.6), and the 2026 statement abou
 advisory generation into Elastic Workflows so that "InfoSec and Engineering collaborate on a single
 document." A git repo with pull-request review is the obvious mechanism for that collaboration.
 
-### 5.3 My best-supported inference
+### 5.3 My best-supported inference — SUPERSEDED, retained for calibration
 
-**Claim: the `advisories/` directory holds one structured file per advisory, keyed by ESA ID, in
-either YAML or JSON — most likely Markdown-with-YAML-front-matter or plain YAML.**
+> **The answer is now known and this section got it wrong.** A person with repository access has
+> reported a real filename: **`ESA-2026-0081.json`**. The files are **JSON**. This section rated
+> "YAML front matter + Markdown body, **or** plain YAML" at Medium confidence and named it the most
+> likely answer, while rating the JSON possibilities lower.
+>
+> It is retained unedited below because a wrong prediction with its reasoning visible is more useful
+> than a deleted one, and because the calibration lesson is specific and worth keeping. **For the
+> current state of knowledge, read `advisory-file-format.md` instead.**
+>
+> **Where the reasoning went wrong.** The High-confidence claims were all correct: one structured file
+> per advisory keyed by ESA ID, machine-parseable contents rather than free prose, and a field set
+> approximating the CVE CNA container plus the ESA-only sections. The error was one step further down.
+> The Medium-confidence call rested on the observation that advisory bodies contain multi-paragraph
+> Markdown with bullets, numbered steps and inline code, and concluded "something must carry rich
+> text", treating Markdown-as-carrier as more probable than JSON. **That argument does not
+> discriminate**: a JSON string field carries Markdown perfectly well, which is almost certainly what
+> these files do. The rich-text observation was evidence for *neither* format over the other, and
+> should not have moved the estimate at all.
+>
+> Two sub-claims were graded reasonably even so. "Flat vs. year-nested" was correctly marked as
+> undeterminable, and the reasoning that >100 advisories a year makes nesting the sane choice still
+> holds and is strengthened by the >1000-file report. "CVE Record 5.x JSON directly" was rated
+> Low–Medium for the right reason — CVE 5.x has no slot for the ESA ID, fixed versions, affected
+> configurations, workarounds, IOC guidance or the Serverless statement — and the review pass added an
+> independent argument in the same direction: CVE records are conventionally keyed by *CVE* ID, and
+> this file is keyed by *ESA* ID.
 
-Confidence breakdown:
+**Original claim (wrong): the `advisories/` directory holds one structured file per advisory, keyed by
+ESA ID, in either YAML or JSON — most likely Markdown-with-YAML-front-matter or plain YAML.**
+
+Confidence breakdown as originally written:
 
 | Sub-claim | Confidence | Basis |
 |---|---|---|
@@ -697,7 +759,7 @@ Confidence breakdown:
 | Format is YAML front matter + Markdown body, **or** plain YAML | **Medium** | The advisory body contains multi-paragraph Markdown with bullet lists, inline code, numbered steps, and hyperlinks (see `ESA-2025-14.md`). Markdown is the natural carrier for that, and YAML front matter the natural carrier for the scalar fields. Plain YAML with block scalars (`\|`) is equally workable and common in PSIRT tooling. |
 | Format is CSAF JSON | **Low** | Elastic publishes no CSAF anywhere and is not in the CSAF provider ecosystem (§2.4). If they had CSAF internally, publishing a `provider-metadata.json` would be near-free. |
 | Format is CVE Record 5.x JSON directly | **Low–Medium** | Tempting — the publisher emits it. But CVE 5.x has no slot for the ESA ID, Affected Configurations, workarounds, IOC guidance, or the Serverless statement, all of which the ESA carries. Those would have to live in `x_` extensions, which is awkward as a primary authoring format. More likely the repo format is the superset and CVE 5.x is a *rendering target*. |
-| Directory is flat (`advisories/ESA-2026-24.md`) vs year-nested (`advisories/2026/...`) | **Low confidence either way** | The task prompt says the URL is `advisories/` with no year segment visible, which mildly favours flat, but a year-nested layout would also present as `advisories/` at the top level. With 137 advisories in 2026 alone, year-nesting would be the sane choice. `[UNVERIFIED]` |
+| Directory is flat (`advisories/ESA-2026-24.md`) vs year-nested (`advisories/2026/...`) | **Low confidence either way** | The task prompt says the URL is `advisories/` with no year segment visible, which mildly favours flat, but a year-nested layout would also present as `advisories/` at the top level. With 116 advisories published in 2026 (highest sequence 137), year-nesting would be the sane choice. `[UNVERIFIED]` |
 | Filename casing (`ESA-2026-24.md` vs `esa-2026-24.yaml`) | **Cannot determine** | `[UNVERIFIED]` |
 
 **What I would expect a file to contain**, as a reasoned reconstruction (this is inference, not
@@ -833,7 +895,8 @@ The **CVE Record** version data is far cleaner and should be preferred where ava
 }]
 ```
 
-`versionType` is `semver` in 432 of 554 version objects. The CVE record does **not** carry the fixed
+`versionType` is `semver` in 432 of **558** version objects (the total stated earlier in this section;
+"554" was a transcription error). The CVE record does **not** carry the fixed
 version — that only exists in the ESA prose and (derivably) in the topic title.
 
 ### 6.3 Deployment-type taxonomy
@@ -920,7 +983,7 @@ CVSS severity labels used in the `Severity:` line: `Low`, `Medium`, `High`, `Cri
 |---|---|
 | `temp/cat31_all_topics.json` | All 315 topics from the Security Announcements category (11 pages). |
 | `temp/cat31_page0.json`, `temp/cat31.rss` | First-page category JSON and the RSS feed. |
-| `temp/raw/topic_*.md` | 54 raw-Markdown advisory bodies spanning 2021–2026. |
+| `temp/raw/topic_*.md` | 57 raw-Markdown advisory bodies spanning 2021–2026 (53 of them form the sampled statistics set). |
 | `temp/sampled_meta.json` | ESA ID / topic ID / title / date index for the sampled advisories. |
 | `temp/cve5/CVE-*.json` | All 340 Elastic-assigned CVE Records in 5.x format. |
 | `temp/nvd_elastic_all.json` | Full NVD response for `sourceIdentifier=security@elastic.co`. |

@@ -96,7 +96,7 @@ distinct conventions are in use, and the difference matters:
 **Host-only variable** (`audit`, `issues`, `code_scanning`, `dependabot`, `secret_scanning`) —
 the CEL/httpjson template appends the path:
 
-```59:63:packages/github/data_stream/audit/manifest.yml
+```56:63:packages/github/data_stream/audit/manifest.yml
       - name: api_url
         type: text
         title: API URL.
@@ -701,7 +701,7 @@ the `elastic-package` mock server supports conditional-request matching on
 | 3 | Persisted worklist + `next` pointer for list-then-fetch-each | `abnormal_security/…/threat/agent/stream/cel.yml.hbs:28-40,78-83,137-149` |
 | 4 | `enable_request_tracer` block + variable | `github/…/security_advisories/{agent/stream/cel.yml.hbs:3-6, manifest.yml:80-88}` |
 | 5 | Error-event shape + `terminate` processor | `github/…/security_advisories/{cel.yml.hbs:41-56, ingest_pipeline/default.yml:8-11}` |
-| 6 | Host-only `api_url` variable for GHES portability | `github/data_stream/audit/manifest.yml:59-63` |
+| 6 | Host-only `api_url` variable for GHES portability | `github/data_stream/audit/manifest.yml:56-63` |
 | 7 | 404-on-detail-fetch skip via sentinel event + `drop_event` | `abnormal_security/…/threat/agent/stream/cel.yml.hbs:151-157,219-223` |
 | 8 | `rate_limit()` on `x-ratelimit-*`; 403/429 back-off without advancing cursor | `qualys_vmdr/…/user_activity/…:95-124`; `mimecast/…/threat_intel_malware_grid/…:147-158` |
 | 9 | `Link: rel="next"` regexp + cursor idiom (only if a paginated endpoint is used) | `github/…/security_advisories/agent/stream/cel.yml.hbs:22-24,26-34,63-79` |

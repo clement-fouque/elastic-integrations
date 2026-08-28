@@ -49,7 +49,7 @@ so the custom namespace is `elastic_security_advisories.advisory.*` and
 | Stream classification | **Event stream** (reference/enrichment corpus), **not** an entity stream. Do not use `event.kind: asset`, do not use `entity.*`. |
 | Document `_id` | Fingerprint of `esa_id` + git blob SHA — content-addressed revision key |
 | Version-range mapping | `nested` array of objects, with `type: version` on the bound fields |
-| ECS `vulnerability.*` fields usable | 9 of the 13 (14 at v9.5.0) members. See §2.1. |
+| ECS `vulnerability.*` fields usable | **10** of the 13 members at v9.3.0 (14 at v9.5.0). See §2.1. |
 | Biggest ECS gaps | ESA ID, advisory title, fixed versions, version ranges, CWE/CAPEC, workarounds, IOC guidance, Serverless statement, credits, git provenance |
 
 ---
@@ -65,9 +65,25 @@ joined against *other* data — a Kibana version inventory, a scan result, a CVE
 
 Three further properties matter for categorization:
 
-1. **Stable natural key.** The ESA ID (`ESA-2026-24`) is the primary key of Elastic's own process
-   (`esa-publication-landscape.md` §1.1: Elastic calls it "the internal Elastic Security Advisory
-   identifier").
+1. **Stable natural key — but with two string renderings.** The ESA ID is the primary key of Elastic's
+   own process (`esa-publication-landscape.md` §1.1: Elastic calls it "the internal Elastic Security
+   Advisory identifier").
+
+   > **Added 2026-08-28 (review pass 2), and it affects every join and the document `_id`.** The
+   > repository renders the ID with the sequence **zero-padded to four digits** (`ESA-2026-0081.json`,
+   > a real reported filename), while every public rendering pads to a **minimum of two** and widens
+   > naturally (`ESA-2026-24`, `ESA-2026-81`, `ESA-2026-137`). `ESA-2026-0081` is the public
+   > `ESA-2026-81`. **The two string forms do not match**, so the natural key must be the pair
+   > *(year, integer sequence)*.
+   >
+   > Concretely: `…advisory.esa_year` and `…advisory.esa_sequence` (both `integer`), proposed in §3.1
+   > as a convenience, are in fact the **canonical join key** and should be treated as such rather than
+   > as optional extras — deriving an integer sequence normalizes `0081` to `81` for free. Populate
+   > `…advisory.esa_id` and `vulnerability.report_id` with the **normalized public form**, since that is
+   > what joins to the Discourse slug, the CVE record's reference URL, and every other corpus; keep the
+   > raw filename in `file.name`. Fingerprint the `_id` (§1.6) over the **normalized** ID: doing it over
+   > the raw four-digit form and adding normalization later would change every `_id` and silently
+   > duplicate the entire index.
 2. **Mutable.** Advisories are amended in place. `ESA-2021-31` carries a nine-entry `## Update Log`
    spanning 2021-12-16 to 2022-01-13 (`references/sample-events/ESA-2021-31.md`). The CVE twin has
    `cveMetadata.dateUpdated` distinct from `datePublished` — for CVE-2026-33461 the record was
@@ -100,10 +116,31 @@ success/failure dimension.
 
 ### 1.3 Precedent survey in `elastic/integrations`
 
-Surveyed every data stream whose ingest pipeline mentions `vulnerability` (34 streams across 23
-packages). The results split cleanly along the axis that matters: does the document describe a
+Surveyed data streams whose ingest pipeline mentions `vulnerability`. The tables below enumerate
+roughly 30 of them, chosen to cover both sides of the axis that matters: does the document describe a
 **vulnerability itself** (a catalog/reference record) or a **vulnerability found on an asset** (a
 finding)?
+
+> **Corrected 2026-08-28 (review pass 2).** This section previously claimed to have "surveyed **every**
+> data stream whose ingest pipeline mentions `vulnerability` (34 streams across 23 packages)". Both
+> parts were wrong. The real population is **75 streams across 58 packages** (78/58 case-insensitively;
+> 65/51 restricted to `default.yml`; 44/38 restricted to streams that actually set
+> `event.category: vulnerability`). No reading of the criterion yields 34/23. This is a substantial and
+> useful sample, but it is **not exhaustive**, and it should not be cited as though it were.
+>
+> **The "splits cleanly" framing is also overstated, in one direction.** Of the asset-finding streams,
+> *zero* use `enrichment` — that half holds firmly. But of the ~10 catalog/reference streams, only
+> **4** use `enrichment` (`github/security_advisories`, `first_epss/vulnerability`, and two
+> `ti_google_threat_intelligence` streams); the other 6 use `state` (`ti_flashpoint`,
+> `tenable_io/plugin`), `event` (`tenable_sc/plugin`, `rapid7_insightvm/vulnerability`,
+> `crowdstrike/vulnerability`) or `alert` (`qualys_vmdr/knowledge_base`). "Catalog streams lean
+> `enrichment`" is therefore false as an aggregate claim; the majority of them do not.
+>
+> **The recommendation is unaffected**, because it never actually depended on the aggregate. It rests
+> on `github/security_advisories` being an exact structural twin that sets the triple at
+> `default.yml:12-25` (verified line-exact), plus ECS's own `expected_event_types: ["info"]` on
+> `event.category: vulnerability`. Read §1.4's closest-analogue argument as the load-bearing one and
+> this survey as supporting context.
 
 **Reference / catalog streams — one document per vulnerability definition:**
 
@@ -273,7 +310,12 @@ reference page <https://www.elastic.co/docs/reference/ecs/ecs-vulnerability>.
 | `vulnerability.severity` | `keyword` | Yes | **Yes** — `Low` / `Medium` / `High` / `Critical`. Casing discussed in §4.4. |
 | `vulnerability.status` | `keyword`, **beta** | **No — v9.5.0+ only** | **Not applicable at any pin.** ECS defines it as "the lifecycle state of a vulnerability finding **on an asset**," allowed values `open, fixed, reopened, unknown`. There is no asset. Do not set it, and do not bump the ECS pin to reach it. |
 
-**Nine of the fourteen members are usable.** There is no `vulnerability.title`, no
+**Ten of the thirteen members are usable** (thirteen distinct fields at v9.3.0, fourteen at v9.5.0;
+the fourteenth CSV row is the `vulnerability.description.text` multi-field, not a separate member).
+*Corrected 2026-08-28: this document previously said "nine of the fourteen" here while its own table
+above marks ten usable, and gave three different member counts in three places. The disputed field is
+`vulnerability.scanner.vendor`, which §2.5 and §3.1 go on to recommend populating, so it is counted.*
+There is no `vulnerability.title`, no
 `vulnerability.published_date`, no `vulnerability.cwe`, no `vulnerability.capec`, no
 `vulnerability.vector`, no `vulnerability.solution`, no `vulnerability.workaround` — despite all
 of those being names people reach for. `vulnerability.published_date` in particular appears in
@@ -284,7 +326,7 @@ package `fields.yml`, not ECS. Verified absent from v9.3.0 through `main`.
 
 This is the single largest gap and it is worth being blunt about.
 
-The complete ECS `vulnerability` fieldset is the fourteen members above. **None of them expresses:**
+The complete ECS `vulnerability` fieldset is the thirteen members above (fourteen at v9.5.0). **None of them expresses:**
 
 - the version in which the vulnerability was **fixed** (`8.19.14, 9.2.8, 9.3.3` for ESA-2026-24);
 - an affected **version range** of any kind — no lower bound, no upper bound, no inclusivity flag,
@@ -299,9 +341,11 @@ range. `package.version` means "the version present on this asset." Setting it f
 lower bound would be a lie.
 
 `package.fixed_version` is **not ECS**. It is a widely-copied CDR convention, defined as a custom
-field in `fields/package.yml` in at least ten packages (`sysdig`, `aws/inspector`, `tenable_io`,
-`rapid7_insightvm`, `google_scc`, `m365_defender`, `aws_securityhub`, `wiz`, and their latest-CDR
-transforms). Example definition, `packages/sysdig/data_stream/vulnerability/fields/package.yml`:
+field in **12** packages (`aws`, `aws_securityhub`, `cloud_security_posture`, `google_scc`,
+`m365_defender`, `microsoft_defender_cloud`, `microsoft_defender_endpoint`, `prisma_cloud`,
+`qualys_vmdr`, `rapid7_insightvm`, `sysdig`, `tenable_io`), 11 of them in a file literally named
+`fields/package.yml`. The exception is `wiz`, which defines it in
+`wiz/data_stream/vulnerability/fields/fields.yml:180-184` instead. Example definition, `packages/sysdig/data_stream/vulnerability/fields/package.yml`:
 
 ```yaml
 - name: package
@@ -363,10 +407,10 @@ belongs in the custom namespace.
 
 | Source | Target | Verdict |
 |---|---|---|
-| Trees API `path` (`advisories/2026/ESA-2026-24.md`) | `file.path` (`keyword` + `.text`) | **Yes** |
+| Trees API `path` (`advisories/2026/ESA-2026-0024.json`) | `file.path` (`keyword` + `.text`) | **Yes** |
 | Derived directory (`advisories/2026`) | `file.directory` (`keyword`) | **Yes** |
-| Derived basename (`ESA-2026-24.md`) | `file.name` (`keyword`) | **Yes** |
-| Derived extension (`md`) | `file.extension` (`keyword`) | **Yes** |
+| Derived basename (`ESA-2026-0024.json`) | `file.name` (`keyword`) | **Yes** — note the repository uses the **four-digit** ESA form; see §1.2 |
+| Derived extension (`json`) | `file.extension` (`keyword`) | **Yes** |
 | Trees API `size` | `file.size` (`long`) | **Yes** |
 | Trees API blob `sha` | ~~`file.hash.sha1`~~ | **No — do not do this.** A git blob SHA is `sha1("blob <len>\0" + content)`, not the SHA-1 of the file content. Putting it in `file.hash.sha1` would make it collide, in a `related.hash`-style pivot, with genuine content hashes that will never match. Use `…advisory.git.blob_sha`. |
 | Commit SHA, repo owner, repo name, branch/ref, last commit date, GitHub HTML URL | — | **No ECS home.** All custom. |
@@ -397,7 +441,10 @@ the data. The `github` package itself sets **neither** — it keeps all reposito
 
 Legend for the **Source** column:
 
-- **ESA** — parsed from the advisory Markdown body / template section (`esa-publication-landscape.md` §3).
+- **ESA** — the advisory record's own field. **Corrected 2026-08-28:** the repository files are JSON,
+  so this is a JSON key lookup, not Markdown section parsing. The specific key names are
+  `[UNVERIFIED]`; the `RECON` markers below stand. Markdown section parsing applies only if the
+  public Discourse path is built (`esa-publication-landscape.md` §3).
 - **CVE5** — present in the CVE Record 5.x structured twin (§4.2), fully observable.
 - **RECON** — from the reconstructed repo field set (§5.3). `[UNVERIFIED]` field name.
 - **GIT** — from the Git Trees / Blobs collection envelope.
@@ -589,7 +636,8 @@ Reasoning:
   frequencies and reconstructs positions from `_source`, which is the right trade for prose that is
   searched but never relevance-ranked against a corpus.
 - Plain `text` would be the choice only if BM25 scoring quality across advisories mattered. It does
-  not; there are a few hundred documents.
+  not, even at the corrected corpus size of 1,000-3,000 documents (times revisions, given the
+  fingerprint `_id`) — relevance ranking across a few thousand advisories is not the use case.
 - The repo agrees: `match_only_text` appears in 108 package `fields/*.yml` files, and
   `github/security_advisories` maps `github.security_advisory.description` to `match_only_text`
   (`packages/github/data_stream/security_advisories/fields/fields.yml`).
@@ -804,7 +852,7 @@ The three tempting-but-wrong candidates, spelled out so nobody re-litigates them
    it in `related.hosts` would pollute host-pivot searches with a documentation domain that appears
    on every single advisory.
 2. **`related.hash` ← the git blob SHA.** No. `related.hash` exists so an analyst can pivot from a
-   malware hash in one event to the same hash in another. A git object hash of a Markdown file is
+   malware hash in one event to the same hash in another. A git object hash of an advisory file is
    not that kind of hash and will never legitimately match anything else in the cluster.
 3. **`related.user` ← the credited researcher.** No. Acknowledgements name external researchers and
    organizations ("AISLE Research"), not user accounts in the estate. It would never match a

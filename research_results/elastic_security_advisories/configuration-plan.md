@@ -311,13 +311,18 @@ This is a **collection-scope filter**, directly analogous to `bucket_list_prefix
 `file_selectors` — both of which appear in the standard-variable tables for the object-store
 inputs — rather than a pipeline behaviour toggle.
 
-**Why the default must be empty, not `*.md`.** Guessing an extension is worse than not filtering.
-`esa-publication-landscape.md` §5.3 rates the format as *medium* confidence between
-"Markdown with YAML front matter" and "plain YAML", and cannot determine filename casing at all. A
-default of `*.md` against a `.yaml` corpus would produce **zero documents and no error** — the
-exact failure this integration is already dangerously prone to. An empty default collects
-everything, which is noisy but visible, and the operator can then narrow it having seen what is
-actually there.
+**Why the default should stay empty. (Reasoning rebuilt 2026-08-28 — the original premise is dead.)**
+This previously argued that guessing an extension was dangerous *because the format was unknown*: a
+default of `*.md` against a `.yaml` corpus would produce zero documents and no error. The format is
+now known — the files are JSON (`ESA-2026-0081.json`) — so `*.json` is a defensible default and that
+argument no longer applies.
+
+The residual case for an empty default is narrower but still real: filename **casing** is unverified,
+and whether non-advisory JSON (a schema, a template, a manifest, a README) sits alongside the
+advisories is unknown. Given that the >1000 reported files exceed the ~386 publicly-known ESA IDs by
+roughly 600, the directory plausibly contains more than just advisories. An empty default collects
+everything, which is noisy but **visible**, and the operator can narrow it having seen what is
+actually there — whereas a wrong pattern fails silently. That asymmetry is the whole argument.
 
 **Caveat.** Whether the filter is implemented as glob matching or RE2 regex is an implementation
 choice for the CEL-program author; the description must state which. Glob is recommended as the
@@ -376,9 +381,10 @@ the same: zero.
 
 **Why not `5m`:** it buys a 55-minute latency improvement on an event that occurs about once a
 month, at 12× the poll volume, and it has three concrete downsides. (a) An initial backfill of
-200–500 files takes **1.5–3.5 minutes** of serial requests
-(`deployment-and-setup.md` §2.6) — uncomfortably close to a 5-minute interval, so a slow network or
-a mid-backfill restart can produce overlapping or repeatedly-abandoned work. (b) It multiplies the
+**1,000–3,000 files takes 3.5–10.5 minutes** of serial requests — *revised upward 2026-08-28 from
+"200–500 files, 1.5–3.5 minutes"*, which now puts the backfill **well past** a 5-minute interval
+rather than uncomfortably close to it, so a slow network or a mid-backfill restart would produce
+overlapping or repeatedly-abandoned work. This strengthens the recommendation. (b) It multiplies the
 damage of an accidental multi-agent deployment (`deployment-and-setup.md` §2.3) by 12×. (c) It
 produces 288 "no change" poll cycles per day per agent in the logs, which trains operators to
 ignore the log. None of that is catastrophic; it is simply unpaid-for.
@@ -425,7 +431,7 @@ packages, with the reason.
 | `preserve_duplicate_custom_fields` | **PROHIBITED.** A deprecated pipeline anti-pattern. Present in four `github/audit` streams (`:252`, `:443`, `:638`, `:782`) — do not copy it from there. |
 | Any `event.ingested` toggle | **PROHIBITED.** |
 | Any trailing `event.original` removal flag | **PROHIBITED.** |
-| `preserve_original_event` | **Not valid for CEL.** It is a legitimate variable *only* for file (filestream) and syslog (tcp/udp) inputs. **It appears in `github/data_stream/security_advisories/manifest.yml:64-71`, which is a CEL stream** — that is a legacy artifact and must not be treated as precedent. Do not propose it here. |
+| `preserve_original_event` | **Excluded because it is an `event.original`-removal toggle**, which the research guardrails prohibit proposing as a configuration variable. **Corrected 2026-08-28:** this row previously claimed the variable is "not valid for CEL" and "a legitimate variable *only* for file (filestream) and syslog (tcp/udp) inputs", and dismissed its appearance at `github/data_stream/security_advisories/manifest.yml:64-71` as a legacy artifact. That was **wrong** — it is declared by **327 of 361 CEL data streams across 113 packages**, and it is functional in CEL: `github/data_stream/security_advisories/agent/stream/cel.yml.hbs:83-84` emits it into `tags`, which the ingest pipeline reads at `default.yml:320` and `:340`. It is the most common CEL variable after `tags`, `processors` and `interval`. The exclusion still stands, but only on the guardrail ground stated above. **One consequence to make deliberate:** with no toggle, `event.original` is retained unconditionally. For a few thousand small JSON documents that is cheap and useful for reprocessing, but it should be a stated decision rather than a side effect of this exclusion. |
 
 ### 5.3 Outside the standard table — one convention variable, flagged
 
@@ -443,11 +449,16 @@ Every misconfiguration of this data source produces an identical, information-fr
 see the exact URL that was requested and the exact response received, which converts an
 undiagnosable "no data" into a five-second diagnosis.
 
-**Two conditions on including it.** First, it is a deliberate departure from the authoritative
-standard table and should be reviewed as such rather than waved through as "everyone does it".
-Second, the tracer writes full request and response bodies to disk, so it must be paired with a
-`redact.fields` entry covering `api_key` — the two features are configured together
-(`integrations-precedent.md` §9). Agentless deployments cannot easily retrieve the trace files, so
+**One condition on including it, and a correction. (Revised 2026-08-28.)** This previously called the
+variable "a deliberate departure from the authoritative standard table" needing special review. That
+framing was wrong and inverted the burden of proof: `enable_request_tracer` is declared by **297 of
+361 CEL data streams across 102 packages** (370 data streams overall), and the `github` CEL stream's
+own description links the *CEL input's* tracer documentation. It is a first-class CEL variable and
+should simply be included on the operational argument above.
+
+The real condition is the security one: the tracer writes full request and response bodies to disk,
+so it needs to be accompanied by redaction covering `api_key` (`integrations-precedent.md` §9). How
+that is wired is the CEL author's call, not a configuration-plan decision. Agentless deployments cannot easily retrieve the trace files, so
 the variable is of limited use there.
 
 ---
@@ -609,8 +620,9 @@ renderings of the same underlying advisory.
    GitHub path where credentials exist and the public path elsewhere — at the cost of a second
    variable set and a documented "do not enable both against the same index" caveat. Not decided
    here.
-5. **`enable_request_tracer` inclusion** is a deliberate departure from the authoritative standard
-   variable table (§5.3). Flagged for explicit review rather than assumed.
+5. ~~**`enable_request_tracer` inclusion** is a deliberate departure from the authoritative standard
+   variable table (§5.3).~~ **Resolved 2026-08-28:** not a departure. 297 of 361 CEL streams declare
+   it. Include it; no special review needed. See §5.3.
 6. **The `interval` recommendation assumes the repository's change rate tracks the publication
    cadence.** If the repository sees heavy pre-publication drafting churn, the observed change rate
    will be higher than the 12–15/year publication rate — which argues for the *same* `1h` interval

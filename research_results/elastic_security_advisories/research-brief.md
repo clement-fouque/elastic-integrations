@@ -347,7 +347,7 @@ Container key counts: `affected` 313, `descriptions` 313, `references` 313, `pro
 - `ESA-2026-24.cve-record-5.1.json`, `ESA-2026-24.github-advisory.json`, `ESA-2025-20.osv.json`, `ESA-2026-128.discourse-topic.json`, `ESA-2026-128.discourse-rss-item.xml`, `discourse-category-topic-list.json`
 - **`ESA-2026-24.mapped-ecs.json`** — the hand-written expected post-ingest document. The most useful single artifact for the integration builder.
 
-Complete field inventory and heading-variant analysis: `references/esa-publication-landscape.md` §3. Raw artifacts — all 315 forum topics, 54 raw advisory bodies, all 340 CVE records, the full NVD response, 177 resolved CVE→ESA mappings — are in `temp/`.
+Complete field inventory and heading-variant analysis: `references/esa-publication-landscape.md` §3. Raw artifacts — all 315 forum topics, 57 raw advisory bodies (53 of which form the sampled statistics set), all 340 CVE records, the full NVD response, 177 resolved CVE→ESA mappings — are in `temp/`.
 
 #### Inline sample (ESA-2026-24, verbatim)
 
@@ -761,4 +761,4 @@ At 50–100 per execution a full backfill fits comfortably inside even the defau
 | `references/deployment-and-setup.md` | Operator setup: token creation, org policy, approval flow, SAML SSO, the 404 diagnostic ladder, network, volume, backfill |
 | `references/elastic-advisory-generator-prompt-TEMPLATE.md` | Verbatim copy of Elastic's own advisory template |
 | `references/sample-events/` | Nine real advisories, machine-readable variants, and the hand-written expected ECS document |
-| `temp/` | Raw artifacts: 315 forum topics, 54 advisory bodies, 340 CVE records, the NVD response, 177 CVE→ESA mappings, and the two live-verification scripts |
+| `temp/` | Raw artifacts: 315 forum topics, 57 advisory bodies, 340 CVE records, the NVD response, 177 CVE→ESA mappings, the live-verification scripts, and the review-pass scratch dirs (`format-hunt/`, `api-review/`, `landscape-review/`) |
