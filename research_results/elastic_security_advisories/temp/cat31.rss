@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Security Announcements - Discuss the Elastic Stack</title>
+    <link>https://discuss.elastic.co/c/announcements/security-announcements/31</link>
+    <description>Topics in the &#39;Security Announcements&#39; category Security announcements for the Elastic stack.</description>
+    
+      <lastBuildDate>Thu, 13 Aug 2026 10:49:09 +0000</lastBuildDate>
+      <atom:link href="https://discuss.elastic.co/c/announcements/security-announcements/31.rss" rel="self" type="application/rss+xml" />
+        <item>
+          <title>Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-128)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Improper Privilege Management in Kibana Fleet Leading to Over-Scoped Elastic Agent API Keys</strong></p>
+<p><strong>Description:</strong><br>
+Improper Privilege Management (CWE-269) in Kibana Fleet can lead to privilege escalation via Privilege Escalation (CAPEC-233). An integration policy may optionally declare extra data streams that the integration writes to, which Fleet adds to the Elasticsearch API key issued to Elastic Agents enrolled in the corresponding agent policy. The resulting key allows new documents to be inserted and index mappings to be extended for specific indices. The key does not allow reading, updating, or deleting existing documents</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.1.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 9.4.5 and 9.5.1.<br>
+<strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72631<br>
+<strong>Problem Type:</strong> CWE-269 - Improper Privilege Management<br>
+<strong>Impact:</strong> CAPEC-233 - Privilege Escalation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539</link>
+          <pubDate>Thu, 13 Aug 2026 10:49:09 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389539</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539.rss">Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-128)</source>
+        </item>
+        <item>
+          <title>Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-124)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Incorrect Authorization in Kibana Agent Builder Leading to Disclosure and Tampering of Private Agents</strong></p>
+<p>Kibana Agent Builder determines whether a caller owns a private agent by comparing a stable user identifier when one is recorded, and falling back to a comparison of the username when it is not. A username is not unique across Elasticsearch authentication realms, so two distinct principals that share a username in different realms are treated as the same owner. This discloses the configuration and instructions of an agent the caller does not own, and allows that agent to be altered or removed.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.4.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations that use multiple authentication realms where the user has control over their selected username.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in Kibana versions 9.4.5 and 9.5.1.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72643<br>
+<strong>Problem Type:</strong> CWE-863 - Incorrect Authorization</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-124/389538">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-124/389538</link>
+          <pubDate>Thu, 13 Aug 2026 10:49:06 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389538</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-124/389538.rss">Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-124)</source>
+        </item>
+        <item>
+          <title>Kibana 9.4.5 Security Update (ESA-2026-97)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Authorization Bypass Through User-Controlled Key in Kibana Leading to Unauthorized Query Execution on Managed Hosts</strong></p>
+<p>Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized query execution against Elastic Agents that are assigned to a Kibana space the requesting user has no access to, via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A user who is authorized to run Osquery live queries in one space can have a query carried out on hosts belonging to another space, resulting in disclosure of information from those hosts to the Osquery results data stream.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.1.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.8 ) - CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72666<br>
+<strong>Problem Type:</strong> CWE-639 - Authorization Bypass Through User-Controlled Key<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-97/389537">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-97/389537</link>
+          <pubDate>Thu, 13 Aug 2026 10:49:03 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389537</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-97/389537.rss">Kibana 9.4.5 Security Update (ESA-2026-97)</source>
+        </item>
+        <item>
+          <title>Kibana 9.4.5 Security Update (ESA-2026-89)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Incorrect Authorization in Kibana Leading to Disclosure of Elastic Defend Endpoint Event Data</strong></p>
+<p>The Elastic Security capability that suggests existing field values while a user authors endpoint policy artifacts queries Elastic Defend event data with Kibana's internal Elasticsearch account instead of the account of the requesting user. Only Kibana feature privileges are verified, and the caller's Elasticsearch index privileges are not. An authenticated user who holds Elastic Security feature privileges but no read access to the Elastic Defend event indices can therefore retrieve field values from that data, including process command line arguments, which commonly contain tokens, credentials, connection strings, and other sensitive operational detail from protected hosts.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.1.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>All configurations are affected.</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.7 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72672<br>
+<strong>Problem Type:</strong> CWE-863 - Incorrect Authorization</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-89/389536">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-89/389536</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:59 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389536</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-89/389536.rss">Kibana 9.4.5 Security Update (ESA-2026-89)</source>
+        </item>
+        <item>
+          <title>Kibana 9.4.5 Security Update (ESA-2026-82)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Authorization Bypass Through User-Controlled Key in Kibana Agent Builder Leading to Unauthorized Data Modification</strong></p>
+<p>Kibana Agent Builder A2A JSON-RPC API endpoint derives the identifier of a stored conversation from a user-supplied input, and the ownership check on that identifier does not distinguish between a conversation that does not exist and one that exists but belongs to another user. As a result, an authenticated user holding only the Agent Builder read privilege can supply an identifier already in use by another user in the same space and cause that user's conversation to be replaced and reassigned to the requesting account. The original owner permanently loses access to the conversation and its history. The impact is limited to loss of integrity and availability of the affected conversation; the attacker does not read the overwritten content.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.2.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>Only conversations created through the agent-to-agent interface are affected, and the attacker must know or already share the identifier value used to create the target conversation</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in version 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<blockquote>
+<ul>
+<li>Disable Agent Builder globally by setting xpack.agentBuilder.enabled: false in kibana.yml and restarting Kibana. This fully removes exposure but also removes all Agent Builder functionality.</li>
+<li>Disable the Agent Builder feature in every Kibana space through Spaces management. This blocks the affected API as well as the user interface and does not require a restart, but must be applied to all spaces to be effective.</li>
+</ul>
+</blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72680<br>
+<strong>Problem Type:</strong> CWE-639 - Authorization Bypass Through User-Controlled Key</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-82/389535">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-82/389535</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:56 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389535</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-82/389535.rss">Kibana 9.4.5 Security Update (ESA-2026-82)</source>
+        </item>
+        <item>
+          <title>Kibana 9.4.4 Security Update (ESA-2026-83)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Leading to Privilege Escalation and Information Disclosure</strong></p>
+<p>Kibana Agent Builder does not correctly verify that the requesting user holds the privileges required by a separate Kibana feature before it creates and runs a tool that invokes that feature's functionality. This allows privilege escalation and could lead to disclosure of sensitive information that the user is not authorized to read.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.4.0 up to and including 9.4.3</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>All configurations are affected.</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in version 9.4.4.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<blockquote>
+<ul>
+<li>There are no workarounds for this vulnerability.</li>
+</ul>
+</blockquote>
+<blockquote></blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72681<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-4-security-update-esa-2026-83/389534">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-4-security-update-esa-2026-83/389534</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:53 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389534</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-4-security-update-esa-2026-83/389534.rss">Kibana 9.4.4 Security Update (ESA-2026-83)</source>
+        </item>
+        <item>
+          <title>Kibana 9.3.8, 9.4.4 Security Update (ESA-2026-91)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Allocation of Resources Without Limits or Throttling in Kibana Leading to Denial of Service</strong></p>
+<p><strong>Description:</strong><br>
+Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to a denial of service via Excessive Allocation (CAPEC-130). A user-supplied list of document fields accepted by the Kibana Playground for RAG feature was neither bounded in length nor de-duplicated before it was used to assemble the response for each matching document. A single crafted request could therefore make Kibana build a response far larger than the data it was derived from, and the resulting processing and memory pressure exhausts the resources of the Kibana instance.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.3.0 up to and including 9.3.7</li>
+<li>All versions from 9.4.0 up to and including 9.4.3</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 9.3.8 and 9.4.4.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72674<br>
+<strong>Problem Type:</strong> CWE-770 - Allocation of Resources Without Limits or Throttling<br>
+<strong>Impact:</strong> CAPEC-130 - Excessive Allocation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-3-8-9-4-4-security-update-esa-2026-91/389533">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-3-8-9-4-4-security-update-esa-2026-91/389533</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:50 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389533</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-3-8-9-4-4-security-update-esa-2026-91/389533.rss">Kibana 9.3.8, 9.4.4 Security Update (ESA-2026-91)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-129)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Observable Discrepancy in Kibana Fleet Leading to Disclosure of Elastic Agent Elasticsearch API Keys</strong></p>
+<p><strong>Description:</strong><br>
+Observable Discrepancy (CWE-203) in Kibana Fleet can lead to information disclosure via Excavation (CAPEC-116). Fleet removes the Elasticsearch API key value of an enrolled Elastic Agent from the responses of its agent listing capability, but that capability accepted caller-supplied filter expressions over the stored field that holds the value, and evaluated them with Kibana's own internal Elasticsearch privileges rather than the caller's. Because the number of matching agents is reported back to the caller, the difference between a matching and a non-matching filter formed a side channel from which the full API key value could be reconstructed one character at a time with a short sequence of requests.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.19.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.4.5, and 9.5.1.</p>
+<p>Fleet no longer accepts caller-supplied filter expressions over fields that hold API key material, so the agent listing result count no longer reveals anything about those values.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72632<br>
+<strong>Problem Type:</strong> CWE-203 - Observable Discrepancy<br>
+<strong>Impact:</strong> CAPEC-116 - Excavation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:47 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389532</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532.rss">Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-129)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-127)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Incorrect Authorization in Kibana Fleet Leading to Privilege Escalation</strong></p>
+<p><strong>Description:</strong><br>
+Incorrect Authorization (CWE-863) in Kibana Fleet can lead to privilege escalation via Privilege Abuse (CAPEC-122). Fleet restricts some callers to managing integration policies for one specific integration. When an existing integration policy was updated, that restriction was evaluated against the integration recorded on the stored policy rather than against the replacement integration supplied with the update. An authenticated user holding only the Elastic Defend endpoint policy management privilege was therefore able to convert an endpoint policy they administer into a policy for a different integration, and to supply that integration's configuration at the same time.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>8.x: All versions from 8.19.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.4.5, and 9.5.1.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72630<br>
+<strong>Problem Type:</strong> CWE-863 - Incorrect Authorization<br>
+<strong>Impact:</strong> CAPEC-122 - Privilege Abuse</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-127/389531">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-127/389531</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:43 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389531</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-127/389531.rss">Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-127)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-126)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Authorization Bypass Through User-Controlled Key in Kibana Leading to Cross-Space Access to Machine Learning Trained Models</strong></p>
+<p><strong>Description:</strong><br>
+Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized cross-space access via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). The result is disclosure of inference output from a trained model in a different space that the user is not authorized to list, read, or use, which exposes the behavior of a model. The same pattern also reached the deployment stop and deployment update operations, allowing an active trained model deployment in another space to be stopped or to have its allocated resources altered.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.19.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.4.5 and 9.5.1.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L<br>
+<strong>CVE ID:</strong> CVE-2026-72629<br>
+<strong>Problem Type:</strong> CWE-639 - Authorization Bypass Through User-Controlled Key<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-126/389530">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-126/389530</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:40 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389530</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-126/389530.rss">Kibana 8.19.20, 9.4.5, 9.5.1 Security Update (ESA-2026-126)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-99)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Cross-Site Request Forgery in Kibana Leading to Privilege Escalation</strong></p>
+<p>Cross-Site Request Forgery (CWE-352) in Kibana can lead to privilege escalation via Cross Site Request Forgery (CAPEC-62). A user who is permitted to create visualizations can save a specially crafted Vega visualization that, when it is opened by another user, causes authenticated requests to be issued to Kibana in the context of the viewing user's session.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.19.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>Self-Managed</strong><br>
+Disable the Vega visualization type by setting vis_type_vega.enabled: false in kibana.yml and restarting Kibana. Existing Vega visualizations and any dashboards that embed them will no longer render.</p>
+<p><strong>Cloud</strong><br>
+Elastic Cloud Hosted deployments can apply the same setting through the Kibana user settings override in the Cloud Console, where that setting is permitted for the deployment version.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.3 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72658<br>
+<strong>Problem Type:</strong> CWE-352 - Cross-Site Request Forgery<br>
+<strong>Impact:</strong> CAPEC-62 - Cross Site Request Forgery</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-99/389529">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-99/389529</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:37 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389529</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-99/389529.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-99)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-96)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Leading to Unauthorized Execution of Host Response Actions</strong></p>
+<p>Missing Authorization (CWE-862) in Kibana can lead to unauthorized execution of Osquery and Elastic Defend response actions on managed hosts via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A Kibana user who is able to author and evaluate Elastic Security detection rules can cause response actions to be carried out against enrolled agents without holding the Osquery live query privileges or the Elastic Defend response action privileges that normally govern those capabilities. Depending on the response action involved, this can result in disclosure of information from the affected hosts or in unauthorized changes to their state.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.5.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+Deployments that use the Elastic Security solution together with Osquery Manager or Elastic Defend are affected. Exposure to host-side impact requires enrolled agents; without enrolled Osquery or Elastic Defend agents no response action can reach a host.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p>There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 8.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72665<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-96/389528">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-96/389528</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:34 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389528</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-96/389528.rss">Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-96)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-95)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Leading to Unauthorized Execution of Endpoint Response Actions</strong></p>
+<p>Missing Authorization (CWE-862) in Kibana can lead to unauthorized execution of Elastic Defend response actions on managed hosts via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A Kibana user who holds only detection rule authoring privileges for the Elastic Security solution can associate automated endpoint response actions with a detection rule, even though the dedicated Endpoint response action privileges that govern those capabilities (host isolation, process operations, and execute operations) have not been granted to that user. When such a rule generates alerts, the associated response actions are carried out against the matching hosts.</p>
+<p><strong>Affected Versions:</strong><br>
+All versions from 8.9.0 up to and including 8.19.19<br>
+All versions from 9.0.0 up to and including 9.4.4</p>
+<p><strong>Affected Configurations:</strong><br>
+Deployments that use the Elastic Security solution with Elastic Defend agents enrolled.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p>There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72664<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-95/389527">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-95/389527</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:30 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389527</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-95/389527.rss">Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-95)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-92)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Machine Learning Leading to Cross-Space Information Disclosure and Unauthorized Data Modification</strong></p>
+<p><strong>Description:</strong><br>
+Missing Authorization (CWE-862) in Kibana can lead to cross-space information disclosure and unauthorized data modification via Privilege Abuse (CAPEC-122). Kibana Machine Learning carries out its Elasticsearch operations with elevated internal permissions and relies on a per-request space filter to keep the machine learning data of one space separated from another. Part of the Machine Learning functionality did not apply that filter, so operations issued from one space were carried out against the machine learning data of every space in the deployment.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.1 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72675<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization<br>
+<strong>Impact:</strong> CAPEC-122 - Privilege Abuse</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-92/389526">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-92/389526</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:27 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389526</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-92/389526.rss">Kibana 8.19.20, and 9.4.5 Security Update (ESA-2026-92)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-88)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Leading to Unauthorized Modification of Machine Learning Trained Model Space Assignments</strong></p>
+<p>A Kibana Machine Learning capability that removes a saved object from the current space accepts machine learning trained models as a target, but it verifies only the privileges that apply to anomaly detection jobs and data frame analytics jobs. A user whose role grants create anomaly detection jobs and data frame analytics jobs without the trained model privilege can therefore remove a trained model from a space. The model itself is not deleted and remains available in its other spaces, and the change can be reversed by a suitably privileged user.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>Kibana deployments running an affected version with the Machine Learning feature enabled</li>
+<li>Exploitation requires an authenticated Kibana user whose role grants the machine learning privileges to create anomaly detection jobs and data frame analytics jobs without granting the privilege to create trained models. The Machine Learning feature privileges available in the Kibana role management interface do not produce this combination, so exploitation depends on a custom role that assigns these privileges individually</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<blockquote>
+<ul>
+<li>There are no workarounds for this vulnerability.</li>
+</ul>
+</blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 4.3 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72671<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-88/389525">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-88/389525</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:24 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389525</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-88/389525.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-88)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-87)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Exposure of Sensitive Information to an Unauthorized Actor in Kibana Leading to Disclosure of Fleet Proxy Credentials</strong></p>
+<p>A lower privileged user who holds only the privilege to read agent policies can read the entire configuration of a configured Fleet proxy. This would normally require the Fleet privilege to read settings.The proxy configuration possibly contains proxy authentication credentials and private key material that they should not be authorized to view.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>At least one Fleet proxy is configured with credentials</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.7 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72670<br>
+<strong>Problem Type:</strong> CWE-200 - Exposure of Sensitive Information to an Unauthorized Actor</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-87/389524">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-87/389524</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:21 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389524</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-87/389524.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-87)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-110)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Improperly Controlled Modification of Dynamically-Determined Object Attributes in Kibana Leading to Unauthorized Data Modification</strong></p>
+<p>Improperly Controlled Modification of Dynamically-Determined Object Attributes (CWE-915) in the case management functionality of Elastic Security in Kibana can lead to unauthorized modification of case data by an authenticated user who has not been granted case editing privileges, via Manipulating User-Controlled Variables (CAPEC-77). Object attributes accepted by the case management API were not subject to the same authorization enforcement applied in the user interface, so a low-privileged user could alter case records they were only entitled to view.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>All configurations are affected.</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 4.3 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72655<br>
+<strong>Problem Type:</strong> CWE-915 - Improperly Controlled Modification of Dynamically-Determined Object Attributes<br>
+<strong>Impact:</strong> CAPEC-77 - Manipulating User-Controlled Variables</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-110/389523">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-110/389523</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:18 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389523</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-110/389523.rss">Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-110)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-106)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Allocation of Resources Without Limits or Throttling in Kibana Leading to Denial of Service</strong></p>
+<p>Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user with read-only privileges to the alerting feature could submit a specially crafted, malformed payload that causes the Kibana process to consume excessive resources. A single request is sufficient to leave Kibana unable to serve requests for all users until the process is restarted.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote></blockquote>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72651<br>
+<strong>Problem Type:</strong> CWE-770 - Allocation of Resources Without Limits or Throttling<br>
+<strong>Impact:</strong> CAPEC-130 - Excessive Allocation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-106/389522">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-106/389522</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:15 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389522</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-106/389522.rss">Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-106)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-105)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Authorization Bypass Through User-Controlled Key in Kibana Leading to Information Disclosure</strong></p>
+<p>Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to information disclosure via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An authenticated user who is authorized to read alerting rules in a single Kibana space could retrieve alerting rule execution telemetry that belongs to spaces the user is not authorized to access. The disclosed telemetry includes rule identifiers, rule names, space identifiers, execution outcomes, timestamps, and execution counters.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<blockquote></blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 4.3 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72650<br>
+<strong>Problem Type:</strong> CWE-639 - Authorization Bypass Through User-Controlled Key<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-105/389521">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-105/389521</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:11 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389521</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-105/389521.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-105)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-104)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Inefficient Algorithmic Complexity in Kibana Leading to Denial of Service</strong></p>
+<p><strong>Description:</strong><br>
+Inefficient Algorithmic Complexity (CWE-407) in Kibana can lead to denial of service via Input Data Manipulation (CAPEC-153). A specially crafted, deeply nested expression submitted to a Kibana TSVB visualization is evaluated with a worst-case cost that grows disproportionately with the size of the input. Because the evaluation runs synchronously, a single request consumes the Kibana request-processing thread indefinitely, and Kibana stops responding to all further requests until the service is restarted.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<p>All configurations are affected</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>Self-Managed</strong><br>
+Disable the TSVB visualization type by adding the following setting to kibana.yml and restarting Kibana:</p>
+<blockquote></blockquote>
+<p>visTypeTimeseries.enabled: false</p>
+<p>Note that this removes the ability to create, edit, or render existing TSVB visualizations, including TSVB panels embedded in dashboards.</p>
+<p><strong>Cloud</strong><br>
+For Elastic Cloud Hosted deployments, apply the same setting through the Kibana user settings override in the deployment edit view, then save to roll out the change.</p>
+<p>visTypeTimeseries.enabled: false</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure. In Elastic Cloud Serverless the affected visualization type is read-only and cannot be created or edited.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72663<br>
+<strong>Problem Type:</strong> CWE-407 - Inefficient Algorithmic Complexity<br>
+<strong>Impact:</strong> CAPEC-153 - Input Data Manipulation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-104/389520">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-104/389520</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:08 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389520</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-104/389520.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-104)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-100)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Allocation of Resources Without Limits or Throttling in Kibana Leading to Denial of Service</strong></p>
+<p><strong>Description:</strong><br>
+Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). A specially crafted, malformed payload submitted to a Kibana visualization feature by an authenticated user holding only low-privileged access is not correctly validated before use. Processing the request causes unbounded memory growth in the Kibana process, which is terminated by the host once available memory is exhausted. Kibana then becomes unavailable to all users until the service is restarted.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote></blockquote>
+<blockquote>
+<ul>
+<li>All versions from 8.0.0 up to and including 8.19.19</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>Self-Managed</strong><br>
+Disable the Timelion visualization type by adding the following setting to kibana.yml and restarting Kibana:</p>
+<blockquote>
+<p>vis_type_timelion.enabled: false<br>
+Note that this removes the ability to create, edit, or render existing Timelion visualizations.</p>
+</blockquote>
+<p><strong>Cloud</strong><br>
+For Elastic Cloud Hosted deployments, apply the same setting through the Kibana user settings override in the deployment edit view, then save to roll out the change.</p>
+<blockquote>
+<p>vis_type_timelion.enabled: false</p>
+</blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure. The affected visualization type is additionally not available in Elastic Cloud Serverless.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72659<br>
+<strong>Problem Type:</strong> CWE-770 - Allocation of Resources Without Limits or Throttling<br>
+<strong>Impact:</strong> CAPEC-130 - Excessive Allocation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-100/389519">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-100/389519</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:05 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389519</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-100/389519.rss">Kibana 8.19.20, 9.4.5 Security Update (ESA-2026-100)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, and 9.4.4 Security Update (ESA-2026-90)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Incorrect Authorization in Kibana Leading to Unauthorized Deletion of Synthetics Private Locations</strong></p>
+<p><strong>Description:</strong><br>
+Incorrect Authorization (CWE-863) in Kibana can lead to unauthorized deletion of Synthetics private locations via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). Synthetics private locations can be shared with more than one space, and deleting one removes it from every space it is shared with. The safeguard that prevented the deletion of a private location still in use evaluated only the monitors visible in the requesting user's own space, so monitors that depend on the private location in other spaces were not taken into account.</p>
+<p>As a result, an authenticated Kibana user holding the Synthetics write privilege in a single space could delete a private location that other spaces still depend on, even where the user has no access to those spaces. Deleting the private location removes the shared configuration and stops the monitors in the other spaces from running, which suppresses the availability monitoring those spaces rely on.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>8.x: All versions up to and including 8.19.19</li>
+<li>9.x: All versions from 9.0.0 up to and including 9.4.3</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+Kibana deployments that use Synthetics with private locations shared across more than one space, and in which at least one user holds the Synthetics write privilege in only a subset of those spaces. Single-space deployments are not affected, because there is no cross-space boundary to bypass. Both self-managed and Elastic Cloud Hosted deployments are affected. No non-default configuration is required.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, and 9.4.4.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<blockquote>
+<ul>
+<li>Do not share a Synthetics private location across multiple spaces. A private location confined to a single space cannot be deleted by a user outside that space.</li>
+<li>Grant the Synthetics write privilege only to users who are trusted with every space that a shared private location is used in. Removing this privilege also removes the ability to create and edit private locations and monitors in that space.</li>
+</ul>
+</blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+Review Kibana audit logs for deletions of Synthetics private locations carried out by accounts that do not administer all of the spaces the location was shared with. A private location that disappears while monitors in another space stop producing results, with no corresponding change request from the owners of that space, is consistent with exploitation.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 5.4 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L<br>
+<strong>CVE ID:</strong> CVE-2026-72673<br>
+<strong>Problem Type:</strong> CWE-863 - Incorrect Authorization<br>
+<strong>Impact:</strong> CAPEC-1 - Accessing Functionality Not Properly Constrained by ACLs</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-4-security-update-esa-2026-90/389518">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-4-security-update-esa-2026-90/389518</link>
+          <pubDate>Thu, 13 Aug 2026 10:48:01 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389518</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-4-security-update-esa-2026-90/389518.rss">Kibana 8.19.20, and 9.4.4 Security Update (ESA-2026-90)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20, 9.3.8, and 9.4.5 Security Update (ESA-2026-101)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Uncaught Exception in Kibana Leading to Denial of Service</strong></p>
+<p><strong>Description:</strong><br>
+Uncaught Exception (CWE-248), resulting from Improper Input Validation (CWE-20), in Kibana can lead to denial of service via Input Data Manipulation (CAPEC-153). An authenticated user holding only low-privileged access can cause an internal error condition in Kibana by supplying specially crafted data. The resulting error is raised on an execution path so it propagates as an uncaught exception and terminates the Kibana process. Kibana is unavailable to all users until the service is restarted, and the condition can be triggered repeatedly.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>8.x: All versions from 8.0.0 up to and including 8.19.19</li>
+<li>9.x:</li>
+</ul>
+</blockquote>
+<ul>
+<li>All versions from 9.0.0 up to and including 9.3.7</li>
+<li>All versions from 9.4.0 up to and including 9.4.4</li>
+</ul>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected. The vulnerability is present in the Kibana Security Solution feature set, which is enabled by default in self-managed and Elastic Cloud Hosted deployments. Exploitation requires an authenticated Kibana account with read access and the ability to write documents to at least one Elasticsearch index that Kibana subsequently reads.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20, 9.3.8, 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong><br>
+No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72660<br>
+<strong>Problem Type:</strong> CWE-248 - Uncaught Exception<br>
+<strong>Impact:</strong> CAPEC-153 - Input Data Manipulation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-9-3-8-and-9-4-5-security-update-esa-2026-101/389517">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-9-3-8-and-9-4-5-security-update-esa-2026-101/389517</link>
+          <pubDate>Thu, 13 Aug 2026 10:47:58 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389517</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-9-3-8-and-9-4-5-security-update-esa-2026-101/389517.rss">Kibana 8.19.20, 9.3.8, and 9.4.5 Security Update (ESA-2026-101)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-98)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Allocation of Resources Without Limits or Throttling in Kibana Leading to Denial of Service</strong></p>
+<p>Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to a denial of service via Excessive Allocation (CAPEC-130). A specially crafted request submitted by an authenticated user with minimal privileges to a validation capability of the Observability log analysis feature causes Kibana to perform an unbounded amount of concurrent work. This can exhaust the memory available to the Kibana process and make Kibana unavailable to all users until it is restarted. The severity of the outcome depends on the resources allocated to the deployment; on well-provisioned deployments a single request may cause degraded performance and elevated memory pressure rather than a full outage, but the request is inexpensive to repeat.</p>
+<p><strong>Affected Versions:</strong><br>
+All versions from 8.0.0 up to and including 8.19.19<br>
+All versions from 9.0.0 up to and including 9.4.4</p>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.20 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<p>There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H<br>
+<strong>CVE ID:</strong> CVE-2026-72667<br>
+<strong>Problem Type:</strong> CWE-770 - Allocation of Resources Without Limits or Throttling<br>
+<strong>Impact:</strong> CAPEC-130 - Excessive Allocation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-98/389516">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-98/389516</link>
+          <pubDate>Thu, 13 Aug 2026 10:47:55 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389516</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-98/389516.rss">Kibana 8.19.20 and 9.4.5 Security Update (ESA-2026-98)</source>
+        </item>
+        <item>
+          <title>Kibana 8.19.19 and 9.4.5 Security Update (ESA-2026-86)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Missing Authorization in Kibana Leading to Cross-User Information Disclosure and Data Tampering</strong></p>
+<p>The state that Kibana stores for an Observability Onboarding flow is not bound to the user who created the flow, and the routes that read and update that state do not verify ownership. An authenticated user who holds only generic read access to the space can therefore discover the onboarding flows of other users, read their onboarding state, and write arbitrary progress data into them. A tampered flow can also cause the owner's onboarding view to fail with a server error.</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 8.9.0 up to and including 8.19.18</li>
+<li>All versions from 9.0.0 up to and including 9.4.4</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong></p>
+<blockquote>
+<ul>
+<li>All configurations are affected.</li>
+</ul>
+</blockquote>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 8.19.19 and 9.4.5.</p>
+<p><strong>For Users that Cannot Upgrade:</strong></p>
+<blockquote>
+<ul>
+<li>There are no workarounds for this vulnerability.</li>
+</ul>
+</blockquote>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong></p>
+<p>Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: High ( 7.6 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L<br>
+<strong>CVE ID:</strong> CVE-2026-72669<br>
+<strong>Problem Type:</strong> CWE-862 - Missing Authorization</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-8-19-19-and-9-4-5-security-update-esa-2026-86/389515">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-8-19-19-and-9-4-5-security-update-esa-2026-86/389515</link>
+          <pubDate>Thu, 13 Aug 2026 10:47:52 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389515</guid>
+          <source url="https://discuss.elastic.co/t/kibana-8-19-19-and-9-4-5-security-update-esa-2026-86/389515.rss">Kibana 8.19.19 and 9.4.5 Security Update (ESA-2026-86)</source>
+        </item>
+  </channel>
+</rss>

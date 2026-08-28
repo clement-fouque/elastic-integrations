@@ -1,0 +1,373 @@
+[
+ {
+  "esa": "ESA-2021-31",
+  "topic_id": 291476,
+  "title": "Apache Log4j2 Remote Code Execution (RCE) Vulnerability - CVE-2021-44228 - ESA-2021-31",
+  "created_at": "2021-12-10T21:42:41.723Z",
+  "file": "raw/topic_291476.md"
+ },
+ {
+  "esa": "ESA-2023-07",
+  "topic_id": 332330,
+  "title": "Kibana 8.7.1 Security Updates (ESA-2023-07, ESA-2023-08)",
+  "created_at": "2023-05-02T16:08:34.897Z",
+  "file": "raw/topic_332330.md"
+ },
+ {
+  "esa": "ESA-2023-16",
+  "topic_id": 343385,
+  "title": "Beats, Elastic Agent, APM Server, and Fleet Server 8.10.1 Security Update - Improper Certificate Validation issue (ESA-2023-16)",
+  "created_at": "2023-09-19T15:32:21.732Z",
+  "file": "raw/topic_343385.md"
+ },
+ {
+  "esa": "ESA-2023-24",
+  "topic_id": 347708,
+  "title": "Elasticsearch 7.17.14 / 8.10.3 Security Update (ESA-2023-24)",
+  "created_at": "2023-11-22T09:18:15.989Z",
+  "file": "raw/topic_347708.md"
+ },
+ {
+  "esa": "ESA-2023-25",
+  "topic_id": 347149,
+  "title": "Kibana 8.11.1 Security Update (ESA-2023-25)",
+  "created_at": "2023-11-14T18:38:58.485Z",
+  "file": "raw/topic_347149.md"
+ },
+ {
+  "esa": "ESA-2023-26",
+  "topic_id": 347191,
+  "title": "Logstash 8.11.1 Security Update (ESA-2023-26)",
+  "created_at": "2023-11-15T06:29:05.834Z",
+  "file": "raw/topic_347191.md"
+ },
+ {
+  "esa": "ESA-2023-27",
+  "topic_id": 349182,
+  "title": "Kibana 8.11.2, 7.17.16 Security Update (ESA-2023-27)",
+  "created_at": "2023-12-12T17:23:12.380Z",
+  "file": "raw/topic_349182.md"
+ },
+ {
+  "esa": "ESA-2023-28",
+  "topic_id": 348663,
+  "title": "Elasticsearch-hadoop 7.17.11 / 8.9.0 Security Update (ESA-2023-28)",
+  "created_at": "2023-12-05T16:27:11.292Z",
+  "file": "raw/topic_348663.md"
+ },
+ {
+  "esa": "ESA-2023-29",
+  "topic_id": 349179,
+  "title": "Elasticsearch 8.11.2, 7.17.16 Security Update (ESA-2023-29)",
+  "created_at": "2023-12-12T16:57:56.222Z",
+  "file": "raw/topic_349179.md"
+ },
+ {
+  "esa": "ESA-2023-30",
+  "topic_id": 349180,
+  "title": "Beats and Elastic Agent 8.11.3 / 7.17.16 Security Update (ESA-2023-30)",
+  "created_at": "2023-12-12T17:00:31.224Z",
+  "file": "raw/topic_349180.md"
+ },
+ {
+  "esa": "ESA-2023-31",
+  "topic_id": 349181,
+  "title": "Enterprise Search 8.11.2 / 7.17.16 Security Update (ESA-2023-31)",
+  "created_at": "2023-12-12T17:06:41.843Z",
+  "file": "raw/topic_349181.md"
+ },
+ {
+  "esa": "ESA-2024-01",
+  "topic_id": 352686,
+  "title": "Kibana 8.12.1 Security Update (ESA-2024-01)",
+  "created_at": "2024-02-06T22:13:13.120Z",
+  "file": "raw/topic_352686.md"
+ },
+ {
+  "esa": "ESA-2024-02",
+  "topic_id": 352687,
+  "title": "Elastic Network Drive Connector 8.12.1 Security Update (ESA-2024-02)",
+  "created_at": "2024-02-06T22:23:09.981Z",
+  "file": "raw/topic_352687.md"
+ },
+ {
+  "esa": "ESA-2024-03",
+  "topic_id": 352688,
+  "title": "APM Server 8.12.1 Security Update (ESA-2024-03)",
+  "created_at": "2024-02-06T22:35:37.532Z",
+  "file": "raw/topic_352688.md"
+ },
+ {
+  "esa": "ESA-2024-04",
+  "topic_id": 352805,
+  "title": "Kibana 8.12.1, 7.17.18 Security Update (ESA-2024-04)",
+  "created_at": "2024-02-07T22:07:29.607Z",
+  "file": "raw/topic_352805.md"
+ },
+ {
+  "esa": "ESA-2024-05",
+  "topic_id": 356458,
+  "title": "Elasticsearch 8.11.1 Security Update (ESA-2024-05)",
+  "created_at": "2024-03-29T11:12:33.534Z",
+  "file": "raw/topic_356458.md"
+ },
+ {
+  "esa": "ESA-2024-06",
+  "topic_id": 356314,
+  "title": "Elasticsearch 8.13.0 / 7.17.19 Security Update (ESA-2024-06)",
+  "created_at": "2024-03-27T16:53:36.397Z",
+  "file": "raw/topic_356314.md"
+ },
+ {
+  "esa": "ESA-2024-07",
+  "topic_id": 356315,
+  "title": "Elasticsearch 8.13.0 Security Update (ESA-2024-07)",
+  "created_at": "2024-03-27T16:53:56.307Z",
+  "file": "raw/topic_356315.md"
+ },
+ {
+  "esa": "ESA-2024-08",
+  "topic_id": 360888,
+  "title": "Elastic Cloud Enterprise 3.7.1 Security Update (ESA-2024-08)",
+  "created_at": "2024-06-05T20:57:45.253Z",
+  "file": "raw/topic_360888.md"
+ },
+ {
+  "esa": "ESA-2024-09",
+  "topic_id": 364946,
+  "title": "APM Server 8.14.0 Security Update (ESA-2024-09)",
+  "created_at": "2024-08-15T09:54:42.476Z",
+  "file": "raw/topic_364946.md"
+ },
+ {
+  "esa": "ESA-2024-10",
+  "topic_id": 361502,
+  "title": "Kibana 8.14.0/7.17.22 Security Update (ESA-2024-10)",
+  "created_at": "2024-06-14T14:09:17.246Z",
+  "file": "raw/topic_361502.md"
+ },
+ {
+  "esa": "ESA-2024-11",
+  "topic_id": 361460,
+  "title": "Kibana 8.14.0/7.17.22 Security Update (ESA-2024-11)",
+  "created_at": "2024-06-14T04:47:49.196Z",
+  "file": "raw/topic_361460.md"
+ },
+ {
+  "esa": "ESA-2024-12",
+  "topic_id": 364157,
+  "title": "Elasticsearch 8.13.0/7.17.23 Security Update (ESA-2024-12)",
+  "created_at": "2024-07-31T17:12:52.484Z",
+  "file": "raw/topic_364157.md"
+ },
+ {
+  "esa": "ESA-2024-13",
+  "topic_id": 360898,
+  "title": "Elasticsearch 8.14.0 Security Update (ESA-2024-13)",
+  "created_at": "2024-06-06T03:32:51.160Z",
+  "file": "raw/topic_360898.md"
+ },
+ {
+  "esa": "ESA-2024-14",
+  "topic_id": 361007,
+  "title": "Elasticsearch 8.14.0 Security Update (ESA-2024-14)",
+  "created_at": "2024-06-07T04:06:51.508Z",
+  "file": "raw/topic_361007.md"
+ },
+ {
+  "esa": "ESA-2025-01",
+  "topic_id": 380557,
+  "title": "APM Server (Windows Installer) 8.16.3, 8.17.1 Security Update (ESA-2025-01)",
+  "created_at": "2025-07-29T23:30:19.601Z",
+  "file": "raw/topic_380557.md"
+ },
+ {
+  "esa": "ESA-2025-02",
+  "topic_id": 376918,
+  "title": "Kibana 8.16.4 and 8.17.2 Security Update (ESA-2025-02)",
+  "created_at": "2025-04-08T15:53:15.070Z",
+  "file": "raw/topic_376918.md"
+ },
+ {
+  "esa": "ESA-2025-03",
+  "topic_id": 377706,
+  "title": "Elastic Agent / Elastic Endpoint Security Security Update (ESA-2025-03)",
+  "created_at": "2025-05-01T10:06:44.476Z",
+  "file": "raw/topic_377706.md"
+ },
+ {
+  "esa": "ESA-2025-05",
+  "topic_id": 376921,
+  "title": "Elastic Defend 8.17.3 Security Update (ESA-2025-05)",
+  "created_at": "2025-04-08T15:57:00.789Z",
+  "file": "raw/topic_376921.md"
+ },
+ {
+  "esa": "ESA-2025-06",
+  "topic_id": 375441,
+  "title": "Kibana 8.17.3 / 8.16.6 Security Update (ESA-2025-06)",
+  "created_at": "2025-03-05T09:41:24.068Z",
+  "file": "raw/topic_375441.md"
+ },
+ {
+  "esa": "ESA-2025-07",
+  "topic_id": 377868,
+  "title": "Kibana 8.17.6, 8.18.1, or 9.0.1 Security Update (ESA-2025-07)",
+  "created_at": "2025-05-06T16:29:27.128Z",
+  "file": "raw/topic_377868.md"
+ },
+ {
+  "esa": "ESA-2025-08",
+  "topic_id": 377869,
+  "title": "Logstash 8.17.6, 8.18.1, and 9.0.1 Security Update (ESA-2025-08)",
+  "created_at": "2025-05-06T16:33:44.301Z",
+  "file": "raw/topic_377869.md"
+ },
+ {
+  "esa": "ESA-2025-09",
+  "topic_id": 379443,
+  "title": "Kibana 7.17.29, 8.17.8, 8.18.3, 9.0.3 Security Update (ESA-2025-09)",
+  "created_at": "2025-06-24T17:00:12.729Z",
+  "file": "raw/topic_379443.md"
+ },
+ {
+  "esa": "ESA-2025-10",
+  "topic_id": 379444,
+  "title": "Kibana 7.17.29, 8.17.8, 8.18.3, 9.0.3 Security Update (ESA-2025-10)",
+  "created_at": "2025-06-24T17:01:48.237Z",
+  "file": "raw/topic_379444.md"
+ },
+ {
+  "esa": "ESA-2025-12",
+  "topic_id": 380558,
+  "title": "Beats (Windows Installer) 8.18.6, 8.19.3, 9.0.6, & 9.1.0 Security Update (ESA-2025-12)",
+  "created_at": "2025-07-29T23:32:46.948Z",
+  "file": "raw/topic_380558.md"
+ },
+ {
+  "esa": "ESA-2025-13",
+  "topic_id": 381426,
+  "title": "Kibana 9.0.6, 9.1.3 Security Update (ESA-2025-13)",
+  "created_at": "2025-08-28T15:35:08.152Z",
+  "file": "raw/topic_381426.md"
+ },
+ {
+  "esa": "ESA-2025-14",
+  "topic_id": 381427,
+  "title": "Elasticsearch 8.18.6, 8.19.3, 9.0.6, and 9.1.3 Security Update (ESA-2025-14) (CVE-2025-54988)",
+  "created_at": "2025-08-28T15:38:52.880Z",
+  "file": "raw/topic_381427.md"
+ },
+ {
+  "esa": "ESA-2025-15",
+  "topic_id": 381428,
+  "title": "Enterprise Search 8.18.6, 8.19.3 Security Update (ESA-2025-15) (CVE-2025-54988)",
+  "created_at": "2025-08-28T15:39:46.514Z",
+  "file": "raw/topic_381428.md"
+ },
+ {
+  "esa": "ESA-2025-16",
+  "topic_id": 382450,
+  "title": "Kibana 8.18.8, 8.19.4, 9.0.7, 9.1.4 Security Update (ESA-2025-16)",
+  "created_at": "2025-10-06T16:24:58.948Z",
+  "file": "raw/topic_382450.md"
+ },
+ {
+  "esa": "ESA-2026-01",
+  "topic_id": 384519,
+  "title": "Metricbeat 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-01)",
+  "created_at": "2026-01-13T20:42:47.987Z",
+  "file": "raw/topic_384519.md"
+ },
+ {
+  "esa": "ESA-2026-02",
+  "topic_id": 384520,
+  "title": "Packetbeat 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-02)",
+  "created_at": "2026-01-13T20:43:19.656Z",
+  "file": "raw/topic_384520.md"
+ },
+ {
+  "esa": "ESA-2026-03",
+  "topic_id": 384521,
+  "title": "Kibana 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-03)",
+  "created_at": "2026-01-13T20:45:44.339Z",
+  "file": "raw/topic_384521.md"
+ },
+ {
+  "esa": "ESA-2026-04",
+  "topic_id": 384522,
+  "title": "Kibana 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-04)",
+  "created_at": "2026-01-13T20:47:06.300Z",
+  "file": "raw/topic_384522.md"
+ },
+ {
+  "esa": "ESA-2026-05",
+  "topic_id": 384524,
+  "title": "Kibana 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-05)",
+  "created_at": "2026-01-13T20:54:48.223Z",
+  "file": "raw/topic_384524.md"
+ },
+ {
+  "esa": "ESA-2026-06",
+  "topic_id": 385531,
+  "title": "Logstash 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-06)",
+  "created_at": "2026-03-19T16:53:51.357Z",
+  "file": "raw/topic_385531.md"
+ },
+ {
+  "esa": "ESA-2026-07",
+  "topic_id": 384525,
+  "title": "Elasticsearch 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-07)",
+  "created_at": "2026-01-13T20:55:33.565Z",
+  "file": "raw/topic_384525.md"
+ },
+ {
+  "esa": "ESA-2026-08",
+  "topic_id": 384523,
+  "title": "Kibana 8.19.10, 9.1.10, 9.2.4 Security Update (ESA-2026-08)",
+  "created_at": "2026-01-13T20:47:35.744Z",
+  "file": "raw/topic_384523.md"
+ },
+ {
+  "esa": "ESA-2026-09",
+  "topic_id": 385532,
+  "title": "Metricbeat 8.19.13, 9.2.5 Security Update (ESA-2026-09)",
+  "created_at": "2026-03-19T16:54:15.473Z",
+  "file": "raw/topic_385532.md"
+ },
+ {
+  "esa": "ESA-2026-10",
+  "topic_id": 385247,
+  "title": "Packetbeat 8.19.11, 9.2.5 Security Update (ESA-2026-10)",
+  "created_at": "2026-02-26T16:51:41.323Z",
+  "file": "raw/topic_385247.md"
+ },
+ {
+  "esa": "ESA-2026-11",
+  "topic_id": 385533,
+  "title": "Packetbeat 8.19.11, 9.2.5 Security Update (ESA-2026-11)",
+  "created_at": "2026-03-19T16:56:17.388Z",
+  "file": "raw/topic_385533.md"
+ },
+ {
+  "esa": "ESA-2026-12",
+  "topic_id": 385248,
+  "title": "Kibana 8.19.12, 9.2.6, 9.3.1 Security Update (ESA-2026-12)",
+  "created_at": "2026-02-26T16:52:37.650Z",
+  "file": "raw/topic_385248.md"
+ },
+ {
+  "esa": "ESA-2026-13",
+  "topic_id": 385249,
+  "title": "Kibana 8.19.12, 9.2.6, 9.3.1 Security Update (ESA-2026-13)",
+  "created_at": "2026-02-26T16:53:12.377Z",
+  "file": "raw/topic_385249.md"
+ },
+ {
+  "esa": "ESA-2026-14",
+  "topic_id": 385250,
+  "title": "Kibana 8.19.11, 9.2.5 Security Update (ESA-2026-14)",
+  "created_at": "2026-02-26T16:53:47.599Z",
+  "file": "raw/topic_385250.md"
+ }
+]

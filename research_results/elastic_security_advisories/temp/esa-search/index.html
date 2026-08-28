@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elastic Security Advisory (ESA) Matrix Tracker</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        body { background-color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .severity-critical { background-color: #fef2f2; color: #991b1b; }
+        .severity-high { background-color: #fff7ed; color: #c2410c; }
+        .severity-medium { background-color: #fefce8; color: #a16207; }
+        .severity-low { background-color: #f0fdf4; color: #166534; }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        
+        <header class="bg-slate-900 text-white p-6 rounded-xl shadow-md mb-6">
+            <h1 class="text-2xl font-bold tracking-tight">Elastic Security Advisory (ESA) Matrix</h1>
+            <p class="text-slate-400 mt-1 text-sm">Enter an Elastic Stack version to scan for vulnerabilities across stack products (v8.0.0+).</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            
+            <div id="filterSidebar" class="w-full md:w-64 shrink-0 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-base font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-2">Matrix Filter Setup</h2>
+                
+                <div class="mb-5">
+                    <label for="versionInput" class="block text-xs font-bold uppercase text-slate-500 mb-2">Elastic Stack Version</label>
+                    <input
+                        type="text"
+                        id="versionInput"
+                        placeholder="e.g. 8.5.2"
+                        class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 font-mono"
+                    >
+                    <p id="versionError" class="hidden mt-2 text-xs text-red-600"></p>
+                    <button
+                        id="searchBtn"
+                        type="button"
+                        class="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        Search
+                    </button>
+                </div>
+
+                <div class="mb-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-xs font-bold uppercase text-slate-500">Elastic Stack</label>
+                        <div class="text-xs">
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-all" data-filter-group="stackProductFilterGroup">All</button>
+                            <span class="text-slate-300 mx-1">|</span>
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-none" data-filter-group="stackProductFilterGroup">None</button>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-700" id="stackProductFilterGroup">
+                        <p class="text-xs text-slate-400 italic">Loading filters…</p>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-xs font-bold uppercase text-slate-500">Other Products</label>
+                        <div class="text-xs">
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-all" data-filter-group="independentProductFilterGroup">All</button>
+                            <span class="text-slate-300 mx-1">|</span>
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-none" data-filter-group="independentProductFilterGroup">None</button>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-2">Independent versioning — not matched by stack version.</p>
+                    <div class="space-y-2 text-sm text-slate-700" id="independentProductFilterGroup">
+                        <p class="text-xs text-slate-400 italic">Loading filters…</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-xs font-bold uppercase text-slate-500">Severity</label>
+                        <div class="text-xs">
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-all" data-filter-group="severityFilterGroup">All</button>
+                            <span class="text-slate-300 mx-1">|</span>
+                            <button type="button" class="text-blue-600 hover:underline" data-filter-action="select-none" data-filter-group="severityFilterGroup">None</button>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-700" id="severityFilterGroup">
+                        <p class="text-xs text-slate-400 italic">Loading filters…</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grow bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-slate-800">Matching Advisories Matrix</h2>
+                    <span id="matchCounter" class="bg-slate-100 text-slate-700 font-medium px-3 py-1 rounded-full text-xs">No search performed</span>
+                </div>
+                <div id="emptyState" class="flex flex-col items-center justify-center py-16 text-slate-400">
+                    <svg class="w-12 h-12 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                    </svg>
+                    <p class="text-sm font-medium">Enter an Elastic Stack version and click Search</p>
+                    <p class="text-xs mt-1">Results will appear here once a search is performed.</p>
+                </div>
+                <div id="resultsPanel" class="hidden overflow-x-auto">
+                    <div class="flex justify-between items-center mb-3 min-w-[960px] w-full">
+                        <button
+                            id="sortIdBtn"
+                            type="button"
+                            class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm"
+                        >
+                            Sort by ID
+                        </button>
+                        <button
+                            id="sortSeverityBtn"
+                            type="button"
+                            class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm"
+                        >
+                            Sort by Severity Score
+                        </button>
+                    </div>
+                    <table class="w-full min-w-[960px] text-sm text-left border-collapse table-fixed">
+                        <colgroup>
+                            <col style="width:7rem">
+                            <col style="width:32%">
+                            <col style="width:9rem">
+                            <col style="width:8rem">
+                            <col style="width:5rem">
+                            <col style="width:7rem">
+                        </colgroup>
+                        <thead>
+                            <tr class="bg-slate-800 text-white">
+                                <th class="px-4 py-3 font-semibold rounded-tl-lg">Advisory ID</th>
+                                <th class="px-4 py-3 font-semibold">Vulnerability Title</th>
+                                <th class="px-4 py-3 font-semibold">Affected Version(s)</th>
+                                <th class="px-4 py-3 font-semibold">Affected Product(s)</th>
+                                <th class="px-4 py-3 font-semibold">Fixed Version(s)</th>
+                                <th class="px-4 py-3 font-semibold rounded-tr-lg">Severity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody"></tbody>
+                    </table>
+                    <p id="noResultsMsg" class="hidden text-center text-slate-500 py-8 text-sm">No advisories match your search criteria.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let rawEsaData = [];
+        let currentResults = [];
+        let activeSearchVersion = null;
+        let activeSort = { field: null, direction: "desc" };
+
+        const PRODUCT_ALIASES = {
+            "Elastic Defend": "Elastic Security",
+            "Elastic Endpoint": "Elastic Security",
+            "Synthetics Recorde": "Synthetics Recorder",
+        };
+
+        const STACK_PRODUCTS = new Set([
+            "Elasticsearch",
+            "Kibana",
+            "Logstash",
+            "Elastic Security",
+            "Elastic Agent",
+            "Fleet Server",
+            "APM Server",
+            "Beats",
+            "Filebeat",
+            "Metricbeat",
+            "Packetbeat",
+            "Enterprise Search",
+            "Elastic Sharepoint Online Python Connector",
+        ]);
+
+        const INDEPENDENT_PRODUCT_ORDER = [
+            "Elasticsearch-hadoop",
+            "Elastic Network Drive Connector",
+            "Elastic Cloud Enterprise",
+            "Elastic Cloud on Kubernetes",
+            "Elastic Package Registry",
+            "Elastic OTel",
+            "Synthetics Recorder",
+        ];
+
+        const STACK_PRODUCT_ORDER = [
+            "Elasticsearch",
+            "Kibana",
+            "Logstash",
+            "Elastic Security",
+            "Elastic Agent",
+            "Fleet Server",
+            "APM Server",
+            "Beats",
+            "Filebeat",
+            "Metricbeat",
+            "Packetbeat",
+            "Enterprise Search",
+            "Elastic Sharepoint Online Python Connector",
+        ];
+
+        const SEVERITY_ORDER = ["Critical", "High", "Medium", "Low"];
+
+        function normalizeProductName(product) {
+            return PRODUCT_ALIASES[product] || product;
+        }
+
+        function normalizeEsaProducts(data) {
+            return data.map(esa => ({
+                ...esa,
+                affected_product: normalizeProductName(esa.affected_product),
+            }));
+        }
+
+        function isStackProduct(product) {
+            return STACK_PRODUCTS.has(product);
+        }
+
+        function uniqueSorted(values, preferredOrder = []) {
+            const unique = [...new Set(values.filter(Boolean))];
+            return unique.sort((a, b) => {
+                const aIndex = preferredOrder.indexOf(a);
+                const bIndex = preferredOrder.indexOf(b);
+                if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+                if (aIndex !== -1) return -1;
+                if (bIndex !== -1) return 1;
+                return a.localeCompare(b);
+            });
+        }
+
+        function extractFilterOptions(data) {
+            const products = uniqueSorted(data.map(esa => esa.affected_product));
+            return {
+                stackProducts: uniqueSorted(products.filter(isStackProduct), STACK_PRODUCT_ORDER),
+                independentProducts: uniqueSorted(products.filter(p => !isStackProduct(p)), INDEPENDENT_PRODUCT_ORDER),
+                severities: uniqueSorted(data.map(esa => getSeverityFilterValue(esa.severity)), SEVERITY_ORDER),
+            };
+        }
+
+        function renderSeverityFilterLabel(value) {
+            if (["Critical", "High", "Medium", "Low"].includes(value)) {
+                return `<span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full ${severityClass(value)}">${escapeHtml(value)}</span>`;
+            }
+            return `<span>${escapeHtml(value)}</span>`;
+        }
+
+        function setFilterGroupChecked(groupId, checked) {
+            document.querySelectorAll(`#${groupId} input[type="checkbox"]`).forEach(checkbox => {
+                checkbox.checked = checked;
+            });
+        }
+
+        function buildFilterGroup(containerId, values, labelRenderer, defaultChecked = true) {
+            const container = document.getElementById(containerId);
+            if (!values.length) {
+                container.innerHTML = '<p class="text-xs text-slate-400 italic">None in dataset</p>';
+                return;
+            }
+
+            const checkedAttr = defaultChecked ? "checked" : "";
+            container.innerHTML = values.map(value => `
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" value="${escapeHtml(value)}" ${checkedAttr} class="rounded border-slate-300 text-blue-600">
+                    ${labelRenderer(value)}
+                </label>
+            `).join("");
+        }
+
+        function initializeFilters(data) {
+            const options = extractFilterOptions(data);
+            buildFilterGroup(
+                "stackProductFilterGroup",
+                options.stackProducts,
+                value => `<span>${escapeHtml(value)}</span>`,
+                true
+            );
+            buildFilterGroup(
+                "independentProductFilterGroup",
+                options.independentProducts,
+                value => `<span>${escapeHtml(value)}</span>`,
+                false
+            );
+            buildFilterGroup("severityFilterGroup", options.severities, renderSeverityFilterLabel);
+        }
+
+        function parseVersion(version) {
+            const match = String(version).trim().match(/^(\d+)\.(\d+)\.(\d+)/);
+            if (!match) return null;
+            return [parseInt(match[1], 10), parseInt(match[2], 10), parseInt(match[3], 10)];
+        }
+
+        function compareVersions(a, b) {
+            for (let i = 0; i < 3; i++) {
+                if (a[i] !== b[i]) return a[i] - b[i];
+            }
+            return 0;
+        }
+
+        function isValidVersion(version) {
+            return parseVersion(version) !== null;
+        }
+
+        function versionSatisfies(version, range) {
+            const ver = parseVersion(version);
+            if (!ver) return false;
+
+            const clauses = range.trim().match(/(>=|<=|>|<|==|=)\d+\.\d+\.\d+/g) || [];
+            for (const clause of clauses) {
+                const op = clause.match(/^(>=|<=|>|<|==|=)/)[1];
+                const bound = parseVersion(clause.slice(op.length));
+                if (!bound) return false;
+
+                const cmp = compareVersions(ver, bound);
+                if (op === ">=" && cmp < 0) return false;
+                if (op === "<=" && cmp > 0) return false;
+                if (op === ">" && cmp <= 0) return false;
+                if (op === "<" && cmp >= 0) return false;
+                if ((op === "==" || op === "=") && cmp !== 0) return false;
+            }
+            return true;
+        }
+
+        function severityClass(severity) {
+            const level = getSeverityLevel(severity);
+            if (level === "critical") return "severity-critical";
+            if (level === "high") return "severity-high";
+            if (level === "medium") return "severity-medium";
+            if (level === "low") return "severity-low";
+            return "severity-low";
+        }
+
+        function getSeverityLevel(severity) {
+            const match = String(severity || "").match(/^([A-Za-z]+)/);
+            return match ? match[1].toLowerCase() : "";
+        }
+
+        function getSeverityFilterValue(severity) {
+            const level = getSeverityLevel(severity);
+            if (level === "critical") return "Critical";
+            if (level === "high") return "High";
+            if (level === "medium") return "Medium";
+            if (level === "low") return "Low";
+            const match = String(severity || "").match(/^([A-Za-z]+)/);
+            return match ? match[1].charAt(0).toUpperCase() + match[1].slice(1).toLowerCase() : "";
+        }
+
+        function getSeverityScore(severity) {
+            const match = String(severity || "").match(/\(([0-9.]+)\)/);
+            return match ? parseFloat(match[1]) : -1;
+        }
+
+        function parseEsaId(esaId) {
+            const match = String(esaId).match(/ESA-(\d+)-(\d+)/i);
+            if (!match) return [0, 0];
+            return [parseInt(match[1], 10), parseInt(match[2], 10)];
+        }
+
+        function compareEsaIds(a, b, direction = "asc") {
+            const [aYear, aNum] = parseEsaId(a.esa_id);
+            const [bYear, bNum] = parseEsaId(b.esa_id);
+            const cmp = aYear !== bYear ? aYear - bYear : aNum - bNum;
+            return direction === "desc" ? -cmp : cmp;
+        }
+
+        function sortDirectionArrow(field) {
+            if (activeSort.field !== field) return "";
+            return activeSort.direction === "desc" ? " ↓" : " ↑";
+        }
+
+        function updateSortButtonLabels() {
+            document.getElementById("sortSeverityBtn").textContent =
+                `Sort by Severity Score${sortDirectionArrow("severity")}`;
+            document.getElementById("sortIdBtn").textContent =
+                `Sort by ID${sortDirectionArrow("id")}`;
+        }
+
+        function applyCurrentSort(data) {
+            if (!activeSort.field || !data.length) return data;
+
+            const sorted = [...data];
+            if (activeSort.field === "severity") {
+                sorted.sort((a, b) => {
+                    const scoreDiff = getSeverityScore(b.severity) - getSeverityScore(a.severity);
+                    const diff = activeSort.direction === "desc" ? scoreDiff : -scoreDiff;
+                    if (diff !== 0) return diff;
+                    return compareEsaIds(a, b, "asc");
+                });
+            } else if (activeSort.field === "id") {
+                sorted.sort((a, b) => compareEsaIds(a, b, activeSort.direction));
+            }
+            return sorted;
+        }
+
+        function toggleSort(field) {
+            if (!currentResults.length) return;
+
+            if (activeSort.field === field) {
+                activeSort.direction = activeSort.direction === "desc" ? "asc" : "desc";
+            } else {
+                activeSort.field = field;
+                activeSort.direction = field === "severity" ? "desc" : "desc";
+            }
+
+            updateSortButtonLabels();
+            renderResultsTable(applyCurrentSort(currentResults));
+        }
+
+        function getAffectedRanges(esa) {
+            if (Array.isArray(esa.affected_ranges) && esa.affected_ranges.length) {
+                return esa.affected_ranges;
+            }
+            if (esa.affected_range) {
+                return [esa.affected_range];
+            }
+            return [];
+        }
+
+        function mergeEsaEntries(data) {
+            const merged = new Map();
+
+            for (const esa of data) {
+                const key = `${esa.esa_id}|${esa.affected_product}`;
+                const ranges = getAffectedRanges(esa);
+
+                if (!merged.has(key)) {
+                    const entry = { ...esa, affected_ranges: [...ranges] };
+                    delete entry.affected_range;
+                    merged.set(key, entry);
+                    continue;
+                }
+
+                const existing = merged.get(key);
+                for (const range of ranges) {
+                    if (!existing.affected_ranges.includes(range)) {
+                        existing.affected_ranges.push(range);
+                    }
+                }
+            }
+
+            return Array.from(merged.values());
+        }
+
+        function versionMatchesEsa(version, esa) {
+            return getAffectedRanges(esa).some(range => versionSatisfies(version, range));
+        }
+
+        function renderAffectedRanges(esa) {
+            const ranges = getAffectedRanges(esa);
+            if (!ranges.length) {
+                return '<span class="text-slate-400">—</span>';
+            }
+
+            return `<div class="space-y-1">${ranges.map(range =>
+                `<div class="whitespace-nowrap">${escapeHtml(range)}</div>`
+            ).join("")}</div>`;
+        }
+
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function renderFixedVersions(fixedVersion) {
+            const versions = String(fixedVersion || "See advisory")
+                .split(",")
+                .map(version => version.trim())
+                .filter(Boolean);
+
+            if (!versions.length) {
+                return `<span class="whitespace-nowrap">${escapeHtml("See advisory")}</span>`;
+            }
+
+            return versions.map((version, index) => {
+                const comma = index < versions.length - 1 ? '<span>, </span>' : "";
+                return `<span class="whitespace-nowrap">${escapeHtml(version)}</span>${comma}`;
+            }).join("");
+        }
+
+        function renderResultsTable(filteredData) {
+            const tbody = document.getElementById("resultsBody");
+            const table = tbody.closest("table");
+            const noResultsMsg = document.getElementById("noResultsMsg");
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = "";
+                table.classList.add("hidden");
+                noResultsMsg.classList.remove("hidden");
+                return;
+            }
+
+            table.classList.remove("hidden");
+            noResultsMsg.classList.add("hidden");
+
+            tbody.innerHTML = filteredData.map((esa, index) => {
+                const rowBg = index % 2 === 0 ? "bg-white" : "bg-slate-50";
+                const severity = escapeHtml(esa.severity || "—");
+                return `
+                    <tr class="${rowBg} border-b border-slate-200 hover:bg-blue-50 transition-colors">
+                        <td class="px-4 py-3 font-bold text-slate-900 whitespace-nowrap">${escapeHtml(esa.esa_id)}</td>
+                        <td class="px-4 py-3 align-top min-w-0">
+                            <a href="${escapeHtml(esa.url)}" target="_blank" class="text-blue-600 hover:underline font-medium break-words">${escapeHtml(esa.title)}</a>
+                        </td>
+                        <td class="px-4 py-3 font-mono text-xs text-red-600 align-top">${renderAffectedRanges(esa)}</td>
+                        <td class="px-4 py-3 align-top min-w-0 break-words">${escapeHtml(esa.affected_product)}</td>
+                        <td class="px-4 py-3 font-mono text-xs font-semibold text-green-600 leading-snug align-top">${renderFixedVersions(esa.fixed_version)}</td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${severityClass(esa.severity)}">${severity}</span>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        function showEmptyState(counterText = "No search performed") {
+            currentResults = [];
+            activeSearchVersion = null;
+            document.getElementById("emptyState").classList.remove("hidden");
+            document.getElementById("resultsPanel").classList.add("hidden");
+            document.getElementById("matchCounter").textContent = counterText;
+        }
+
+        function showResults(filteredData) {
+            currentResults = filteredData;
+            document.getElementById("emptyState").classList.add("hidden");
+            document.getElementById("resultsPanel").classList.remove("hidden");
+            renderResultsTable(applyCurrentSort(filteredData));
+        }
+
+        function runSearch() {
+            const versionInput = document.getElementById("versionInput");
+            const versionError = document.getElementById("versionError");
+            const selectedVersion = versionInput.value.trim();
+
+            versionError.classList.add("hidden");
+            versionError.textContent = "";
+
+            if (!selectedVersion) {
+                versionError.textContent = "Please enter an Elastic Stack version (e.g. 8.5.2).";
+                versionError.classList.remove("hidden");
+                showEmptyState();
+                return;
+            }
+
+            if (!isValidVersion(selectedVersion)) {
+                versionError.textContent = "Invalid version format. Use stack semver (e.g. 8.5.2).";
+                versionError.classList.remove("hidden");
+                showEmptyState("Invalid version");
+                return;
+            }
+
+            activeSearchVersion = selectedVersion;
+
+            const selectedStackProducts = Array.from(document.querySelectorAll("#stackProductFilterGroup input:checked")).map(el => el.value);
+            const selectedIndependentProducts = Array.from(document.querySelectorAll("#independentProductFilterGroup input:checked")).map(el => el.value);
+            const selectedSeverities = Array.from(document.querySelectorAll("#severityFilterGroup input:checked")).map(el => el.value);
+
+            const filteredData = mergeEsaEntries(rawEsaData.filter(esa => {
+                const product = esa.affected_product;
+                const severityMatch = selectedSeverities.includes(getSeverityFilterValue(esa.severity));
+                if (!severityMatch) return false;
+
+                if (isStackProduct(product)) {
+                    if (!selectedStackProducts.includes(product)) return false;
+                    try {
+                        return versionMatchesEsa(selectedVersion, esa);
+                    } catch (e) {
+                        console.error("Invalid range definition string format:", getAffectedRanges(esa).join(", "));
+                        return false;
+                    }
+                }
+
+                if (!selectedIndependentProducts.includes(product)) return false;
+                return true;
+            }));
+
+            showResults(filteredData);
+
+            const label = filteredData.length === 1 ? "advisory" : "advisories";
+            document.getElementById("matchCounter").textContent = `${filteredData.length} ${label} found for v${selectedVersion}`;
+        }
+
+        function refreshResultsIfActive() {
+            if (activeSearchVersion) {
+                runSearch();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showEmptyState();
+
+            fetch('./esas.json')
+                .then(response => {
+                    if (!response.ok) throw new Error("Could not find esas.json database file.");
+                    return response.json();
+                })
+                .then(data => {
+                    rawEsaData = mergeEsaEntries(normalizeEsaProducts(data));
+                    initializeFilters(rawEsaData);
+                })
+                .catch(error => {
+                    console.error("Error loading data file:", error);
+                    document.getElementById("matchCounter").textContent = "Failed to load data";
+                });
+
+            document.getElementById("searchBtn").addEventListener("click", runSearch);
+            document.getElementById("sortSeverityBtn").addEventListener("click", () => toggleSort("severity"));
+            document.getElementById("sortIdBtn").addEventListener("click", () => toggleSort("id"));
+            document.getElementById("versionInput").addEventListener("keydown", (e) => {
+                if (e.key === "Enter") runSearch();
+            });
+
+            document.getElementById("filterSidebar").addEventListener("change", (e) => {
+                if (e.target.matches('input[type="checkbox"]')) {
+                    refreshResultsIfActive();
+                }
+            });
+
+            document.getElementById("filterSidebar").addEventListener("click", (e) => {
+                const button = e.target.closest("[data-filter-action]");
+                if (!button) return;
+
+                const groupId = button.dataset.filterGroup;
+                const selectAll = button.dataset.filterAction === "select-all";
+                setFilterGroupChecked(groupId, selectAll);
+                refreshResultsIfActive();
+            });
+        });
+    </script>
+</body>
+</html>

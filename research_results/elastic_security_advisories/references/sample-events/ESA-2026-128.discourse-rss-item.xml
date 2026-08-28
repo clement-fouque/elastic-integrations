@@ -1,0 +1,54 @@
+<!-- Source: https://discuss.elastic.co/c/announcements/security-announcements/31.rss
+     Retrieved 2026-08-28. Channel header + first <item> only. Full feed returns 25 items/page; ?page=N paginates. -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Security Announcements - Discuss the Elastic Stack</title>
+    <link>https://discuss.elastic.co/c/announcements/security-announcements/31</link>
+    <description>Topics in the &#39;Security Announcements&#39; category Security announcements for the Elastic stack.</description>
+    
+      <lastBuildDate>Thu, 13 Aug 2026 10:49:09 +0000</lastBuildDate>
+      <atom:link href="https://discuss.elastic.co/c/announcements/security-announcements/31.rss" rel="self" type="application/rss+xml" />
+        <item>
+          <title>Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-128)</title>
+          <dc:creator><![CDATA[ikakavas]]></dc:creator>
+          <category>Security Announcements</category>
+          <description><![CDATA[
+            <p><strong>Improper Privilege Management in Kibana Fleet Leading to Over-Scoped Elastic Agent API Keys</strong></p>
+<p><strong>Description:</strong><br>
+Improper Privilege Management (CWE-269) in Kibana Fleet can lead to privilege escalation via Privilege Escalation (CAPEC-233). An integration policy may optionally declare extra data streams that the integration writes to, which Fleet adds to the Elasticsearch API key issued to Elastic Agents enrolled in the corresponding agent policy. The resulting key allows new documents to be inserted and index mappings to be extended for specific indices. The key does not allow reading, updating, or deleting existing documents</p>
+<p><strong>Affected Versions:</strong></p>
+<blockquote>
+<ul>
+<li>All versions from 9.1.0 up to and including 9.4.4</li>
+<li>Version 9.5.0</li>
+</ul>
+</blockquote>
+<p><strong>Affected Configurations:</strong><br>
+All configurations are affected.</p>
+<p><strong>Solutions and Mitigations:</strong></p>
+<p>The issue is resolved in versions 9.4.5 and 9.5.1.<br>
+<strong>For Users that Cannot Upgrade:</strong></p>
+<p><strong>For Users that Cannot Upgrade:</strong><br>
+There are no workarounds for this vulnerability.</p>
+<p><strong>Indicators of Compromise (IOC)</strong></p>
+<p>No specific indicators of compromise have been identified for this vulnerability.</p>
+<p><strong>Elastic Cloud Serverless</strong><br>
+Due to our continuous deployment and patching model, the vulnerability described in this security advisory was remediated in our Elastic Cloud Serverless offering before the public disclosure.</p>
+<p><strong>Severity:</strong> CVSSv3.1: Medium ( 6.5 ) - CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N<br>
+<strong>CVE ID:</strong> CVE-2026-72631<br>
+<strong>Problem Type:</strong> CWE-269 - Improper Privilege Management<br>
+<strong>Impact:</strong> CAPEC-233 - Privilege Escalation</p>
+            <p><small>1 post - 1 participant</small></p>
+            <p><a href="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539">Read full topic</a></p>
+          ]]></description>
+          <link>https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539</link>
+          <pubDate>Thu, 13 Aug 2026 10:49:09 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">discuss.elastic.co-topic-389539</guid>
+          <source url="https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539.rss">Kibana 9.4.5, 9.5.1 Security Update (ESA-2026-128)</source>
+        </item>
+  </channel>
+</rss>

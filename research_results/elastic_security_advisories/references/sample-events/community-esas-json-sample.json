@@ -1,0 +1,69 @@
+{
+  "_source": "https://github.com/jmoon-elastic/esa-search/blob/main/esas.json (community scrape by an Elastic employee, NOT official)",
+  "_retrieved": "2026-08-28",
+  "_total_records": 244,
+  "sample": [
+    {
+      "esa_id": "ESA-2026-137",
+      "title": "Allocation of Resources Without Limits or Throttling in Kibana Leading to Denial of Service",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-137/389511",
+      "affected_product": "Kibana",
+      "fixed_version": "8.19.20, 9.4.5",
+      "severity": "Medium (6.5)",
+      "affected_ranges": [
+        ">=8.0.0 <=8.19.19",
+        ">=9.0.0 <=9.4.4"
+      ]
+    },
+    {
+      "esa_id": "ESA-2026-136",
+      "title": "Uncaught Exception in Kibana Cases Leading to Denial of Service",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-3-5-9-4-2-security-update-esa-2026-136/389492",
+      "affected_product": "Kibana",
+      "fixed_version": "8.19.20, 9.3.5, 9.4.2",
+      "severity": "Medium (4.3)",
+      "affected_ranges": [
+        ">=8.0.0 <=8.19.19",
+        ">=9.0.0 <=9.3.4",
+        ">=9.4.0 <=9.4.1"
+      ]
+    },
+    {
+      "esa_id": "ESA-2026-133",
+      "title": "Uncontrolled Recursion in Elasticsearch Wildcard Matching Leading to Denial of Service",
+      "url": "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-133/389499",
+      "affected_product": "Elasticsearch",
+      "fixed_version": "8.19.20, 9.4.5",
+      "severity": "Medium (6.5)",
+      "affected_ranges": [
+        ">=8.0.0 <=8.19.19",
+        ">=9.0.0 <=9.4.4"
+      ]
+    },
+    {
+      "esa_id": "ESA-2026-129",
+      "title": "Observable Discrepancy in Kibana Fleet Leading to Disclosure of Elastic Agent Elasticsearch API Keys",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532",
+      "affected_product": "Kibana",
+      "fixed_version": "8.19.20, 9.4.5, 9.5.1",
+      "severity": "High (7.1)",
+      "affected_ranges": [
+        ">=8.19.0 <=8.19.19",
+        ">=9.0.0 <=9.4.4",
+        ">=9.5.0 <=9.5.0"
+      ]
+    },
+    {
+      "esa_id": "ESA-2026-128",
+      "title": "Improper Privilege Management in Kibana Fleet Leading to Over-Scoped Elastic Agent API Keys",
+      "url": "https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539",
+      "affected_product": "Kibana",
+      "fixed_version": "9.4.5, 9.5.1",
+      "severity": "Medium (6.5)",
+      "affected_ranges": [
+        ">=9.1.0 <=9.4.4",
+        ">=9.5.0 <=9.5.0"
+      ]
+    }
+  ]
+}
