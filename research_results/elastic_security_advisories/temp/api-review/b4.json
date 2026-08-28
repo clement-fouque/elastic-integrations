@@ -1,0 +1,203 @@
+{
+  "sha": "efcea1c7bae2e54928a1471dd25e835495b05f04",
+  "url": "https://api.github.com/repos/elastic/integrations/git/trees/efcea1c7bae2e54928a1471dd25e835495b05f04",
+  "tree": [
+    {
+      "path": "_dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "087dd0a145f0c56ef7e4461d6372d3d907f3142e",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/087dd0a145f0c56ef7e4461d6372d3d907f3142e"
+    },
+    {
+      "path": "_dev/deploy",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6408ae6b258e743cb3731e885f2638efb60412dd",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/6408ae6b258e743cb3731e885f2638efb60412dd"
+    },
+    {
+      "path": "_dev/deploy/docker",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ed90703dc18f0bbf69081b3fef0f656b0499175a",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/ed90703dc18f0bbf69081b3fef0f656b0499175a"
+    },
+    {
+      "path": "_dev/deploy/docker/docker-compose.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "145bd56080d47af706d8f9e34c51561610b5ff9f",
+      "size": 230,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/145bd56080d47af706d8f9e34c51561610b5ff9f"
+    },
+    {
+      "path": "_dev/deploy/docker/files",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "965fbec2aa0ca7234b752e44d07e42f4ca75f16a",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/965fbec2aa0ca7234b752e44d07e42f4ca75f16a"
+    },
+    {
+      "path": "_dev/deploy/docker/files/config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9dfad061e179b1ba854ccbe5ec9a80669cbc9768",
+      "size": 32992,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/9dfad061e179b1ba854ccbe5ec9a80669cbc9768"
+    },
+    {
+      "path": "_dev/test",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "567e77f51e3d067ead83ac730c2de184362aeb24",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/567e77f51e3d067ead83ac730c2de184362aeb24"
+    },
+    {
+      "path": "_dev/test/pipeline",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1b7c8521a360169b50ea35c98423bc44f98323a5",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/1b7c8521a360169b50ea35c98423bc44f98323a5"
+    },
+    {
+      "path": "_dev/test/pipeline/test-vulnerability.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7324afb7fa2f083d5994b8174a9987c12fbac504",
+      "size": 13480,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/7324afb7fa2f083d5994b8174a9987c12fbac504"
+    },
+    {
+      "path": "_dev/test/pipeline/test-vulnerability.log-expected.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46869347465190a3e1d8f37a6e717ecc57bbd9fa",
+      "size": 44325,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/46869347465190a3e1d8f37a6e717ecc57bbd9fa"
+    },
+    {
+      "path": "_dev/test/system",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b0f3047b9cdb905c51155b0cc5f126e56b5fba67",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/b0f3047b9cdb905c51155b0cc5f126e56b5fba67"
+    },
+    {
+      "path": "_dev/test/system/test-non-authentication-config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9d4937ecee48bd0f5434d96f13ca00be36a6eb2",
+      "size": 195,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/a9d4937ecee48bd0f5434d96f13ca00be36a6eb2"
+    },
+    {
+      "path": "_dev/test/system/test-reviewed-config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c8a2f493081cb1473ebab1de22656219f6e955c",
+      "size": 201,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/6c8a2f493081cb1473ebab1de22656219f6e955c"
+    },
+    {
+      "path": "_dev/test/system/test-unreviewed-config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "090b32e31a416716067e13cda14b85c10688dc7a",
+      "size": 203,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/090b32e31a416716067e13cda14b85c10688dc7a"
+    },
+    {
+      "path": "agent",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c6eaff92d17733c03b16825a62d6f8ab969673cb",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/c6eaff92d17733c03b16825a62d6f8ab969673cb"
+    },
+    {
+      "path": "agent/stream",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0da3db8f8e0b1d2b19fad97b17ae7238d787f40c",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/0da3db8f8e0b1d2b19fad97b17ae7238d787f40c"
+    },
+    {
+      "path": "agent/stream/cel.yml.hbs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3313c1ef1f43d8a606e226f6557c96e2a8fe28e3",
+      "size": 2534,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/3313c1ef1f43d8a606e226f6557c96e2a8fe28e3"
+    },
+    {
+      "path": "elasticsearch",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "883766076d2b8b0c9ea2fd91e9f4a5d98b747d0d",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/883766076d2b8b0c9ea2fd91e9f4a5d98b747d0d"
+    },
+    {
+      "path": "elasticsearch/ingest_pipeline",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1f5ce509e98d555a4796bdf51812a82b2549f3c1",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/1f5ce509e98d555a4796bdf51812a82b2549f3c1"
+    },
+    {
+      "path": "elasticsearch/ingest_pipeline/default.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fbe268ea4bd6c7444e4c1a179681d888c3cc1a76",
+      "size": 12056,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/fbe268ea4bd6c7444e4c1a179681d888c3cc1a76"
+    },
+    {
+      "path": "fields",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c39392c893867cc36c711cd50d174d836a478e15",
+      "url": "https://api.github.com/repos/elastic/integrations/git/trees/c39392c893867cc36c711cd50d174d836a478e15"
+    },
+    {
+      "path": "fields/base-fields.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c798f4534ca5e3d01fb149e5cc48cf22a90ecf8",
+      "size": 331,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/7c798f4534ca5e3d01fb149e5cc48cf22a90ecf8"
+    },
+    {
+      "path": "fields/beats.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3382e376e7767839811b4d9aa734d1a14a58f1b6",
+      "size": 74,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/3382e376e7767839811b4d9aa734d1a14a58f1b6"
+    },
+    {
+      "path": "fields/fields.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0002e2e2ce85d3eba39686741d32c6a29cc2c0a8",
+      "size": 5057,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/0002e2e2ce85d3eba39686741d32c6a29cc2c0a8"
+    },
+    {
+      "path": "manifest.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "993c371c59b5dbf6d1f62ffc4a1846b79815a130",
+      "size": 3267,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/993c371c59b5dbf6d1f62ffc4a1846b79815a130"
+    },
+    {
+      "path": "sample_event.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6ca35c9c55cae54d408b8339f56e4b5acbe2467",
+      "size": 3372,
+      "url": "https://api.github.com/repos/elastic/integrations/git/blobs/c6ca35c9c55cae54d408b8339f56e4b5acbe2467"
+    }
+  ],
+  "truncated": false
+}

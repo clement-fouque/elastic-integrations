@@ -1,0 +1,35 @@
+// One CEL evaluation: enumerate a sub-tree, then fetch N blobs via map() + do_request().
+get_request(
+  state.url + "/repos/" + state.owner + "/" + state.repo +
+  "/git/trees/" + state.branch + ":" + state.path + "?recursive=1"
+).with({
+  "Header": {
+    "Accept": ["application/vnd.github+json"],
+    "X-GitHub-Api-Version": ["2022-11-28"],
+    "Authorization": ["Bearer " + state.token],
+  },
+}).do_request().as(tree_resp,
+  bytes(tree_resp.Body).decode_json().as(tree, {
+    "tree_status": tree_resp.StatusCode,
+    "tree_etag": tree_resp.Header["Etag"][0],
+    "total_entries": size(tree.tree),
+    "truncated": tree.truncated,
+    // >>> THE TEST: N blob fetches inside a SINGLE evaluation <<<
+    "events": front(tree.tree.filter(e, e.type == "blob"), int(state.batch)).map(e,
+      get_request(e.url).with({
+        "Header": {
+          "Accept": ["application/vnd.github.raw"],
+          "X-GitHub-Api-Version": ["2022-11-28"],
+          "Authorization": ["Bearer " + state.token],
+        },
+      }).do_request().as(blob, {
+        "path": e.path,
+        "sha": e.sha,
+        "blob_status": blob.StatusCode,
+        "bytes": size(blob.Body),
+        "ratelimit_used": blob.Header["X-Ratelimit-Used"][0],
+      })
+    ),
+    "want_more": false,
+  })
+)

@@ -1,0 +1,9 @@
+{
+  "url": "https://api.github.com",
+  "owner": "elastic",
+  "repo": "integrations",
+  "branch": "main",
+  "path": "packages/github/data_stream/security_advisories",
+  "token": "<REDACTED - supply via: gh auth token>",
+  "batch": 10
+}

@@ -1,0 +1,261 @@
+==============================================================================
+Elastic Security Advisories - GitHub repository file collection test
+Exercises the Git Trees + Git Blobs flow proposed for the CEL integration.
+==============================================================================
+  Base URL:        https://api.github.com
+  Repository:      elastic/integrations
+  Directory:       packages/security_detection_engine/kibana/security_rule
+  Ref:             main
+  Token:           ************MFaA (390 chars)
+  File pattern:    <all files>
+  Max files:       200
+  Timeout:         60s
+  Proxy:           <none>
+
+[1] Preflight: verifying repository access
+    OK (0.32s) - private=False, default_branch=main
+
+[2] Checking rate-limit budget
+    OK - core: 4973/5000 remaining
+
+[3] Enumerating 'packages/security_detection_engine/kibana/security_rule' at ref 'main' (Git Trees API)
+    OK (0.44s) - 5733 tree entries, 5733 blobs, 5733 matched the file pattern
+    ETag: "9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"
+
+[4] Revalidating the listing with If-None-Match (expect HTTP 304)
+    OK (0.33s) - HTTP 304, listing unchanged
+    x-ratelimit-used: 178 on the 200 -> 178 on the 304  (conditional request was free)
+
+[5] Fetching file contents (Git Blobs API), 200 of 5733 matched files
+    [1/200] 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json -> OK (0.24s, 6143 bytes, format=json)
+    [2/200] 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json -> OK (0.28s, 6164 bytes, format=json)
+    [3/200] 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_417.json -> OK (0.39s, 6776 bytes, format=json)
+    [4/200] 00140285-b827-4aee-aa09-8113f58a08f3_321.json -> OK (0.47s, 19599 bytes, format=json)
+    [5/200] 00140285-b827-4aee-aa09-8113f58a08f3_322.json -> OK (0.24s, 19588 bytes, format=json)
+    [6/200] 00140285-b827-4aee-aa09-8113f58a08f3_323.json -> OK (0.24s, 19659 bytes, format=json)
+    [7/200] 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_420.json -> OK (0.22s, 10121 bytes, format=json)
+    [8/200] 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_421.json -> OK (0.25s, 10112 bytes, format=json)
+    [9/200] 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_422.json -> OK (0.28s, 10943 bytes, format=json)
+    [10/200] 0030f681-0142-4231-b728-49bb9fc12066_1.json -> OK (0.22s, 4604 bytes, format=json)
+    [11/200] 0049cf71-fe13-4d79-b767-f7519921ffb5_6.json -> OK (0.27s, 10991 bytes, format=json)
+    [12/200] 0049cf71-fe13-4d79-b767-f7519921ffb5_7.json -> OK (0.24s, 12842 bytes, format=json)
+    [13/200] 0049cf71-fe13-4d79-b767-f7519921ffb5_8.json -> OK (0.23s, 12900 bytes, format=json)
+    [14/200] 00546494-5bb0-49d6-9220-5f3b4c12f26a_6.json -> OK (0.23s, 12996 bytes, format=json)
+    [15/200] 00546494-5bb0-49d6-9220-5f3b4c12f26a_7.json -> OK (0.23s, 13022 bytes, format=json)
+    [16/200] 00546494-5bb0-49d6-9220-5f3b4c12f26a_8.json -> OK (0.23s, 532 bytes, format=json)
+    [17/200] 00678712-b2df-11ed-afe9-f661ea17fbcc_10.json -> OK (0.28s, 9799 bytes, format=json)
+    [18/200] 00678712-b2df-11ed-afe9-f661ea17fbcc_8.json -> OK (0.23s, 9348 bytes, format=json)
+    [19/200] 00678712-b2df-11ed-afe9-f661ea17fbcc_9.json -> OK (0.20s, 9795 bytes, format=json)
+    [20/200] 00c2a946-bbe8-4345-941d-9ea13da91600_2.json -> OK (0.25s, 6827 bytes, format=json)
+    [21/200] 012bfca7-45cb-4507-a3ba-3777167f8b81_1.json -> OK (0.39s, 6770 bytes, format=json)
+    [22/200] 0136b315-b566-482f-866c-1d8e2477ba16_212.json -> OK (0.17s, 7050 bytes, format=json)
+    [23/200] 0136b315-b566-482f-866c-1d8e2477ba16_213.json -> OK (0.27s, 7071 bytes, format=json)
+    [24/200] 0136b315-b566-482f-866c-1d8e2477ba16_214.json -> OK (0.22s, 7039 bytes, format=json)
+    [25/200] 015cca13-8832-49ac-a01b-a396114809f6_211.json -> OK (0.23s, 505 bytes, format=json)
+    [26/200] 0171f283-ade7-4f87-9521-ac346c68cc9b_13.json -> OK (0.24s, 9784 bytes, format=json)
+    [27/200] 0171f283-ade7-4f87-9521-ac346c68cc9b_14.json -> OK (0.21s, 9792 bytes, format=json)
+    [28/200] 0171f283-ade7-4f87-9521-ac346c68cc9b_15.json -> OK (0.24s, 9080 bytes, format=json)
+    [29/200] 017de1e4-ea35-11ee-a417-f661ea17fbce_4.json -> OK (0.22s, 10841 bytes, format=json)
+    [30/200] 017de1e4-ea35-11ee-a417-f661ea17fbce_5.json -> OK (0.23s, 10841 bytes, format=json)
+    [31/200] 017de1e4-ea35-11ee-a417-f661ea17fbce_6.json -> OK (0.24s, 10826 bytes, format=json)
+    [32/200] 01c1e353-9d86-4344-abdf-523ab80c6f08_1.json -> OK (0.20s, 13361 bytes, format=json)
+    [33/200] 01c49712-25bc-49d2-a27d-d7ce52f5dc49_207.json -> OK (0.23s, 2728 bytes, format=json)
+    [34/200] 01c49712-25bc-49d2-a27d-d7ce52f5dc49_208.json -> OK (0.22s, 3622 bytes, format=json)
+    [35/200] 01c49712-25bc-49d2-a27d-d7ce52f5dc49_209.json -> OK (0.19s, 3657 bytes, format=json)
+    [36/200] 01e244f0-fef9-4102-903f-9788052b2c91_1.json -> OK (0.19s, 8675 bytes, format=json)
+    [37/200] 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_1.json -> OK (0.21s, 9136 bytes, format=json)
+    [38/200] 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_2.json -> OK (0.23s, 8810 bytes, format=json)
+    [39/200] 02275e05-57a1-46ab-a443-7fb444da6b28_2.json -> OK (0.22s, 13380 bytes, format=json)
+    [40/200] 02275e05-57a1-46ab-a443-7fb444da6b28_3.json -> OK (0.23s, 14280 bytes, format=json)
+    [41/200] 02275e05-57a1-46ab-a443-7fb444da6b28_4.json -> OK (0.20s, 14303 bytes, format=json)
+    [42/200] 022c37cd-5a4f-422b-8227-b136b7a23180_2.json -> OK (0.22s, 8577 bytes, format=json)
+    [43/200] 022c37cd-5a4f-422b-8227-b136b7a23180_3.json -> OK (0.22s, 8598 bytes, format=json)
+    [44/200] 022c37cd-5a4f-422b-8227-b136b7a23180_4.json -> OK (0.23s, 8622 bytes, format=json)
+    [45/200] 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_209.json -> OK (0.22s, 8415 bytes, format=json)
+    [46/200] 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_210.json -> OK (0.21s, 8416 bytes, format=json)
+    [47/200] 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_211.json -> OK (0.21s, 8418 bytes, format=json)
+    [48/200] 0294f105-d7af-4a02-ae90-35f56763ffa2_207.json -> OK (0.19s, 2759 bytes, format=json)
+    [49/200] 0294f105-d7af-4a02-ae90-35f56763ffa2_208.json -> OK (0.24s, 4528 bytes, format=json)
+    [50/200] 0294f105-d7af-4a02-ae90-35f56763ffa2_209.json -> OK (0.27s, 4601 bytes, format=json)
+    [51/200] 02a23ee7-c8f8-4701-b99d-e9038ce313cb_10.json -> OK (0.21s, 12895 bytes, format=json)
+    [52/200] 02a23ee7-c8f8-4701-b99d-e9038ce313cb_11.json -> OK (0.20s, 12831 bytes, format=json)
+    [53/200] 02a23ee7-c8f8-4701-b99d-e9038ce313cb_12.json -> OK (0.24s, 17297 bytes, format=json)
+    [54/200] 02a4576a-7480-4284-9327-548a806b5e48_310.json -> OK (0.22s, 7853 bytes, format=json)
+    [55/200] 02a4576a-7480-4284-9327-548a806b5e48_311.json -> OK (0.19s, 7853 bytes, format=json)
+    [56/200] 02a4576a-7480-4284-9327-548a806b5e48_312.json -> OK (0.19s, 7503 bytes, format=json)
+    [57/200] 02b4420d-eda2-4529-9e46-4a60eccb7e2d_105.json -> OK (0.25s, 8305 bytes, format=json)
+    [58/200] 02b4420d-eda2-4529-9e46-4a60eccb7e2d_106.json -> OK (0.20s, 8342 bytes, format=json)
+    [59/200] 02b4420d-eda2-4529-9e46-4a60eccb7e2d_107.json -> OK (0.19s, 8375 bytes, format=json)
+    [60/200] 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_10.json -> OK (0.19s, 14482 bytes, format=json)
+    [61/200] 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_7.json -> OK (0.21s, 8050 bytes, format=json)
+    [62/200] 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_8.json -> OK (0.26s, 15479 bytes, format=json)
+    [63/200] 02ea4563-ec10-4974-b7de-12e65aa4f9b3_110.json -> OK (0.24s, 8875 bytes, format=json)
+    [64/200] 02ea4563-ec10-4974-b7de-12e65aa4f9b3_111.json -> OK (0.19s, 9220 bytes, format=json)
+    [65/200] 02ea4563-ec10-4974-b7de-12e65aa4f9b3_112.json -> OK (0.22s, 9500 bytes, format=json)
+    [66/200] 03024bd9-d23f-4ec1-8674-3cf1a21e130b_212.json -> OK (0.17s, 7728 bytes, format=json)
+    [67/200] 03024bd9-d23f-4ec1-8674-3cf1a21e130b_213.json -> OK (0.23s, 7749 bytes, format=json)
+    [68/200] 03024bd9-d23f-4ec1-8674-3cf1a21e130b_214.json -> OK (0.23s, 7423 bytes, format=json)
+    [69/200] 0302d3b2-1892-4448-a805-980aa4a36ba3_1.json -> OK (0.23s, 10111 bytes, format=json)
+    [70/200] 03245b25-3849-4052-ab48-72de65a82c35_2.json -> OK (0.23s, 7063 bytes, format=json)
+    [71/200] 03245b25-3849-4052-ab48-72de65a82c35_3.json -> OK (0.24s, 7084 bytes, format=json)
+    [72/200] 03245b25-3849-4052-ab48-72de65a82c35_4.json -> OK (0.18s, 7148 bytes, format=json)
+    [73/200] 035889c4-2686-4583-a7df-67f89c292f2c_217.json -> OK (0.25s, 7050 bytes, format=json)
+    [74/200] 035889c4-2686-4583-a7df-67f89c292f2c_218.json -> OK (0.20s, 7688 bytes, format=json)
+    [75/200] 035889c4-2686-4583-a7df-67f89c292f2c_219.json -> OK (0.22s, 7403 bytes, format=json)
+    [76/200] 035a6f21-4092-471d-9cda-9e379f459b1e_6.json -> OK (0.22s, 5184 bytes, format=json)
+    [77/200] 035a6f21-4092-471d-9cda-9e379f459b1e_7.json -> OK (0.24s, 5731 bytes, format=json)
+    [78/200] 035a6f21-4092-471d-9cda-9e379f459b1e_8.json -> OK (0.22s, 5766 bytes, format=json)
+    [79/200] 0369e8a6-0fa7-4e7a-961a-53180a4c966e_107.json -> OK (0.23s, 9923 bytes, format=json)
+    [80/200] 0369e8a6-0fa7-4e7a-961a-53180a4c966e_108.json -> OK (0.24s, 11046 bytes, format=json)
+    [81/200] 0369e8a6-0fa7-4e7a-961a-53180a4c966e_109.json -> OK (0.21s, 11073 bytes, format=json)
+    [82/200] 0398c0a2-1237-478e-84c4-84510f1925e6_1.json -> OK (0.19s, 6091 bytes, format=json)
+    [83/200] 0398c0a2-1237-478e-84c4-84510f1925e6_2.json -> OK (0.22s, 6136 bytes, format=json)
+    [84/200] 03a514d9-500e-443e-b6a9-72718c548f6c_6.json -> OK (0.22s, 295 bytes, format=json)
+    [85/200] 03b150d9-9280-4eb8-9906-38cfb6184666_1.json -> OK (0.20s, 6240 bytes, format=json)
+    [86/200] 03b150d9-9280-4eb8-9906-38cfb6184666_2.json -> OK (0.23s, 7591 bytes, format=json)
+    [87/200] 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_6.json -> OK (0.19s, 9812 bytes, format=json)
+    [88/200] 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_7.json -> OK (0.27s, 10240 bytes, format=json)
+    [89/200] 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_8.json -> OK (0.28s, 10469 bytes, format=json)
+    [90/200] 03d856c2-7f74-4540-a530-e20af5e39789_2.json -> OK (0.21s, 12998 bytes, format=json)
+    [91/200] 03d856c2-7f74-4540-a530-e20af5e39789_3.json -> OK (0.24s, 13335 bytes, format=json)
+    [92/200] 03d856c2-7f74-4540-a530-e20af5e39789_4.json -> OK (0.30s, 13320 bytes, format=json)
+    [93/200] 0415258b-a7b2-48a6-891a-3367cd9d4d31_6.json -> OK (0.19s, 7842 bytes, format=json)
+    [94/200] 0415258b-a7b2-48a6-891a-3367cd9d4d31_7.json -> OK (0.23s, 8072 bytes, format=json)
+    [95/200] 0415258b-a7b2-48a6-891a-3367cd9d4d31_8.json -> OK (0.21s, 8094 bytes, format=json)
+    [96/200] 0415f22a-2336-45fa-ba07-618a5942e22c_113.json -> OK (0.23s, 15397 bytes, format=json)
+    [97/200] 0415f22a-2336-45fa-ba07-618a5942e22c_114.json -> OK (0.21s, 15741 bytes, format=json)
+    [98/200] 0415f22a-2336-45fa-ba07-618a5942e22c_115.json -> OK (0.22s, 15975 bytes, format=json)
+    [99/200] 041d4d41-9589-43e2-ba13-5680af75ebc2_106.json -> OK (0.21s, 289 bytes, format=json)
+    [100/200] 0428c618-27f5-4d94-99e6-b254585aba69_102.json -> OK (0.18s, 9749 bytes, format=json)
+    [101/200] 0428c618-27f5-4d94-99e6-b254585aba69_103.json -> OK (0.21s, 10310 bytes, format=json)
+    [102/200] 0428c618-27f5-4d94-99e6-b254585aba69_104.json -> OK (0.25s, 8817 bytes, format=json)
+    [103/200] 042b35f3-afa6-4441-92b2-ef41976b48a3_1.json -> OK (0.20s, 7085 bytes, format=json)
+    [104/200] 043d80a3-c49e-43ef-9c72-1088f0c7b278_206.json -> OK (0.24s, 9002 bytes, format=json)
+    [105/200] 043d80a3-c49e-43ef-9c72-1088f0c7b278_207.json -> OK (0.22s, 15793 bytes, format=json)
+    [106/200] 043d80a3-c49e-43ef-9c72-1088f0c7b278_208.json -> OK (0.24s, 15820 bytes, format=json)
+    [107/200] 04443c0e-9f23-4b61-996b-d8d6b0263bd2_1.json -> OK (0.24s, 12480 bytes, format=json)
+    [108/200] 0471a12b-c740-4a72-91f0-12bf95014d3c_1.json -> OK (0.29s, 105822 bytes, format=json)
+    [109/200] 04c5a96f-19c5-44fd-9571-a0b033f9086f_107.json -> OK (0.20s, 9144 bytes, format=json)
+    [110/200] 04c5a96f-19c5-44fd-9571-a0b033f9086f_108.json -> OK (0.24s, 9165 bytes, format=json)
+    [111/200] 04c5a96f-19c5-44fd-9571-a0b033f9086f_109.json -> OK (0.19s, 9210 bytes, format=json)
+    [112/200] 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_4.json -> OK (0.21s, 5856 bytes, format=json)
+    [113/200] 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_5.json -> OK (0.17s, 6429 bytes, format=json)
+    [114/200] 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_6.json -> OK (0.19s, 5870 bytes, format=json)
+    [115/200] 053a0387-f3b5-4ba5-8245-8002cca2bd08_218.json -> OK (0.27s, 10256 bytes, format=json)
+    [116/200] 053a0387-f3b5-4ba5-8245-8002cca2bd08_219.json -> OK (0.19s, 18094 bytes, format=json)
+    [117/200] 053a0387-f3b5-4ba5-8245-8002cca2bd08_220.json -> OK (0.21s, 18082 bytes, format=json)
+    [118/200] 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_1.json -> OK (0.19s, 3995 bytes, format=json)
+    [119/200] 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_2.json -> OK (0.18s, 3986 bytes, format=json)
+    [120/200] 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_4.json -> OK (0.23s, 4475 bytes, format=json)
+    [121/200] 054db96b-fd34-43b3-9af2-587b3bd33964_12.json -> OK (0.22s, 11743 bytes, format=json)
+    [122/200] 054db96b-fd34-43b3-9af2-587b3bd33964_13.json -> OK (0.19s, 12959 bytes, format=json)
+    [123/200] 054db96b-fd34-43b3-9af2-587b3bd33964_14.json -> OK (0.26s, 13004 bytes, format=json)
+    [124/200] 0564fb9d-90b9-4234-a411-82a546dc1343_218.json -> OK (0.18s, 3962 bytes, format=json)
+    [125/200] 0564fb9d-90b9-4234-a411-82a546dc1343_219.json -> OK (0.20s, 4828 bytes, format=json)
+    [126/200] 0564fb9d-90b9-4234-a411-82a546dc1343_220.json -> OK (0.20s, 8668 bytes, format=json)
+    [127/200] 05a50000-9886-4695-ad33-3f990dc142e2_2.json -> OK (0.18s, 9605 bytes, format=json)
+    [128/200] 05a50000-9886-4695-ad33-3f990dc142e2_3.json -> OK (0.21s, 9590 bytes, format=json)
+    [129/200] 05a50000-9886-4695-ad33-3f990dc142e2_4.json -> OK (0.22s, 9392 bytes, format=json)
+    [130/200] 05ac190c-5d02-4b81-bb57-221d33479570_1.json -> OK (0.23s, 6447 bytes, format=json)
+    [131/200] 05b358de-aa6d-4f6c-89e6-78f74018b43b_313.json -> OK (0.20s, 8809 bytes, format=json)
+    [132/200] 05b358de-aa6d-4f6c-89e6-78f74018b43b_314.json -> OK (0.29s, 18996 bytes, format=json)
+    [133/200] 05b358de-aa6d-4f6c-89e6-78f74018b43b_315.json -> OK (0.19s, 19067 bytes, format=json)
+    [134/200] 05cad2fb-200c-407f-b472-02ea8c9e5e4a_10.json -> OK (0.19s, 10535 bytes, format=json)
+    [135/200] 05cad2fb-200c-407f-b472-02ea8c9e5e4a_11.json -> OK (0.22s, 10564 bytes, format=json)
+    [136/200] 05cad2fb-200c-407f-b472-02ea8c9e5e4a_9.json -> OK (0.21s, 10512 bytes, format=json)
+    [137/200] 05e5a668-7b51-4a67-93ab-e9af405c9ef3_112.json -> OK (0.22s, 10436 bytes, format=json)
+    [138/200] 05e5a668-7b51-4a67-93ab-e9af405c9ef3_113.json -> OK (0.21s, 11310 bytes, format=json)
+    [139/200] 05e5a668-7b51-4a67-93ab-e9af405c9ef3_114.json -> OK (0.23s, 11642 bytes, format=json)
+    [140/200] 05f2b649-dc03-4e9a-8c4e-6762469e8249_3.json -> OK (0.17s, 9606 bytes, format=json)
+    [141/200] 05f2b649-dc03-4e9a-8c4e-6762469e8249_4.json -> OK (0.24s, 9810 bytes, format=json)
+    [142/200] 05f2b649-dc03-4e9a-8c4e-6762469e8249_5.json -> OK (0.21s, 9880 bytes, format=json)
+    [143/200] 0635c542-1b96-4335-9b47-126582d2c19a_215.json -> OK (0.21s, 7190 bytes, format=json)
+    [144/200] 0635c542-1b96-4335-9b47-126582d2c19a_216.json -> OK (0.21s, 7190 bytes, format=json)
+    [145/200] 0635c542-1b96-4335-9b47-126582d2c19a_217.json -> OK (0.20s, 7752 bytes, format=json)
+    [146/200] 064a2e08-25da-11f0-b1f1-f661ea17fbcd_4.json -> OK (0.25s, 11723 bytes, format=json)
+    [147/200] 064a2e08-25da-11f0-b1f1-f661ea17fbcd_5.json -> OK (0.25s, 11744 bytes, format=json)
+    [148/200] 064a2e08-25da-11f0-b1f1-f661ea17fbcd_6.json -> OK (0.22s, 11829 bytes, format=json)
+    [149/200] 06568a02-af29-4f20-929c-f3af281e41aa_112.json -> OK (0.19s, 3487 bytes, format=json)
+    [150/200] 06568a02-af29-4f20-929c-f3af281e41aa_113.json -> OK (0.20s, 3486 bytes, format=json)
+    [151/200] 06568a02-af29-4f20-929c-f3af281e41aa_114.json -> OK (0.22s, 3716 bytes, format=json)
+    [152/200] 0678bc9c-b71a-433b-87e6-2f664b6b3131_109.json -> OK (0.23s, 8914 bytes, format=json)
+    [153/200] 0678bc9c-b71a-433b-87e6-2f664b6b3131_110.json -> OK (0.20s, 8950 bytes, format=json)
+    [154/200] 0678bc9c-b71a-433b-87e6-2f664b6b3131_111.json -> OK (0.20s, 8993 bytes, format=json)
+    [155/200] 06a7a03c-c735-47a6-a313-51c354aef6c3_213.json -> OK (0.18s, 6857 bytes, format=json)
+    [156/200] 06a7a03c-c735-47a6-a313-51c354aef6c3_214.json -> OK (0.24s, 6848 bytes, format=json)
+    [157/200] 06a7a03c-c735-47a6-a313-51c354aef6c3_215.json -> OK (0.19s, 7679 bytes, format=json)
+    [158/200] 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_106.json -> OK (0.24s, 12611 bytes, format=json)
+    [159/200] 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_107.json -> OK (0.21s, 13176 bytes, format=json)
+    [160/200] 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_108.json -> OK (0.21s, 12803 bytes, format=json)
+    [161/200] 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_219.json -> OK (0.24s, 9911 bytes, format=json)
+    [162/200] 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_220.json -> OK (0.21s, 10679 bytes, format=json)
+    [163/200] 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_221.json -> OK (0.22s, 10357 bytes, format=json)
+    [164/200] 06f3a26c-ea35-11ee-a417-f661ea17fbce_3.json -> OK (0.24s, 10817 bytes, format=json)
+    [165/200] 06f3a26c-ea35-11ee-a417-f661ea17fbce_4.json -> OK (0.24s, 10817 bytes, format=json)
+    [166/200] 06f3a26c-ea35-11ee-a417-f661ea17fbce_5.json -> OK (0.23s, 10802 bytes, format=json)
+    [167/200] 074464f9-f30d-4029-8c03-0ed237fffec7_317.json -> OK (0.22s, 7661 bytes, format=json)
+    [168/200] 074464f9-f30d-4029-8c03-0ed237fffec7_318.json -> OK (0.18s, 8486 bytes, format=json)
+    [169/200] 074464f9-f30d-4029-8c03-0ed237fffec7_319.json -> OK (0.21s, 8430 bytes, format=json)
+    [170/200] 07639887-da3a-4fbf-9532-8ce748ff8c50_209.json -> OK (0.20s, 6720 bytes, format=json)
+    [171/200] 07639887-da3a-4fbf-9532-8ce748ff8c50_210.json -> OK (0.25s, 6741 bytes, format=json)
+    [172/200] 07639887-da3a-4fbf-9532-8ce748ff8c50_211.json -> OK (0.25s, 6415 bytes, format=json)
+    [173/200] 0787daa6-f8c5-453b-a4ec-048037f6c1cd_7.json -> OK (0.18s, 5147 bytes, format=json)
+    [174/200] 0787daa6-f8c5-453b-a4ec-048037f6c1cd_8.json -> OK (0.18s, 5148 bytes, format=json)
+    [175/200] 0787daa6-f8c5-453b-a4ec-048037f6c1cd_9.json -> OK (0.18s, 5149 bytes, format=json)
+    [176/200] 07b1ef73-1fde-4a49-a34a-5dd40011b076_320.json -> OK (0.20s, 10952 bytes, format=json)
+    [177/200] 07b1ef73-1fde-4a49-a34a-5dd40011b076_321.json -> OK (0.23s, 11691 bytes, format=json)
+    [178/200] 07b1ef73-1fde-4a49-a34a-5dd40011b076_322.json -> OK (0.21s, 12663 bytes, format=json)
+    [179/200] 07b5f85a-240f-11ed-b3d9-f661ea17fbce_110.json -> OK (0.18s, 8910 bytes, format=json)
+    [180/200] 07b5f85a-240f-11ed-b3d9-f661ea17fbce_111.json -> OK (0.21s, 8931 bytes, format=json)
+    [181/200] 07b5f85a-240f-11ed-b3d9-f661ea17fbce_112.json -> OK (0.22s, 10111 bytes, format=json)
+    [182/200] 07cd35a6-c267-4394-a782-6a9428aea9d3_1.json -> OK (0.25s, 7709 bytes, format=json)
+    [183/200] 080bc66a-5d56-4d1f-8071-817671716db9_112.json -> OK (0.20s, 10379 bytes, format=json)
+    [184/200] 080bc66a-5d56-4d1f-8071-817671716db9_113.json -> OK (0.23s, 12274 bytes, format=json)
+    [185/200] 080bc66a-5d56-4d1f-8071-817671716db9_114.json -> OK (0.24s, 12318 bytes, format=json)
+    [186/200] 082e3f8c-6f80-485c-91eb-5b112cb79b28_111.json -> OK (0.21s, 10295 bytes, format=json)
+    [187/200] 082e3f8c-6f80-485c-91eb-5b112cb79b28_112.json -> OK (0.23s, 11424 bytes, format=json)
+    [188/200] 082e3f8c-6f80-485c-91eb-5b112cb79b28_113.json -> OK (0.26s, 11458 bytes, format=json)
+    [189/200] 083383af-b9a4-42b7-a463-29c40efe7797_10.json -> OK (0.20s, 16916 bytes, format=json)
+    [190/200] 083383af-b9a4-42b7-a463-29c40efe7797_11.json -> OK (0.20s, 20884 bytes, format=json)
+    [191/200] 083383af-b9a4-42b7-a463-29c40efe7797_12.json -> OK (0.26s, 20902 bytes, format=json)
+    [192/200] 083fa162-e790-4d85-9aeb-4fea04188adb_110.json -> OK (0.21s, 10260 bytes, format=json)
+    [193/200] 083fa162-e790-4d85-9aeb-4fea04188adb_111.json -> OK (0.22s, 10523 bytes, format=json)
+    [194/200] 083fa162-e790-4d85-9aeb-4fea04188adb_112.json -> OK (0.20s, 10508 bytes, format=json)
+    [195/200] 0859355c-0f08-4b43-8ff5-7d2a4789fc08_212.json -> OK (0.21s, 8260 bytes, format=json)
+    [196/200] 0859355c-0f08-4b43-8ff5-7d2a4789fc08_213.json -> OK (0.18s, 8242 bytes, format=json)
+    [197/200] 0859355c-0f08-4b43-8ff5-7d2a4789fc08_214.json -> OK (0.17s, 8928 bytes, format=json)
+    [198/200] 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_3.json -> OK (0.20s, 8543 bytes, format=json)
+    [199/200] 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_4.json -> OK (0.19s, 9727 bytes, format=json)
+    [200/200] 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_5.json -> OK (0.25s, 9991 bytes, format=json)
+
+==============================================================================
+EXECUTION SUMMARY
+==============================================================================
+  Status:                SUCCESS
+  Repository accessible: True
+  Repository private:    False
+  Default branch:        main
+  Tree entries:          5733
+  Files matched:         5733
+  Listing truncated:     False
+  Revalidation:          304 Not Modified
+  Blobs fetched:         200 (1999045 bytes)
+
+  File extensions observed:
+      .json        200
+
+  Detected content formats:
+      json                         200
+
+  ^ This is the answer to the largest open question in the research brief.
+
+  Rate limit remaining:  4973 -> 5000 (consumed -27)
+
+  Note: only the first 200 files were fetched (--max-pages). Raise it to
+        sample more of the corpus.
+
+------------------------------------------------------------------------------
+Archive created: /workspace/research_results/elastic_security_advisories/temp/api-review/run5/k1.tar.gz
+Please send this archive to the integration maintainers. It contains the
+decoded advisory file previews that unblock the ingest pipeline design.
+------------------------------------------------------------------------------

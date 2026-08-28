@@ -1,0 +1,83 @@
+2026-08-28T16:11:12 INFO    Configuration: url=https://api.github.com owner=elastic repo=integrations path=packages/github branch=main file_pattern=None max_pages=1 timeout=60 proxy=<none> token=<not set>
+2026-08-28T16:11:12 DEBUG   Request 1-repo: GET https://api.github.com/repos/elastic/integrations
+2026-08-28T16:11:12 DEBUG   Request 1-repo headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api'}
+2026-08-28T16:11:12 DEBUG   Response 1-repo: status=200 elapsed=0.156s body_len=6310
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '44', 'x-ratelimit-used': '16', 'x-ratelimit-reset': '1787933817', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Repository accessible: private=False default_branch=main
+2026-08-28T16:11:12 DEBUG   Request 2-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:11:12 DEBUG   Request 2-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api'}
+2026-08-28T16:11:12 DEBUG   Response 2-ratelimit: status=200 elapsed=0.047s body_len=424
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '56', 'x-ratelimit-used': '4', 'x-ratelimit-reset': '1787936820', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Rate limit core bucket: {'limit': 60, 'remaining': 56, 'reset': 1787936820, 'used': 4}
+2026-08-28T16:11:12 DEBUG   Request 3-tree: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fgithub?recursive=1
+2026-08-28T16:11:12 DEBUG   Request 3-tree headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api'}
+2026-08-28T16:11:12 DEBUG   Response 3-tree: status=200 elapsed=0.228s body_len=64687
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '55', 'x-ratelimit-used': '5', 'x-ratelimit-reset': '1787936820', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Tree: 254 entries, 165 blobs, 165 matched, truncated=False, etag=W/"e7f205eb372eaeaee0553b07ddf9cd2a71750a7e870b813f60ec5f7609fc4092"
+2026-08-28T16:11:12 DEBUG     matched: _dev/build/build.yml (sha=2bfcfc223b0439465d08edf3d5e30e9cc1eb7ded size=50)
+2026-08-28T16:11:12 DEBUG     matched: _dev/build/docs/README.md (sha=fdc22fafe82b95fa7226c763957e9ea20c2bc5c1 size=11580)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/docker/docker-compose.yml (sha=c9d49e738ce2bd8fce0ec85c3780423222d27e6e size=1691)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/docker/files/config.yml (sha=9dab1e95fe20e9ae67db9f5aa5708c3dd80ddadf size=52006)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/docker/files/manifest.yml (sha=0133432d5b15c3b35d82f949747c117d768f898c size=127)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/docker/files/testbucket/cloud-storage-data.log (sha=1fd019d25155936e686e7231b1284d02b9489dbc size=662)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/tf/env.yml (sha=aee5f1c5900fbe286f6cf37cf70ca739673317f5 size=299)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/tf/files/test-audit.log (sha=370e117a047ddd8cfdd7924e4cd2b55872487597 size=782)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/tf/main.tf (sha=9e0089046408f3982eb3a9c5cf2dc221efbe0150 size=1504)
+2026-08-28T16:11:12 DEBUG     matched: _dev/deploy/tf/variables.tf (sha=32d90dee6497592e4761c94d3dc2228a4b5db142 size=530)
+2026-08-28T16:11:12 DEBUG     matched: changelog.yml (sha=ab1e1bcea065f4c486b19363ba992df8c37ec054 size=22091)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-common-config.yml (sha=73b2a8f1c812364ce83a498d3b37fd915fa61bd2 size=398)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-enterprise-audit-eventhub.log (sha=324fd4a7938173b04239b809e9bd8ca6c16e6084 size=1898)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-enterprise-audit-eventhub.log-expected.json (sha=8652e2c93e60887bd0e2b964eab3f04d4048881f size=8798)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-enterprise-audit-json.log (sha=debbc2aff6cdbd36e61cc115e99ae0b86bd5003f size=7151)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-enterprise-audit-json.log-expected.json (sha=4e68729ec53c3684564a49578ad53a13a88dec01 size=39703)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-organisation-audit-json.log (sha=7d043f74273529ad8c5616ad90148ba6fdbeedc6 size=39133)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/pipeline/test-organisation-audit-json.log-expected.json (sha=4766bf62fc6997bd15ab17f74bb7635e19fba3a8 size=277301)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/policy/test-abs.expected (sha=dddc09c1aebb2a878245a270b7d19a4f5571c9ee size=1182)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/policy/test-abs.yml (sha=b9564bd3a77ef46a7542f213e5201e3c0bd37eab size=391)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/policy/test-gcs.expected (sha=1933ba72070b0243677b08054d31ef6ba537d409 size=1151)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/policy/test-gcs.yml (sha=65c4885b493b38dbb64ed1ff4f4caf0085e08e15 size=340)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/system/test-abs-config.yml (sha=c2de315a68c86080696e57abea92518341ac3321 size=457)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/system/test-aws-config.yml (sha=f727272603534ef00e4ecb56f926c0dddcd9c842 size=310)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/system/test-enterprise-audit-config.yml (sha=3b5c2ee175cc53a3d63cccf7a99ad517ccd0a9f9 size=275)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/system/test-gcs-config.yml (sha=98923f9b7813a0c815df9c60498f7737562b4f0b size=379)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/_dev/test/system/test-organisation-audit-config.yml (sha=53e1468228739db642f46885483b975e63fd5426 size=277)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/agent/stream/abs.yml.hbs (sha=683822fa2ad76e4b1def66d397f7737ebe5b33be size=1237)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/agent/stream/aws-s3.yml.hbs (sha=141575bc03651b0ae89fc5e1ab6e53ef4dbe8369 size=1731)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/agent/stream/azure-eventhub.yml.hbs (sha=e2606573309eabce849081fb44aa323726469899 size=1431)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/agent/stream/gcs.yml.hbs (sha=f72ce4a7acd7002f6d025b7cc329c21cc7da77e6 size=1111)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/agent/stream/httpjson.yml.hbs (sha=04ea83611af5c6bf2f3f12d5fad8280636616ac1 size=2370)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/elasticsearch/ingest_pipeline/default.yml (sha=d85f508bfd61f9b1e78867e7afd742e09334710b size=19053)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/fields/agent.yml (sha=bc42d0a853bca2beecf63036c99a5d009d39c7fd size=696)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/fields/base-fields.yml (sha=f087bfee14247393c5be2807511932f3fdddabb9 size=598)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/fields/beats.yml (sha=18b2ddf713839de6a5b4685849292c54b1e2e882 size=1253)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/fields/fields.yml (sha=9617b8ba78e857c5e0fe0a0f62bbebdfb8a05c59 size=11133)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/manifest.yml (sha=493648005120ae5f1b2a5d23670697fb7826fe3d size=37142)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/audit/sample_event.json (sha=437bce46b0de693753b19e817be7ead674f7f9ea size=1690)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/_dev/test/pipeline/test-common-config.yml (sha=4da226416540fb12d8c5a4c4b74ecce1f60b3e66 size=46)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/_dev/test/pipeline/test-ghas-code-scanning-json.log (sha=ed2978bbbd0b3f21d1aed214a08e6b7ceb91b903 size=24496)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/_dev/test/pipeline/test-ghas-code-scanning-json.log-expected.json (sha=ec007495ca7dd3c811d0374d7311ab2b59e46507 size=57304)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/_dev/test/system/test-default-config.yml (sha=f0575c90ed464623db66575b7ea11bc1566bba99 size=323)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/agent/stream/httpjson.yml.hbs (sha=4ac3335114f4cfe8443d6baf599d43e5f9e1b456 size=1472)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/elasticsearch/ingest_pipeline/default.yml (sha=632760d04e695ee1cef2e715b98f51becd2c2640 size=13904)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/fields/agent.yml (sha=3a1b4c228964737b89ef87bc35e52afd0bf05922 size=784)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/fields/base-fields.yml (sha=0651037f3aa375ce02dcfed8e328405f6502ead2 size=339)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/fields/ecs.yml (sha=42ca67a7cb4c494d2e976320ad2ec49085eae184 size=84)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/fields/fields.yml (sha=614b8a8a7d8b92eb87d77d969e3786ed34f972ae size=5686)
+2026-08-28T16:11:12 DEBUG     matched: data_stream/code_scanning/fields/is-transform-source-true.yml (sha=fd4766eacd52f43b2c713b0fde3d1083a28ebdcd size=238)
+2026-08-28T16:11:12 DEBUG   Request 4-revalidate: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fgithub?recursive=1
+2026-08-28T16:11:12 DEBUG   Request 4-revalidate headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'If-None-Match': 'W/"e7f205eb372eaeaee0553b07ddf9cd2a71750a7e870b813f60ec5f7609fc4092"'}
+2026-08-28T16:11:12 DEBUG   Response 4-revalidate: status=304 elapsed=0.138s body_len=0
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '43', 'x-ratelimit-used': '17', 'x-ratelimit-reset': '1787933817', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Revalidation returned 304 as expected (used 5 -> 17)
+2026-08-28T16:11:12 DEBUG   Request 5-blob-1: GET https://api.github.com/repos/elastic/integrations/git/blobs/2bfcfc223b0439465d08edf3d5e30e9cc1eb7ded
+2026-08-28T16:11:12 DEBUG   Request 5-blob-1 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api'}
+2026-08-28T16:11:12 DEBUG   Response 5-blob-1: status=200 elapsed=0.143s body_len=363
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '51', 'x-ratelimit-used': '9', 'x-ratelimit-reset': '1787936116', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Blob _dev/build/build.yml: 50 bytes, format=yaml (mapping), sha=2bfcfc223b0439465d08edf3d5e30e9cc1eb7ded
+2026-08-28T16:11:12 DEBUG   Blob _dev/build/build.yml first line: dependencies:
+2026-08-28T16:11:12 DEBUG   Request 6-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:11:12 DEBUG   Request 6-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api'}
+2026-08-28T16:11:12 DEBUG   Response 6-ratelimit: status=200 elapsed=0.046s body_len=424
+2026-08-28T16:11:12 DEBUG   Rate limit headers: {'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '54', 'x-ratelimit-used': '6', 'x-ratelimit-reset': '1787936807', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:12 INFO    Wrote trace to /workspace/research_results/elastic_security_advisories/temp/api-review/run4/f3/trace.json
+2026-08-28T16:11:12 INFO    Summary: {'status': 'SUCCESS', 'repository_accessible': True, 'default_branch': 'main', 'private': False, 'tree_entries': 254, 'files_matched': 165, 'truncated': False, 'etag': 'W/"e7f205eb372eaeaee0553b07ddf9cd2a71750a7e870b813f60ec5f7609fc4092"', 'revalidation': '304 Not Modified', 'blobs_fetched': 1, 'bytes_fetched': 50, 'formats': {'yaml (mapping)': 1}, 'extensions': {'.yml': 1}, 'rate_limit_before': {'limit': 60, 'remaining': 56, 'reset': 1787936820, 'used': 4}, 'rate_limit_after': {'limit': 60, 'remaining': 54, 'reset': 1787936807, 'used': 6}, 'errors': [], 'revalidation_was_free': False}

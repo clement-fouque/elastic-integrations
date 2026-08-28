@@ -1,0 +1,19 @@
+2026-08-28T16:11:10 INFO    Configuration: url=https://api.github.com owner=elastic repo=integrations path=no/such/dir branch=main file_pattern=None max_pages=1 timeout=60 proxy=<none> token=************MFaA (390 chars)
+2026-08-28T16:11:10 DEBUG   Request 1-repo: GET https://api.github.com/repos/elastic/integrations
+2026-08-28T16:11:10 DEBUG   Request 1-repo headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:11:10 DEBUG   Response 1-repo: status=200 elapsed=0.293s body_len=6396
+2026-08-28T16:11:10 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4833', 'x-ratelimit-used': '167', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:10 INFO    Repository accessible: private=False default_branch=main
+2026-08-28T16:11:10 DEBUG   Request 2-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:11:10 DEBUG   Request 2-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:11:10 DEBUG   Response 2-ratelimit: status=200 elapsed=0.194s body_len=1232
+2026-08-28T16:11:10 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '5000', 'x-ratelimit-used': '0', 'x-ratelimit-reset': '1787937070', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:10 INFO    Rate limit core bucket: {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937070}
+2026-08-28T16:11:10 DEBUG   Request 3-tree: GET https://api.github.com/repos/elastic/integrations/git/trees/main:no%2Fsuch%2Fdir?recursive=1
+2026-08-28T16:11:10 DEBUG   Request 3-tree headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:11:10 DEBUG   Response 3-tree: status=404 elapsed=0.233s body_len=110
+2026-08-28T16:11:10 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4831', 'x-ratelimit-used': '169', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:11:10 ERROR   Request 3-tree failed: HTTP 404 Not Found
+2026-08-28T16:11:10 ERROR   Response body: {"message":"Not Found","documentation_url":"https://docs.github.com/rest/git/trees#get-a-tree","status":"404"}
+2026-08-28T16:11:10 INFO    Wrote trace to /workspace/research_results/elastic_security_advisories/temp/api-review/run4/f1/trace.json
+2026-08-28T16:11:10 INFO    Summary: {'status': 'FAILED', 'repository_accessible': True, 'default_branch': 'main', 'private': False, 'tree_entries': 0, 'files_matched': 0, 'truncated': False, 'etag': None, 'revalidation': None, 'blobs_fetched': 0, 'bytes_fetched': 0, 'formats': {}, 'extensions': {}, 'rate_limit_before': {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937070}, 'rate_limit_after': None, 'errors': ['tree enumeration failed: HTTP 404']}

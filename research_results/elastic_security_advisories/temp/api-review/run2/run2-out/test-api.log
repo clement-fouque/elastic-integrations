@@ -1,0 +1,89 @@
+2026-08-28T16:10:36 INFO    Configuration: url=https://api.github.com owner=elastic repo=integrations path=packages/security_detection_engine/kibana/security_rule branch=main file_pattern=None max_pages=2 timeout=60 proxy=<none> token=************MFaA (390 chars)
+2026-08-28T16:10:36 DEBUG   Request 1-repo: GET https://api.github.com/repos/elastic/integrations
+2026-08-28T16:10:36 DEBUG   Request 1-repo headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:37 DEBUG   Response 1-repo: status=200 elapsed=0.332s body_len=6396
+2026-08-28T16:10:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4837', 'x-ratelimit-used': '163', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:37 INFO    Repository accessible: private=False default_branch=main
+2026-08-28T16:10:37 DEBUG   Request 2-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:10:37 DEBUG   Request 2-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:37 DEBUG   Response 2-ratelimit: status=200 elapsed=0.190s body_len=1232
+2026-08-28T16:10:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '5000', 'x-ratelimit-used': '0', 'x-ratelimit-reset': '1787937037', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:37 INFO    Rate limit core bucket: {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937037}
+2026-08-28T16:10:37 DEBUG   Request 3-tree: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fsecurity_detection_engine%2Fkibana%2Fsecurity_rule?recursive=1
+2026-08-28T16:10:37 DEBUG   Request 3-tree headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:37 DEBUG   Response 3-tree: status=200 elapsed=0.436s body_len=1471073
+2026-08-28T16:10:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4836', 'x-ratelimit-used': '164', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:37 INFO    Tree: 5733 entries, 5733 blobs, 5733 matched, truncated=False, etag="9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"
+2026-08-28T16:10:37 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json (sha=9cf3f529d53885e487ab12f5db26e6b5e47d6651 size=6143)
+2026-08-28T16:10:37 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json (sha=b60dff87a9524f1867ae721beaf7e73764621e04 size=6164)
+2026-08-28T16:10:37 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_417.json (sha=b887c2b99ca41f9e9c26b5e039907c3b507d786d size=6776)
+2026-08-28T16:10:37 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_321.json (sha=8d649d44ba0b61ba8b39d1414fa86d1ce92035c1 size=19599)
+2026-08-28T16:10:37 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_322.json (sha=6cbdda700c745d292ee950141631a998fce21c95 size=19588)
+2026-08-28T16:10:37 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_323.json (sha=5d750e84bc8fef6cd8fc1dc43c163a0c7ca2bf32 size=19659)
+2026-08-28T16:10:37 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_420.json (sha=d03a92444f9642fb981c0725fb8c29c185249307 size=10121)
+2026-08-28T16:10:37 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_421.json (sha=dcdddcf55680533c3bfca239652165efb1c245c6 size=10112)
+2026-08-28T16:10:37 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_422.json (sha=6dc764692bc4570cd601cb774d6583bdae0e9742 size=10943)
+2026-08-28T16:10:37 DEBUG     matched: 0030f681-0142-4231-b728-49bb9fc12066_1.json (sha=beb47406cbe46c79eaa14badc9dac8b77fc7c9f8 size=4604)
+2026-08-28T16:10:37 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_6.json (sha=d0bee36964b54eaa7cb2945b66259c548a58b1f9 size=10991)
+2026-08-28T16:10:37 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_7.json (sha=1243077e007fedb72897162023f455c40f4ab575 size=12842)
+2026-08-28T16:10:37 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_8.json (sha=34db8fa29bbd76f0b87c319c7765c9bb47c85ff9 size=12900)
+2026-08-28T16:10:37 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_6.json (sha=23c99e0bd03043b35a883f502b7e946850b8caf0 size=12996)
+2026-08-28T16:10:37 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_7.json (sha=6638895a188c2c0e5ae1abb49251b0c5d7f9608d size=13022)
+2026-08-28T16:10:37 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_8.json (sha=ee077ef778c704267576f400a289feabda39bef1 size=532)
+2026-08-28T16:10:37 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_10.json (sha=af858d8f248d54fb1852b5fd543a78e9cb330e81 size=9799)
+2026-08-28T16:10:37 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_8.json (sha=d45721dae1f242a954a8cf6532cf443f436260c3 size=9348)
+2026-08-28T16:10:37 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_9.json (sha=7ead639f52b7c0710e9dccc9205306f8aa96b125 size=9795)
+2026-08-28T16:10:37 DEBUG     matched: 00c2a946-bbe8-4345-941d-9ea13da91600_2.json (sha=48ba417283d7f0e1d0ff0d6bc567f7ae6b1ab6ad size=6827)
+2026-08-28T16:10:37 DEBUG     matched: 012bfca7-45cb-4507-a3ba-3777167f8b81_1.json (sha=b92931341ca3fe9dc9db6c16d4931a47648eb1e4 size=6770)
+2026-08-28T16:10:37 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_212.json (sha=f25ccfc1de8364b8afb7210bfce1b67544686424 size=7050)
+2026-08-28T16:10:37 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_213.json (sha=61d4ec600a5693af4d8580b84cedf3f265358e86 size=7071)
+2026-08-28T16:10:37 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_214.json (sha=cfd1d5176f5eda2dead6fc33798f82d0c8db812a size=7039)
+2026-08-28T16:10:37 DEBUG     matched: 015cca13-8832-49ac-a01b-a396114809f6_211.json (sha=7184b0af850bac3b9e2fc61b2e21c5812af8cfbe size=505)
+2026-08-28T16:10:37 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_13.json (sha=b662289c70ba1ba661c7100d51acc65992cd89fa size=9784)
+2026-08-28T16:10:37 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_14.json (sha=c233f963303b8678ebfdc4a9a388149fcfe3561b size=9792)
+2026-08-28T16:10:37 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_15.json (sha=92080f8f5d490a6b4cad41d447154a65f062a77e size=9080)
+2026-08-28T16:10:37 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_4.json (sha=c1eefbaf2bfe54076533c287cdb5b9d7c1eac46e size=10841)
+2026-08-28T16:10:37 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_5.json (sha=f99e15df0175d9ab1384a541b71bc8fa53ce61da size=10841)
+2026-08-28T16:10:37 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_6.json (sha=6fcdc47a5bb58f6afb0a935b5fddd4c48e1fbc6b size=10826)
+2026-08-28T16:10:37 DEBUG     matched: 01c1e353-9d86-4344-abdf-523ab80c6f08_1.json (sha=e3defd6a01c89959a201bd4839d37fd25668ac36 size=13361)
+2026-08-28T16:10:37 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_207.json (sha=32baed54a4cfbd4dfb3f811d1eec10ccf38fd617 size=2728)
+2026-08-28T16:10:37 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_208.json (sha=37a66a88cf14e9620e4bb084364313c12ffe792e size=3622)
+2026-08-28T16:10:37 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_209.json (sha=891d3d6d6faa733f7c940e9fe04e158f7f40b28c size=3657)
+2026-08-28T16:10:37 DEBUG     matched: 01e244f0-fef9-4102-903f-9788052b2c91_1.json (sha=0351cc79ff5daab0b38e7749a1d4443a3e5fdf82 size=8675)
+2026-08-28T16:10:37 DEBUG     matched: 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_1.json (sha=9211b9401b14098aa88f7ac678aa305fdbffe693 size=9136)
+2026-08-28T16:10:37 DEBUG     matched: 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_2.json (sha=5a2dc05a526276737106bd9dc85f28451dfe7168 size=8810)
+2026-08-28T16:10:37 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_2.json (sha=ee1dbd5c437b1565224d8ee5ec9b0ee09ff8207b size=13380)
+2026-08-28T16:10:37 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_3.json (sha=aa3c5da1d62349d669fc26b3d502c888d4276bc4 size=14280)
+2026-08-28T16:10:37 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_4.json (sha=ff10dff49eb323fd3b01416e12312c56279b702c size=14303)
+2026-08-28T16:10:37 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_2.json (sha=aa032e2224ed365e61b3f58bc4f9a59f356f0d2f size=8577)
+2026-08-28T16:10:37 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_3.json (sha=eb65f5b7ede8ebf31031adeb76107f454b98ac49 size=8598)
+2026-08-28T16:10:37 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_4.json (sha=611a4d1211e47b989377a28bd76cab01530cddcd size=8622)
+2026-08-28T16:10:37 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_209.json (sha=febf5e523525e8b588ea490b03ff7fffa6beed77 size=8415)
+2026-08-28T16:10:37 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_210.json (sha=6cf123219eb2a1176e576ef083530305d7916ba1 size=8416)
+2026-08-28T16:10:37 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_211.json (sha=a721182245f2c019aebc28cf8fb1c75e884163e1 size=8418)
+2026-08-28T16:10:37 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_207.json (sha=25955e73549b17e4e3c7066f805cd3eb1a0781a8 size=2759)
+2026-08-28T16:10:37 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_208.json (sha=271edf0cf9660039f2f4b2c0b095b3fda3f9f52f size=4528)
+2026-08-28T16:10:37 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_209.json (sha=f4d08ce19576eb2ae72d08d48a9a7afa9531e513 size=4601)
+2026-08-28T16:10:37 DEBUG   Request 4-revalidate: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fsecurity_detection_engine%2Fkibana%2Fsecurity_rule?recursive=1
+2026-08-28T16:10:37 DEBUG   Request 4-revalidate headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]', 'If-None-Match': '"9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"'}
+2026-08-28T16:10:38 DEBUG   Response 4-revalidate: status=304 elapsed=0.324s body_len=0
+2026-08-28T16:10:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4836', 'x-ratelimit-used': '164', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:38 INFO    Revalidation returned 304 as expected (used 164 -> 164)
+2026-08-28T16:10:38 DEBUG   Request 5-blob-1: GET https://api.github.com/repos/elastic/integrations/git/blobs/9cf3f529d53885e487ab12f5db26e6b5e47d6651
+2026-08-28T16:10:38 DEBUG   Request 5-blob-1 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:38 DEBUG   Response 5-blob-1: status=200 elapsed=0.223s body_len=8759
+2026-08-28T16:10:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4835', 'x-ratelimit-used': '165', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:38 INFO    Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json: 6143 bytes, format=json, sha=9cf3f529d53885e487ab12f5db26e6b5e47d6651
+2026-08-28T16:10:38 DEBUG   Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json first line: {
+2026-08-28T16:10:38 DEBUG   Request 5-blob-2: GET https://api.github.com/repos/elastic/integrations/git/blobs/b60dff87a9524f1867ae721beaf7e73764621e04
+2026-08-28T16:10:38 DEBUG   Request 5-blob-2 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:38 DEBUG   Response 5-blob-2: status=200 elapsed=0.237s body_len=8787
+2026-08-28T16:10:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4834', 'x-ratelimit-used': '166', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:38 INFO    Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json: 6164 bytes, format=json, sha=b60dff87a9524f1867ae721beaf7e73764621e04
+2026-08-28T16:10:38 DEBUG   Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json first line: {
+2026-08-28T16:10:38 DEBUG   Request 6-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:10:38 DEBUG   Request 6-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:10:38 DEBUG   Response 6-ratelimit: status=200 elapsed=0.191s body_len=1232
+2026-08-28T16:10:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '5000', 'x-ratelimit-used': '0', 'x-ratelimit-reset': '1787937038', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:10:38 INFO    Wrote trace to /workspace/research_results/elastic_security_advisories/temp/api-review/run2/run2-out/trace.json
+2026-08-28T16:10:38 INFO    Summary: {'status': 'SUCCESS', 'repository_accessible': True, 'default_branch': 'main', 'private': False, 'tree_entries': 5733, 'files_matched': 5733, 'truncated': False, 'etag': '"9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"', 'revalidation': '304 Not Modified', 'blobs_fetched': 2, 'bytes_fetched': 12307, 'formats': {'json': 2}, 'extensions': {'.json': 2}, 'rate_limit_before': {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937037}, 'rate_limit_after': {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937038}, 'errors': [], 'revalidation_was_free': True}

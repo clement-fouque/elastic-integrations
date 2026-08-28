@@ -1,0 +1,19 @@
+// Steady-state poll: conditional Trees request using a persisted ETag.
+get_request(
+  state.url + "/repos/" + state.owner + "/" + state.repo +
+  "/git/trees/" + state.branch + ":" + state.path + "?recursive=1"
+).with({
+  "Header": {
+    "Accept": ["application/vnd.github+json"],
+    "X-GitHub-Api-Version": ["2022-11-28"],
+    "Authorization": ["Bearer " + state.token],
+    "If-None-Match": [state.etag],
+  },
+}).do_request().as(resp, {
+  "status": resp.StatusCode,
+  "body_size": size(resp.Body),
+  "ratelimit_used": resp.Header["X-Ratelimit-Used"][0],
+  "ratelimit_remaining": resp.Header["X-Ratelimit-Remaining"][0],
+  "events": [],
+  "want_more": false,
+})

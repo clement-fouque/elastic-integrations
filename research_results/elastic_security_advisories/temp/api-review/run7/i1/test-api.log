@@ -1,0 +1,50 @@
+2026-08-28T16:16:30 INFO    Configuration: url=https://api.github.com owner=elastic repo=integrations path=packages/github/data_stream/security_advisories branch=main file_pattern=None max_pages=6 timeout=60 proxy=<none> token=************MFaA (390 chars)
+2026-08-28T16:16:30 DEBUG   Request 1-repo: GET https://api.github.com/repos/elastic/integrations
+2026-08-28T16:16:30 DEBUG   Request 1-repo headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:16:30 DEBUG   Response 1-repo: status=200 elapsed=0.269s body_len=6396
+2026-08-28T16:16:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '3997', 'x-ratelimit-used': '1003', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:30 INFO    Repository accessible: private=False default_branch=main
+2026-08-28T16:16:30 DEBUG   Request 2-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:16:30 DEBUG   Request 2-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:16:30 DEBUG   Response 2-ratelimit: status=200 elapsed=0.158s body_len=1233
+2026-08-28T16:16:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '5000', 'x-ratelimit-used': '0', 'x-ratelimit-reset': '1787937390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:30 INFO    Rate limit core bucket: {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937390}
+2026-08-28T16:16:30 DEBUG   Request 3-tree: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fgithub%2Fdata_stream%2Fsecurity_advisories?recursive=1
+2026-08-28T16:16:30 DEBUG   Request 3-tree headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:16:31 DEBUG   Response 3-tree: status=200 elapsed=0.234s body_len=6168
+2026-08-28T16:16:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '3996', 'x-ratelimit-used': '1004', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:31 INFO    Tree: 26 entries, 14 blobs, 14 matched, truncated=False, etag="7a3b3cdca8b909587983bee47b0d658bd453ea50b2f62fb879b905246d493e5c"
+2026-08-28T16:16:31 DEBUG     matched: _dev/deploy/docker/docker-compose.yml (sha=145bd56080d47af706d8f9e34c51561610b5ff9f size=230)
+2026-08-28T16:16:31 DEBUG     matched: _dev/deploy/docker/files/config.yml (sha=9dfad061e179b1ba854ccbe5ec9a80669cbc9768 size=32992)
+2026-08-28T16:16:31 DEBUG     matched: _dev/test/pipeline/test-vulnerability.log (sha=7324afb7fa2f083d5994b8174a9987c12fbac504 size=13480)
+2026-08-28T16:16:31 DEBUG     matched: _dev/test/pipeline/test-vulnerability.log-expected.json (sha=46869347465190a3e1d8f37a6e717ecc57bbd9fa size=44325)
+2026-08-28T16:16:31 DEBUG     matched: _dev/test/system/test-non-authentication-config.yml (sha=a9d4937ecee48bd0f5434d96f13ca00be36a6eb2 size=195)
+2026-08-28T16:16:31 DEBUG     matched: _dev/test/system/test-reviewed-config.yml (sha=6c8a2f493081cb1473ebab1de22656219f6e955c size=201)
+2026-08-28T16:16:31 DEBUG     matched: _dev/test/system/test-unreviewed-config.yml (sha=090b32e31a416716067e13cda14b85c10688dc7a size=203)
+2026-08-28T16:16:31 DEBUG     matched: agent/stream/cel.yml.hbs (sha=3313c1ef1f43d8a606e226f6557c96e2a8fe28e3 size=2534)
+2026-08-28T16:16:31 DEBUG     matched: elasticsearch/ingest_pipeline/default.yml (sha=fbe268ea4bd6c7444e4c1a179681d888c3cc1a76 size=12056)
+2026-08-28T16:16:31 DEBUG     matched: fields/base-fields.yml (sha=7c798f4534ca5e3d01fb149e5cc48cf22a90ecf8 size=331)
+2026-08-28T16:16:31 DEBUG     matched: fields/beats.yml (sha=3382e376e7767839811b4d9aa734d1a14a58f1b6 size=74)
+2026-08-28T16:16:31 DEBUG     matched: fields/fields.yml (sha=0002e2e2ce85d3eba39686741d32c6a29cc2c0a8 size=5057)
+2026-08-28T16:16:31 DEBUG     matched: manifest.yml (sha=993c371c59b5dbf6d1f62ffc4a1846b79815a130 size=3267)
+2026-08-28T16:16:31 DEBUG     matched: sample_event.json (sha=c6ca35c9c55cae54d408b8339f56e4b5acbe2467 size=3372)
+2026-08-28T16:16:31 DEBUG   Request 4-revalidate: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fgithub%2Fdata_stream%2Fsecurity_advisories?recursive=1
+2026-08-28T16:16:31 DEBUG   Request 4-revalidate headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]', 'If-None-Match': '"7a3b3cdca8b909587983bee47b0d658bd453ea50b2f62fb879b905246d493e5c"'}
+2026-08-28T16:16:31 DEBUG   Response 4-revalidate: status=304 elapsed=0.235s body_len=0
+2026-08-28T16:16:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '3996', 'x-ratelimit-used': '1004', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:31 INFO    Revalidation returned 304 as expected (used 1004 -> 1004)
+2026-08-28T16:16:31 DEBUG   Request 5-blob-1: GET https://api.github.com/repos/elastic/integrations/git/blobs/145bd56080d47af706d8f9e34c51561610b5ff9f
+2026-08-28T16:16:31 DEBUG   Request 5-blob-1 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:16:31 DEBUG   Response 5-blob-1: status=200 elapsed=0.190s body_len=612
+2026-08-28T16:16:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '3995', 'x-ratelimit-used': '1005', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:31 INFO    Blob _dev/deploy/docker/docker-compose.yml: 230 bytes, format=yaml (mapping), sha=145bd56080d47af706d8f9e34c51561610b5ff9f
+2026-08-28T16:16:31 DEBUG   Blob _dev/deploy/docker/docker-compose.yml first line: services:
+2026-08-28T16:16:31 DEBUG   Request 5-blob-2: GET https://api.github.com/repos/elastic/integrations/git/blobs/9dfad061e179b1ba854ccbe5ec9a80669cbc9768
+2026-08-28T16:16:31 DEBUG   Request 5-blob-2 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:16:31 DEBUG   Response 5-blob-2: status=200 elapsed=0.267s body_len=45754
+2026-08-28T16:16:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '3994', 'x-ratelimit-used': '1006', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:16:31 INFO    Blob _dev/deploy/docker/files/config.yml: 32992 bytes, format=yaml (mapping), sha=9dfad061e179b1ba854ccbe5ec9a80669cbc9768
+2026-08-28T16:16:31 DEBUG   Blob _dev/deploy/docker/files/config.yml first line: rules:
+2026-08-28T16:16:31 WARNING Interrupted by user
+2026-08-28T16:16:31 INFO    Wrote trace to /workspace/research_results/elastic_security_advisories/temp/api-review/run7/i1/trace.json
+2026-08-28T16:16:31 INFO    Summary: {'status': 'INTERRUPTED', 'errors': ['interrupted by user'], 'repository_accessible': False, 'private': None, 'default_branch': None, 'tree_entries': 0, 'files_matched': 0, 'truncated': False, 'revalidation': None, 'blobs_fetched': 0, 'bytes_fetched': 0, 'formats': {}, 'extensions': {}, 'rate_limit_before': None, 'rate_limit_after': None}

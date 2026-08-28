@@ -1,0 +1,1277 @@
+2026-08-28T16:12:16 INFO    Configuration: url=https://api.github.com owner=elastic repo=integrations path=packages/security_detection_engine/kibana/security_rule branch=main file_pattern=None max_pages=200 timeout=60 proxy=<none> token=************MFaA (390 chars)
+2026-08-28T16:12:16 DEBUG   Request 1-repo: GET https://api.github.com/repos/elastic/integrations
+2026-08-28T16:12:16 DEBUG   Request 1-repo headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:17 DEBUG   Response 1-repo: status=200 elapsed=0.316s body_len=6396
+2026-08-28T16:12:17 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4823', 'x-ratelimit-used': '177', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:17 INFO    Repository accessible: private=False default_branch=main
+2026-08-28T16:12:17 DEBUG   Request 2-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:12:17 DEBUG   Request 2-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:17 DEBUG   Response 2-ratelimit: status=200 elapsed=0.116s body_len=1235
+2026-08-28T16:12:17 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4973', 'x-ratelimit-used': '27', 'x-ratelimit-reset': '1787933782', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:17 INFO    Rate limit core bucket: {'limit': 5000, 'used': 27, 'remaining': 4973, 'reset': 1787933782}
+2026-08-28T16:12:17 DEBUG   Request 3-tree: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fsecurity_detection_engine%2Fkibana%2Fsecurity_rule?recursive=1
+2026-08-28T16:12:17 DEBUG   Request 3-tree headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:17 DEBUG   Response 3-tree: status=200 elapsed=0.437s body_len=1471073
+2026-08-28T16:12:17 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4822', 'x-ratelimit-used': '178', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:17 INFO    Tree: 5733 entries, 5733 blobs, 5733 matched, truncated=False, etag="9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"
+2026-08-28T16:12:17 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json (sha=9cf3f529d53885e487ab12f5db26e6b5e47d6651 size=6143)
+2026-08-28T16:12:17 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json (sha=b60dff87a9524f1867ae721beaf7e73764621e04 size=6164)
+2026-08-28T16:12:17 DEBUG     matched: 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_417.json (sha=b887c2b99ca41f9e9c26b5e039907c3b507d786d size=6776)
+2026-08-28T16:12:17 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_321.json (sha=8d649d44ba0b61ba8b39d1414fa86d1ce92035c1 size=19599)
+2026-08-28T16:12:17 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_322.json (sha=6cbdda700c745d292ee950141631a998fce21c95 size=19588)
+2026-08-28T16:12:17 DEBUG     matched: 00140285-b827-4aee-aa09-8113f58a08f3_323.json (sha=5d750e84bc8fef6cd8fc1dc43c163a0c7ca2bf32 size=19659)
+2026-08-28T16:12:17 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_420.json (sha=d03a92444f9642fb981c0725fb8c29c185249307 size=10121)
+2026-08-28T16:12:17 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_421.json (sha=dcdddcf55680533c3bfca239652165efb1c245c6 size=10112)
+2026-08-28T16:12:17 DEBUG     matched: 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_422.json (sha=6dc764692bc4570cd601cb774d6583bdae0e9742 size=10943)
+2026-08-28T16:12:17 DEBUG     matched: 0030f681-0142-4231-b728-49bb9fc12066_1.json (sha=beb47406cbe46c79eaa14badc9dac8b77fc7c9f8 size=4604)
+2026-08-28T16:12:17 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_6.json (sha=d0bee36964b54eaa7cb2945b66259c548a58b1f9 size=10991)
+2026-08-28T16:12:17 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_7.json (sha=1243077e007fedb72897162023f455c40f4ab575 size=12842)
+2026-08-28T16:12:17 DEBUG     matched: 0049cf71-fe13-4d79-b767-f7519921ffb5_8.json (sha=34db8fa29bbd76f0b87c319c7765c9bb47c85ff9 size=12900)
+2026-08-28T16:12:17 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_6.json (sha=23c99e0bd03043b35a883f502b7e946850b8caf0 size=12996)
+2026-08-28T16:12:17 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_7.json (sha=6638895a188c2c0e5ae1abb49251b0c5d7f9608d size=13022)
+2026-08-28T16:12:17 DEBUG     matched: 00546494-5bb0-49d6-9220-5f3b4c12f26a_8.json (sha=ee077ef778c704267576f400a289feabda39bef1 size=532)
+2026-08-28T16:12:17 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_10.json (sha=af858d8f248d54fb1852b5fd543a78e9cb330e81 size=9799)
+2026-08-28T16:12:17 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_8.json (sha=d45721dae1f242a954a8cf6532cf443f436260c3 size=9348)
+2026-08-28T16:12:17 DEBUG     matched: 00678712-b2df-11ed-afe9-f661ea17fbcc_9.json (sha=7ead639f52b7c0710e9dccc9205306f8aa96b125 size=9795)
+2026-08-28T16:12:17 DEBUG     matched: 00c2a946-bbe8-4345-941d-9ea13da91600_2.json (sha=48ba417283d7f0e1d0ff0d6bc567f7ae6b1ab6ad size=6827)
+2026-08-28T16:12:17 DEBUG     matched: 012bfca7-45cb-4507-a3ba-3777167f8b81_1.json (sha=b92931341ca3fe9dc9db6c16d4931a47648eb1e4 size=6770)
+2026-08-28T16:12:17 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_212.json (sha=f25ccfc1de8364b8afb7210bfce1b67544686424 size=7050)
+2026-08-28T16:12:17 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_213.json (sha=61d4ec600a5693af4d8580b84cedf3f265358e86 size=7071)
+2026-08-28T16:12:17 DEBUG     matched: 0136b315-b566-482f-866c-1d8e2477ba16_214.json (sha=cfd1d5176f5eda2dead6fc33798f82d0c8db812a size=7039)
+2026-08-28T16:12:17 DEBUG     matched: 015cca13-8832-49ac-a01b-a396114809f6_211.json (sha=7184b0af850bac3b9e2fc61b2e21c5812af8cfbe size=505)
+2026-08-28T16:12:17 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_13.json (sha=b662289c70ba1ba661c7100d51acc65992cd89fa size=9784)
+2026-08-28T16:12:17 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_14.json (sha=c233f963303b8678ebfdc4a9a388149fcfe3561b size=9792)
+2026-08-28T16:12:17 DEBUG     matched: 0171f283-ade7-4f87-9521-ac346c68cc9b_15.json (sha=92080f8f5d490a6b4cad41d447154a65f062a77e size=9080)
+2026-08-28T16:12:17 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_4.json (sha=c1eefbaf2bfe54076533c287cdb5b9d7c1eac46e size=10841)
+2026-08-28T16:12:17 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_5.json (sha=f99e15df0175d9ab1384a541b71bc8fa53ce61da size=10841)
+2026-08-28T16:12:17 DEBUG     matched: 017de1e4-ea35-11ee-a417-f661ea17fbce_6.json (sha=6fcdc47a5bb58f6afb0a935b5fddd4c48e1fbc6b size=10826)
+2026-08-28T16:12:17 DEBUG     matched: 01c1e353-9d86-4344-abdf-523ab80c6f08_1.json (sha=e3defd6a01c89959a201bd4839d37fd25668ac36 size=13361)
+2026-08-28T16:12:17 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_207.json (sha=32baed54a4cfbd4dfb3f811d1eec10ccf38fd617 size=2728)
+2026-08-28T16:12:17 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_208.json (sha=37a66a88cf14e9620e4bb084364313c12ffe792e size=3622)
+2026-08-28T16:12:17 DEBUG     matched: 01c49712-25bc-49d2-a27d-d7ce52f5dc49_209.json (sha=891d3d6d6faa733f7c940e9fe04e158f7f40b28c size=3657)
+2026-08-28T16:12:17 DEBUG     matched: 01e244f0-fef9-4102-903f-9788052b2c91_1.json (sha=0351cc79ff5daab0b38e7749a1d4443a3e5fdf82 size=8675)
+2026-08-28T16:12:17 DEBUG     matched: 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_1.json (sha=9211b9401b14098aa88f7ac678aa305fdbffe693 size=9136)
+2026-08-28T16:12:17 DEBUG     matched: 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_2.json (sha=5a2dc05a526276737106bd9dc85f28451dfe7168 size=8810)
+2026-08-28T16:12:17 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_2.json (sha=ee1dbd5c437b1565224d8ee5ec9b0ee09ff8207b size=13380)
+2026-08-28T16:12:17 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_3.json (sha=aa3c5da1d62349d669fc26b3d502c888d4276bc4 size=14280)
+2026-08-28T16:12:17 DEBUG     matched: 02275e05-57a1-46ab-a443-7fb444da6b28_4.json (sha=ff10dff49eb323fd3b01416e12312c56279b702c size=14303)
+2026-08-28T16:12:17 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_2.json (sha=aa032e2224ed365e61b3f58bc4f9a59f356f0d2f size=8577)
+2026-08-28T16:12:17 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_3.json (sha=eb65f5b7ede8ebf31031adeb76107f454b98ac49 size=8598)
+2026-08-28T16:12:17 DEBUG     matched: 022c37cd-5a4f-422b-8227-b136b7a23180_4.json (sha=611a4d1211e47b989377a28bd76cab01530cddcd size=8622)
+2026-08-28T16:12:17 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_209.json (sha=febf5e523525e8b588ea490b03ff7fffa6beed77 size=8415)
+2026-08-28T16:12:17 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_210.json (sha=6cf123219eb2a1176e576ef083530305d7916ba1 size=8416)
+2026-08-28T16:12:17 DEBUG     matched: 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_211.json (sha=a721182245f2c019aebc28cf8fb1c75e884163e1 size=8418)
+2026-08-28T16:12:17 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_207.json (sha=25955e73549b17e4e3c7066f805cd3eb1a0781a8 size=2759)
+2026-08-28T16:12:17 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_208.json (sha=271edf0cf9660039f2f4b2c0b095b3fda3f9f52f size=4528)
+2026-08-28T16:12:17 DEBUG     matched: 0294f105-d7af-4a02-ae90-35f56763ffa2_209.json (sha=f4d08ce19576eb2ae72d08d48a9a7afa9531e513 size=4601)
+2026-08-28T16:12:17 DEBUG   Request 4-revalidate: GET https://api.github.com/repos/elastic/integrations/git/trees/main:packages%2Fsecurity_detection_engine%2Fkibana%2Fsecurity_rule?recursive=1
+2026-08-28T16:12:17 DEBUG   Request 4-revalidate headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]', 'If-None-Match': '"9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"'}
+2026-08-28T16:12:18 DEBUG   Response 4-revalidate: status=304 elapsed=0.332s body_len=0
+2026-08-28T16:12:18 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4822', 'x-ratelimit-used': '178', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:18 INFO    Revalidation returned 304 as expected (used 178 -> 178)
+2026-08-28T16:12:18 DEBUG   Request 5-blob-1: GET https://api.github.com/repos/elastic/integrations/git/blobs/9cf3f529d53885e487ab12f5db26e6b5e47d6651
+2026-08-28T16:12:18 DEBUG   Request 5-blob-1 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:18 DEBUG   Response 5-blob-1: status=200 elapsed=0.245s body_len=8759
+2026-08-28T16:12:18 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4821', 'x-ratelimit-used': '179', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:18 INFO    Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json: 6143 bytes, format=json, sha=9cf3f529d53885e487ab12f5db26e6b5e47d6651
+2026-08-28T16:12:18 DEBUG   Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_415.json first line: {
+2026-08-28T16:12:18 DEBUG   Request 5-blob-2: GET https://api.github.com/repos/elastic/integrations/git/blobs/b60dff87a9524f1867ae721beaf7e73764621e04
+2026-08-28T16:12:18 DEBUG   Request 5-blob-2 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:18 DEBUG   Response 5-blob-2: status=200 elapsed=0.281s body_len=8787
+2026-08-28T16:12:18 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4820', 'x-ratelimit-used': '180', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:18 INFO    Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json: 6164 bytes, format=json, sha=b60dff87a9524f1867ae721beaf7e73764621e04
+2026-08-28T16:12:18 DEBUG   Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_416.json first line: {
+2026-08-28T16:12:18 DEBUG   Request 5-blob-3: GET https://api.github.com/repos/elastic/integrations/git/blobs/b887c2b99ca41f9e9c26b5e039907c3b507d786d
+2026-08-28T16:12:18 DEBUG   Request 5-blob-3 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:19 DEBUG   Response 5-blob-3: status=200 elapsed=0.394s body_len=9631
+2026-08-28T16:12:19 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4819', 'x-ratelimit-used': '181', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:19 INFO    Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_417.json: 6776 bytes, format=json, sha=b887c2b99ca41f9e9c26b5e039907c3b507d786d
+2026-08-28T16:12:19 DEBUG   Blob 000047bb-b27a-47ec-8b62-ef1a5d2c9e19_417.json first line: {
+2026-08-28T16:12:19 DEBUG   Request 5-blob-4: GET https://api.github.com/repos/elastic/integrations/git/blobs/8d649d44ba0b61ba8b39d1414fa86d1ce92035c1
+2026-08-28T16:12:19 DEBUG   Request 5-blob-4 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:19 DEBUG   Response 5-blob-4: status=200 elapsed=0.471s body_len=27298
+2026-08-28T16:12:19 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4818', 'x-ratelimit-used': '182', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:19 INFO    Blob 00140285-b827-4aee-aa09-8113f58a08f3_321.json: 19599 bytes, format=json, sha=8d649d44ba0b61ba8b39d1414fa86d1ce92035c1
+2026-08-28T16:12:19 DEBUG   Blob 00140285-b827-4aee-aa09-8113f58a08f3_321.json first line: {
+2026-08-28T16:12:19 DEBUG   Request 5-blob-5: GET https://api.github.com/repos/elastic/integrations/git/blobs/6cbdda700c745d292ee950141631a998fce21c95
+2026-08-28T16:12:19 DEBUG   Request 5-blob-5 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:19 DEBUG   Response 5-blob-5: status=200 elapsed=0.237s body_len=27286
+2026-08-28T16:12:19 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4817', 'x-ratelimit-used': '183', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:19 INFO    Blob 00140285-b827-4aee-aa09-8113f58a08f3_322.json: 19588 bytes, format=json, sha=6cbdda700c745d292ee950141631a998fce21c95
+2026-08-28T16:12:19 DEBUG   Blob 00140285-b827-4aee-aa09-8113f58a08f3_322.json first line: {
+2026-08-28T16:12:19 DEBUG   Request 5-blob-6: GET https://api.github.com/repos/elastic/integrations/git/blobs/5d750e84bc8fef6cd8fc1dc43c163a0c7ca2bf32
+2026-08-28T16:12:19 DEBUG   Request 5-blob-6 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:20 DEBUG   Response 5-blob-6: status=200 elapsed=0.243s body_len=27380
+2026-08-28T16:12:20 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4816', 'x-ratelimit-used': '184', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:20 INFO    Blob 00140285-b827-4aee-aa09-8113f58a08f3_323.json: 19659 bytes, format=json, sha=5d750e84bc8fef6cd8fc1dc43c163a0c7ca2bf32
+2026-08-28T16:12:20 DEBUG   Blob 00140285-b827-4aee-aa09-8113f58a08f3_323.json first line: {
+2026-08-28T16:12:20 DEBUG   Request 5-blob-7: GET https://api.github.com/repos/elastic/integrations/git/blobs/d03a92444f9642fb981c0725fb8c29c185249307
+2026-08-28T16:12:20 DEBUG   Request 5-blob-7 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:20 DEBUG   Response 5-blob-7: status=200 elapsed=0.224s body_len=14240
+2026-08-28T16:12:20 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4815', 'x-ratelimit-used': '185', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:20 INFO    Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_420.json: 10121 bytes, format=json, sha=d03a92444f9642fb981c0725fb8c29c185249307
+2026-08-28T16:12:20 DEBUG   Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_420.json first line: {
+2026-08-28T16:12:20 DEBUG   Request 5-blob-8: GET https://api.github.com/repos/elastic/integrations/git/blobs/dcdddcf55680533c3bfca239652165efb1c245c6
+2026-08-28T16:12:20 DEBUG   Request 5-blob-8 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:20 DEBUG   Response 5-blob-8: status=200 elapsed=0.252s body_len=14228
+2026-08-28T16:12:20 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4814', 'x-ratelimit-used': '186', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:20 INFO    Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_421.json: 10112 bytes, format=json, sha=dcdddcf55680533c3bfca239652165efb1c245c6
+2026-08-28T16:12:20 DEBUG   Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_421.json first line: {
+2026-08-28T16:12:20 DEBUG   Request 5-blob-9: GET https://api.github.com/repos/elastic/integrations/git/blobs/6dc764692bc4570cd601cb774d6583bdae0e9742
+2026-08-28T16:12:20 DEBUG   Request 5-blob-9 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:20 DEBUG   Response 5-blob-9: status=200 elapsed=0.281s body_len=15374
+2026-08-28T16:12:20 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4813', 'x-ratelimit-used': '187', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:20 INFO    Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_422.json: 10943 bytes, format=json, sha=6dc764692bc4570cd601cb774d6583bdae0e9742
+2026-08-28T16:12:20 DEBUG   Blob 0022d47d-39c7-4f69-a232-4fe9dc7a3acd_422.json first line: {
+2026-08-28T16:12:20 DEBUG   Request 5-blob-10: GET https://api.github.com/repos/elastic/integrations/git/blobs/beb47406cbe46c79eaa14badc9dac8b77fc7c9f8
+2026-08-28T16:12:20 DEBUG   Request 5-blob-10 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:21 DEBUG   Response 5-blob-10: status=200 elapsed=0.217s body_len=6639
+2026-08-28T16:12:21 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4812', 'x-ratelimit-used': '188', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:21 INFO    Blob 0030f681-0142-4231-b728-49bb9fc12066_1.json: 4604 bytes, format=json, sha=beb47406cbe46c79eaa14badc9dac8b77fc7c9f8
+2026-08-28T16:12:21 DEBUG   Blob 0030f681-0142-4231-b728-49bb9fc12066_1.json first line: {
+2026-08-28T16:12:21 DEBUG   Request 5-blob-11: GET https://api.github.com/repos/elastic/integrations/git/blobs/d0bee36964b54eaa7cb2945b66259c548a58b1f9
+2026-08-28T16:12:21 DEBUG   Request 5-blob-11 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:21 DEBUG   Response 5-blob-11: status=200 elapsed=0.268s body_len=15440
+2026-08-28T16:12:21 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4811', 'x-ratelimit-used': '189', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:21 INFO    Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_6.json: 10991 bytes, format=json, sha=d0bee36964b54eaa7cb2945b66259c548a58b1f9
+2026-08-28T16:12:21 DEBUG   Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_6.json first line: {
+2026-08-28T16:12:21 DEBUG   Request 5-blob-12: GET https://api.github.com/repos/elastic/integrations/git/blobs/1243077e007fedb72897162023f455c40f4ab575
+2026-08-28T16:12:21 DEBUG   Request 5-blob-12 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:21 DEBUG   Response 5-blob-12: status=200 elapsed=0.244s body_len=17990
+2026-08-28T16:12:21 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4810', 'x-ratelimit-used': '190', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:21 INFO    Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_7.json: 12842 bytes, format=json, sha=1243077e007fedb72897162023f455c40f4ab575
+2026-08-28T16:12:21 DEBUG   Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_7.json first line: {
+2026-08-28T16:12:21 DEBUG   Request 5-blob-13: GET https://api.github.com/repos/elastic/integrations/git/blobs/34db8fa29bbd76f0b87c319c7765c9bb47c85ff9
+2026-08-28T16:12:21 DEBUG   Request 5-blob-13 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:21 DEBUG   Response 5-blob-13: status=200 elapsed=0.234s body_len=18068
+2026-08-28T16:12:21 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4809', 'x-ratelimit-used': '191', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:21 INFO    Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_8.json: 12900 bytes, format=json, sha=34db8fa29bbd76f0b87c319c7765c9bb47c85ff9
+2026-08-28T16:12:21 DEBUG   Blob 0049cf71-fe13-4d79-b767-f7519921ffb5_8.json first line: {
+2026-08-28T16:12:21 DEBUG   Request 5-blob-14: GET https://api.github.com/repos/elastic/integrations/git/blobs/23c99e0bd03043b35a883f502b7e946850b8caf0
+2026-08-28T16:12:21 DEBUG   Request 5-blob-14 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:21 DEBUG   Response 5-blob-14: status=200 elapsed=0.225s body_len=18200
+2026-08-28T16:12:22 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4808', 'x-ratelimit-used': '192', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:22 INFO    Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_6.json: 12996 bytes, format=json, sha=23c99e0bd03043b35a883f502b7e946850b8caf0
+2026-08-28T16:12:22 DEBUG   Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_6.json first line: {
+2026-08-28T16:12:22 DEBUG   Request 5-blob-15: GET https://api.github.com/repos/elastic/integrations/git/blobs/6638895a188c2c0e5ae1abb49251b0c5d7f9608d
+2026-08-28T16:12:22 DEBUG   Request 5-blob-15 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:22 DEBUG   Response 5-blob-15: status=200 elapsed=0.232s body_len=18238
+2026-08-28T16:12:22 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4807', 'x-ratelimit-used': '193', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:22 INFO    Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_7.json: 13022 bytes, format=json, sha=6638895a188c2c0e5ae1abb49251b0c5d7f9608d
+2026-08-28T16:12:22 DEBUG   Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_7.json first line: {
+2026-08-28T16:12:22 DEBUG   Request 5-blob-16: GET https://api.github.com/repos/elastic/integrations/git/blobs/ee077ef778c704267576f400a289feabda39bef1
+2026-08-28T16:12:22 DEBUG   Request 5-blob-16 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:22 DEBUG   Response 5-blob-16: status=200 elapsed=0.227s body_len=1028
+2026-08-28T16:12:22 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4806', 'x-ratelimit-used': '194', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:22 INFO    Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_8.json: 532 bytes, format=json, sha=ee077ef778c704267576f400a289feabda39bef1
+2026-08-28T16:12:22 DEBUG   Blob 00546494-5bb0-49d6-9220-5f3b4c12f26a_8.json first line: {
+2026-08-28T16:12:22 DEBUG   Request 5-blob-17: GET https://api.github.com/repos/elastic/integrations/git/blobs/af858d8f248d54fb1852b5fd543a78e9cb330e81
+2026-08-28T16:12:22 DEBUG   Request 5-blob-17 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:22 DEBUG   Response 5-blob-17: status=200 elapsed=0.281s body_len=13797
+2026-08-28T16:12:22 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4805', 'x-ratelimit-used': '195', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:22 INFO    Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_10.json: 9799 bytes, format=json, sha=af858d8f248d54fb1852b5fd543a78e9cb330e81
+2026-08-28T16:12:22 DEBUG   Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_10.json first line: {
+2026-08-28T16:12:22 DEBUG   Request 5-blob-18: GET https://api.github.com/repos/elastic/integrations/git/blobs/d45721dae1f242a954a8cf6532cf443f436260c3
+2026-08-28T16:12:22 DEBUG   Request 5-blob-18 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:22 DEBUG   Response 5-blob-18: status=200 elapsed=0.234s body_len=13173
+2026-08-28T16:12:22 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4804', 'x-ratelimit-used': '196', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:22 INFO    Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_8.json: 9348 bytes, format=json, sha=d45721dae1f242a954a8cf6532cf443f436260c3
+2026-08-28T16:12:22 DEBUG   Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_8.json first line: {
+2026-08-28T16:12:22 DEBUG   Request 5-blob-19: GET https://api.github.com/repos/elastic/integrations/git/blobs/7ead639f52b7c0710e9dccc9205306f8aa96b125
+2026-08-28T16:12:22 DEBUG   Request 5-blob-19 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:23 DEBUG   Response 5-blob-19: status=200 elapsed=0.201s body_len=13789
+2026-08-28T16:12:23 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4803', 'x-ratelimit-used': '197', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:23 INFO    Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_9.json: 9795 bytes, format=json, sha=7ead639f52b7c0710e9dccc9205306f8aa96b125
+2026-08-28T16:12:23 DEBUG   Blob 00678712-b2df-11ed-afe9-f661ea17fbcc_9.json first line: {
+2026-08-28T16:12:23 DEBUG   Request 5-blob-20: GET https://api.github.com/repos/elastic/integrations/git/blobs/48ba417283d7f0e1d0ff0d6bc567f7ae6b1ab6ad
+2026-08-28T16:12:23 DEBUG   Request 5-blob-20 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:23 DEBUG   Response 5-blob-20: status=200 elapsed=0.246s body_len=9701
+2026-08-28T16:12:23 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4802', 'x-ratelimit-used': '198', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:23 INFO    Blob 00c2a946-bbe8-4345-941d-9ea13da91600_2.json: 6827 bytes, format=json, sha=48ba417283d7f0e1d0ff0d6bc567f7ae6b1ab6ad
+2026-08-28T16:12:23 DEBUG   Blob 00c2a946-bbe8-4345-941d-9ea13da91600_2.json first line: {
+2026-08-28T16:12:23 DEBUG   Request 5-blob-21: GET https://api.github.com/repos/elastic/integrations/git/blobs/b92931341ca3fe9dc9db6c16d4931a47648eb1e4
+2026-08-28T16:12:23 DEBUG   Request 5-blob-21 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:23 DEBUG   Response 5-blob-21: status=200 elapsed=0.391s body_len=9623
+2026-08-28T16:12:23 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4801', 'x-ratelimit-used': '199', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:23 INFO    Blob 012bfca7-45cb-4507-a3ba-3777167f8b81_1.json: 6770 bytes, format=json, sha=b92931341ca3fe9dc9db6c16d4931a47648eb1e4
+2026-08-28T16:12:23 DEBUG   Blob 012bfca7-45cb-4507-a3ba-3777167f8b81_1.json first line: {
+2026-08-28T16:12:23 DEBUG   Request 5-blob-22: GET https://api.github.com/repos/elastic/integrations/git/blobs/f25ccfc1de8364b8afb7210bfce1b67544686424
+2026-08-28T16:12:23 DEBUG   Request 5-blob-22 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:23 DEBUG   Response 5-blob-22: status=200 elapsed=0.171s body_len=10007
+2026-08-28T16:12:23 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4800', 'x-ratelimit-used': '200', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:23 INFO    Blob 0136b315-b566-482f-866c-1d8e2477ba16_212.json: 7050 bytes, format=json, sha=f25ccfc1de8364b8afb7210bfce1b67544686424
+2026-08-28T16:12:23 DEBUG   Blob 0136b315-b566-482f-866c-1d8e2477ba16_212.json first line: {
+2026-08-28T16:12:23 DEBUG   Request 5-blob-23: GET https://api.github.com/repos/elastic/integrations/git/blobs/61d4ec600a5693af4d8580b84cedf3f265358e86
+2026-08-28T16:12:23 DEBUG   Request 5-blob-23 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:24 DEBUG   Response 5-blob-23: status=200 elapsed=0.272s body_len=10037
+2026-08-28T16:12:24 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4799', 'x-ratelimit-used': '201', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:24 INFO    Blob 0136b315-b566-482f-866c-1d8e2477ba16_213.json: 7071 bytes, format=json, sha=61d4ec600a5693af4d8580b84cedf3f265358e86
+2026-08-28T16:12:24 DEBUG   Blob 0136b315-b566-482f-866c-1d8e2477ba16_213.json first line: {
+2026-08-28T16:12:24 DEBUG   Request 5-blob-24: GET https://api.github.com/repos/elastic/integrations/git/blobs/cfd1d5176f5eda2dead6fc33798f82d0c8db812a
+2026-08-28T16:12:24 DEBUG   Request 5-blob-24 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:24 DEBUG   Response 5-blob-24: status=200 elapsed=0.222s body_len=9995
+2026-08-28T16:12:24 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4798', 'x-ratelimit-used': '202', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:24 INFO    Blob 0136b315-b566-482f-866c-1d8e2477ba16_214.json: 7039 bytes, format=json, sha=cfd1d5176f5eda2dead6fc33798f82d0c8db812a
+2026-08-28T16:12:24 DEBUG   Blob 0136b315-b566-482f-866c-1d8e2477ba16_214.json first line: {
+2026-08-28T16:12:24 DEBUG   Request 5-blob-25: GET https://api.github.com/repos/elastic/integrations/git/blobs/7184b0af850bac3b9e2fc61b2e21c5812af8cfbe
+2026-08-28T16:12:24 DEBUG   Request 5-blob-25 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:24 DEBUG   Response 5-blob-25: status=200 elapsed=0.228s body_len=992
+2026-08-28T16:12:24 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4797', 'x-ratelimit-used': '203', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:24 INFO    Blob 015cca13-8832-49ac-a01b-a396114809f6_211.json: 505 bytes, format=json, sha=7184b0af850bac3b9e2fc61b2e21c5812af8cfbe
+2026-08-28T16:12:24 DEBUG   Blob 015cca13-8832-49ac-a01b-a396114809f6_211.json first line: {
+2026-08-28T16:12:24 DEBUG   Request 5-blob-26: GET https://api.github.com/repos/elastic/integrations/git/blobs/b662289c70ba1ba661c7100d51acc65992cd89fa
+2026-08-28T16:12:24 DEBUG   Request 5-blob-26 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:24 DEBUG   Response 5-blob-26: status=200 elapsed=0.240s body_len=13777
+2026-08-28T16:12:24 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4796', 'x-ratelimit-used': '204', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:24 INFO    Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_13.json: 9784 bytes, format=json, sha=b662289c70ba1ba661c7100d51acc65992cd89fa
+2026-08-28T16:12:24 DEBUG   Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_13.json first line: {
+2026-08-28T16:12:24 DEBUG   Request 5-blob-27: GET https://api.github.com/repos/elastic/integrations/git/blobs/c233f963303b8678ebfdc4a9a388149fcfe3561b
+2026-08-28T16:12:24 DEBUG   Request 5-blob-27 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:25 DEBUG   Response 5-blob-27: status=200 elapsed=0.213s body_len=13785
+2026-08-28T16:12:25 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4795', 'x-ratelimit-used': '205', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:25 INFO    Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_14.json: 9792 bytes, format=json, sha=c233f963303b8678ebfdc4a9a388149fcfe3561b
+2026-08-28T16:12:25 DEBUG   Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_14.json first line: {
+2026-08-28T16:12:25 DEBUG   Request 5-blob-28: GET https://api.github.com/repos/elastic/integrations/git/blobs/92080f8f5d490a6b4cad41d447154a65f062a77e
+2026-08-28T16:12:25 DEBUG   Request 5-blob-28 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:25 DEBUG   Response 5-blob-28: status=200 elapsed=0.237s body_len=12805
+2026-08-28T16:12:25 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4794', 'x-ratelimit-used': '206', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:25 INFO    Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_15.json: 9080 bytes, format=json, sha=92080f8f5d490a6b4cad41d447154a65f062a77e
+2026-08-28T16:12:25 DEBUG   Blob 0171f283-ade7-4f87-9521-ac346c68cc9b_15.json first line: {
+2026-08-28T16:12:25 DEBUG   Request 5-blob-29: GET https://api.github.com/repos/elastic/integrations/git/blobs/c1eefbaf2bfe54076533c287cdb5b9d7c1eac46e
+2026-08-28T16:12:25 DEBUG   Request 5-blob-29 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:25 DEBUG   Response 5-blob-29: status=200 elapsed=0.220s body_len=15232
+2026-08-28T16:12:25 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4793', 'x-ratelimit-used': '207', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:25 INFO    Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_4.json: 10841 bytes, format=json, sha=c1eefbaf2bfe54076533c287cdb5b9d7c1eac46e
+2026-08-28T16:12:25 DEBUG   Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_4.json first line: {
+2026-08-28T16:12:25 DEBUG   Request 5-blob-30: GET https://api.github.com/repos/elastic/integrations/git/blobs/f99e15df0175d9ab1384a541b71bc8fa53ce61da
+2026-08-28T16:12:25 DEBUG   Request 5-blob-30 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:25 DEBUG   Response 5-blob-30: status=200 elapsed=0.234s body_len=15232
+2026-08-28T16:12:25 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4792', 'x-ratelimit-used': '208', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:25 INFO    Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_5.json: 10841 bytes, format=json, sha=f99e15df0175d9ab1384a541b71bc8fa53ce61da
+2026-08-28T16:12:25 DEBUG   Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_5.json first line: {
+2026-08-28T16:12:25 DEBUG   Request 5-blob-31: GET https://api.github.com/repos/elastic/integrations/git/blobs/6fcdc47a5bb58f6afb0a935b5fddd4c48e1fbc6b
+2026-08-28T16:12:25 DEBUG   Request 5-blob-31 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:26 DEBUG   Response 5-blob-31: status=200 elapsed=0.244s body_len=15212
+2026-08-28T16:12:26 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4791', 'x-ratelimit-used': '209', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:26 INFO    Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_6.json: 10826 bytes, format=json, sha=6fcdc47a5bb58f6afb0a935b5fddd4c48e1fbc6b
+2026-08-28T16:12:26 DEBUG   Blob 017de1e4-ea35-11ee-a417-f661ea17fbce_6.json first line: {
+2026-08-28T16:12:26 DEBUG   Request 5-blob-32: GET https://api.github.com/repos/elastic/integrations/git/blobs/e3defd6a01c89959a201bd4839d37fd25668ac36
+2026-08-28T16:12:26 DEBUG   Request 5-blob-32 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:26 DEBUG   Response 5-blob-32: status=200 elapsed=0.205s body_len=18704
+2026-08-28T16:12:26 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4790', 'x-ratelimit-used': '210', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:26 INFO    Blob 01c1e353-9d86-4344-abdf-523ab80c6f08_1.json: 13361 bytes, format=json, sha=e3defd6a01c89959a201bd4839d37fd25668ac36
+2026-08-28T16:12:26 DEBUG   Blob 01c1e353-9d86-4344-abdf-523ab80c6f08_1.json first line: {
+2026-08-28T16:12:26 DEBUG   Request 5-blob-33: GET https://api.github.com/repos/elastic/integrations/git/blobs/32baed54a4cfbd4dfb3f811d1eec10ccf38fd617
+2026-08-28T16:12:26 DEBUG   Request 5-blob-33 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:26 DEBUG   Response 5-blob-33: status=200 elapsed=0.229s body_len=4055
+2026-08-28T16:12:26 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4789', 'x-ratelimit-used': '211', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:26 INFO    Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_207.json: 2728 bytes, format=json, sha=32baed54a4cfbd4dfb3f811d1eec10ccf38fd617
+2026-08-28T16:12:26 DEBUG   Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_207.json first line: {
+2026-08-28T16:12:26 DEBUG   Request 5-blob-34: GET https://api.github.com/repos/elastic/integrations/git/blobs/37a66a88cf14e9620e4bb084364313c12ffe792e
+2026-08-28T16:12:26 DEBUG   Request 5-blob-34 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:26 DEBUG   Response 5-blob-34: status=200 elapsed=0.224s body_len=5287
+2026-08-28T16:12:26 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4788', 'x-ratelimit-used': '212', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:26 INFO    Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_208.json: 3622 bytes, format=json, sha=37a66a88cf14e9620e4bb084364313c12ffe792e
+2026-08-28T16:12:26 DEBUG   Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_208.json first line: {
+2026-08-28T16:12:26 DEBUG   Request 5-blob-35: GET https://api.github.com/repos/elastic/integrations/git/blobs/891d3d6d6faa733f7c940e9fe04e158f7f40b28c
+2026-08-28T16:12:26 DEBUG   Request 5-blob-35 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:26 DEBUG   Response 5-blob-35: status=200 elapsed=0.189s body_len=5333
+2026-08-28T16:12:26 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4787', 'x-ratelimit-used': '213', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:26 INFO    Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_209.json: 3657 bytes, format=json, sha=891d3d6d6faa733f7c940e9fe04e158f7f40b28c
+2026-08-28T16:12:26 DEBUG   Blob 01c49712-25bc-49d2-a27d-d7ce52f5dc49_209.json first line: {
+2026-08-28T16:12:26 DEBUG   Request 5-blob-36: GET https://api.github.com/repos/elastic/integrations/git/blobs/0351cc79ff5daab0b38e7749a1d4443a3e5fdf82
+2026-08-28T16:12:26 DEBUG   Request 5-blob-36 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:27 DEBUG   Response 5-blob-36: status=200 elapsed=0.188s body_len=12247
+2026-08-28T16:12:27 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4786', 'x-ratelimit-used': '214', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:27 INFO    Blob 01e244f0-fef9-4102-903f-9788052b2c91_1.json: 8675 bytes, format=json, sha=0351cc79ff5daab0b38e7749a1d4443a3e5fdf82
+2026-08-28T16:12:27 DEBUG   Blob 01e244f0-fef9-4102-903f-9788052b2c91_1.json first line: {
+2026-08-28T16:12:27 DEBUG   Request 5-blob-37: GET https://api.github.com/repos/elastic/integrations/git/blobs/9211b9401b14098aa88f7ac678aa305fdbffe693
+2026-08-28T16:12:27 DEBUG   Request 5-blob-37 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:27 DEBUG   Response 5-blob-37: status=200 elapsed=0.207s body_len=12885
+2026-08-28T16:12:27 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4785', 'x-ratelimit-used': '215', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:27 INFO    Blob 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_1.json: 9136 bytes, format=json, sha=9211b9401b14098aa88f7ac678aa305fdbffe693
+2026-08-28T16:12:27 DEBUG   Blob 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_1.json first line: {
+2026-08-28T16:12:27 DEBUG   Request 5-blob-38: GET https://api.github.com/repos/elastic/integrations/git/blobs/5a2dc05a526276737106bd9dc85f28451dfe7168
+2026-08-28T16:12:27 DEBUG   Request 5-blob-38 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:27 DEBUG   Response 5-blob-38: status=200 elapsed=0.229s body_len=12433
+2026-08-28T16:12:27 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4784', 'x-ratelimit-used': '216', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:27 INFO    Blob 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_2.json: 8810 bytes, format=json, sha=5a2dc05a526276737106bd9dc85f28451dfe7168
+2026-08-28T16:12:27 DEBUG   Blob 02137bc2-5cc2-4f7f-a8e4-c52dc239aa69_2.json first line: {
+2026-08-28T16:12:27 DEBUG   Request 5-blob-39: GET https://api.github.com/repos/elastic/integrations/git/blobs/ee1dbd5c437b1565224d8ee5ec9b0ee09ff8207b
+2026-08-28T16:12:27 DEBUG   Request 5-blob-39 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:27 DEBUG   Response 5-blob-39: status=200 elapsed=0.223s body_len=18730
+2026-08-28T16:12:27 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4783', 'x-ratelimit-used': '217', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:27 INFO    Blob 02275e05-57a1-46ab-a443-7fb444da6b28_2.json: 13380 bytes, format=json, sha=ee1dbd5c437b1565224d8ee5ec9b0ee09ff8207b
+2026-08-28T16:12:27 DEBUG   Blob 02275e05-57a1-46ab-a443-7fb444da6b28_2.json first line: {
+2026-08-28T16:12:27 DEBUG   Request 5-blob-40: GET https://api.github.com/repos/elastic/integrations/git/blobs/aa3c5da1d62349d669fc26b3d502c888d4276bc4
+2026-08-28T16:12:27 DEBUG   Request 5-blob-40 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:28 DEBUG   Response 5-blob-40: status=200 elapsed=0.227s body_len=19970
+2026-08-28T16:12:28 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4782', 'x-ratelimit-used': '218', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:28 INFO    Blob 02275e05-57a1-46ab-a443-7fb444da6b28_3.json: 14280 bytes, format=json, sha=aa3c5da1d62349d669fc26b3d502c888d4276bc4
+2026-08-28T16:12:28 DEBUG   Blob 02275e05-57a1-46ab-a443-7fb444da6b28_3.json first line: {
+2026-08-28T16:12:28 DEBUG   Request 5-blob-41: GET https://api.github.com/repos/elastic/integrations/git/blobs/ff10dff49eb323fd3b01416e12312c56279b702c
+2026-08-28T16:12:28 DEBUG   Request 5-blob-41 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:28 DEBUG   Response 5-blob-41: status=200 elapsed=0.198s body_len=20002
+2026-08-28T16:12:28 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4781', 'x-ratelimit-used': '219', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:28 INFO    Blob 02275e05-57a1-46ab-a443-7fb444da6b28_4.json: 14303 bytes, format=json, sha=ff10dff49eb323fd3b01416e12312c56279b702c
+2026-08-28T16:12:28 DEBUG   Blob 02275e05-57a1-46ab-a443-7fb444da6b28_4.json first line: {
+2026-08-28T16:12:28 DEBUG   Request 5-blob-42: GET https://api.github.com/repos/elastic/integrations/git/blobs/aa032e2224ed365e61b3f58bc4f9a59f356f0d2f
+2026-08-28T16:12:28 DEBUG   Request 5-blob-42 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:28 DEBUG   Response 5-blob-42: status=200 elapsed=0.222s body_len=12111
+2026-08-28T16:12:28 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4780', 'x-ratelimit-used': '220', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:28 INFO    Blob 022c37cd-5a4f-422b-8227-b136b7a23180_2.json: 8577 bytes, format=json, sha=aa032e2224ed365e61b3f58bc4f9a59f356f0d2f
+2026-08-28T16:12:28 DEBUG   Blob 022c37cd-5a4f-422b-8227-b136b7a23180_2.json first line: {
+2026-08-28T16:12:28 DEBUG   Request 5-blob-43: GET https://api.github.com/repos/elastic/integrations/git/blobs/eb65f5b7ede8ebf31031adeb76107f454b98ac49
+2026-08-28T16:12:28 DEBUG   Request 5-blob-43 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:28 DEBUG   Response 5-blob-43: status=200 elapsed=0.218s body_len=12141
+2026-08-28T16:12:28 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4779', 'x-ratelimit-used': '221', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:28 INFO    Blob 022c37cd-5a4f-422b-8227-b136b7a23180_3.json: 8598 bytes, format=json, sha=eb65f5b7ede8ebf31031adeb76107f454b98ac49
+2026-08-28T16:12:28 DEBUG   Blob 022c37cd-5a4f-422b-8227-b136b7a23180_3.json first line: {
+2026-08-28T16:12:28 DEBUG   Request 5-blob-44: GET https://api.github.com/repos/elastic/integrations/git/blobs/611a4d1211e47b989377a28bd76cab01530cddcd
+2026-08-28T16:12:28 DEBUG   Request 5-blob-44 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:28 DEBUG   Response 5-blob-44: status=200 elapsed=0.231s body_len=12173
+2026-08-28T16:12:28 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4778', 'x-ratelimit-used': '222', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:28 INFO    Blob 022c37cd-5a4f-422b-8227-b136b7a23180_4.json: 8622 bytes, format=json, sha=611a4d1211e47b989377a28bd76cab01530cddcd
+2026-08-28T16:12:28 DEBUG   Blob 022c37cd-5a4f-422b-8227-b136b7a23180_4.json first line: {
+2026-08-28T16:12:28 DEBUG   Request 5-blob-45: GET https://api.github.com/repos/elastic/integrations/git/blobs/febf5e523525e8b588ea490b03ff7fffa6beed77
+2026-08-28T16:12:28 DEBUG   Request 5-blob-45 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:29 DEBUG   Response 5-blob-45: status=200 elapsed=0.216s body_len=11887
+2026-08-28T16:12:29 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4777', 'x-ratelimit-used': '223', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:29 INFO    Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_209.json: 8415 bytes, format=json, sha=febf5e523525e8b588ea490b03ff7fffa6beed77
+2026-08-28T16:12:29 DEBUG   Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_209.json first line: {
+2026-08-28T16:12:29 DEBUG   Request 5-blob-46: GET https://api.github.com/repos/elastic/integrations/git/blobs/6cf123219eb2a1176e576ef083530305d7916ba1
+2026-08-28T16:12:29 DEBUG   Request 5-blob-46 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:29 DEBUG   Response 5-blob-46: status=200 elapsed=0.209s body_len=11893
+2026-08-28T16:12:29 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4776', 'x-ratelimit-used': '224', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:29 INFO    Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_210.json: 8416 bytes, format=json, sha=6cf123219eb2a1176e576ef083530305d7916ba1
+2026-08-28T16:12:29 DEBUG   Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_210.json first line: {
+2026-08-28T16:12:29 DEBUG   Request 5-blob-47: GET https://api.github.com/repos/elastic/integrations/git/blobs/a721182245f2c019aebc28cf8fb1c75e884163e1
+2026-08-28T16:12:29 DEBUG   Request 5-blob-47 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:29 DEBUG   Response 5-blob-47: status=200 elapsed=0.208s body_len=11893
+2026-08-28T16:12:29 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4775', 'x-ratelimit-used': '225', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:29 INFO    Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_211.json: 8418 bytes, format=json, sha=a721182245f2c019aebc28cf8fb1c75e884163e1
+2026-08-28T16:12:29 DEBUG   Blob 027ff9ea-85e7-42e3-99d2-bbb7069e02eb_211.json first line: {
+2026-08-28T16:12:29 DEBUG   Request 5-blob-48: GET https://api.github.com/repos/elastic/integrations/git/blobs/25955e73549b17e4e3c7066f805cd3eb1a0781a8
+2026-08-28T16:12:29 DEBUG   Request 5-blob-48 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:29 DEBUG   Response 5-blob-48: status=200 elapsed=0.190s body_len=4097
+2026-08-28T16:12:29 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4774', 'x-ratelimit-used': '226', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:29 INFO    Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_207.json: 2759 bytes, format=json, sha=25955e73549b17e4e3c7066f805cd3eb1a0781a8
+2026-08-28T16:12:29 DEBUG   Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_207.json first line: {
+2026-08-28T16:12:29 DEBUG   Request 5-blob-49: GET https://api.github.com/repos/elastic/integrations/git/blobs/271edf0cf9660039f2f4b2c0b095b3fda3f9f52f
+2026-08-28T16:12:29 DEBUG   Request 5-blob-49 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:29 DEBUG   Response 5-blob-49: status=200 elapsed=0.245s body_len=6535
+2026-08-28T16:12:29 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4773', 'x-ratelimit-used': '227', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:29 INFO    Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_208.json: 4528 bytes, format=json, sha=271edf0cf9660039f2f4b2c0b095b3fda3f9f52f
+2026-08-28T16:12:29 DEBUG   Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_208.json first line: {
+2026-08-28T16:12:29 DEBUG   Request 5-blob-50: GET https://api.github.com/repos/elastic/integrations/git/blobs/f4d08ce19576eb2ae72d08d48a9a7afa9531e513
+2026-08-28T16:12:29 DEBUG   Request 5-blob-50 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:30 DEBUG   Response 5-blob-50: status=200 elapsed=0.265s body_len=6635
+2026-08-28T16:12:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4772', 'x-ratelimit-used': '228', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:30 INFO    Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_209.json: 4601 bytes, format=json, sha=f4d08ce19576eb2ae72d08d48a9a7afa9531e513
+2026-08-28T16:12:30 DEBUG   Blob 0294f105-d7af-4a02-ae90-35f56763ffa2_209.json first line: {
+2026-08-28T16:12:30 DEBUG   Request 5-blob-51: GET https://api.github.com/repos/elastic/integrations/git/blobs/b36435834b98f5b5184fc8c1a808e66066f6c389
+2026-08-28T16:12:30 DEBUG   Request 5-blob-51 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:30 DEBUG   Response 5-blob-51: status=200 elapsed=0.209s body_len=18064
+2026-08-28T16:12:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4771', 'x-ratelimit-used': '229', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:30 INFO    Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_10.json: 12895 bytes, format=json, sha=b36435834b98f5b5184fc8c1a808e66066f6c389
+2026-08-28T16:12:30 DEBUG   Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_10.json first line: {
+2026-08-28T16:12:30 DEBUG   Request 5-blob-52: GET https://api.github.com/repos/elastic/integrations/git/blobs/da9ac2885ce19e5850822e8765da37ef1e1286e9
+2026-08-28T16:12:30 DEBUG   Request 5-blob-52 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:30 DEBUG   Response 5-blob-52: status=200 elapsed=0.197s body_len=17974
+2026-08-28T16:12:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4770', 'x-ratelimit-used': '230', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:30 INFO    Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_11.json: 12831 bytes, format=json, sha=da9ac2885ce19e5850822e8765da37ef1e1286e9
+2026-08-28T16:12:30 DEBUG   Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_11.json first line: {
+2026-08-28T16:12:30 DEBUG   Request 5-blob-53: GET https://api.github.com/repos/elastic/integrations/git/blobs/355212a293f2a81da940284f0c7ba205242fc42c
+2026-08-28T16:12:30 DEBUG   Request 5-blob-53 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:30 DEBUG   Response 5-blob-53: status=200 elapsed=0.243s body_len=24128
+2026-08-28T16:12:30 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4769', 'x-ratelimit-used': '231', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:30 INFO    Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_12.json: 17297 bytes, format=json, sha=355212a293f2a81da940284f0c7ba205242fc42c
+2026-08-28T16:12:30 DEBUG   Blob 02a23ee7-c8f8-4701-b99d-e9038ce313cb_12.json first line: {
+2026-08-28T16:12:30 DEBUG   Request 5-blob-54: GET https://api.github.com/repos/elastic/integrations/git/blobs/75c4242f5b832507f0b153107c8f102972a6af42
+2026-08-28T16:12:30 DEBUG   Request 5-blob-54 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:31 DEBUG   Response 5-blob-54: status=200 elapsed=0.219s body_len=11115
+2026-08-28T16:12:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4768', 'x-ratelimit-used': '232', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:31 INFO    Blob 02a4576a-7480-4284-9327-548a806b5e48_310.json: 7853 bytes, format=json, sha=75c4242f5b832507f0b153107c8f102972a6af42
+2026-08-28T16:12:31 DEBUG   Blob 02a4576a-7480-4284-9327-548a806b5e48_310.json first line: {
+2026-08-28T16:12:31 DEBUG   Request 5-blob-55: GET https://api.github.com/repos/elastic/integrations/git/blobs/c0be2222a72cb8b01a4f00dc9edb967c0c1cab63
+2026-08-28T16:12:31 DEBUG   Request 5-blob-55 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:31 DEBUG   Response 5-blob-55: status=200 elapsed=0.186s body_len=11115
+2026-08-28T16:12:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4767', 'x-ratelimit-used': '233', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:31 INFO    Blob 02a4576a-7480-4284-9327-548a806b5e48_311.json: 7853 bytes, format=json, sha=c0be2222a72cb8b01a4f00dc9edb967c0c1cab63
+2026-08-28T16:12:31 DEBUG   Blob 02a4576a-7480-4284-9327-548a806b5e48_311.json first line: {
+2026-08-28T16:12:31 DEBUG   Request 5-blob-56: GET https://api.github.com/repos/elastic/integrations/git/blobs/3f62e4d95b3c62a26e5d5f029f95a773109859b9
+2026-08-28T16:12:31 DEBUG   Request 5-blob-56 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:31 DEBUG   Response 5-blob-56: status=200 elapsed=0.186s body_len=10631
+2026-08-28T16:12:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4766', 'x-ratelimit-used': '234', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:31 INFO    Blob 02a4576a-7480-4284-9327-548a806b5e48_312.json: 7503 bytes, format=json, sha=3f62e4d95b3c62a26e5d5f029f95a773109859b9
+2026-08-28T16:12:31 DEBUG   Blob 02a4576a-7480-4284-9327-548a806b5e48_312.json first line: {
+2026-08-28T16:12:31 DEBUG   Request 5-blob-57: GET https://api.github.com/repos/elastic/integrations/git/blobs/e06fd7ff1b558e9b0efde72a0b58222e5866513b
+2026-08-28T16:12:31 DEBUG   Request 5-blob-57 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:31 DEBUG   Response 5-blob-57: status=200 elapsed=0.251s body_len=11739
+2026-08-28T16:12:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4765', 'x-ratelimit-used': '235', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:31 INFO    Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_105.json: 8305 bytes, format=json, sha=e06fd7ff1b558e9b0efde72a0b58222e5866513b
+2026-08-28T16:12:31 DEBUG   Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_105.json first line: {
+2026-08-28T16:12:31 DEBUG   Request 5-blob-58: GET https://api.github.com/repos/elastic/integrations/git/blobs/caeb19b3a03ca62104244e41c300b57837bb92a6
+2026-08-28T16:12:31 DEBUG   Request 5-blob-58 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:31 DEBUG   Response 5-blob-58: status=200 elapsed=0.204s body_len=11789
+2026-08-28T16:12:31 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4764', 'x-ratelimit-used': '236', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:31 INFO    Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_106.json: 8342 bytes, format=json, sha=caeb19b3a03ca62104244e41c300b57837bb92a6
+2026-08-28T16:12:31 DEBUG   Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_106.json first line: {
+2026-08-28T16:12:31 DEBUG   Request 5-blob-59: GET https://api.github.com/repos/elastic/integrations/git/blobs/cb857fc39fff5110ad80011a4abae8853dec7ab1
+2026-08-28T16:12:31 DEBUG   Request 5-blob-59 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:32 DEBUG   Response 5-blob-59: status=200 elapsed=0.191s body_len=11835
+2026-08-28T16:12:32 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4763', 'x-ratelimit-used': '237', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:32 INFO    Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_107.json: 8375 bytes, format=json, sha=cb857fc39fff5110ad80011a4abae8853dec7ab1
+2026-08-28T16:12:32 DEBUG   Blob 02b4420d-eda2-4529-9e46-4a60eccb7e2d_107.json first line: {
+2026-08-28T16:12:32 DEBUG   Request 5-blob-60: GET https://api.github.com/repos/elastic/integrations/git/blobs/71369473c209f69eab6c4a3406d27f596cda130e
+2026-08-28T16:12:32 DEBUG   Request 5-blob-60 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:32 DEBUG   Response 5-blob-60: status=200 elapsed=0.192s body_len=20250
+2026-08-28T16:12:32 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4762', 'x-ratelimit-used': '238', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:32 INFO    Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_10.json: 14482 bytes, format=json, sha=71369473c209f69eab6c4a3406d27f596cda130e
+2026-08-28T16:12:32 DEBUG   Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_10.json first line: {
+2026-08-28T16:12:32 DEBUG   Request 5-blob-61: GET https://api.github.com/repos/elastic/integrations/git/blobs/eccfa7b6f1597858e1ba7fb4a91c5d4ca9822f9c
+2026-08-28T16:12:32 DEBUG   Request 5-blob-61 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:32 DEBUG   Response 5-blob-61: status=200 elapsed=0.212s body_len=11387
+2026-08-28T16:12:32 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4761', 'x-ratelimit-used': '239', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:32 INFO    Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_7.json: 8050 bytes, format=json, sha=eccfa7b6f1597858e1ba7fb4a91c5d4ca9822f9c
+2026-08-28T16:12:32 DEBUG   Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_7.json first line: {
+2026-08-28T16:12:32 DEBUG   Request 5-blob-62: GET https://api.github.com/repos/elastic/integrations/git/blobs/471bcadc08d94127d533545a01fd8344555a0915
+2026-08-28T16:12:32 DEBUG   Request 5-blob-62 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:32 DEBUG   Response 5-blob-62: status=200 elapsed=0.257s body_len=21622
+2026-08-28T16:12:32 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4760', 'x-ratelimit-used': '240', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:32 INFO    Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_8.json: 15479 bytes, format=json, sha=471bcadc08d94127d533545a01fd8344555a0915
+2026-08-28T16:12:32 DEBUG   Blob 02bab13d-fb14-4d7c-b6fe-4a28874d37c5_8.json first line: {
+2026-08-28T16:12:32 DEBUG   Request 5-blob-63: GET https://api.github.com/repos/elastic/integrations/git/blobs/b8e16a7f5d952e6457bfee03dc2a5925ca593da1
+2026-08-28T16:12:32 DEBUG   Request 5-blob-63 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:33 DEBUG   Response 5-blob-63: status=200 elapsed=0.241s body_len=12525
+2026-08-28T16:12:33 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4759', 'x-ratelimit-used': '241', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:33 INFO    Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_110.json: 8875 bytes, format=json, sha=b8e16a7f5d952e6457bfee03dc2a5925ca593da1
+2026-08-28T16:12:33 DEBUG   Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_110.json first line: {
+2026-08-28T16:12:33 DEBUG   Request 5-blob-64: GET https://api.github.com/repos/elastic/integrations/git/blobs/e1d26ffa1a25696c538a17bcc09833b91b8eb499
+2026-08-28T16:12:33 DEBUG   Request 5-blob-64 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:33 DEBUG   Response 5-blob-64: status=200 elapsed=0.186s body_len=12999
+2026-08-28T16:12:33 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4758', 'x-ratelimit-used': '242', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:33 INFO    Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_111.json: 9220 bytes, format=json, sha=e1d26ffa1a25696c538a17bcc09833b91b8eb499
+2026-08-28T16:12:33 DEBUG   Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_111.json first line: {
+2026-08-28T16:12:33 DEBUG   Request 5-blob-65: GET https://api.github.com/repos/elastic/integrations/git/blobs/34e66d9de6a3bb2bebd7634c87011391e0933eb0
+2026-08-28T16:12:33 DEBUG   Request 5-blob-65 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:33 DEBUG   Response 5-blob-65: status=200 elapsed=0.223s body_len=13385
+2026-08-28T16:12:33 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4757', 'x-ratelimit-used': '243', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:33 INFO    Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_112.json: 9500 bytes, format=json, sha=34e66d9de6a3bb2bebd7634c87011391e0933eb0
+2026-08-28T16:12:33 DEBUG   Blob 02ea4563-ec10-4974-b7de-12e65aa4f9b3_112.json first line: {
+2026-08-28T16:12:33 DEBUG   Request 5-blob-66: GET https://api.github.com/repos/elastic/integrations/git/blobs/0cc1c03b2f0393f04cb412967d1684b99becb34b
+2026-08-28T16:12:33 DEBUG   Request 5-blob-66 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:33 DEBUG   Response 5-blob-66: status=200 elapsed=0.171s body_len=10941
+2026-08-28T16:12:33 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4756', 'x-ratelimit-used': '244', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:33 INFO    Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_212.json: 7728 bytes, format=json, sha=0cc1c03b2f0393f04cb412967d1684b99becb34b
+2026-08-28T16:12:33 DEBUG   Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_212.json first line: {
+2026-08-28T16:12:33 DEBUG   Request 5-blob-67: GET https://api.github.com/repos/elastic/integrations/git/blobs/cb9aa00b2448d7876d9d78182dea4d706f97e5e3
+2026-08-28T16:12:33 DEBUG   Request 5-blob-67 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:33 DEBUG   Response 5-blob-67: status=200 elapsed=0.225s body_len=10971
+2026-08-28T16:12:33 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4755', 'x-ratelimit-used': '245', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:33 INFO    Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_213.json: 7749 bytes, format=json, sha=cb9aa00b2448d7876d9d78182dea4d706f97e5e3
+2026-08-28T16:12:33 DEBUG   Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_213.json first line: {
+2026-08-28T16:12:33 DEBUG   Request 5-blob-68: GET https://api.github.com/repos/elastic/integrations/git/blobs/3cc542391facacf86f0ee5dcea446aef0d5d47e3
+2026-08-28T16:12:33 DEBUG   Request 5-blob-68 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:34 DEBUG   Response 5-blob-68: status=200 elapsed=0.232s body_len=10523
+2026-08-28T16:12:34 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4754', 'x-ratelimit-used': '246', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:34 INFO    Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_214.json: 7423 bytes, format=json, sha=3cc542391facacf86f0ee5dcea446aef0d5d47e3
+2026-08-28T16:12:34 DEBUG   Blob 03024bd9-d23f-4ec1-8674-3cf1a21e130b_214.json first line: {
+2026-08-28T16:12:34 DEBUG   Request 5-blob-69: GET https://api.github.com/repos/elastic/integrations/git/blobs/b23474d70535fdb3354f36a6dddcfe19412abf2c
+2026-08-28T16:12:34 DEBUG   Request 5-blob-69 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:34 DEBUG   Response 5-blob-69: status=200 elapsed=0.231s body_len=14228
+2026-08-28T16:12:34 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4753', 'x-ratelimit-used': '247', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:34 INFO    Blob 0302d3b2-1892-4448-a805-980aa4a36ba3_1.json: 10111 bytes, format=json, sha=b23474d70535fdb3354f36a6dddcfe19412abf2c
+2026-08-28T16:12:34 DEBUG   Blob 0302d3b2-1892-4448-a805-980aa4a36ba3_1.json first line: {
+2026-08-28T16:12:34 DEBUG   Request 5-blob-70: GET https://api.github.com/repos/elastic/integrations/git/blobs/eb67b0610914dcf2392fd2efdc9928837f721e77
+2026-08-28T16:12:34 DEBUG   Request 5-blob-70 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:34 DEBUG   Response 5-blob-70: status=200 elapsed=0.230s body_len=10027
+2026-08-28T16:12:34 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4752', 'x-ratelimit-used': '248', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:34 INFO    Blob 03245b25-3849-4052-ab48-72de65a82c35_2.json: 7063 bytes, format=json, sha=eb67b0610914dcf2392fd2efdc9928837f721e77
+2026-08-28T16:12:34 DEBUG   Blob 03245b25-3849-4052-ab48-72de65a82c35_2.json first line: {
+2026-08-28T16:12:34 DEBUG   Request 5-blob-71: GET https://api.github.com/repos/elastic/integrations/git/blobs/4acdbd5de3ec966d36c0da5ce6e6ab9760a3ceba
+2026-08-28T16:12:34 DEBUG   Request 5-blob-71 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:34 DEBUG   Response 5-blob-71: status=200 elapsed=0.239s body_len=10057
+2026-08-28T16:12:34 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4751', 'x-ratelimit-used': '249', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:34 INFO    Blob 03245b25-3849-4052-ab48-72de65a82c35_3.json: 7084 bytes, format=json, sha=4acdbd5de3ec966d36c0da5ce6e6ab9760a3ceba
+2026-08-28T16:12:34 DEBUG   Blob 03245b25-3849-4052-ab48-72de65a82c35_3.json first line: {
+2026-08-28T16:12:34 DEBUG   Request 5-blob-72: GET https://api.github.com/repos/elastic/integrations/git/blobs/c214c1e73c0fea8d870463503b622b80d4ec5e66
+2026-08-28T16:12:34 DEBUG   Request 5-blob-72 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:34 DEBUG   Response 5-blob-72: status=200 elapsed=0.176s body_len=10143
+2026-08-28T16:12:34 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4750', 'x-ratelimit-used': '250', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:34 INFO    Blob 03245b25-3849-4052-ab48-72de65a82c35_4.json: 7148 bytes, format=json, sha=c214c1e73c0fea8d870463503b622b80d4ec5e66
+2026-08-28T16:12:34 DEBUG   Blob 03245b25-3849-4052-ab48-72de65a82c35_4.json first line: {
+2026-08-28T16:12:34 DEBUG   Request 5-blob-73: GET https://api.github.com/repos/elastic/integrations/git/blobs/2862f906654af1807b1fe7b98038ea4d41712e6c
+2026-08-28T16:12:34 DEBUG   Request 5-blob-73 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:35 DEBUG   Response 5-blob-73: status=200 elapsed=0.250s body_len=10007
+2026-08-28T16:12:35 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4749', 'x-ratelimit-used': '251', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:35 INFO    Blob 035889c4-2686-4583-a7df-67f89c292f2c_217.json: 7050 bytes, format=json, sha=2862f906654af1807b1fe7b98038ea4d41712e6c
+2026-08-28T16:12:35 DEBUG   Blob 035889c4-2686-4583-a7df-67f89c292f2c_217.json first line: {
+2026-08-28T16:12:35 DEBUG   Request 5-blob-74: GET https://api.github.com/repos/elastic/integrations/git/blobs/cdc1602f5838f78820671cd42e53c687bc377e6c
+2026-08-28T16:12:35 DEBUG   Request 5-blob-74 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:35 DEBUG   Response 5-blob-74: status=200 elapsed=0.198s body_len=10887
+2026-08-28T16:12:35 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4748', 'x-ratelimit-used': '252', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:35 INFO    Blob 035889c4-2686-4583-a7df-67f89c292f2c_218.json: 7688 bytes, format=json, sha=cdc1602f5838f78820671cd42e53c687bc377e6c
+2026-08-28T16:12:35 DEBUG   Blob 035889c4-2686-4583-a7df-67f89c292f2c_218.json first line: {
+2026-08-28T16:12:35 DEBUG   Request 5-blob-75: GET https://api.github.com/repos/elastic/integrations/git/blobs/b838bb3f977bf227516032ccca063dab06c3edd1
+2026-08-28T16:12:35 DEBUG   Request 5-blob-75 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:35 DEBUG   Response 5-blob-75: status=200 elapsed=0.221s body_len=10495
+2026-08-28T16:12:35 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4747', 'x-ratelimit-used': '253', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:35 INFO    Blob 035889c4-2686-4583-a7df-67f89c292f2c_219.json: 7403 bytes, format=json, sha=b838bb3f977bf227516032ccca063dab06c3edd1
+2026-08-28T16:12:35 DEBUG   Blob 035889c4-2686-4583-a7df-67f89c292f2c_219.json first line: {
+2026-08-28T16:12:35 DEBUG   Request 5-blob-76: GET https://api.github.com/repos/elastic/integrations/git/blobs/f4bbd5970c57c601a2e45a25aa23821471daea8c
+2026-08-28T16:12:35 DEBUG   Request 5-blob-76 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:35 DEBUG   Response 5-blob-76: status=200 elapsed=0.224s body_len=7437
+2026-08-28T16:12:35 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4746', 'x-ratelimit-used': '254', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:35 INFO    Blob 035a6f21-4092-471d-9cda-9e379f459b1e_6.json: 5184 bytes, format=json, sha=f4bbd5970c57c601a2e45a25aa23821471daea8c
+2026-08-28T16:12:35 DEBUG   Blob 035a6f21-4092-471d-9cda-9e379f459b1e_6.json first line: {
+2026-08-28T16:12:35 DEBUG   Request 5-blob-77: GET https://api.github.com/repos/elastic/integrations/git/blobs/e1ee9750f5ffbbfe572656967e997448cb0bff22
+2026-08-28T16:12:35 DEBUG   Request 5-blob-77 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:36 DEBUG   Response 5-blob-77: status=200 elapsed=0.237s body_len=8193
+2026-08-28T16:12:36 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4745', 'x-ratelimit-used': '255', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:36 INFO    Blob 035a6f21-4092-471d-9cda-9e379f459b1e_7.json: 5731 bytes, format=json, sha=e1ee9750f5ffbbfe572656967e997448cb0bff22
+2026-08-28T16:12:36 DEBUG   Blob 035a6f21-4092-471d-9cda-9e379f459b1e_7.json first line: {
+2026-08-28T16:12:36 DEBUG   Request 5-blob-78: GET https://api.github.com/repos/elastic/integrations/git/blobs/0a97b59714b8711d8590f55795dca4a64d5784bf
+2026-08-28T16:12:36 DEBUG   Request 5-blob-78 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:36 DEBUG   Response 5-blob-78: status=200 elapsed=0.220s body_len=8239
+2026-08-28T16:12:36 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4744', 'x-ratelimit-used': '256', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:36 INFO    Blob 035a6f21-4092-471d-9cda-9e379f459b1e_8.json: 5766 bytes, format=json, sha=0a97b59714b8711d8590f55795dca4a64d5784bf
+2026-08-28T16:12:36 DEBUG   Blob 035a6f21-4092-471d-9cda-9e379f459b1e_8.json first line: {
+2026-08-28T16:12:36 DEBUG   Request 5-blob-79: GET https://api.github.com/repos/elastic/integrations/git/blobs/2b4baccb3310b65ed9bee51ac380aab069a516e3
+2026-08-28T16:12:36 DEBUG   Request 5-blob-79 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:36 DEBUG   Response 5-blob-79: status=200 elapsed=0.231s body_len=13967
+2026-08-28T16:12:36 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4743', 'x-ratelimit-used': '257', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:36 INFO    Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_107.json: 9923 bytes, format=json, sha=2b4baccb3310b65ed9bee51ac380aab069a516e3
+2026-08-28T16:12:36 DEBUG   Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_107.json first line: {
+2026-08-28T16:12:36 DEBUG   Request 5-blob-80: GET https://api.github.com/repos/elastic/integrations/git/blobs/0ebeca94913bc49eae26cf5456ded2a6ed323bda
+2026-08-28T16:12:36 DEBUG   Request 5-blob-80 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:36 DEBUG   Response 5-blob-80: status=200 elapsed=0.245s body_len=15514
+2026-08-28T16:12:36 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4742', 'x-ratelimit-used': '258', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:36 INFO    Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_108.json: 11046 bytes, format=json, sha=0ebeca94913bc49eae26cf5456ded2a6ed323bda
+2026-08-28T16:12:36 DEBUG   Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_108.json first line: {
+2026-08-28T16:12:36 DEBUG   Request 5-blob-81: GET https://api.github.com/repos/elastic/integrations/git/blobs/292a84be3c7e28b16aa2dd8d9d25308132b1af17
+2026-08-28T16:12:36 DEBUG   Request 5-blob-81 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:36 DEBUG   Response 5-blob-81: status=200 elapsed=0.210s body_len=15552
+2026-08-28T16:12:36 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4741', 'x-ratelimit-used': '259', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:36 INFO    Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_109.json: 11073 bytes, format=json, sha=292a84be3c7e28b16aa2dd8d9d25308132b1af17
+2026-08-28T16:12:36 DEBUG   Blob 0369e8a6-0fa7-4e7a-961a-53180a4c966e_109.json first line: {
+2026-08-28T16:12:36 DEBUG   Request 5-blob-82: GET https://api.github.com/repos/elastic/integrations/git/blobs/ed184967006f04769a87ff0cb7c927e2c6b9c57d
+2026-08-28T16:12:36 DEBUG   Request 5-blob-82 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:37 DEBUG   Response 5-blob-82: status=200 elapsed=0.188s body_len=8689
+2026-08-28T16:12:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4740', 'x-ratelimit-used': '260', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:37 INFO    Blob 0398c0a2-1237-478e-84c4-84510f1925e6_1.json: 6091 bytes, format=json, sha=ed184967006f04769a87ff0cb7c927e2c6b9c57d
+2026-08-28T16:12:37 DEBUG   Blob 0398c0a2-1237-478e-84c4-84510f1925e6_1.json first line: {
+2026-08-28T16:12:37 DEBUG   Request 5-blob-83: GET https://api.github.com/repos/elastic/integrations/git/blobs/9cab3e8387f07ee9d0f8fa26bb9d035c93b96afd
+2026-08-28T16:12:37 DEBUG   Request 5-blob-83 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:37 DEBUG   Response 5-blob-83: status=200 elapsed=0.219s body_len=8751
+2026-08-28T16:12:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4739', 'x-ratelimit-used': '261', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:37 INFO    Blob 0398c0a2-1237-478e-84c4-84510f1925e6_2.json: 6136 bytes, format=json, sha=9cab3e8387f07ee9d0f8fa26bb9d035c93b96afd
+2026-08-28T16:12:37 DEBUG   Blob 0398c0a2-1237-478e-84c4-84510f1925e6_2.json first line: {
+2026-08-28T16:12:37 DEBUG   Request 5-blob-84: GET https://api.github.com/repos/elastic/integrations/git/blobs/2d114830bf1f29b578364f58bb4dce4e686c2cf2
+2026-08-28T16:12:37 DEBUG   Request 5-blob-84 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:37 DEBUG   Response 5-blob-84: status=200 elapsed=0.220s body_len=702
+2026-08-28T16:12:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4738', 'x-ratelimit-used': '262', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:37 INFO    Blob 03a514d9-500e-443e-b6a9-72718c548f6c_6.json: 295 bytes, format=json, sha=2d114830bf1f29b578364f58bb4dce4e686c2cf2
+2026-08-28T16:12:37 DEBUG   Blob 03a514d9-500e-443e-b6a9-72718c548f6c_6.json first line: {
+2026-08-28T16:12:37 DEBUG   Request 5-blob-85: GET https://api.github.com/repos/elastic/integrations/git/blobs/8ad1f6986ac36f0247db95425b06fb6aac224575
+2026-08-28T16:12:37 DEBUG   Request 5-blob-85 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:37 DEBUG   Response 5-blob-85: status=200 elapsed=0.204s body_len=8891
+2026-08-28T16:12:37 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4737', 'x-ratelimit-used': '263', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:37 INFO    Blob 03b150d9-9280-4eb8-9906-38cfb6184666_1.json: 6240 bytes, format=json, sha=8ad1f6986ac36f0247db95425b06fb6aac224575
+2026-08-28T16:12:37 DEBUG   Blob 03b150d9-9280-4eb8-9906-38cfb6184666_1.json first line: {
+2026-08-28T16:12:37 DEBUG   Request 5-blob-86: GET https://api.github.com/repos/elastic/integrations/git/blobs/86377cb20890538675dd2fc796f2858bd0a5c8d8
+2026-08-28T16:12:37 DEBUG   Request 5-blob-86 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:38 DEBUG   Response 5-blob-86: status=200 elapsed=0.228s body_len=10755
+2026-08-28T16:12:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4736', 'x-ratelimit-used': '264', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:38 INFO    Blob 03b150d9-9280-4eb8-9906-38cfb6184666_2.json: 7591 bytes, format=json, sha=86377cb20890538675dd2fc796f2858bd0a5c8d8
+2026-08-28T16:12:38 DEBUG   Blob 03b150d9-9280-4eb8-9906-38cfb6184666_2.json first line: {
+2026-08-28T16:12:38 DEBUG   Request 5-blob-87: GET https://api.github.com/repos/elastic/integrations/git/blobs/6807c3fff22bdcedbd35a5c10e6ce2e69f50e2ef
+2026-08-28T16:12:38 DEBUG   Request 5-blob-87 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:38 DEBUG   Response 5-blob-87: status=200 elapsed=0.186s body_len=13815
+2026-08-28T16:12:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4735', 'x-ratelimit-used': '265', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:38 INFO    Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_6.json: 9812 bytes, format=json, sha=6807c3fff22bdcedbd35a5c10e6ce2e69f50e2ef
+2026-08-28T16:12:38 DEBUG   Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_6.json first line: {
+2026-08-28T16:12:38 DEBUG   Request 5-blob-88: GET https://api.github.com/repos/elastic/integrations/git/blobs/1ba2740757f6ab823590c17e8b3984135a8cbff5
+2026-08-28T16:12:38 DEBUG   Request 5-blob-88 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:38 DEBUG   Response 5-blob-88: status=200 elapsed=0.271s body_len=14406
+2026-08-28T16:12:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4734', 'x-ratelimit-used': '266', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:38 INFO    Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_7.json: 10240 bytes, format=json, sha=1ba2740757f6ab823590c17e8b3984135a8cbff5
+2026-08-28T16:12:38 DEBUG   Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_7.json first line: {
+2026-08-28T16:12:38 DEBUG   Request 5-blob-89: GET https://api.github.com/repos/elastic/integrations/git/blobs/e2b01f21da9a628ba8143dcf0a77c9c228c45a60
+2026-08-28T16:12:38 DEBUG   Request 5-blob-89 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:38 DEBUG   Response 5-blob-89: status=200 elapsed=0.276s body_len=14720
+2026-08-28T16:12:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4733', 'x-ratelimit-used': '267', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:38 INFO    Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_8.json: 10469 bytes, format=json, sha=e2b01f21da9a628ba8143dcf0a77c9c228c45a60
+2026-08-28T16:12:38 DEBUG   Blob 03c23d45-d3cb-4ad4-ab5d-b361ffe8724a_8.json first line: {
+2026-08-28T16:12:38 DEBUG   Request 5-blob-90: GET https://api.github.com/repos/elastic/integrations/git/blobs/61aa4d429e35a6762e200ce0367b8bd8f0cc1317
+2026-08-28T16:12:38 DEBUG   Request 5-blob-90 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:38 DEBUG   Response 5-blob-90: status=200 elapsed=0.215s body_len=18204
+2026-08-28T16:12:38 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4732', 'x-ratelimit-used': '268', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:38 INFO    Blob 03d856c2-7f74-4540-a530-e20af5e39789_2.json: 12998 bytes, format=json, sha=61aa4d429e35a6762e200ce0367b8bd8f0cc1317
+2026-08-28T16:12:38 DEBUG   Blob 03d856c2-7f74-4540-a530-e20af5e39789_2.json first line: {
+2026-08-28T16:12:38 DEBUG   Request 5-blob-91: GET https://api.github.com/repos/elastic/integrations/git/blobs/1f5c5cc1159d94b9ed8ae9b4d2039efabc58a90d
+2026-08-28T16:12:38 DEBUG   Request 5-blob-91 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:39 DEBUG   Response 5-blob-91: status=200 elapsed=0.241s body_len=18668
+2026-08-28T16:12:39 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4731', 'x-ratelimit-used': '269', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:39 INFO    Blob 03d856c2-7f74-4540-a530-e20af5e39789_3.json: 13335 bytes, format=json, sha=1f5c5cc1159d94b9ed8ae9b4d2039efabc58a90d
+2026-08-28T16:12:39 DEBUG   Blob 03d856c2-7f74-4540-a530-e20af5e39789_3.json first line: {
+2026-08-28T16:12:39 DEBUG   Request 5-blob-92: GET https://api.github.com/repos/elastic/integrations/git/blobs/2ed7a0aa52a307ca18649c887f9d8e698ac81409
+2026-08-28T16:12:39 DEBUG   Request 5-blob-92 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:39 DEBUG   Response 5-blob-92: status=200 elapsed=0.298s body_len=18646
+2026-08-28T16:12:39 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4730', 'x-ratelimit-used': '270', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:39 INFO    Blob 03d856c2-7f74-4540-a530-e20af5e39789_4.json: 13320 bytes, format=json, sha=2ed7a0aa52a307ca18649c887f9d8e698ac81409
+2026-08-28T16:12:39 DEBUG   Blob 03d856c2-7f74-4540-a530-e20af5e39789_4.json first line: {
+2026-08-28T16:12:39 DEBUG   Request 5-blob-93: GET https://api.github.com/repos/elastic/integrations/git/blobs/7105b336e69d282cd13fa82b061b2c2ecf945a31
+2026-08-28T16:12:39 DEBUG   Request 5-blob-93 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:39 DEBUG   Response 5-blob-93: status=200 elapsed=0.188s body_len=11099
+2026-08-28T16:12:39 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4729', 'x-ratelimit-used': '271', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:39 INFO    Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_6.json: 7842 bytes, format=json, sha=7105b336e69d282cd13fa82b061b2c2ecf945a31
+2026-08-28T16:12:39 DEBUG   Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_6.json first line: {
+2026-08-28T16:12:39 DEBUG   Request 5-blob-94: GET https://api.github.com/repos/elastic/integrations/git/blobs/7780d8e869b388c99856737989e3b319bdafc8c8
+2026-08-28T16:12:39 DEBUG   Request 5-blob-94 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:39 DEBUG   Response 5-blob-94: status=200 elapsed=0.228s body_len=11417
+2026-08-28T16:12:39 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4728', 'x-ratelimit-used': '272', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:39 INFO    Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_7.json: 8072 bytes, format=json, sha=7780d8e869b388c99856737989e3b319bdafc8c8
+2026-08-28T16:12:39 DEBUG   Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_7.json first line: {
+2026-08-28T16:12:39 DEBUG   Request 5-blob-95: GET https://api.github.com/repos/elastic/integrations/git/blobs/b728bcb490e5ddb61304d3696316dcd08e7614eb
+2026-08-28T16:12:39 DEBUG   Request 5-blob-95 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:40 DEBUG   Response 5-blob-95: status=200 elapsed=0.209s body_len=11445
+2026-08-28T16:12:40 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4727', 'x-ratelimit-used': '273', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:40 INFO    Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_8.json: 8094 bytes, format=json, sha=b728bcb490e5ddb61304d3696316dcd08e7614eb
+2026-08-28T16:12:40 DEBUG   Blob 0415258b-a7b2-48a6-891a-3367cd9d4d31_8.json first line: {
+2026-08-28T16:12:40 DEBUG   Request 5-blob-96: GET https://api.github.com/repos/elastic/integrations/git/blobs/614e8afcc3efd4f5a0d445a02b210d66d77b640b
+2026-08-28T16:12:40 DEBUG   Request 5-blob-96 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:40 DEBUG   Response 5-blob-96: status=200 elapsed=0.235s body_len=21512
+2026-08-28T16:12:40 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4726', 'x-ratelimit-used': '274', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:40 INFO    Blob 0415f22a-2336-45fa-ba07-618a5942e22c_113.json: 15397 bytes, format=json, sha=614e8afcc3efd4f5a0d445a02b210d66d77b640b
+2026-08-28T16:12:40 DEBUG   Blob 0415f22a-2336-45fa-ba07-618a5942e22c_113.json first line: {
+2026-08-28T16:12:40 DEBUG   Request 5-blob-97: GET https://api.github.com/repos/elastic/integrations/git/blobs/bf83b0a6143c2eed22b5da89b433b468a64a4e04
+2026-08-28T16:12:40 DEBUG   Request 5-blob-97 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:40 DEBUG   Response 5-blob-97: status=200 elapsed=0.209s body_len=21982
+2026-08-28T16:12:40 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4725', 'x-ratelimit-used': '275', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:40 INFO    Blob 0415f22a-2336-45fa-ba07-618a5942e22c_114.json: 15741 bytes, format=json, sha=bf83b0a6143c2eed22b5da89b433b468a64a4e04
+2026-08-28T16:12:40 DEBUG   Blob 0415f22a-2336-45fa-ba07-618a5942e22c_114.json first line: {
+2026-08-28T16:12:40 DEBUG   Request 5-blob-98: GET https://api.github.com/repos/elastic/integrations/git/blobs/3eeee05cccc3b05a25a3ac1b88b0ca36e630d78c
+2026-08-28T16:12:40 DEBUG   Request 5-blob-98 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:40 DEBUG   Response 5-blob-98: status=200 elapsed=0.220s body_len=22304
+2026-08-28T16:12:40 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4724', 'x-ratelimit-used': '276', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:40 INFO    Blob 0415f22a-2336-45fa-ba07-618a5942e22c_115.json: 15975 bytes, format=json, sha=3eeee05cccc3b05a25a3ac1b88b0ca36e630d78c
+2026-08-28T16:12:40 DEBUG   Blob 0415f22a-2336-45fa-ba07-618a5942e22c_115.json first line: {
+2026-08-28T16:12:40 DEBUG   Request 5-blob-99: GET https://api.github.com/repos/elastic/integrations/git/blobs/1b2c551a9890abe6376df7cfc7c2f90956591696
+2026-08-28T16:12:40 DEBUG   Request 5-blob-99 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:41 DEBUG   Response 5-blob-99: status=200 elapsed=0.208s body_len=694
+2026-08-28T16:12:41 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4723', 'x-ratelimit-used': '277', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:41 INFO    Blob 041d4d41-9589-43e2-ba13-5680af75ebc2_106.json: 289 bytes, format=json, sha=1b2c551a9890abe6376df7cfc7c2f90956591696
+2026-08-28T16:12:41 DEBUG   Blob 041d4d41-9589-43e2-ba13-5680af75ebc2_106.json first line: {
+2026-08-28T16:12:41 DEBUG   Request 5-blob-100: GET https://api.github.com/repos/elastic/integrations/git/blobs/c720d9833b8eaab57df886c8caca8adc95dc631f
+2026-08-28T16:12:41 DEBUG   Request 5-blob-100 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:41 DEBUG   Response 5-blob-100: status=200 elapsed=0.183s body_len=13727
+2026-08-28T16:12:41 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4722', 'x-ratelimit-used': '278', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:41 INFO    Blob 0428c618-27f5-4d94-99e6-b254585aba69_102.json: 9749 bytes, format=json, sha=c720d9833b8eaab57df886c8caca8adc95dc631f
+2026-08-28T16:12:41 DEBUG   Blob 0428c618-27f5-4d94-99e6-b254585aba69_102.json first line: {
+2026-08-28T16:12:41 DEBUG   Request 5-blob-101: GET https://api.github.com/repos/elastic/integrations/git/blobs/e97f36ac37cb24beeb91c7b4f21b40be48412ec3
+2026-08-28T16:12:41 DEBUG   Request 5-blob-101 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:41 DEBUG   Response 5-blob-101: status=200 elapsed=0.209s body_len=14502
+2026-08-28T16:12:41 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4721', 'x-ratelimit-used': '279', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:41 INFO    Blob 0428c618-27f5-4d94-99e6-b254585aba69_103.json: 10310 bytes, format=json, sha=e97f36ac37cb24beeb91c7b4f21b40be48412ec3
+2026-08-28T16:12:41 DEBUG   Blob 0428c618-27f5-4d94-99e6-b254585aba69_103.json first line: {
+2026-08-28T16:12:41 DEBUG   Request 5-blob-102: GET https://api.github.com/repos/elastic/integrations/git/blobs/66231a284d32f5ba6a0ef966c6f2290aef59cef3
+2026-08-28T16:12:41 DEBUG   Request 5-blob-102 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:41 DEBUG   Response 5-blob-102: status=200 elapsed=0.249s body_len=12441
+2026-08-28T16:12:41 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4720', 'x-ratelimit-used': '280', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:41 INFO    Blob 0428c618-27f5-4d94-99e6-b254585aba69_104.json: 8817 bytes, format=json, sha=66231a284d32f5ba6a0ef966c6f2290aef59cef3
+2026-08-28T16:12:41 DEBUG   Blob 0428c618-27f5-4d94-99e6-b254585aba69_104.json first line: {
+2026-08-28T16:12:41 DEBUG   Request 5-blob-103: GET https://api.github.com/repos/elastic/integrations/git/blobs/9218d3c956cf30a10dc37e4ab224297324a75a8e
+2026-08-28T16:12:41 DEBUG   Request 5-blob-103 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:41 DEBUG   Response 5-blob-103: status=200 elapsed=0.198s body_len=10057
+2026-08-28T16:12:41 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4719', 'x-ratelimit-used': '281', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:41 INFO    Blob 042b35f3-afa6-4441-92b2-ef41976b48a3_1.json: 7085 bytes, format=json, sha=9218d3c956cf30a10dc37e4ab224297324a75a8e
+2026-08-28T16:12:41 DEBUG   Blob 042b35f3-afa6-4441-92b2-ef41976b48a3_1.json first line: {
+2026-08-28T16:12:41 DEBUG   Request 5-blob-104: GET https://api.github.com/repos/elastic/integrations/git/blobs/979816cf2c62e39fa377f116cf89ff4f9a36e747
+2026-08-28T16:12:41 DEBUG   Request 5-blob-104 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:42 DEBUG   Response 5-blob-104: status=200 elapsed=0.240s body_len=12699
+2026-08-28T16:12:42 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4718', 'x-ratelimit-used': '282', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:42 INFO    Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_206.json: 9002 bytes, format=json, sha=979816cf2c62e39fa377f116cf89ff4f9a36e747
+2026-08-28T16:12:42 DEBUG   Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_206.json first line: {
+2026-08-28T16:12:42 DEBUG   Request 5-blob-105: GET https://api.github.com/repos/elastic/integrations/git/blobs/7fc65cd5efa928c8c86b8fe1487e8c0b46207c5e
+2026-08-28T16:12:42 DEBUG   Request 5-blob-105 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:42 DEBUG   Response 5-blob-105: status=200 elapsed=0.220s body_len=22056
+2026-08-28T16:12:42 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4717', 'x-ratelimit-used': '283', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:42 INFO    Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_207.json: 15793 bytes, format=json, sha=7fc65cd5efa928c8c86b8fe1487e8c0b46207c5e
+2026-08-28T16:12:42 DEBUG   Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_207.json first line: {
+2026-08-28T16:12:42 DEBUG   Request 5-blob-106: GET https://api.github.com/repos/elastic/integrations/git/blobs/1385571e41b1e6ceac7be08d4c7f1ae4bc33a487
+2026-08-28T16:12:42 DEBUG   Request 5-blob-106 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:42 DEBUG   Response 5-blob-106: status=200 elapsed=0.237s body_len=22094
+2026-08-28T16:12:42 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4716', 'x-ratelimit-used': '284', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:42 INFO    Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_208.json: 15820 bytes, format=json, sha=1385571e41b1e6ceac7be08d4c7f1ae4bc33a487
+2026-08-28T16:12:42 DEBUG   Blob 043d80a3-c49e-43ef-9c72-1088f0c7b278_208.json first line: {
+2026-08-28T16:12:42 DEBUG   Request 5-blob-107: GET https://api.github.com/repos/elastic/integrations/git/blobs/5ca6d08acb5a9b19acac90975329aa10b6ca5e84
+2026-08-28T16:12:42 DEBUG   Request 5-blob-107 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:42 DEBUG   Response 5-blob-107: status=200 elapsed=0.241s body_len=17490
+2026-08-28T16:12:42 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4715', 'x-ratelimit-used': '285', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:42 INFO    Blob 04443c0e-9f23-4b61-996b-d8d6b0263bd2_1.json: 12480 bytes, format=json, sha=5ca6d08acb5a9b19acac90975329aa10b6ca5e84
+2026-08-28T16:12:42 DEBUG   Blob 04443c0e-9f23-4b61-996b-d8d6b0263bd2_1.json first line: {
+2026-08-28T16:12:42 DEBUG   Request 5-blob-108: GET https://api.github.com/repos/elastic/integrations/git/blobs/2bc166a0a0527275eadd62f5114d546b5796a6de
+2026-08-28T16:12:42 DEBUG   Request 5-blob-108 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:43 DEBUG   Response 5-blob-108: status=200 elapsed=0.288s body_len=146095
+2026-08-28T16:12:43 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4714', 'x-ratelimit-used': '286', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:43 INFO    Blob 0471a12b-c740-4a72-91f0-12bf95014d3c_1.json: 105822 bytes, format=json, sha=2bc166a0a0527275eadd62f5114d546b5796a6de
+2026-08-28T16:12:43 DEBUG   Blob 0471a12b-c740-4a72-91f0-12bf95014d3c_1.json first line: {
+2026-08-28T16:12:43 DEBUG   Request 5-blob-109: GET https://api.github.com/repos/elastic/integrations/git/blobs/26cfa4b0514c66d409efe362acdb7181e5a06633
+2026-08-28T16:12:43 DEBUG   Request 5-blob-109 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:43 DEBUG   Response 5-blob-109: status=200 elapsed=0.199s body_len=12893
+2026-08-28T16:12:43 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4713', 'x-ratelimit-used': '287', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:43 INFO    Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_107.json: 9144 bytes, format=json, sha=26cfa4b0514c66d409efe362acdb7181e5a06633
+2026-08-28T16:12:43 DEBUG   Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_107.json first line: {
+2026-08-28T16:12:43 DEBUG   Request 5-blob-110: GET https://api.github.com/repos/elastic/integrations/git/blobs/577a461b8b733104d8f6847aa4138a4794bbed3f
+2026-08-28T16:12:43 DEBUG   Request 5-blob-110 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:43 DEBUG   Response 5-blob-110: status=200 elapsed=0.242s body_len=12921
+2026-08-28T16:12:43 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4712', 'x-ratelimit-used': '288', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:43 INFO    Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_108.json: 9165 bytes, format=json, sha=577a461b8b733104d8f6847aa4138a4794bbed3f
+2026-08-28T16:12:43 DEBUG   Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_108.json first line: {
+2026-08-28T16:12:43 DEBUG   Request 5-blob-111: GET https://api.github.com/repos/elastic/integrations/git/blobs/fc19da303a9e35ab1cc4996a5a5139e136765e90
+2026-08-28T16:12:43 DEBUG   Request 5-blob-111 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:43 DEBUG   Response 5-blob-111: status=200 elapsed=0.193s body_len=12983
+2026-08-28T16:12:43 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4711', 'x-ratelimit-used': '289', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:43 INFO    Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_109.json: 9210 bytes, format=json, sha=fc19da303a9e35ab1cc4996a5a5139e136765e90
+2026-08-28T16:12:43 DEBUG   Blob 04c5a96f-19c5-44fd-9571-a0b033f9086f_109.json first line: {
+2026-08-28T16:12:43 DEBUG   Request 5-blob-112: GET https://api.github.com/repos/elastic/integrations/git/blobs/1f9b54204ae574e16a44caba07ca82ae9cc6bb2c
+2026-08-28T16:12:43 DEBUG   Request 5-blob-112 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:43 DEBUG   Response 5-blob-112: status=200 elapsed=0.206s body_len=8363
+2026-08-28T16:12:43 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4710', 'x-ratelimit-used': '290', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:43 INFO    Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_4.json: 5856 bytes, format=json, sha=1f9b54204ae574e16a44caba07ca82ae9cc6bb2c
+2026-08-28T16:12:43 DEBUG   Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_4.json first line: {
+2026-08-28T16:12:43 DEBUG   Request 5-blob-113: GET https://api.github.com/repos/elastic/integrations/git/blobs/dafdfe95fdae2a77b5348126c3865b2416eebe6b
+2026-08-28T16:12:43 DEBUG   Request 5-blob-113 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:44 DEBUG   Response 5-blob-113: status=200 elapsed=0.175s body_len=9151
+2026-08-28T16:12:44 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4709', 'x-ratelimit-used': '291', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:44 INFO    Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_5.json: 6429 bytes, format=json, sha=dafdfe95fdae2a77b5348126c3865b2416eebe6b
+2026-08-28T16:12:44 DEBUG   Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_5.json first line: {
+2026-08-28T16:12:44 DEBUG   Request 5-blob-114: GET https://api.github.com/repos/elastic/integrations/git/blobs/99387dd517b12ead2b36ad21a9a09b4d446236d9
+2026-08-28T16:12:44 DEBUG   Request 5-blob-114 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:44 DEBUG   Response 5-blob-114: status=200 elapsed=0.188s body_len=8383
+2026-08-28T16:12:44 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4708', 'x-ratelimit-used': '292', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:44 INFO    Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_6.json: 5870 bytes, format=json, sha=99387dd517b12ead2b36ad21a9a09b4d446236d9
+2026-08-28T16:12:44 DEBUG   Blob 04e65517-16e9-4fc4-b7f1-94dc21ecea0d_6.json first line: {
+2026-08-28T16:12:44 DEBUG   Request 5-blob-115: GET https://api.github.com/repos/elastic/integrations/git/blobs/6db61b15ca03a92e9ce397cae1a30d7853ce14bb
+2026-08-28T16:12:44 DEBUG   Request 5-blob-115 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:44 DEBUG   Response 5-blob-115: status=200 elapsed=0.269s body_len=14426
+2026-08-28T16:12:44 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4707', 'x-ratelimit-used': '293', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:44 INFO    Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_218.json: 10256 bytes, format=json, sha=6db61b15ca03a92e9ce397cae1a30d7853ce14bb
+2026-08-28T16:12:44 DEBUG   Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_218.json first line: {
+2026-08-28T16:12:44 DEBUG   Request 5-blob-116: GET https://api.github.com/repos/elastic/integrations/git/blobs/c4746149d0ee2d4a0a2b4bd3e46f1bc1cb346444
+2026-08-28T16:12:44 DEBUG   Request 5-blob-116 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:44 DEBUG   Response 5-blob-116: status=200 elapsed=0.194s body_len=25228
+2026-08-28T16:12:44 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4706', 'x-ratelimit-used': '294', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:44 INFO    Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_219.json: 18094 bytes, format=json, sha=c4746149d0ee2d4a0a2b4bd3e46f1bc1cb346444
+2026-08-28T16:12:44 DEBUG   Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_219.json first line: {
+2026-08-28T16:12:44 DEBUG   Request 5-blob-117: GET https://api.github.com/repos/elastic/integrations/git/blobs/0109eae3332dab7f5df9be5c0539b9be33610542
+2026-08-28T16:12:44 DEBUG   Request 5-blob-117 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:44 DEBUG   Response 5-blob-117: status=200 elapsed=0.211s body_len=25210
+2026-08-28T16:12:44 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4705', 'x-ratelimit-used': '295', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:44 INFO    Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_220.json: 18082 bytes, format=json, sha=0109eae3332dab7f5df9be5c0539b9be33610542
+2026-08-28T16:12:44 DEBUG   Blob 053a0387-f3b5-4ba5-8245-8002cca2bd08_220.json first line: {
+2026-08-28T16:12:44 DEBUG   Request 5-blob-118: GET https://api.github.com/repos/elastic/integrations/git/blobs/bcb9bcfece3c22b146c2cfbd64caa57f0028dcfc
+2026-08-28T16:12:44 DEBUG   Request 5-blob-118 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:45 DEBUG   Response 5-blob-118: status=200 elapsed=0.192s body_len=5799
+2026-08-28T16:12:45 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4704', 'x-ratelimit-used': '296', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:45 INFO    Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_1.json: 3995 bytes, format=json, sha=bcb9bcfece3c22b146c2cfbd64caa57f0028dcfc
+2026-08-28T16:12:45 DEBUG   Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_1.json first line: {
+2026-08-28T16:12:45 DEBUG   Request 5-blob-119: GET https://api.github.com/repos/elastic/integrations/git/blobs/4bd378825ce2bdd33bc1f9959a528a8a9db61c47
+2026-08-28T16:12:45 DEBUG   Request 5-blob-119 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:45 DEBUG   Response 5-blob-119: status=200 elapsed=0.185s body_len=5787
+2026-08-28T16:12:45 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4703', 'x-ratelimit-used': '297', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:45 INFO    Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_2.json: 3986 bytes, format=json, sha=4bd378825ce2bdd33bc1f9959a528a8a9db61c47
+2026-08-28T16:12:45 DEBUG   Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_2.json first line: {
+2026-08-28T16:12:45 DEBUG   Request 5-blob-120: GET https://api.github.com/repos/elastic/integrations/git/blobs/59d9291b2db2a3823b4781d8848647ce224521ce
+2026-08-28T16:12:45 DEBUG   Request 5-blob-120 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:45 DEBUG   Response 5-blob-120: status=200 elapsed=0.228s body_len=6461
+2026-08-28T16:12:45 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4702', 'x-ratelimit-used': '298', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:45 INFO    Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_4.json: 4475 bytes, format=json, sha=59d9291b2db2a3823b4781d8848647ce224521ce
+2026-08-28T16:12:45 DEBUG   Blob 054853f3-2ce0-41f3-a6eb-4a4867f39cdc_4.json first line: {
+2026-08-28T16:12:45 DEBUG   Request 5-blob-121: GET https://api.github.com/repos/elastic/integrations/git/blobs/0cc4d65c2f122f88952817c7e1cdae4c84d298dd
+2026-08-28T16:12:45 DEBUG   Request 5-blob-121 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:45 DEBUG   Response 5-blob-121: status=200 elapsed=0.222s body_len=16476
+2026-08-28T16:12:45 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4701', 'x-ratelimit-used': '299', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:45 INFO    Blob 054db96b-fd34-43b3-9af2-587b3bd33964_12.json: 11743 bytes, format=json, sha=0cc4d65c2f122f88952817c7e1cdae4c84d298dd
+2026-08-28T16:12:45 DEBUG   Blob 054db96b-fd34-43b3-9af2-587b3bd33964_12.json first line: {
+2026-08-28T16:12:45 DEBUG   Request 5-blob-122: GET https://api.github.com/repos/elastic/integrations/git/blobs/497c39f9d2df399e05cdba22f9a259295cdd821c
+2026-08-28T16:12:45 DEBUG   Request 5-blob-122 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:46 DEBUG   Response 5-blob-122: status=200 elapsed=0.192s body_len=18150
+2026-08-28T16:12:46 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4700', 'x-ratelimit-used': '300', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:46 INFO    Blob 054db96b-fd34-43b3-9af2-587b3bd33964_13.json: 12959 bytes, format=json, sha=497c39f9d2df399e05cdba22f9a259295cdd821c
+2026-08-28T16:12:46 DEBUG   Blob 054db96b-fd34-43b3-9af2-587b3bd33964_13.json first line: {
+2026-08-28T16:12:46 DEBUG   Request 5-blob-123: GET https://api.github.com/repos/elastic/integrations/git/blobs/217706bd036b34d9032aeb335d86a32065270d5b
+2026-08-28T16:12:46 DEBUG   Request 5-blob-123 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:46 DEBUG   Response 5-blob-123: status=200 elapsed=0.259s body_len=18212
+2026-08-28T16:12:46 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4699', 'x-ratelimit-used': '301', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:46 INFO    Blob 054db96b-fd34-43b3-9af2-587b3bd33964_14.json: 13004 bytes, format=json, sha=217706bd036b34d9032aeb335d86a32065270d5b
+2026-08-28T16:12:46 DEBUG   Blob 054db96b-fd34-43b3-9af2-587b3bd33964_14.json first line: {
+2026-08-28T16:12:46 DEBUG   Request 5-blob-124: GET https://api.github.com/repos/elastic/integrations/git/blobs/9103c756495a05186752285020fa37a98ee4d439
+2026-08-28T16:12:46 DEBUG   Request 5-blob-124 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:46 DEBUG   Response 5-blob-124: status=200 elapsed=0.177s body_len=5755
+2026-08-28T16:12:46 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4698', 'x-ratelimit-used': '302', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:46 INFO    Blob 0564fb9d-90b9-4234-a411-82a546dc1343_218.json: 3962 bytes, format=json, sha=9103c756495a05186752285020fa37a98ee4d439
+2026-08-28T16:12:46 DEBUG   Blob 0564fb9d-90b9-4234-a411-82a546dc1343_218.json first line: {
+2026-08-28T16:12:46 DEBUG   Request 5-blob-125: GET https://api.github.com/repos/elastic/integrations/git/blobs/e4dd304488f1e224da5c04d50522f78426907425
+2026-08-28T16:12:46 DEBUG   Request 5-blob-125 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:46 DEBUG   Response 5-blob-125: status=200 elapsed=0.201s body_len=6949
+2026-08-28T16:12:46 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4697', 'x-ratelimit-used': '303', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:46 INFO    Blob 0564fb9d-90b9-4234-a411-82a546dc1343_219.json: 4828 bytes, format=json, sha=e4dd304488f1e224da5c04d50522f78426907425
+2026-08-28T16:12:46 DEBUG   Blob 0564fb9d-90b9-4234-a411-82a546dc1343_219.json first line: {
+2026-08-28T16:12:46 DEBUG   Request 5-blob-126: GET https://api.github.com/repos/elastic/integrations/git/blobs/450397dc1b00296371365cc4a84353259b2c5544
+2026-08-28T16:12:46 DEBUG   Request 5-blob-126 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:46 DEBUG   Response 5-blob-126: status=200 elapsed=0.200s body_len=12239
+2026-08-28T16:12:46 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4696', 'x-ratelimit-used': '304', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:46 INFO    Blob 0564fb9d-90b9-4234-a411-82a546dc1343_220.json: 8668 bytes, format=json, sha=450397dc1b00296371365cc4a84353259b2c5544
+2026-08-28T16:12:46 DEBUG   Blob 0564fb9d-90b9-4234-a411-82a546dc1343_220.json first line: {
+2026-08-28T16:12:46 DEBUG   Request 5-blob-127: GET https://api.github.com/repos/elastic/integrations/git/blobs/09b649c2581e1d890e2a836cf5ab24713665c23c
+2026-08-28T16:12:46 DEBUG   Request 5-blob-127 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:47 DEBUG   Response 5-blob-127: status=200 elapsed=0.177s body_len=13529
+2026-08-28T16:12:47 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4695', 'x-ratelimit-used': '305', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:47 INFO    Blob 05a50000-9886-4695-ad33-3f990dc142e2_2.json: 9605 bytes, format=json, sha=09b649c2581e1d890e2a836cf5ab24713665c23c
+2026-08-28T16:12:47 DEBUG   Blob 05a50000-9886-4695-ad33-3f990dc142e2_2.json first line: {
+2026-08-28T16:12:47 DEBUG   Request 5-blob-128: GET https://api.github.com/repos/elastic/integrations/git/blobs/689a3068a9242c1b29c201f24cad1ad8974a3d72
+2026-08-28T16:12:47 DEBUG   Request 5-blob-128 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:47 DEBUG   Response 5-blob-128: status=200 elapsed=0.206s body_len=13509
+2026-08-28T16:12:47 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4694', 'x-ratelimit-used': '306', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:47 INFO    Blob 05a50000-9886-4695-ad33-3f990dc142e2_3.json: 9590 bytes, format=json, sha=689a3068a9242c1b29c201f24cad1ad8974a3d72
+2026-08-28T16:12:47 DEBUG   Blob 05a50000-9886-4695-ad33-3f990dc142e2_3.json first line: {
+2026-08-28T16:12:47 DEBUG   Request 5-blob-129: GET https://api.github.com/repos/elastic/integrations/git/blobs/ecb10be18b2ae418412a9ba084be64f9e2f6cd25
+2026-08-28T16:12:47 DEBUG   Request 5-blob-129 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:47 DEBUG   Response 5-blob-129: status=200 elapsed=0.221s body_len=13235
+2026-08-28T16:12:47 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4693', 'x-ratelimit-used': '307', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:47 INFO    Blob 05a50000-9886-4695-ad33-3f990dc142e2_4.json: 9392 bytes, format=json, sha=ecb10be18b2ae418412a9ba084be64f9e2f6cd25
+2026-08-28T16:12:47 DEBUG   Blob 05a50000-9886-4695-ad33-3f990dc142e2_4.json first line: {
+2026-08-28T16:12:47 DEBUG   Request 5-blob-130: GET https://api.github.com/repos/elastic/integrations/git/blobs/ee4773c764d8f869a22fbb4d7651ee105fbb2fa9
+2026-08-28T16:12:47 DEBUG   Request 5-blob-130 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:47 DEBUG   Response 5-blob-130: status=200 elapsed=0.225s body_len=9177
+2026-08-28T16:12:47 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4692', 'x-ratelimit-used': '308', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:47 INFO    Blob 05ac190c-5d02-4b81-bb57-221d33479570_1.json: 6447 bytes, format=json, sha=ee4773c764d8f869a22fbb4d7651ee105fbb2fa9
+2026-08-28T16:12:47 DEBUG   Blob 05ac190c-5d02-4b81-bb57-221d33479570_1.json first line: {
+2026-08-28T16:12:47 DEBUG   Request 5-blob-131: GET https://api.github.com/repos/elastic/integrations/git/blobs/f2f08eb0142e854dddb1c60c36071b72d6920570
+2026-08-28T16:12:47 DEBUG   Request 5-blob-131 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:47 DEBUG   Response 5-blob-131: status=200 elapsed=0.201s body_len=12433
+2026-08-28T16:12:47 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4691', 'x-ratelimit-used': '309', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:47 INFO    Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_313.json: 8809 bytes, format=json, sha=f2f08eb0142e854dddb1c60c36071b72d6920570
+2026-08-28T16:12:47 DEBUG   Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_313.json first line: {
+2026-08-28T16:12:47 DEBUG   Request 5-blob-132: GET https://api.github.com/repos/elastic/integrations/git/blobs/73a792e7f76b7445df6295c93c606dc4b3bd237a
+2026-08-28T16:12:47 DEBUG   Request 5-blob-132 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:48 DEBUG   Response 5-blob-132: status=200 elapsed=0.289s body_len=26468
+2026-08-28T16:12:48 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4690', 'x-ratelimit-used': '310', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:48 INFO    Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_314.json: 18996 bytes, format=json, sha=73a792e7f76b7445df6295c93c606dc4b3bd237a
+2026-08-28T16:12:48 DEBUG   Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_314.json first line: {
+2026-08-28T16:12:48 DEBUG   Request 5-blob-133: GET https://api.github.com/repos/elastic/integrations/git/blobs/c5e70c06f453af7d9ce3b340640961c02da91cdf
+2026-08-28T16:12:48 DEBUG   Request 5-blob-133 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:48 DEBUG   Response 5-blob-133: status=200 elapsed=0.193s body_len=26566
+2026-08-28T16:12:48 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4689', 'x-ratelimit-used': '311', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:48 INFO    Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_315.json: 19067 bytes, format=json, sha=c5e70c06f453af7d9ce3b340640961c02da91cdf
+2026-08-28T16:12:48 DEBUG   Blob 05b358de-aa6d-4f6c-89e6-78f74018b43b_315.json first line: {
+2026-08-28T16:12:48 DEBUG   Request 5-blob-134: GET https://api.github.com/repos/elastic/integrations/git/blobs/ddf689d2ecb4d0cd1916666ba26e0942bcac159f
+2026-08-28T16:12:48 DEBUG   Request 5-blob-134 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:48 DEBUG   Response 5-blob-134: status=200 elapsed=0.193s body_len=14812
+2026-08-28T16:12:48 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4688', 'x-ratelimit-used': '312', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:48 INFO    Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_10.json: 10535 bytes, format=json, sha=ddf689d2ecb4d0cd1916666ba26e0942bcac159f
+2026-08-28T16:12:48 DEBUG   Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_10.json first line: {
+2026-08-28T16:12:48 DEBUG   Request 5-blob-135: GET https://api.github.com/repos/elastic/integrations/git/blobs/b74e4d0d316b413de688e720eb386cf51b10b30f
+2026-08-28T16:12:48 DEBUG   Request 5-blob-135 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:48 DEBUG   Response 5-blob-135: status=200 elapsed=0.224s body_len=14852
+2026-08-28T16:12:48 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4687', 'x-ratelimit-used': '313', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:48 INFO    Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_11.json: 10564 bytes, format=json, sha=b74e4d0d316b413de688e720eb386cf51b10b30f
+2026-08-28T16:12:48 DEBUG   Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_11.json first line: {
+2026-08-28T16:12:48 DEBUG   Request 5-blob-136: GET https://api.github.com/repos/elastic/integrations/git/blobs/f5b9590175c3a86c2d6c0c6241188920aabe9106
+2026-08-28T16:12:48 DEBUG   Request 5-blob-136 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:48 DEBUG   Response 5-blob-136: status=200 elapsed=0.206s body_len=14778
+2026-08-28T16:12:48 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4686', 'x-ratelimit-used': '314', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:48 INFO    Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_9.json: 10512 bytes, format=json, sha=f5b9590175c3a86c2d6c0c6241188920aabe9106
+2026-08-28T16:12:48 DEBUG   Blob 05cad2fb-200c-407f-b472-02ea8c9e5e4a_9.json first line: {
+2026-08-28T16:12:48 DEBUG   Request 5-blob-137: GET https://api.github.com/repos/elastic/integrations/git/blobs/fbd3bc5aebba3e1ac56d31b8f45bb14b7490eef8
+2026-08-28T16:12:48 DEBUG   Request 5-blob-137 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:49 DEBUG   Response 5-blob-137: status=200 elapsed=0.217s body_len=14674
+2026-08-28T16:12:49 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4685', 'x-ratelimit-used': '315', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:49 INFO    Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_112.json: 10436 bytes, format=json, sha=fbd3bc5aebba3e1ac56d31b8f45bb14b7490eef8
+2026-08-28T16:12:49 DEBUG   Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_112.json first line: {
+2026-08-28T16:12:49 DEBUG   Request 5-blob-138: GET https://api.github.com/repos/elastic/integrations/git/blobs/7ea1607ba732685abc9cb8f8cce020f75f5b0eb8
+2026-08-28T16:12:49 DEBUG   Request 5-blob-138 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:49 DEBUG   Response 5-blob-138: status=200 elapsed=0.212s body_len=15878
+2026-08-28T16:12:49 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4684', 'x-ratelimit-used': '316', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:49 INFO    Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_113.json: 11310 bytes, format=json, sha=7ea1607ba732685abc9cb8f8cce020f75f5b0eb8
+2026-08-28T16:12:49 DEBUG   Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_113.json first line: {
+2026-08-28T16:12:49 DEBUG   Request 5-blob-139: GET https://api.github.com/repos/elastic/integrations/git/blobs/f8ab70d660956711dffa30f2e66485a8886f18a5
+2026-08-28T16:12:49 DEBUG   Request 5-blob-139 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:49 DEBUG   Response 5-blob-139: status=200 elapsed=0.226s body_len=16336
+2026-08-28T16:12:49 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4683', 'x-ratelimit-used': '317', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:49 INFO    Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_114.json: 11642 bytes, format=json, sha=f8ab70d660956711dffa30f2e66485a8886f18a5
+2026-08-28T16:12:49 DEBUG   Blob 05e5a668-7b51-4a67-93ab-e9af405c9ef3_114.json first line: {
+2026-08-28T16:12:49 DEBUG   Request 5-blob-140: GET https://api.github.com/repos/elastic/integrations/git/blobs/80df42f29fffec18278290d2248f36b6d49207f0
+2026-08-28T16:12:49 DEBUG   Request 5-blob-140 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:49 DEBUG   Response 5-blob-140: status=200 elapsed=0.174s body_len=13529
+2026-08-28T16:12:49 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4682', 'x-ratelimit-used': '318', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:49 INFO    Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_3.json: 9606 bytes, format=json, sha=80df42f29fffec18278290d2248f36b6d49207f0
+2026-08-28T16:12:49 DEBUG   Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_3.json first line: {
+2026-08-28T16:12:49 DEBUG   Request 5-blob-141: GET https://api.github.com/repos/elastic/integrations/git/blobs/44e6d179bad347b62aed18d792a3f5b02d63ecfc
+2026-08-28T16:12:49 DEBUG   Request 5-blob-141 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:50 DEBUG   Response 5-blob-141: status=200 elapsed=0.236s body_len=13809
+2026-08-28T16:12:50 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4681', 'x-ratelimit-used': '319', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:50 INFO    Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_4.json: 9810 bytes, format=json, sha=44e6d179bad347b62aed18d792a3f5b02d63ecfc
+2026-08-28T16:12:50 DEBUG   Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_4.json first line: {
+2026-08-28T16:12:50 DEBUG   Request 5-blob-142: GET https://api.github.com/repos/elastic/integrations/git/blobs/ce51cb58074f1505ca7dff04d7d0736d75235ef1
+2026-08-28T16:12:50 DEBUG   Request 5-blob-142 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:50 DEBUG   Response 5-blob-142: status=200 elapsed=0.213s body_len=13909
+2026-08-28T16:12:50 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4680', 'x-ratelimit-used': '320', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:50 INFO    Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_5.json: 9880 bytes, format=json, sha=ce51cb58074f1505ca7dff04d7d0736d75235ef1
+2026-08-28T16:12:50 DEBUG   Blob 05f2b649-dc03-4e9a-8c4e-6762469e8249_5.json first line: {
+2026-08-28T16:12:50 DEBUG   Request 5-blob-143: GET https://api.github.com/repos/elastic/integrations/git/blobs/873702e629e77094405df8bb8f8b27e9ceaab7bf
+2026-08-28T16:12:50 DEBUG   Request 5-blob-143 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:50 DEBUG   Response 5-blob-143: status=200 elapsed=0.213s body_len=10201
+2026-08-28T16:12:50 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4679', 'x-ratelimit-used': '321', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:50 INFO    Blob 0635c542-1b96-4335-9b47-126582d2c19a_215.json: 7190 bytes, format=json, sha=873702e629e77094405df8bb8f8b27e9ceaab7bf
+2026-08-28T16:12:50 DEBUG   Blob 0635c542-1b96-4335-9b47-126582d2c19a_215.json first line: {
+2026-08-28T16:12:50 DEBUG   Request 5-blob-144: GET https://api.github.com/repos/elastic/integrations/git/blobs/8f76169936a1ce9ee7551ffd235b16e2ee0e3414
+2026-08-28T16:12:50 DEBUG   Request 5-blob-144 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:50 DEBUG   Response 5-blob-144: status=200 elapsed=0.209s body_len=10201
+2026-08-28T16:12:50 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4678', 'x-ratelimit-used': '322', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:50 INFO    Blob 0635c542-1b96-4335-9b47-126582d2c19a_216.json: 7190 bytes, format=json, sha=8f76169936a1ce9ee7551ffd235b16e2ee0e3414
+2026-08-28T16:12:50 DEBUG   Blob 0635c542-1b96-4335-9b47-126582d2c19a_216.json first line: {
+2026-08-28T16:12:50 DEBUG   Request 5-blob-145: GET https://api.github.com/repos/elastic/integrations/git/blobs/42d92031f359b03e7d8cb93103e93e0ba9965b0d
+2026-08-28T16:12:50 DEBUG   Request 5-blob-145 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:50 DEBUG   Response 5-blob-145: status=200 elapsed=0.198s body_len=10975
+2026-08-28T16:12:50 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4677', 'x-ratelimit-used': '323', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:50 INFO    Blob 0635c542-1b96-4335-9b47-126582d2c19a_217.json: 7752 bytes, format=json, sha=42d92031f359b03e7d8cb93103e93e0ba9965b0d
+2026-08-28T16:12:50 DEBUG   Blob 0635c542-1b96-4335-9b47-126582d2c19a_217.json first line: {
+2026-08-28T16:12:50 DEBUG   Request 5-blob-146: GET https://api.github.com/repos/elastic/integrations/git/blobs/eca8803e0f058c1f5a61a60188c1a615f0b42914
+2026-08-28T16:12:50 DEBUG   Request 5-blob-146 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:51 DEBUG   Response 5-blob-146: status=200 elapsed=0.248s body_len=16448
+2026-08-28T16:12:51 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4676', 'x-ratelimit-used': '324', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:51 INFO    Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_4.json: 11723 bytes, format=json, sha=eca8803e0f058c1f5a61a60188c1a615f0b42914
+2026-08-28T16:12:51 DEBUG   Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_4.json first line: {
+2026-08-28T16:12:51 DEBUG   Request 5-blob-147: GET https://api.github.com/repos/elastic/integrations/git/blobs/305e74e96e03af8b6b7e24415e60c6bd2d4db195
+2026-08-28T16:12:51 DEBUG   Request 5-blob-147 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:51 DEBUG   Response 5-blob-147: status=200 elapsed=0.252s body_len=16476
+2026-08-28T16:12:51 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4675', 'x-ratelimit-used': '325', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:51 INFO    Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_5.json: 11744 bytes, format=json, sha=305e74e96e03af8b6b7e24415e60c6bd2d4db195
+2026-08-28T16:12:51 DEBUG   Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_5.json first line: {
+2026-08-28T16:12:51 DEBUG   Request 5-blob-148: GET https://api.github.com/repos/elastic/integrations/git/blobs/dba43923b5ee7a6362cafbd1e1d9b791352b250d
+2026-08-28T16:12:51 DEBUG   Request 5-blob-148 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:51 DEBUG   Response 5-blob-148: status=200 elapsed=0.219s body_len=16592
+2026-08-28T16:12:51 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4674', 'x-ratelimit-used': '326', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:51 INFO    Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_6.json: 11829 bytes, format=json, sha=dba43923b5ee7a6362cafbd1e1d9b791352b250d
+2026-08-28T16:12:51 DEBUG   Blob 064a2e08-25da-11f0-b1f1-f661ea17fbcd_6.json first line: {
+2026-08-28T16:12:51 DEBUG   Request 5-blob-149: GET https://api.github.com/repos/elastic/integrations/git/blobs/c1eff0df8c1bc939bacd603c96c7fb9a93a54493
+2026-08-28T16:12:51 DEBUG   Request 5-blob-149 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:51 DEBUG   Response 5-blob-149: status=200 elapsed=0.191s body_len=5101
+2026-08-28T16:12:51 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4673', 'x-ratelimit-used': '327', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:51 INFO    Blob 06568a02-af29-4f20-929c-f3af281e41aa_112.json: 3487 bytes, format=json, sha=c1eff0df8c1bc939bacd603c96c7fb9a93a54493
+2026-08-28T16:12:51 DEBUG   Blob 06568a02-af29-4f20-929c-f3af281e41aa_112.json first line: {
+2026-08-28T16:12:51 DEBUG   Request 5-blob-150: GET https://api.github.com/repos/elastic/integrations/git/blobs/d839ec799e29a307679c524cefe43a47ff81e09b
+2026-08-28T16:12:51 DEBUG   Request 5-blob-150 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:51 DEBUG   Response 5-blob-150: status=200 elapsed=0.197s body_len=5097
+2026-08-28T16:12:51 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4672', 'x-ratelimit-used': '328', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:51 INFO    Blob 06568a02-af29-4f20-929c-f3af281e41aa_113.json: 3486 bytes, format=json, sha=d839ec799e29a307679c524cefe43a47ff81e09b
+2026-08-28T16:12:51 DEBUG   Blob 06568a02-af29-4f20-929c-f3af281e41aa_113.json first line: {
+2026-08-28T16:12:51 DEBUG   Request 5-blob-151: GET https://api.github.com/repos/elastic/integrations/git/blobs/19810d558dbc599ccc38012d2c97e8499c525ba2
+2026-08-28T16:12:51 DEBUG   Request 5-blob-151 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:52 DEBUG   Response 5-blob-151: status=200 elapsed=0.221s body_len=5415
+2026-08-28T16:12:52 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4671', 'x-ratelimit-used': '329', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:52 INFO    Blob 06568a02-af29-4f20-929c-f3af281e41aa_114.json: 3716 bytes, format=json, sha=19810d558dbc599ccc38012d2c97e8499c525ba2
+2026-08-28T16:12:52 DEBUG   Blob 06568a02-af29-4f20-929c-f3af281e41aa_114.json first line: {
+2026-08-28T16:12:52 DEBUG   Request 5-blob-152: GET https://api.github.com/repos/elastic/integrations/git/blobs/41f5c4235e0dacf16eb7fc9f6df1c5b8b2b013d0
+2026-08-28T16:12:52 DEBUG   Request 5-blob-152 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:52 DEBUG   Response 5-blob-152: status=200 elapsed=0.233s body_len=12579
+2026-08-28T16:12:52 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4670', 'x-ratelimit-used': '330', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:52 INFO    Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_109.json: 8914 bytes, format=json, sha=41f5c4235e0dacf16eb7fc9f6df1c5b8b2b013d0
+2026-08-28T16:12:52 DEBUG   Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_109.json first line: {
+2026-08-28T16:12:52 DEBUG   Request 5-blob-153: GET https://api.github.com/repos/elastic/integrations/git/blobs/a40e378911b4be49fd2dc10686c74454616af216
+2026-08-28T16:12:52 DEBUG   Request 5-blob-153 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:52 DEBUG   Response 5-blob-153: status=200 elapsed=0.201s body_len=12627
+2026-08-28T16:12:52 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4669', 'x-ratelimit-used': '331', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:52 INFO    Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_110.json: 8950 bytes, format=json, sha=a40e378911b4be49fd2dc10686c74454616af216
+2026-08-28T16:12:52 DEBUG   Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_110.json first line: {
+2026-08-28T16:12:52 DEBUG   Request 5-blob-154: GET https://api.github.com/repos/elastic/integrations/git/blobs/f198ec2eededfc701ff5e38ad048c3af2bf32bd6
+2026-08-28T16:12:52 DEBUG   Request 5-blob-154 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:52 DEBUG   Response 5-blob-154: status=200 elapsed=0.200s body_len=12685
+2026-08-28T16:12:52 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4668', 'x-ratelimit-used': '332', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:52 INFO    Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_111.json: 8993 bytes, format=json, sha=f198ec2eededfc701ff5e38ad048c3af2bf32bd6
+2026-08-28T16:12:52 DEBUG   Blob 0678bc9c-b71a-433b-87e6-2f664b6b3131_111.json first line: {
+2026-08-28T16:12:52 DEBUG   Request 5-blob-155: GET https://api.github.com/repos/elastic/integrations/git/blobs/0efd381259836fd509055e872d6dca3319769d77
+2026-08-28T16:12:52 DEBUG   Request 5-blob-155 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:53 DEBUG   Response 5-blob-155: status=200 elapsed=0.181s body_len=9743
+2026-08-28T16:12:53 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4667', 'x-ratelimit-used': '333', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:53 INFO    Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_213.json: 6857 bytes, format=json, sha=0efd381259836fd509055e872d6dca3319769d77
+2026-08-28T16:12:53 DEBUG   Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_213.json first line: {
+2026-08-28T16:12:53 DEBUG   Request 5-blob-156: GET https://api.github.com/repos/elastic/integrations/git/blobs/c64176b39097b0d29a26abb9b88e5bda04a20172
+2026-08-28T16:12:53 DEBUG   Request 5-blob-156 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:53 DEBUG   Response 5-blob-156: status=200 elapsed=0.236s body_len=9731
+2026-08-28T16:12:53 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4666', 'x-ratelimit-used': '334', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:53 INFO    Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_214.json: 6848 bytes, format=json, sha=c64176b39097b0d29a26abb9b88e5bda04a20172
+2026-08-28T16:12:53 DEBUG   Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_214.json first line: {
+2026-08-28T16:12:53 DEBUG   Request 5-blob-157: GET https://api.github.com/repos/elastic/integrations/git/blobs/72a53351871ed11b893e8e5efe18aa756d386dd9
+2026-08-28T16:12:53 DEBUG   Request 5-blob-157 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:53 DEBUG   Response 5-blob-157: status=200 elapsed=0.194s body_len=10875
+2026-08-28T16:12:53 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4665', 'x-ratelimit-used': '335', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:53 INFO    Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_215.json: 7679 bytes, format=json, sha=72a53351871ed11b893e8e5efe18aa756d386dd9
+2026-08-28T16:12:53 DEBUG   Blob 06a7a03c-c735-47a6-a313-51c354aef6c3_215.json first line: {
+2026-08-28T16:12:53 DEBUG   Request 5-blob-158: GET https://api.github.com/repos/elastic/integrations/git/blobs/7360edf1a0147fb7f8de88c6a41acee653836422
+2026-08-28T16:12:53 DEBUG   Request 5-blob-158 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:53 DEBUG   Response 5-blob-158: status=200 elapsed=0.242s body_len=17672
+2026-08-28T16:12:53 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4664', 'x-ratelimit-used': '336', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:53 INFO    Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_106.json: 12611 bytes, format=json, sha=7360edf1a0147fb7f8de88c6a41acee653836422
+2026-08-28T16:12:53 DEBUG   Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_106.json first line: {
+2026-08-28T16:12:53 DEBUG   Request 5-blob-159: GET https://api.github.com/repos/elastic/integrations/git/blobs/b032fda4f4b9e092d1b4e5265ed8c16598a0415d
+2026-08-28T16:12:53 DEBUG   Request 5-blob-159 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:53 DEBUG   Response 5-blob-159: status=200 elapsed=0.210s body_len=18448
+2026-08-28T16:12:53 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4663', 'x-ratelimit-used': '337', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:53 INFO    Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_107.json: 13176 bytes, format=json, sha=b032fda4f4b9e092d1b4e5265ed8c16598a0415d
+2026-08-28T16:12:53 DEBUG   Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_107.json first line: {
+2026-08-28T16:12:53 DEBUG   Request 5-blob-160: GET https://api.github.com/repos/elastic/integrations/git/blobs/e21db73c36c4be517cca17aaf10fc1d22a9a09fc
+2026-08-28T16:12:53 DEBUG   Request 5-blob-160 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:54 DEBUG   Response 5-blob-160: status=200 elapsed=0.215s body_len=17936
+2026-08-28T16:12:54 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4662', 'x-ratelimit-used': '338', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:54 INFO    Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_108.json: 12803 bytes, format=json, sha=e21db73c36c4be517cca17aaf10fc1d22a9a09fc
+2026-08-28T16:12:54 DEBUG   Blob 06d555e4-c8ce-4d90-90e1-ec7f66df5a6a_108.json first line: {
+2026-08-28T16:12:54 DEBUG   Request 5-blob-161: GET https://api.github.com/repos/elastic/integrations/git/blobs/ffa206213533573f0663e3d21d5e938382e260b7
+2026-08-28T16:12:54 DEBUG   Request 5-blob-161 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:54 DEBUG   Response 5-blob-161: status=200 elapsed=0.241s body_len=13951
+2026-08-28T16:12:54 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4661', 'x-ratelimit-used': '339', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:54 INFO    Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_219.json: 9911 bytes, format=json, sha=ffa206213533573f0663e3d21d5e938382e260b7
+2026-08-28T16:12:54 DEBUG   Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_219.json first line: {
+2026-08-28T16:12:54 DEBUG   Request 5-blob-162: GET https://api.github.com/repos/elastic/integrations/git/blobs/c47e2dc509b093ea7ab44d44077f748f8429d157
+2026-08-28T16:12:54 DEBUG   Request 5-blob-162 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:54 DEBUG   Response 5-blob-162: status=200 elapsed=0.212s body_len=15010
+2026-08-28T16:12:54 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4660', 'x-ratelimit-used': '340', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:54 INFO    Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_220.json: 10679 bytes, format=json, sha=c47e2dc509b093ea7ab44d44077f748f8429d157
+2026-08-28T16:12:54 DEBUG   Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_220.json first line: {
+2026-08-28T16:12:54 DEBUG   Request 5-blob-163: GET https://api.github.com/repos/elastic/integrations/git/blobs/35df1ce787211adb70067225a2820973f03839c8
+2026-08-28T16:12:54 DEBUG   Request 5-blob-163 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:54 DEBUG   Response 5-blob-163: status=200 elapsed=0.219s body_len=14568
+2026-08-28T16:12:54 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4659', 'x-ratelimit-used': '341', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:54 INFO    Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_221.json: 10357 bytes, format=json, sha=35df1ce787211adb70067225a2820973f03839c8
+2026-08-28T16:12:54 DEBUG   Blob 06dceabf-adca-48af-ac79-ffdf4c3b1e9a_221.json first line: {
+2026-08-28T16:12:54 DEBUG   Request 5-blob-164: GET https://api.github.com/repos/elastic/integrations/git/blobs/45903f5cf9e838ec58ec0b4ddd89c45484d61678
+2026-08-28T16:12:54 DEBUG   Request 5-blob-164 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:55 DEBUG   Response 5-blob-164: status=200 elapsed=0.244s body_len=15200
+2026-08-28T16:12:55 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4658', 'x-ratelimit-used': '342', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:55 INFO    Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_3.json: 10817 bytes, format=json, sha=45903f5cf9e838ec58ec0b4ddd89c45484d61678
+2026-08-28T16:12:55 DEBUG   Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_3.json first line: {
+2026-08-28T16:12:55 DEBUG   Request 5-blob-165: GET https://api.github.com/repos/elastic/integrations/git/blobs/91e1fdd86ae6b2a21795eab45c56fe94b1123425
+2026-08-28T16:12:55 DEBUG   Request 5-blob-165 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:55 DEBUG   Response 5-blob-165: status=200 elapsed=0.243s body_len=15200
+2026-08-28T16:12:55 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4657', 'x-ratelimit-used': '343', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:55 INFO    Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_4.json: 10817 bytes, format=json, sha=91e1fdd86ae6b2a21795eab45c56fe94b1123425
+2026-08-28T16:12:55 DEBUG   Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_4.json first line: {
+2026-08-28T16:12:55 DEBUG   Request 5-blob-166: GET https://api.github.com/repos/elastic/integrations/git/blobs/0a4dff5d8735794022da8876223199e86ca0a0ff
+2026-08-28T16:12:55 DEBUG   Request 5-blob-166 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:55 DEBUG   Response 5-blob-166: status=200 elapsed=0.232s body_len=15180
+2026-08-28T16:12:55 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4656', 'x-ratelimit-used': '344', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:55 INFO    Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_5.json: 10802 bytes, format=json, sha=0a4dff5d8735794022da8876223199e86ca0a0ff
+2026-08-28T16:12:55 DEBUG   Blob 06f3a26c-ea35-11ee-a417-f661ea17fbce_5.json first line: {
+2026-08-28T16:12:55 DEBUG   Request 5-blob-167: GET https://api.github.com/repos/elastic/integrations/git/blobs/78de3bf687abb90bb9ccf06aff8a102da6784cf1
+2026-08-28T16:12:55 DEBUG   Request 5-blob-167 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:55 DEBUG   Response 5-blob-167: status=200 elapsed=0.216s body_len=10851
+2026-08-28T16:12:55 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4655', 'x-ratelimit-used': '345', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:55 INFO    Blob 074464f9-f30d-4029-8c03-0ed237fffec7_317.json: 7661 bytes, format=json, sha=78de3bf687abb90bb9ccf06aff8a102da6784cf1
+2026-08-28T16:12:55 DEBUG   Blob 074464f9-f30d-4029-8c03-0ed237fffec7_317.json first line: {
+2026-08-28T16:12:55 DEBUG   Request 5-blob-168: GET https://api.github.com/repos/elastic/integrations/git/blobs/9cb34f1076c0fa5ab7107ae965cf70c7bfb89875
+2026-08-28T16:12:55 DEBUG   Request 5-blob-168 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:55 DEBUG   Response 5-blob-168: status=200 elapsed=0.177s body_len=11987
+2026-08-28T16:12:55 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4654', 'x-ratelimit-used': '346', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:55 INFO    Blob 074464f9-f30d-4029-8c03-0ed237fffec7_318.json: 8486 bytes, format=json, sha=9cb34f1076c0fa5ab7107ae965cf70c7bfb89875
+2026-08-28T16:12:55 DEBUG   Blob 074464f9-f30d-4029-8c03-0ed237fffec7_318.json first line: {
+2026-08-28T16:12:55 DEBUG   Request 5-blob-169: GET https://api.github.com/repos/elastic/integrations/git/blobs/2c992e6914b6f36c746cbf9fa3a0f75328d340ce
+2026-08-28T16:12:55 DEBUG   Request 5-blob-169 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:56 DEBUG   Response 5-blob-169: status=200 elapsed=0.206s body_len=11909
+2026-08-28T16:12:56 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4653', 'x-ratelimit-used': '347', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:56 INFO    Blob 074464f9-f30d-4029-8c03-0ed237fffec7_319.json: 8430 bytes, format=json, sha=2c992e6914b6f36c746cbf9fa3a0f75328d340ce
+2026-08-28T16:12:56 DEBUG   Blob 074464f9-f30d-4029-8c03-0ed237fffec7_319.json first line: {
+2026-08-28T16:12:56 DEBUG   Request 5-blob-170: GET https://api.github.com/repos/elastic/integrations/git/blobs/86cfcafa976040e3a88dbb4dc75016683ebe92a5
+2026-08-28T16:12:56 DEBUG   Request 5-blob-170 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:56 DEBUG   Response 5-blob-170: status=200 elapsed=0.203s body_len=9553
+2026-08-28T16:12:56 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4652', 'x-ratelimit-used': '348', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:56 INFO    Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_209.json: 6720 bytes, format=json, sha=86cfcafa976040e3a88dbb4dc75016683ebe92a5
+2026-08-28T16:12:56 DEBUG   Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_209.json first line: {
+2026-08-28T16:12:56 DEBUG   Request 5-blob-171: GET https://api.github.com/repos/elastic/integrations/git/blobs/428a04cc5ba62ac6f4ca0becf27686ff0418ca64
+2026-08-28T16:12:56 DEBUG   Request 5-blob-171 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:56 DEBUG   Response 5-blob-171: status=200 elapsed=0.252s body_len=9581
+2026-08-28T16:12:56 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4651', 'x-ratelimit-used': '349', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:56 INFO    Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_210.json: 6741 bytes, format=json, sha=428a04cc5ba62ac6f4ca0becf27686ff0418ca64
+2026-08-28T16:12:56 DEBUG   Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_210.json first line: {
+2026-08-28T16:12:56 DEBUG   Request 5-blob-172: GET https://api.github.com/repos/elastic/integrations/git/blobs/8e4a92e8e54df000d62cd8ce0dff652e76a1b417
+2026-08-28T16:12:56 DEBUG   Request 5-blob-172 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:56 DEBUG   Response 5-blob-172: status=200 elapsed=0.247s body_len=9135
+2026-08-28T16:12:56 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4650', 'x-ratelimit-used': '350', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:56 INFO    Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_211.json: 6415 bytes, format=json, sha=8e4a92e8e54df000d62cd8ce0dff652e76a1b417
+2026-08-28T16:12:56 DEBUG   Blob 07639887-da3a-4fbf-9532-8ce748ff8c50_211.json first line: {
+2026-08-28T16:12:56 DEBUG   Request 5-blob-173: GET https://api.github.com/repos/elastic/integrations/git/blobs/69fa83c01d3881c9140df80ddb250bcb43717db8
+2026-08-28T16:12:56 DEBUG   Request 5-blob-173 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:57 DEBUG   Response 5-blob-173: status=200 elapsed=0.182s body_len=7387
+2026-08-28T16:12:57 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4649', 'x-ratelimit-used': '351', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:57 INFO    Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_7.json: 5147 bytes, format=json, sha=69fa83c01d3881c9140df80ddb250bcb43717db8
+2026-08-28T16:12:57 DEBUG   Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_7.json first line: {
+2026-08-28T16:12:57 DEBUG   Request 5-blob-174: GET https://api.github.com/repos/elastic/integrations/git/blobs/20225996e5940e3a0c337942081c2513ca65dcc4
+2026-08-28T16:12:57 DEBUG   Request 5-blob-174 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:57 DEBUG   Response 5-blob-174: status=200 elapsed=0.178s body_len=7387
+2026-08-28T16:12:57 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4648', 'x-ratelimit-used': '352', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:57 INFO    Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_8.json: 5148 bytes, format=json, sha=20225996e5940e3a0c337942081c2513ca65dcc4
+2026-08-28T16:12:57 DEBUG   Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_8.json first line: {
+2026-08-28T16:12:57 DEBUG   Request 5-blob-175: GET https://api.github.com/repos/elastic/integrations/git/blobs/abb34e3d793af6a8de635eb67fea232fde0dca2f
+2026-08-28T16:12:57 DEBUG   Request 5-blob-175 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:57 DEBUG   Response 5-blob-175: status=200 elapsed=0.176s body_len=7391
+2026-08-28T16:12:57 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4647', 'x-ratelimit-used': '353', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:57 INFO    Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_9.json: 5149 bytes, format=json, sha=abb34e3d793af6a8de635eb67fea232fde0dca2f
+2026-08-28T16:12:57 DEBUG   Blob 0787daa6-f8c5-453b-a4ec-048037f6c1cd_9.json first line: {
+2026-08-28T16:12:57 DEBUG   Request 5-blob-176: GET https://api.github.com/repos/elastic/integrations/git/blobs/b9965a46347511a9b04092d019934403f188032f
+2026-08-28T16:12:57 DEBUG   Request 5-blob-176 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:57 DEBUG   Response 5-blob-176: status=200 elapsed=0.199s body_len=15386
+2026-08-28T16:12:57 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4646', 'x-ratelimit-used': '354', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:57 INFO    Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_320.json: 10952 bytes, format=json, sha=b9965a46347511a9b04092d019934403f188032f
+2026-08-28T16:12:57 DEBUG   Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_320.json first line: {
+2026-08-28T16:12:57 DEBUG   Request 5-blob-177: GET https://api.github.com/repos/elastic/integrations/git/blobs/d47f05324449a983e896448476e4f689dc153450
+2026-08-28T16:12:57 DEBUG   Request 5-blob-177 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:57 DEBUG   Response 5-blob-177: status=200 elapsed=0.228s body_len=16402
+2026-08-28T16:12:57 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4645', 'x-ratelimit-used': '355', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:57 INFO    Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_321.json: 11691 bytes, format=json, sha=d47f05324449a983e896448476e4f689dc153450
+2026-08-28T16:12:57 DEBUG   Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_321.json first line: {
+2026-08-28T16:12:57 DEBUG   Request 5-blob-178: GET https://api.github.com/repos/elastic/integrations/git/blobs/5d591465386419c6a1e66f6ba8ad9d1395c28e48
+2026-08-28T16:12:57 DEBUG   Request 5-blob-178 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:58 DEBUG   Response 5-blob-178: status=200 elapsed=0.215s body_len=17742
+2026-08-28T16:12:58 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4644', 'x-ratelimit-used': '356', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:58 INFO    Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_322.json: 12663 bytes, format=json, sha=5d591465386419c6a1e66f6ba8ad9d1395c28e48
+2026-08-28T16:12:58 DEBUG   Blob 07b1ef73-1fde-4a49-a34a-5dd40011b076_322.json first line: {
+2026-08-28T16:12:58 DEBUG   Request 5-blob-179: GET https://api.github.com/repos/elastic/integrations/git/blobs/c82b960904c5ecb5c819f918cdf90edb8db751e5
+2026-08-28T16:12:58 DEBUG   Request 5-blob-179 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:58 DEBUG   Response 5-blob-179: status=200 elapsed=0.184s body_len=12569
+2026-08-28T16:12:58 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4643', 'x-ratelimit-used': '357', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:58 INFO    Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_110.json: 8910 bytes, format=json, sha=c82b960904c5ecb5c819f918cdf90edb8db751e5
+2026-08-28T16:12:58 DEBUG   Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_110.json first line: {
+2026-08-28T16:12:58 DEBUG   Request 5-blob-180: GET https://api.github.com/repos/elastic/integrations/git/blobs/ad70a94c5634306b8764d0c5146a0c37fe0d39fa
+2026-08-28T16:12:58 DEBUG   Request 5-blob-180 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:58 DEBUG   Response 5-blob-180: status=200 elapsed=0.212s body_len=12599
+2026-08-28T16:12:58 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4642', 'x-ratelimit-used': '358', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:58 INFO    Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_111.json: 8931 bytes, format=json, sha=ad70a94c5634306b8764d0c5146a0c37fe0d39fa
+2026-08-28T16:12:58 DEBUG   Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_111.json first line: {
+2026-08-28T16:12:58 DEBUG   Request 5-blob-181: GET https://api.github.com/repos/elastic/integrations/git/blobs/69306f81ae428b21c2c2c1df82e5f4d215c928ce
+2026-08-28T16:12:58 DEBUG   Request 5-blob-181 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:58 DEBUG   Response 5-blob-181: status=200 elapsed=0.217s body_len=14228
+2026-08-28T16:12:58 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4641', 'x-ratelimit-used': '359', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:58 INFO    Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_112.json: 10111 bytes, format=json, sha=69306f81ae428b21c2c2c1df82e5f4d215c928ce
+2026-08-28T16:12:58 DEBUG   Blob 07b5f85a-240f-11ed-b3d9-f661ea17fbce_112.json first line: {
+2026-08-28T16:12:58 DEBUG   Request 5-blob-182: GET https://api.github.com/repos/elastic/integrations/git/blobs/e580c3f98fb1e48181c48c290f379a36a481552a
+2026-08-28T16:12:58 DEBUG   Request 5-blob-182 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:58 DEBUG   Response 5-blob-182: status=200 elapsed=0.246s body_len=10917
+2026-08-28T16:12:58 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4640', 'x-ratelimit-used': '360', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:58 INFO    Blob 07cd35a6-c267-4394-a782-6a9428aea9d3_1.json: 7709 bytes, format=json, sha=e580c3f98fb1e48181c48c290f379a36a481552a
+2026-08-28T16:12:58 DEBUG   Blob 07cd35a6-c267-4394-a782-6a9428aea9d3_1.json first line: {
+2026-08-28T16:12:58 DEBUG   Request 5-blob-183: GET https://api.github.com/repos/elastic/integrations/git/blobs/96c34f54ba66c042a49fb68b56aa75665e09a573
+2026-08-28T16:12:58 DEBUG   Request 5-blob-183 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:59 DEBUG   Response 5-blob-183: status=200 elapsed=0.199s body_len=14596
+2026-08-28T16:12:59 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4639', 'x-ratelimit-used': '361', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:59 INFO    Blob 080bc66a-5d56-4d1f-8071-817671716db9_112.json: 10379 bytes, format=json, sha=96c34f54ba66c042a49fb68b56aa75665e09a573
+2026-08-28T16:12:59 DEBUG   Blob 080bc66a-5d56-4d1f-8071-817671716db9_112.json first line: {
+2026-08-28T16:12:59 DEBUG   Request 5-blob-184: GET https://api.github.com/repos/elastic/integrations/git/blobs/177c0562b129a3926ce90d991f7a8b56260b1e84
+2026-08-28T16:12:59 DEBUG   Request 5-blob-184 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:59 DEBUG   Response 5-blob-184: status=200 elapsed=0.234s body_len=17208
+2026-08-28T16:12:59 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4638', 'x-ratelimit-used': '362', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:59 INFO    Blob 080bc66a-5d56-4d1f-8071-817671716db9_113.json: 12274 bytes, format=json, sha=177c0562b129a3926ce90d991f7a8b56260b1e84
+2026-08-28T16:12:59 DEBUG   Blob 080bc66a-5d56-4d1f-8071-817671716db9_113.json first line: {
+2026-08-28T16:12:59 DEBUG   Request 5-blob-185: GET https://api.github.com/repos/elastic/integrations/git/blobs/4f55fbfc068f3d216163e54226e92ff14d3920e8
+2026-08-28T16:12:59 DEBUG   Request 5-blob-185 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:59 DEBUG   Response 5-blob-185: status=200 elapsed=0.241s body_len=17266
+2026-08-28T16:12:59 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4637', 'x-ratelimit-used': '363', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:59 INFO    Blob 080bc66a-5d56-4d1f-8071-817671716db9_114.json: 12318 bytes, format=json, sha=4f55fbfc068f3d216163e54226e92ff14d3920e8
+2026-08-28T16:12:59 DEBUG   Blob 080bc66a-5d56-4d1f-8071-817671716db9_114.json first line: {
+2026-08-28T16:12:59 DEBUG   Request 5-blob-186: GET https://api.github.com/repos/elastic/integrations/git/blobs/eacb80d6eefb2eac18f895dcbb3907b9fa837779
+2026-08-28T16:12:59 DEBUG   Request 5-blob-186 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:59 DEBUG   Response 5-blob-186: status=200 elapsed=0.209s body_len=14480
+2026-08-28T16:12:59 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4636', 'x-ratelimit-used': '364', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:59 INFO    Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_111.json: 10295 bytes, format=json, sha=eacb80d6eefb2eac18f895dcbb3907b9fa837779
+2026-08-28T16:12:59 DEBUG   Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_111.json first line: {
+2026-08-28T16:12:59 DEBUG   Request 5-blob-187: GET https://api.github.com/repos/elastic/integrations/git/blobs/7fac88a5842bddc7b47790e033459f6c7e3a0cee
+2026-08-28T16:12:59 DEBUG   Request 5-blob-187 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:12:59 DEBUG   Response 5-blob-187: status=200 elapsed=0.226s body_len=16034
+2026-08-28T16:12:59 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4635', 'x-ratelimit-used': '365', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:12:59 INFO    Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_112.json: 11424 bytes, format=json, sha=7fac88a5842bddc7b47790e033459f6c7e3a0cee
+2026-08-28T16:12:59 DEBUG   Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_112.json first line: {
+2026-08-28T16:12:59 DEBUG   Request 5-blob-188: GET https://api.github.com/repos/elastic/integrations/git/blobs/1f0a5aae49ab03cdfc40d309d94de0473587fc24
+2026-08-28T16:12:59 DEBUG   Request 5-blob-188 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:00 DEBUG   Response 5-blob-188: status=200 elapsed=0.260s body_len=16084
+2026-08-28T16:13:00 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4634', 'x-ratelimit-used': '366', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:00 INFO    Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_113.json: 11458 bytes, format=json, sha=1f0a5aae49ab03cdfc40d309d94de0473587fc24
+2026-08-28T16:13:00 DEBUG   Blob 082e3f8c-6f80-485c-91eb-5b112cb79b28_113.json first line: {
+2026-08-28T16:13:00 DEBUG   Request 5-blob-189: GET https://api.github.com/repos/elastic/integrations/git/blobs/b53cea62d007cb62c4deb5f4b32eb1f2bde12011
+2026-08-28T16:13:00 DEBUG   Request 5-blob-189 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:00 DEBUG   Response 5-blob-189: status=200 elapsed=0.201s body_len=23602
+2026-08-28T16:13:00 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4633', 'x-ratelimit-used': '367', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:00 INFO    Blob 083383af-b9a4-42b7-a463-29c40efe7797_10.json: 16916 bytes, format=json, sha=b53cea62d007cb62c4deb5f4b32eb1f2bde12011
+2026-08-28T16:13:00 DEBUG   Blob 083383af-b9a4-42b7-a463-29c40efe7797_10.json first line: {
+2026-08-28T16:13:00 DEBUG   Request 5-blob-190: GET https://api.github.com/repos/elastic/integrations/git/blobs/8a6f1a47bb441a4cc42a8e5cea84a2482469c571
+2026-08-28T16:13:00 DEBUG   Request 5-blob-190 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:00 DEBUG   Response 5-blob-190: status=200 elapsed=0.205s body_len=29072
+2026-08-28T16:13:00 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4632', 'x-ratelimit-used': '368', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:00 INFO    Blob 083383af-b9a4-42b7-a463-29c40efe7797_11.json: 20884 bytes, format=json, sha=8a6f1a47bb441a4cc42a8e5cea84a2482469c571
+2026-08-28T16:13:00 DEBUG   Blob 083383af-b9a4-42b7-a463-29c40efe7797_11.json first line: {
+2026-08-28T16:13:00 DEBUG   Request 5-blob-191: GET https://api.github.com/repos/elastic/integrations/git/blobs/137ad34fe1934db5c59d48912ca31b493e1048bb
+2026-08-28T16:13:00 DEBUG   Request 5-blob-191 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:00 DEBUG   Response 5-blob-191: status=200 elapsed=0.261s body_len=29096
+2026-08-28T16:13:00 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4631', 'x-ratelimit-used': '369', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:00 INFO    Blob 083383af-b9a4-42b7-a463-29c40efe7797_12.json: 20902 bytes, format=json, sha=137ad34fe1934db5c59d48912ca31b493e1048bb
+2026-08-28T16:13:00 DEBUG   Blob 083383af-b9a4-42b7-a463-29c40efe7797_12.json first line: {
+2026-08-28T16:13:00 DEBUG   Request 5-blob-192: GET https://api.github.com/repos/elastic/integrations/git/blobs/182461f23770a1be0213c432e883c7d6f25b033e
+2026-08-28T16:13:00 DEBUG   Request 5-blob-192 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:01 DEBUG   Response 5-blob-192: status=200 elapsed=0.213s body_len=14430
+2026-08-28T16:13:01 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4630', 'x-ratelimit-used': '370', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:01 INFO    Blob 083fa162-e790-4d85-9aeb-4fea04188adb_110.json: 10260 bytes, format=json, sha=182461f23770a1be0213c432e883c7d6f25b033e
+2026-08-28T16:13:01 DEBUG   Blob 083fa162-e790-4d85-9aeb-4fea04188adb_110.json first line: {
+2026-08-28T16:13:01 DEBUG   Request 5-blob-193: GET https://api.github.com/repos/elastic/integrations/git/blobs/57f230532a7a7be1aa96cb9a8269bb43134e19ec
+2026-08-28T16:13:01 DEBUG   Request 5-blob-193 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:01 DEBUG   Response 5-blob-193: status=200 elapsed=0.220s body_len=14794
+2026-08-28T16:13:01 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4629', 'x-ratelimit-used': '371', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:01 INFO    Blob 083fa162-e790-4d85-9aeb-4fea04188adb_111.json: 10523 bytes, format=json, sha=57f230532a7a7be1aa96cb9a8269bb43134e19ec
+2026-08-28T16:13:01 DEBUG   Blob 083fa162-e790-4d85-9aeb-4fea04188adb_111.json first line: {
+2026-08-28T16:13:01 DEBUG   Request 5-blob-194: GET https://api.github.com/repos/elastic/integrations/git/blobs/88aca60bf09c754d6571d5681bd9cf980d85f75b
+2026-08-28T16:13:01 DEBUG   Request 5-blob-194 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:01 DEBUG   Response 5-blob-194: status=200 elapsed=0.202s body_len=14774
+2026-08-28T16:13:01 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4628', 'x-ratelimit-used': '372', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:01 INFO    Blob 083fa162-e790-4d85-9aeb-4fea04188adb_112.json: 10508 bytes, format=json, sha=88aca60bf09c754d6571d5681bd9cf980d85f75b
+2026-08-28T16:13:01 DEBUG   Blob 083fa162-e790-4d85-9aeb-4fea04188adb_112.json first line: {
+2026-08-28T16:13:01 DEBUG   Request 5-blob-195: GET https://api.github.com/repos/elastic/integrations/git/blobs/98aa47ab07a0b8e4833a6fd4f93421d0f3f35148
+2026-08-28T16:13:01 DEBUG   Request 5-blob-195 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:01 DEBUG   Response 5-blob-195: status=200 elapsed=0.206s body_len=11677
+2026-08-28T16:13:01 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4627', 'x-ratelimit-used': '373', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:01 INFO    Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_212.json: 8260 bytes, format=json, sha=98aa47ab07a0b8e4833a6fd4f93421d0f3f35148
+2026-08-28T16:13:01 DEBUG   Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_212.json first line: {
+2026-08-28T16:13:01 DEBUG   Request 5-blob-196: GET https://api.github.com/repos/elastic/integrations/git/blobs/3b79e004132ab34430079dd99e1c52549e723688
+2026-08-28T16:13:01 DEBUG   Request 5-blob-196 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:01 DEBUG   Response 5-blob-196: status=200 elapsed=0.179s body_len=11653
+2026-08-28T16:13:01 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4626', 'x-ratelimit-used': '374', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:01 INFO    Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_213.json: 8242 bytes, format=json, sha=3b79e004132ab34430079dd99e1c52549e723688
+2026-08-28T16:13:01 DEBUG   Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_213.json first line: {
+2026-08-28T16:13:01 DEBUG   Request 5-blob-197: GET https://api.github.com/repos/elastic/integrations/git/blobs/919c000eb9f9b3b80d101e6ec7f2c3f2b30f289b
+2026-08-28T16:13:01 DEBUG   Request 5-blob-197 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:02 DEBUG   Response 5-blob-197: status=200 elapsed=0.175s body_len=12595
+2026-08-28T16:13:02 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4625', 'x-ratelimit-used': '375', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:02 INFO    Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_214.json: 8928 bytes, format=json, sha=919c000eb9f9b3b80d101e6ec7f2c3f2b30f289b
+2026-08-28T16:13:02 DEBUG   Blob 0859355c-0f08-4b43-8ff5-7d2a4789fc08_214.json first line: {
+2026-08-28T16:13:02 DEBUG   Request 5-blob-198: GET https://api.github.com/repos/elastic/integrations/git/blobs/55222c289bc4f52895affd522822752c81746350
+2026-08-28T16:13:02 DEBUG   Request 5-blob-198 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:02 DEBUG   Response 5-blob-198: status=200 elapsed=0.200s body_len=12065
+2026-08-28T16:13:02 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4624', 'x-ratelimit-used': '376', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:02 INFO    Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_3.json: 8543 bytes, format=json, sha=55222c289bc4f52895affd522822752c81746350
+2026-08-28T16:13:02 DEBUG   Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_3.json first line: {
+2026-08-28T16:13:02 DEBUG   Request 5-blob-199: GET https://api.github.com/repos/elastic/integrations/git/blobs/4e35f4a38de5951d91ebb58f11735322b2d0777e
+2026-08-28T16:13:02 DEBUG   Request 5-blob-199 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:02 DEBUG   Response 5-blob-199: status=200 elapsed=0.192s body_len=13699
+2026-08-28T16:13:02 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4623', 'x-ratelimit-used': '377', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:02 INFO    Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_4.json: 9727 bytes, format=json, sha=4e35f4a38de5951d91ebb58f11735322b2d0777e
+2026-08-28T16:13:02 DEBUG   Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_4.json first line: {
+2026-08-28T16:13:02 DEBUG   Request 5-blob-200: GET https://api.github.com/repos/elastic/integrations/git/blobs/8a9adadb78d3543969559fb1370a62fc9e99755e
+2026-08-28T16:13:02 DEBUG   Request 5-blob-200 headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:02 DEBUG   Response 5-blob-200: status=200 elapsed=0.247s body_len=14063
+2026-08-28T16:13:02 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '4622', 'x-ratelimit-used': '378', 'x-ratelimit-reset': '1787934390', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:02 INFO    Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_5.json: 9991 bytes, format=json, sha=8a9adadb78d3543969559fb1370a62fc9e99755e
+2026-08-28T16:13:02 DEBUG   Blob 0871a5d8-6b5f-4a12-a568-fd7bc05bd8db_5.json first line: {
+2026-08-28T16:13:02 DEBUG   Request 6-ratelimit: GET https://api.github.com/rate_limit
+2026-08-28T16:13:02 DEBUG   Request 6-ratelimit headers: {'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'elastic-security-advisories-test-api', 'Authorization': '[REDACTED]'}
+2026-08-28T16:13:02 DEBUG   Response 6-ratelimit: status=200 elapsed=0.157s body_len=1232
+2026-08-28T16:13:02 DEBUG   Rate limit headers: {'x-ratelimit-limit': '5000', 'x-ratelimit-remaining': '5000', 'x-ratelimit-used': '0', 'x-ratelimit-reset': '1787937182', 'x-ratelimit-resource': 'core'}
+2026-08-28T16:13:02 INFO    Wrote trace to /workspace/research_results/elastic_security_advisories/temp/api-review/run5/k1/trace.json
+2026-08-28T16:13:02 INFO    Summary: {'status': 'SUCCESS', 'repository_accessible': True, 'default_branch': 'main', 'private': False, 'tree_entries': 5733, 'files_matched': 5733, 'truncated': False, 'etag': '"9e640e905ac83fc3ba33e9a463f766464ae592d73bcac8dec84bdf12b2039a93"', 'revalidation': '304 Not Modified', 'blobs_fetched': 200, 'bytes_fetched': 1999045, 'formats': {'json': 200}, 'extensions': {'.json': 200}, 'rate_limit_before': {'limit': 5000, 'used': 27, 'remaining': 4973, 'reset': 1787933782}, 'rate_limit_after': {'limit': 5000, 'used': 0, 'remaining': 5000, 'reset': 1787937182}, 'errors': [], 'revalidation_was_free': True}
