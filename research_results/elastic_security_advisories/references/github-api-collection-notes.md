@@ -200,6 +200,15 @@ Docs: <https://docs.github.com/en/rest/git/blobs#get-a-blob>
 - **"This endpoint supports blobs up to 100 megabytes in size."** [VERIFIED-DOC]
 - Permission: **"Contents" repository permissions (read)**.
 
+**Prefer the raw media type. [VERIFIED-LIVE, added 2026-08-28]** `Accept: application/vnd.github.raw`
+works on this endpoint and is measurably better on both axes: over 100 blobs it transferred
+**916,962 bytes versus 1,292,920** for the base64 form, a **29% saving**, and it removes the base64
+decode step entirely. The base64 path remains safe — the `content` field is MIME-wrapped with a
+newline every 60 characters, and Go's `base64.StdEncoding.DecodeString` (which mito's `base64_decode`
+uses) ignores `\r` and `\n`, re-verified by compiling and running it. But note the guarantee's exact
+scope: Go ignores `\r` and `\n` **and nothing else**, so the claim holds only because GitHub emits
+`\n` alone. The raw media type sidesteps the question.
+
 Because a blob is addressed by its **content hash**, a given blob URL is immutable — the same
 SHA always yields the same bytes. That makes blob responses trivially cacheable and makes the
 blob SHA a reliable change detector and natural document fingerprint. Each Trees API entry
@@ -384,9 +393,15 @@ which is not what this integration does.
 
 ## 2. Incremental collection strategies
 
-Baseline assumption: **200–500 advisory files**, a poll `interval` of 1h, and a low change rate
-(a handful of files per week). The CEL input persists an arbitrary JSON object in `state.cursor`
-between runs and across restarts.
+Baseline assumption: **1,000–3,000 advisory files** *(revised 2026-08-28 from 200–500; a person with
+repository access reports the directory may hold more than 1000 files)*, a poll `interval` of 1h, and
+a low change rate (roughly 12–15 publication events a year, in batches). The CEL input persists an
+arbitrary JSON object in `state.cursor` between runs and across restarts.
+
+Steady-state cost is **independent of corpus size** — one conditional request returning 304, for zero
+rate-limit units — so the size revision affects only backfill and cursor size. Backfill: 1,001 calls
+and ~3.5 minutes at 1,000 files; 3,001 calls and ~10.5 minutes at 3,000 (20% and 60% of a 5,000/hour
+budget respectively). It does not exceed one hour's budget until roughly 5,000 files.
 
 ### Strategy A — Sub-tree ETag + persisted `path → blob SHA` map  ★ RECOMMENDED
 
@@ -411,8 +426,11 @@ Deletions and renames are detected for free (a path vanishes from the tree). It 
 force-pushes and history rewrites because it compares *state*, not *history* — there is no
 `base` ref that can become unreachable. It works on the very first run with an empty cursor.
 
-**Cons.** The cursor is larger: ~500 entries × (~45-char path + 40-char SHA) ≈ **40–50 KB** of
-JSON in the Filebeat registry. That is well within workable bounds but is the main cost.
+**Cons.** The cursor is larger, and larger than first estimated. Each entry costs roughly a 45-char
+path plus a 40-char SHA, so at the corrected corpus size: **~62 KiB at 500 files, ~88 KiB at 1,000,
+and ~185–264 KiB at 3,000**. *(Revised 2026-08-28 — this originally read "~500 entries ≈ 40–50 KB",
+which was right for a 500-file corpus but is 3–6× low against the >1000 files now reported.)* Still
+well within workable bounds, and still the main cost of this strategy.
 (Storing only the sub-tree SHA instead would shrink the cursor to 40 bytes, but then any change
 forces a re-fetch of all 500 files — see Strategy D.) The `{ref}:{path}` tree-ish syntax is
 undocumented, so it carries a small compatibility risk; the documented fallback is two calls
@@ -460,7 +478,7 @@ about.
 
 ### Strategy D — Full re-listing every interval + Elasticsearch `_id` dedup
 
-Enumerate the tree, fetch all 200–500 files, and let Elasticsearch collapse duplicates by a
+Enumerate the tree, fetch all 1,000–3,000 files, and let Elasticsearch collapse duplicates by a
 document `_id` fingerprinted from the file path or advisory ID.
 
 | Situation | API calls |
@@ -630,6 +648,15 @@ One further trap for a private repo, documented under error handling: GitHub ret
 private resource, "so a `404` does not always mean that the resource is absent."
 [VERIFIED-LIVE] `GET /repos/elastic/security-advisories` with the sandbox token → **HTTP 404**,
 even though the repository exists.
+
+**One diagnostic signal that is *not* a 404, and is worth exploiting. [VERIFIED-LIVE, added
+2026-08-28]** Requesting the Trees API with a `path` that points at a **file** rather than a directory
+returns **HTTP 422** with a distinct message, not a 404. Every other input error — wrong resource
+owner, nonexistent repository, nonexistent directory, nonexistent branch — returns a byte-identical
+404 (md5 `a11f74e873af40b9e9ea935139d48c61` across five variants of the same endpoint; the bodies do
+differ *between* endpoints, since `documentation_url` names the endpoint called). So the 422 is the
+single input mistake the API will actually name for you, and diagnostics should surface it rather than
+folding it into the generic "not found" case.
 
 ---
 
@@ -814,7 +841,8 @@ not as a replacement for it.
 
 2. **The Trees API 7 MB limit could not be reproduced.** An 18.4 MB response returned
    `truncated: false`. Whether the documented figure refers to a compressed size, is stale, or
-   is simply not enforced is unresolved. Not material at 200–500 files, but worth knowing.
+   is simply not enforced is unresolved. Not material at 1,000–3,000 files either, since the
+   documented bound is 100,000 entries, but worth knowing.
 
 3. **`raw.githubusercontent.com` private-repo authentication is unverified.** The sandbox token
    has no private-repo access anywhere, so the community claim that an `Authorization` header
@@ -827,12 +855,27 @@ not as a replacement for it.
    parsing approach and the document `_id` fingerprint source, and someone with repo access
    needs to answer them.
 
-5. **CEL execution-budget interaction.** The CEL input's `max_executions` (default 1,000; the
-   `github` package sets 5,000) bounds how many times a program can re-request via `want_more`.
-   A 500-file initial backfill that fetches one blob per execution would need ~500 executions.
-   Whether to batch multiple blob fetches per execution, and what that does to secondary rate
-   limits, is an implementation question for the CEL-program author rather than a research
-   finding — but the constraint is real and should be flagged to them.
+5. **CEL execution-budget interaction — resolved 2026-08-28, and it matters more than first written.**
+   The CEL input's `max_executions` (default **1,000** [VERIFIED-DOC]; the `github` package sets
+   5,000 at `cel.yml.hbs:24`, and it is *not* a Fleet variable, so a new package must set it in its
+   own template) bounds how many times a program can re-request via `want_more`.
+
+   At the revised corpus size a one-blob-per-execution backfill **exceeds the default outright**:
+   1,001 executions at 1,000 files, 3,001 at 3,000. It would not fail loudly — the budget is
+   exhausted, a warning is logged, and execution restarts next interval — but it converges slowly
+   and noisily.
+
+   **That model is not forced.** [VERIFIED-LIVE] mito v1.27.0 was built from source and a single CEL
+   evaluation was made to issue one tree request plus ten blob requests, by mapping over a list of
+   blob URLs and calling `do_request()` on each: ten HTTP 200s, with `x-ratelimit-used` advancing
+   monotonically 129→139, confirming the requests are issued serially with no concurrency risk.
+   Reproduction: `../temp/api-review/batch.cel`. At 50–100 blobs per execution a 3,000-file backfill
+   needs 31–61 executions rather than 3,001, fitting inside even the default.
+
+   So blobs-per-execution is a free design variable and the constraint dissolves. **How to structure
+   that remains the CEL-program author's decision** — recorded here as a verified capability and a
+   sizing constraint, not as a prescription. The one thing to avoid is the opposite extreme: fetching
+   all 3,000 in one evaluation would block the input for over ten minutes.
 
 6. **Repository-level GitHub-native security advisories** (`GET /repos/{owner}/{repo}/security-advisories`,
    fine-grained permission `repository_advisories: read`) is a *different* data source from
