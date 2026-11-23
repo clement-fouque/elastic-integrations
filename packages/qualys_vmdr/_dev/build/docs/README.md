@@ -113,7 +113,7 @@ This is the `Asset Host Detection` dataset.
 This is the `Knowledge Base` dataset.
 
 For the latest version of each QID in a data-stream namespace, use the
-`security_solution-qualys_vmdr.knowledge_base_latest` lookup index. The latest
+`logs-qualys_vmdr.knowledge_base_latest` lookup index. The latest
 document is selected by `qualys_vmdr.knowledge_base.last.service_modification_datetime`.
 The `logs-qualys_vmdr.knowledge_base-*` data stream continues to retain the full history.
 

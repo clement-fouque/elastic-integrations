@@ -9,14 +9,10 @@ source:
       must_not:
         - exists:
             field: error.message
-        - terms:
-            _tier:
-              - data_frozen
-              - data_cold
 dest:
-  index: "security_solution-qualys_vmdr.knowledge_base_latest-v1"
+  index: "logs-qualys_vmdr.knowledge_base_latest-v1"
   aliases:
-    - alias: "security_solution-qualys_vmdr.knowledge_base_latest"
+    - alias: "logs-qualys_vmdr.knowledge_base_latest"
       move_on_creation: true
 latest:
   unique_key:
@@ -34,4 +30,4 @@ settings:
   unattended: true
 _meta:
   managed: true
-  fleet_transform_version: 0.2.0
+  fleet_transform_version: 0.0.1
