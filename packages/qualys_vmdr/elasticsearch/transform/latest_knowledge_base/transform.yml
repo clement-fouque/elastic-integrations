@@ -5,19 +5,18 @@ source:
     bool:
       filter:
         - exists:
-            field: qualys_vmdr.knowledge_base.qid
+            field: event.id # from qualys_vmdr.knowledge_base.qid
       must_not:
         - exists:
             field: error.message
 dest:
-  # Serverless reserves logs-* names for data streams; keep the lookup backing index outside that namespace.
-  index: "qualys_vmdr.knowledge_base_latest-v1"
+  index: "logs-qualys_vmdr_latest.dest_knowledge_base-1"
   aliases:
-    - alias: "logs-qualys_vmdr.knowledge_base_latest"
+    - alias: "logs-qualys_vmdr_latest.knowledge_base"
       move_on_creation: true
 latest:
   unique_key:
-    - qualys_vmdr.knowledge_base.qid
+    - event.id # from qualys_vmdr.knowledge_base.qid
     - data_stream.namespace
   sort: qualys_vmdr.knowledge_base.last.service_modification_datetime
 description: Latest Qualys VMDR Knowledge Base document per QID and data-stream namespace.
